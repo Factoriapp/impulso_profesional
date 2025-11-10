@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre las diferentes formas de trabajar juntas: sesiones individuales, cursos o comunidad">
+    <title>Trabaja Conmigo - Terapeuta Holístico (MODELO)</title>
+
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">Tu Logo Aquí</div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="presentacion-profesional.html">Presentación Profesional</a></li>
+                <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+            </ul>
+
+            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <div class="auth-buttons" id="authButtons">
+                <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
+                <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
+            </div>
+
+            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
+            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
+                <div id="userProfileButton" style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%236B9080'/%3E%3Ctext x='20' y='26' font-size='16' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                         alt="Avatar"
+                         style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--color-primary);">
+                    <div>
+                        <div id="userNameHeader" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text);">Usuario</div>
+                        <span style="font-size: 0.8rem; color: var(--color-primary);">Ver opciones ▼</span>
+                    </div>
+                </div>
+
+                <!-- Menú desplegable -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <a href="area-miembros.html" class="user-menu-item">
+                        <span>👤</span> Mi Área
+                    </a>
+                    <button onclick="cerrarSesion()" class="user-menu-item" style="border: none; background: transparent; width: 100%; text-align: left;">
+                        <span>🚪</span> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <span class="nav-toggle-text">Menú</span>
+                <div class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Overlay para el menú -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ============================================
+         INTRODUCCIÓN
+         ============================================ -->
+    <section class="section" style="padding-top: 3rem;">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Página: TRABAJA CONMIGO (Página Única de Servicios Completa)</h4>
+                <p><strong>Propósito principal:</strong> Esta es la página DEFINITIVA donde presentas TODA la información de tus servicios. El cliente debe poder entender las opciones, comparar, y tomar la decisión de compra/contacto directamente desde aquí.</p>
+                <p><strong>Estructura:</strong> Presenta 3 formas de trabajar con información COMPLETA: descripción detallada, para quién es, qué incluye, resultados/beneficios, precio (opcional), y CTA directo para agendar/comprar/contactar.</p>
+                <p><strong>Importante:</strong> Esta página reemplaza la necesidad de páginas individuales por servicio. Todo está aquí en un solo lugar para facilitar la comparación y decisión.</p>
+            </div>
+
+            <div class="section-header" style="margin-top: 2rem;">
+                <span class="model-tag">Servicios</span>
+                <h1 class="section-title" style="font-size: 3rem;">[Título: Formas de Trabajar Juntos]</h1>
+                <p class="section-description" style="font-size: 1.2rem;">
+                    [Descripción introductoria: Presenta brevemente las modalidades disponibles. Ejemplos: "Elige la modalidad que mejor se adapte a tu situación,
+                    necesidades y presupuesto", "Tres formas de trabajar juntos, diseñadas para diferentes objetivos y estilos", etc.]
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TEST RÁPIDO (Ayuda a decidir)
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Test Rápido de Orientación (Opcional pero recomendado)</h4>
+                <p><strong>Propósito:</strong> Ayudar al visitante indeciso a auto-clasificarse y encontrar rápidamente la mejor opción para su situación. Reduce fricción en la toma de decisión.</p>
+                <p><strong>Función:</strong> Presenta 3 situaciones/perfiles diferentes. El visitante se identifica con uno y al hacer clic, el scroll lo lleva directamente a esa opción más abajo en la página.</p>
+            </div>
+
+            <div style="max-width: 900px; margin: 2rem auto;">
+                <h2 style="text-align: center; margin-bottom: 1rem;">¿No estás seguro cuál opción elegir?</h2>
+                <p style="text-align: center; color: var(--color-text-light); margin-bottom: 2rem;">
+                    Identifica cuál de estas situaciones describe mejor tu caso:
+                </p>
+
+                <div style="display: grid; gap: 1.5rem;">
+                    <div style="background: var(--color-white); padding: 2rem; border-radius: 12px; border-left: 4px solid #6B9080;">
+                        <h4 style="color: #6B9080; margin-bottom: 1rem;">💡 Perfil 1: [Descripción de situación/necesidad]</h4>
+                        <p style="color: var(--color-text-light); margin-bottom: 1rem;">
+                            [Describe el tipo de cliente ideal para la Opción A. Ejemplos: "Necesitas atención personalizada y resultados específicos a tu caso",
+                            "Tienes un objetivo concreto y valoras el acompañamiento uno a uno", "Buscas una solución completamente adaptada a ti", etc.]
+                        </p>
+                        <p style="font-weight: 600; color: var(--color-text);">
+                            → Tu mejor opción: <a href="#opcion-a" style="color: #6B9080; text-decoration: underline;">Ver Opción A</a>
+                        </p>
+                    </div>
+
+                    <div style="background: var(--color-white); padding: 2rem; border-radius: 12px; border-left: 4px solid #e8d5c4;">
+                        <h4 style="color: #a88b6e; margin-bottom: 1rem;">📚 Perfil 2: [Descripción de situación/necesidad]</h4>
+                        <p style="color: var(--color-text-light); margin-bottom: 1rem;">
+                            [Describe el tipo de cliente ideal para la Opción B. Ejemplos: "Prefieres trabajar a tu ritmo con flexibilidad total",
+                            "Buscas recursos de calidad que puedas usar de forma independiente", "Valoras la autonomía y el autoaprendizaje", etc.]
+                        </p>
+                        <p style="font-weight: 600; color: var(--color-text);">
+                            → Tu mejor opción: <a href="#opcion-b" style="color: #a88b6e; text-decoration: underline;">Ver Opción B</a>
+                        </p>
+                    </div>
+
+                    <div style="background: var(--color-white); padding: 2rem; border-radius: 12px; border-left: 4px solid #8d998e;">
+                        <h4 style="color: #8d998e; margin-bottom: 1rem;">👥 Perfil 3: [Descripción de situación/necesidad]</h4>
+                        <p style="color: var(--color-text-light); margin-bottom: 1rem;">
+                            [Describe el tipo de cliente ideal para la Opción C. Ejemplos: "Buscas apoyo continuo y conexión con una comunidad",
+                            "Valoras el acompañamiento sostenido en el tiempo", "Quieres evolucionar constantemente con actualizaciones y soporte", etc.]
+                        </p>
+                        <p style="font-weight: 600; color: var(--color-text);">
+                            → Tu mejor opción: <a href="#opcion-c" style="color: #8d998e; text-decoration: underline;">Ver Opción C</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LOS 3 CAMINOS PRINCIPALES
+         ============================================ -->
+    <section class="section" style="padding: 4rem 2rem;">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Las 3 Opciones de Servicio (Núcleo de la Página - INFORMACIÓN COMPLETA)</h4>
+                <p><strong>Estructura por cada opción:</strong></p>
+                <p>1. <strong>Nombre del servicio/modalidad</strong> (claro y descriptivo)</p>
+                <p>2. <strong>Para quién es</strong> (perfil de cliente ideal)</p>
+                <p>3. <strong>Qué incluye</strong> (lista detallada de elementos/beneficios)</p>
+                <p>4. <strong>Duración/formato</strong> (cómo funciona el servicio)</p>
+                <p>5. <strong>Precio</strong> (opcional pero recomendado para transparencia)</p>
+                <p>6. <strong>Botón CTA</strong> directo para agendar/comprar/contactar</p>
+                <p><em>Nota: Esta es la página FINAL. El cliente debe tener toda la información para tomar una decisión aquí mismo.</em></p>
+            </div>
+
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">[Título General: Ej. "Mis Servicios" o "Formas de Trabajar Juntos"]</h2>
+
+            <!-- OPCIÓN A: Servicio/Modalidad 1 -->
+            <div id="opcion-a" style="background: linear-gradient(135deg, #ffffff, #f9f7f4); padding: 3rem; border-radius: 20px; margin-bottom: 3rem; box-shadow: var(--shadow-lg);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                    <div>
+                        <span class="model-tag" style="background: #6B9080; color: white;">Opción A</span>
+                        <h3 style="font-size: 2.5rem; margin: 1rem 0; color: var(--color-text);">[Nombre de Tu Servicio/Modalidad A]</h3>
+                        <p style="font-size: 1.15rem; color: var(--color-text-light); margin-bottom: 2rem; line-height: 1.8;">
+                            [Descripción breve del servicio. Ejemplo: "Acompañamiento personalizado uno a uno para alcanzar [objetivo específico]",
+                            "Programa grupal intensivo de [duración] para transformar [área específica]", etc.]
+                        </p>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #6B9080; margin-bottom: 1rem;">👤 Para quién es:</h4>
+                            <ul style="list-style: none; padding: 0; color: var(--color-text-light);">
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6B9080;">✓</span>
+                                    [Característica del cliente ideal 1]
+                                </li>
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6B9080;">✓</span>
+                                    [Característica del cliente ideal 2]
+                                </li>
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #6B9080;">✓</span>
+                                    [Característica del cliente ideal 3]
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #6B9080; margin-bottom: 1rem;">📦 Qué incluye:</h4>
+                            <ul style="color: var(--color-text-light); line-height: 2;">
+                                <li>• [Elemento incluido 1: ej. "X sesiones de Y minutos"]</li>
+                                <li>• [Elemento incluido 2: ej. "Material de apoyo personalizado"]</li>
+                                <li>• [Elemento incluido 3: ej. "Seguimiento vía email"]</li>
+                                <li>• [Elemento incluido 4: ej. "Plan de acción personalizado"]</li>
+                                <li>• [Elemento incluido 5: ej. "Acceso a recursos adicionales"]</li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(107, 144, 128, 0.1); border-radius: 12px;">
+                            <h4 style="color: #6B9080; margin-bottom: 0.5rem;">⏱️ Duración y Formato:</h4>
+                            <p style="color: var(--color-text-light); margin: 0;">
+                                [Especifica cómo funciona: ej. "Programa de 8 semanas con 1 sesión semanal de 60 minutos",
+                                "Paquete de 4 sesiones a usar en 2 meses", "Acceso inmediato y permanente", etc.]
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; padding: 1.5rem; background: white; border: 2px solid #6B9080; border-radius: 12px; text-align: center;">
+                            <p style="color: var(--color-text-light); margin: 0 0 0.5rem 0; font-size: 0.9rem;">Inversión:</p>
+                            <p style="font-size: 2.5rem; font-weight: 700; color: #6B9080; margin: 0;">
+                                [€XXX] <span style="font-size: 1rem; font-weight: 400; color: var(--color-text-light);">o [precio mensual si aplica]</span>
+                            </p>
+                            <p style="color: var(--color-text-light); margin: 0.5rem 0 0 0; font-size: 0.85rem;">[Opciones de pago si las hay]</p>
+                        </div>
+
+                        <a href="agenda.html" class="btn btn-primary btn-large" style="width: 100%; background: #6B9080; border-color: #6B9080;">
+                            [Texto del CTA: ej. "Agendar Sesión Inicial", "Reservar Mi Lugar", "Más Información"]
+                        </a>
+                    </div>
+
+                    <div style="background: #6B9080; min-height: 400px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem;">
+                        <div>
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">🎯</div>
+                            <p><strong>Imagen Sugerida:</strong><br>
+                            Foto o visual representativo de este servicio. Puede ser una imagen de sesión uno a uno, el profesional trabajando, o un visual que transmita el beneficio principal.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN B: Servicio/Modalidad 2 -->
+            <div id="opcion-b" style="background: linear-gradient(135deg, #ffffff, #f9f7f4); padding: 3rem; border-radius: 20px; margin-bottom: 3rem; box-shadow: var(--shadow-lg);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                    <div style="background: #e8d5c4; min-height: 400px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem;">
+                        <div>
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">📚</div>
+                            <p><strong>Imagen Sugerida:</strong><br>
+                            Foto o visual representativo de este servicio. Puede ser una imagen de recursos digitales, aprendizaje autónomo, o un visual que transmita flexibilidad.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="model-tag" style="background: #a88b6e; color: white;">Opción B</span>
+                        <h3 style="font-size: 2.5rem; margin: 1rem 0; color: var(--color-text);">[Nombre de Tu Servicio/Modalidad B]</h3>
+                        <p style="font-size: 1.15rem; color: var(--color-text-light); margin-bottom: 2rem; line-height: 1.8;">
+                            [Descripción breve del servicio. Ejemplo: "Curso online completo con acceso de por vida para dominar [tema específico]",
+                            "Programa de autoaprendizaje con todos los recursos necesarios para [objetivo]", etc.]
+                        </p>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #a88b6e; margin-bottom: 1rem;">👤 Para quién es:</h4>
+                            <ul style="list-style: none; padding: 0; color: var(--color-text-light);">
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #a88b6e;">✓</span>
+                                    [Característica del cliente ideal 1]
+                                </li>
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #a88b6e;">✓</span>
+                                    [Característica del cliente ideal 2]
+                                </li>
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #a88b6e;">✓</span>
+                                    [Característica del cliente ideal 3]
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #a88b6e; margin-bottom: 1rem;">📦 Qué incluye:</h4>
+                            <ul style="color: var(--color-text-light); line-height: 2;">
+                                <li>• [Elemento incluido 1: ej. "X módulos en video"]</li>
+                                <li>• [Elemento incluido 2: ej. "Guías descargables en PDF"]</li>
+                                <li>• [Elemento incluido 3: ej. "Ejercicios prácticos"]</li>
+                                <li>• [Elemento incluido 4: ej. "Plantillas y recursos"]</li>
+                                <li>• [Elemento incluido 5: ej. "Actualizaciones gratuitas"]</li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(168, 139, 110, 0.1); border-radius: 12px;">
+                            <h4 style="color: #a88b6e; margin-bottom: 0.5rem;">⏱️ Duración y Formato:</h4>
+                            <p style="color: var(--color-text-light); margin: 0;">
+                                [Especifica cómo funciona: ej. "Acceso inmediato y de por vida", "X horas de contenido",
+                                "Trabaja a tu propio ritmo", "Disponible 24/7 en plataforma online", etc.]
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; padding: 1.5rem; background: white; border: 2px solid #a88b6e; border-radius: 12px; text-align: center;">
+                            <p style="color: var(--color-text-light); margin: 0 0 0.5rem 0; font-size: 0.9rem;">Inversión:</p>
+                            <p style="font-size: 2.5rem; font-weight: 700; color: #a88b6e; margin: 0;">
+                                [€XXX] <span style="font-size: 1rem; font-weight: 400; color: var(--color-text-light);">pago único</span>
+                            </p>
+                            <p style="color: var(--color-text-light); margin: 0.5rem 0 0 0; font-size: 0.85rem;">[Opciones de pago si las hay]</p>
+                        </div>
+
+                        <a href="contacto.html" class="btn btn-primary btn-large" style="background: #a88b6e; border-color: #a88b6e; width: 100%;">
+                            [Texto del CTA: ej. "Comprar Ahora", "Ver Más Detalles", "Acceder al Curso"]
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OPCIÓN C: Servicio/Modalidad 3 -->
+            <div id="opcion-c" style="background: linear-gradient(135deg, #ffffff, #f9f7f4); padding: 3rem; border-radius: 20px; box-shadow: var(--shadow-lg);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;">
+                    <div>
+                        <span class="model-tag" style="background: #8d998e; color: white;">Opción C</span>
+                        <h3 style="font-size: 2.5rem; margin: 1rem 0; color: var(--color-text);">[Nombre de Tu Servicio/Modalidad C]</h3>
+                        <p style="font-size: 1.15rem; color: var(--color-text-light); margin-bottom: 2rem; line-height: 1.8;">
+                            [Descripción breve del servicio. Ejemplo: "Membresía mensual con acceso continuo a recursos, comunidad y soporte",
+                            "Suscripción recurrente con actualizaciones constantes y acompañamiento a largo plazo", etc.]
+                        </p>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #8d998e; margin-bottom: 1rem;">👤 Para quién es:</h4>
+                            <ul style="list-style: none; padding: 0; color: var(--color-text-light);">
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #8d998e;">✓</span>
+                                    [Característica del cliente ideal 1]
+                                </li>
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #8d998e;">✓</span>
+                                    [Característica del cliente ideal 2]
+                                </li>
+                                <li style="margin-bottom: 0.75rem; padding-left: 1.5rem; position: relative;">
+                                    <span style="position: absolute; left: 0; color: #8d998e;">✓</span>
+                                    [Característica del cliente ideal 3]
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-bottom: 2rem;">
+                            <h4 style="color: #8d998e; margin-bottom: 1rem;">📦 Qué incluye:</h4>
+                            <ul style="color: var(--color-text-light); line-height: 2;">
+                                <li>• [Elemento incluido 1: ej. "Acceso a comunidad privada"]</li>
+                                <li>• [Elemento incluido 2: ej. "X eventos/sesiones mensuales"]</li>
+                                <li>• [Elemento incluido 3: ej. "Biblioteca de recursos en constante crecimiento"]</li>
+                                <li>• [Elemento incluido 4: ej. "Soporte continuo vía chat/email"]</li>
+                                <li>• [Elemento incluido 5: ej. "Actualizaciones y contenido nuevo cada mes"]</li>
+                            </ul>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; padding: 1.5rem; background: rgba(141, 153, 142, 0.1); border-radius: 12px;">
+                            <h4 style="color: #8d998e; margin-bottom: 0.5rem;">⏱️ Duración y Formato:</h4>
+                            <p style="color: var(--color-text-light); margin: 0;">
+                                [Especifica cómo funciona: ej. "Suscripción mensual renovable automáticamente",
+                                "Cancela cuando quieras sin compromiso", "Acceso inmediato al unirte", etc.]
+                            </p>
+                        </div>
+
+                        <div style="margin-bottom: 2rem; padding: 1.5rem; background: white; border: 2px solid #8d998e; border-radius: 12px; text-align: center;">
+                            <p style="color: var(--color-text-light); margin: 0 0 0.5rem 0; font-size: 0.9rem;">Inversión:</p>
+                            <p style="font-size: 2.5rem; font-weight: 700; color: #8d998e; margin: 0;">
+                                [€XX/mes] <span style="font-size: 1rem; font-weight: 400; color: var(--color-text-light);">o [€XXX/año ahorra X%]</span>
+                            </p>
+                            <p style="color: var(--color-text-light); margin: 0.5rem 0 0 0; font-size: 0.85rem;">[Sin permanencia, cancela cuando quieras]</p>
+                        </div>
+
+                        <a href="area-miembros.html" class="btn btn-primary btn-large" style="background: #8d998e; border-color: #8d998e; width: 100%;">
+                            [Texto del CTA: ej. "Unirme Ahora", "Empezar Mi Membresía", "Ver Más Info"]
+                        </a>
+                    </div>
+
+                    <div style="background: #8d998e; min-height: 400px; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem;">
+                        <div>
+                            <div style="font-size: 4rem; margin-bottom: 1rem;">👥</div>
+                            <p><strong>Imagen Sugerida:</strong><br>
+                            Foto o visual representativo de este servicio. Puede ser una imagen de comunidad, grupo colaborando, o un visual que transmita apoyo continuo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TABLA COMPARATIVA (Ayuda Visual)
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Tabla Comparativa (Opcional pero muy útil)</h4>
+                <p><strong>Propósito:</strong> Ayuda al visitante a comparar rápidamente las 3 opciones lado a lado.</p>
+                <p><strong>Efectividad:</strong> Reduce la carga cognitiva y facilita la toma de decisión.</p>
+            </div>
+
+            <h2 style="text-align: center; margin-bottom: 2rem;">Comparación Rápida</h2>
+
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; min-width: 700px; background: white; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md);">
+                    <thead>
+                        <tr style="background: var(--color-primary); color: white;">
+                            <th style="padding: 1.5rem; text-align: left; font-weight: 600;">Característica</th>
+                            <th style="padding: 1.5rem; text-align: center; font-weight: 600;">Opción A</th>
+                            <th style="padding: 1.5rem; text-align: center; font-weight: 600;">Opción B</th>
+                            <th style="padding: 1.5rem; text-align: center; font-weight: 600;">Opción C</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 1.25rem; font-weight: 500;">[Característica 1]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor A1]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor B1]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor C1]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border); background: var(--color-light);">
+                            <td style="padding: 1.25rem; font-weight: 500;">[Característica 2]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor A2]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor B2]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor C2]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 1.25rem; font-weight: 500;">[Característica 3]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor A3]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor B3]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor C3]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border); background: var(--color-light);">
+                            <td style="padding: 1.25rem; font-weight: 500;">[Característica 4]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor A4]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor B4]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor C4]</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--color-border);">
+                            <td style="padding: 1.25rem; font-weight: 500;">[Característica 5]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor A5]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor B5]</td>
+                            <td style="padding: 1.25rem; text-align: center;">[Valor C5]</td>
+                        </tr>
+                        <tr style="background: var(--color-light);">
+                            <td style="padding: 1.25rem; font-weight: 500;">Inversión</td>
+                            <td style="padding: 1.25rem; text-align: center; font-weight: 600; color: #6B9080;">[Precio A]</td>
+                            <td style="padding: 1.25rem; text-align: center; font-weight: 600; color: #a88b6e;">[Precio B]</td>
+                            <td style="padding: 1.25rem; text-align: center; font-weight: 600; color: #8d998e;">[Precio C]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="model-description" style="margin-top: 2rem;">
+                <p><strong>💡 Sugerencias para la tabla:</strong></p>
+                <ul style="line-height: 1.8;">
+                    <li>Usa emojis para facilitar comprensión visual: ✅ (sí/completo), ❌ (no/no incluido), ⚠️ (parcial/limitado)</li>
+                    <li>Ejemplo de características según tu industria:
+                        <ul>
+                            <li><em>Servicios:</em> Atención personalizada, Flexibilidad horaria, Duración, Entregables</li>
+                            <li><em>Cursos/Digital:</em> Acceso a contenido, Soporte incluido, Actualizaciones, Certificación</li>
+                            <li><em>Consultoría:</em> Sesiones incluidas, Tiempo de respuesta, Revisiones, Implementación</li>
+                        </ul>
+                    </li>
+                    <li>Mantén la fila de "Inversión" al final para facilitar comparación de precios</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CALL TO ACTION FINAL
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: CTA Final (Llamada a la Acción)</h4>
+                <p><strong>Propósito:</strong> Ofrecer una opción de baja fricción para visitantes indecisos.</p>
+                <p><strong>Estrategia:</strong> Sesión/llamada de descubrimiento gratuita, consulta inicial, revisión de caso, etc. Adapta según tu modelo de negocio.</p>
+            </div>
+
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2 class="section-title">¿Aún no estás seguro de cuál opción elegir?</h2>
+                <p class="section-description" style="margin-bottom: 2rem;">
+                    [Descripción de tu oferta de baja fricción. Ejemplos: "Agenda una sesión de descubrimiento gratuita",
+                    "Solicita una consulta inicial sin compromiso", "Recibe una evaluación personalizada de tu situación", etc.]
+                </p>
+                <a href="agenda.html" class="btn btn-primary btn-large">
+                    [Texto del Botón CTA]
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                    <li><a href="recursos.html">Recursos/Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
+                    <li><a href="cursos.html">Cursos Online</a></li>
+                    <li><a href="membresia.html">Membresía</a></li>
+                    <li><a href="agenda.html">Agendar Sesión</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Conecta</h3>
+                <p>Sígueme en redes sociales para contenido diario de bienestar y consciencia.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                    <a href="#" class="social-link" aria-label="YouTube">📹</a>
+                    <a href="#" class="social-link" aria-label="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 [Tu Nombre] - Terapeuta Holística | Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="loginModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="loginModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Iniciar Sesión</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Accede a tu área de miembros
+                </p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Tu contraseña">
+                </div>
+
+                <div style="margin-bottom: 1.5rem; text-align: right;">
+                    <a href="#" style="font-size: 0.9rem; color: var(--color-primary);">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Iniciar Sesión
+                </button>
+
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                    <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                        ¿No tienes cuenta?
+                    </p>
+                    <button type="button" onclick="cerrarModalLogin(); abrirModalRegistro();" class="btn btn-secondary" style="width: 100%;">
+                        Crear Cuenta Nueva
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registroModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="registroModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="registroModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Crear Cuenta</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Únete para acceder a contenido exclusivo
+                </p>
+            </div>
+
+            <form id="registroForm">
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo *</label>
+                    <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña *</label>
+                    <input type="password" id="password" class="form-input" required placeholder="Mínimo 6 caracteres" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmPassword" class="form-input" required placeholder="Repite tu contraseña" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="terminos" required style="margin-top: 0.25rem;">
+                        <span style="font-size: 0.9rem; color: var(--color-text-light);">
+                            Acepto los <a href="#" style="color: var(--color-primary); text-decoration: underline;">términos y condiciones</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div id="mensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: #efe; border-left: 4px solid #3c3; color: #3c3; margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Crear Mi Cuenta
+                </button>
+
+                <p style="text-align: center; font-size: 0.9rem; color: var(--color-text-light);">
+                    ¿Ya tienes cuenta? <a href="#" onclick="cerrarModalRegistro(); abrirModalLogin(); return false;" style="color: var(--color-primary); font-weight: 500;">Inicia sesión aquí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

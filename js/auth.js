@@ -1,0 +1,255 @@
+// ============================================
+// SISTEMA DE AUTENTICACIÓN SIMPLE
+// ============================================
+// NOTA: Este es un sistema de demostración usando localStorage
+// Para producción, necesitarás un backend real con base de datos
+
+// ============================================
+// FUNCIONES DE UTILIDAD
+// ============================================
+
+// Obtener usuarios del localStorage
+function obtenerUsuarios() {
+    const usuarios = localStorage.getItem('usuarios');
+    return usuarios ? JSON.parse(usuarios) : [];
+}
+
+// Guardar usuarios en localStorage
+function guardarUsuarios(usuarios) {
+    localStorage.setItem('usuarios', JSON.stringify(usuarios));
+}
+
+// Obtener usuario actual logueado
+function obtenerUsuarioActual() {
+    const usuario = localStorage.getItem('usuarioActual');
+    return usuario ? JSON.parse(usuario) : null;
+}
+
+// Guardar usuario actual
+function guardarUsuarioActual(usuario) {
+    localStorage.setItem('usuarioActual', JSON.stringify(usuario));
+}
+
+// Cerrar sesión
+function cerrarSesion() {
+    localStorage.removeItem('usuarioActual');
+    // Recargar la página actual para mostrar los botones de login/registro
+    window.location.reload();
+}
+
+// Verificar si el usuario está logueado
+function verificarAutenticacion() {
+    const usuario = obtenerUsuarioActual();
+    if (!usuario) {
+        // Redirigir a la página principal si no está autenticado
+        window.location.href = 'index.html';
+        return false;
+    }
+    return true;
+}
+
+// Actualizar tipo de usuario (gratuito → miembro)
+function actualizarTipoUsuario(nuevoTipo) {
+    const usuario = obtenerUsuarioActual();
+    if (!usuario) return false;
+
+    // Actualizar en el usuario actual
+    usuario.tipoUsuario = nuevoTipo;
+    guardarUsuarioActual(usuario);
+
+    // Actualizar en la lista de usuarios
+    const usuarios = obtenerUsuarios();
+    const index = usuarios.findIndex(u => u.id === usuario.id);
+    if (index !== -1) {
+        usuarios[index].tipoUsuario = nuevoTipo;
+        guardarUsuarios(usuarios);
+    }
+
+    return true;
+}
+
+// Mostrar mensaje de error
+function mostrarError(mensaje, elementoId = 'mensajeError') {
+    const elemento = document.getElementById(elementoId);
+    if (elemento) {
+        elemento.textContent = mensaje;
+        elemento.style.display = 'block';
+        setTimeout(() => {
+            elemento.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// Mostrar mensaje de éxito
+function mostrarExito(mensaje, elementoId = 'mensajeExito') {
+    const elemento = document.getElementById(elementoId);
+    if (elemento) {
+        elemento.textContent = mensaje;
+        elemento.style.display = 'block';
+        setTimeout(() => {
+            elemento.style.display = 'none';
+        }, 3000);
+    }
+}
+
+// ============================================
+// FORMULARIO DE REGISTRO
+// ============================================
+
+if (document.getElementById('registroForm')) {
+    const registroForm = document.getElementById('registroForm');
+
+    registroForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Obtener valores del formulario
+        const nombre = document.getElementById('nombre').value.trim();
+        const email = document.getElementById('email').value.trim().toLowerCase();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        const terminos = document.getElementById('terminos').checked;
+
+        // Validaciones
+        if (!nombre || !email || !password || !confirmPassword) {
+            mostrarError('Por favor completa todos los campos');
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            mostrarError('Las contraseñas no coinciden');
+            return;
+        }
+
+        if (password.length < 6) {
+            mostrarError('La contraseña debe tener al menos 6 caracteres');
+            return;
+        }
+
+        if (!terminos) {
+            mostrarError('Debes aceptar los términos y condiciones');
+            return;
+        }
+
+        // Verificar si el email ya existe
+        const usuarios = obtenerUsuarios();
+        const emailExiste = usuarios.some(u => u.email === email);
+
+        if (emailExiste) {
+            mostrarError('Este email ya está registrado. ¿Deseas iniciar sesión?');
+            return;
+        }
+
+        // Crear nuevo usuario
+        const nuevoUsuario = {
+            id: Date.now().toString(),
+            nombre: nombre,
+            email: email,
+            password: password, // En producción, esto debe estar encriptado
+            tipoUsuario: 'gratuito', // Puede ser 'gratuito' o 'miembro'
+            fechaRegistro: new Date().toISOString()
+        };
+
+        // Guardar usuario
+        usuarios.push(nuevoUsuario);
+        guardarUsuarios(usuarios);
+
+        // Mostrar mensaje de éxito
+        mostrarExito('¡Cuenta creada exitosamente! Redirigiendo...');
+
+        // Limpiar formulario
+        registroForm.reset();
+
+        // Loguear automáticamente y redirigir
+        setTimeout(() => {
+            const usuarioSinPassword = { ...nuevoUsuario };
+            delete usuarioSinPassword.password;
+            guardarUsuarioActual(usuarioSinPassword);
+            window.location.href = 'area-miembros.html';
+        }, 2000);
+    });
+}
+
+// ============================================
+// FORMULARIO DE LOGIN
+// ============================================
+
+if (document.getElementById('loginForm')) {
+    const loginForm = document.getElementById('loginForm');
+
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Obtener valores del formulario (usando IDs del modal)
+        const emailInput = document.getElementById('loginEmail') || document.getElementById('email');
+        const passwordInput = document.getElementById('loginPassword') || document.getElementById('password');
+
+        const email = emailInput ? emailInput.value.trim().toLowerCase() : '';
+        const password = passwordInput ? passwordInput.value : '';
+
+        // Validaciones básicas
+        if (!email || !password) {
+            mostrarError('Por favor completa todos los campos', 'loginMensajeError');
+            return;
+        }
+
+        // Buscar usuario
+        const usuarios = obtenerUsuarios();
+        const usuario = usuarios.find(u => u.email === email && u.password === password);
+
+        if (!usuario) {
+            mostrarError('Email o contraseña incorrectos', 'loginMensajeError');
+            return;
+        }
+
+        // Guardar sesión (sin la contraseña)
+        const usuarioSinPassword = { ...usuario };
+        delete usuarioSinPassword.password;
+        guardarUsuarioActual(usuarioSinPassword);
+
+        // Cerrar modal si existe
+        if (typeof cerrarModalLogin === 'function') {
+            cerrarModalLogin();
+            // Recargar la página para actualizar el header
+            window.location.reload();
+        } else {
+            // Si no hay modal (página de login), redirigir al área de miembros
+            window.location.href = 'area-miembros.html';
+        }
+    });
+}
+
+// ============================================
+// BOTÓN DE CERRAR SESIÓN
+// ============================================
+
+if (document.getElementById('cerrarSesion')) {
+    document.getElementById('cerrarSesion').addEventListener('click', function() {
+        if (confirm('¿Estás segura de que quieres cerrar sesión?')) {
+            cerrarSesion();
+        }
+    });
+}
+
+// ============================================
+// PROTECCIÓN DE ÁREA DE MIEMBROS
+// ============================================
+
+// Si estamos en la página de área de miembros, verificar autenticación
+if (window.location.pathname.includes('area-miembros.html')) {
+    if (verificarAutenticacion()) {
+        // Mostrar nombre del usuario
+        const usuario = obtenerUsuarioActual();
+        const nombreUsuario = document.getElementById('nombreUsuario');
+        if (nombreUsuario && usuario) {
+            nombreUsuario.textContent = usuario.nombre;
+        }
+    }
+}
+
+// ============================================
+// MENSAJE DE CONSOLA
+// ============================================
+
+console.log('🔐 Sistema de autenticación cargado');
+console.log('⚠️ NOTA: Este es un sistema de demostración usando localStorage');
+console.log('⚠️ Para producción, implementa un backend con base de datos real');

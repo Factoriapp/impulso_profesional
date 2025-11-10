@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website modelo para profesionales independientes - Guía profesional de arquitectura web">
+    <title>Profesional Independiente - Página Principal (MODELO)</title>
+
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">Tu Logo Aquí</div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="presentacion-profesional.html">Presentación Profesional</a></li>
+                <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+            </ul>
+
+            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <div class="auth-buttons" id="authButtons">
+                <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
+                <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
+            </div>
+
+            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
+            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
+                <div id="userProfileButton" style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%236B9080'/%3E%3Ctext x='20' y='26' font-size='16' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                         alt="Avatar"
+                         style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--color-primary);">
+                    <div>
+                        <div id="userNameHeader" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text);">Usuario</div>
+                        <span style="font-size: 0.8rem; color: var(--color-primary);">Ver opciones ▼</span>
+                    </div>
+                </div>
+
+                <!-- Menú desplegable -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <a href="area-miembros.html" class="user-menu-item">
+                        <span>👤</span> Mi Área
+                    </a>
+                    <button onclick="cerrarSesion()" class="user-menu-item" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <span>🚪</span> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <span class="nav-toggle-text">Menú</span>
+                <div class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Overlay para el menú -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ============================================
+         HERO SECTION (Sección Principal)
+         ============================================ -->
+    <section class="hero">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Hero Section (Encabezado Principal)</h4>
+                <p><strong>Propósito:</strong> Captar la atención inmediata del visitante y comunicar tu propuesta de valor única. Esta es la primera impresión y debe enganchar al visitante en segundos.</p>
+                <p><strong>Elementos clave:</strong> Título claro que comunique el beneficio principal + Subtítulo que explique tu solución + Botones de acción (CTA) bien visibles.</p>
+            </div>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>[Título Principal (Hero Headline)]</h1>
+                <p class="hero-subtitle">
+                    Aquí escribe tu propuesta de valor única dirigida a tu cliente ideal.
+                    Este texto debe comunicar el beneficio principal o la solución que ofreces en 1-2 líneas.
+                    Enfócate en el resultado que tu cliente busca o el problema que resuelves de manera clara y directa.
+                    Usa un lenguaje accesible que resuene con tu audiencia objetivo.
+                </p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <a href="trabaja-conmigo.html" class="btn btn-primary btn-large">[Texto Botón Principal (CTA)]</a>
+                    <a href="sobre-mi.html" class="btn btn-secondary btn-large">[Texto Botón Secundario]</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <p><strong>Imagen Principal</strong><br>
+                Aquí va una foto profesional que transmita confianza y credibilidad.
+                Puede ser tu foto, tu equipo, o una imagen relacionada con tu servicio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRESENTACIÓN PROFESIONAL
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Presentación Profesional</h4>
+                <p><strong>Propósito:</strong> Establecer tu credibilidad y expertise profesional desde el inicio, mostrando tu formación, experiencia y enfoque especializado.</p>
+                <p><strong>Estrategia:</strong> Presentarte como el profesional experto que eres, destacando tus años de experiencia, especialización y el valor único que aportas a tus clientes. Enfócate en tu autoridad y conocimiento.</p>
+            </div>
+
+            <div class="about-container">
+                <div class="about-image">
+                    <p><strong>Foto Profesional</strong><br>
+                    Aquí va tu fotografía profesional que transmita autoridad y confianza.
+                    Debe proyectar competencia, experiencia y profesionalismo.
+                    Considera una foto en tu espacio de trabajo o consulta.</p>
+                </div>
+
+                <div class="about-content">
+                    <h2>[Título Presentación Profesional]</h2>
+
+                    <div class="about-text">
+                        <p>
+                            Aquí presenta tu perfil profesional en 1-2 párrafos. Destaca tu formación, años de experiencia,
+                            especialización y el tipo de clientes con los que trabajas. Ejemplo: "Soy [tu nombre], [profesión/título]
+                            con [X años] de experiencia en [tu área de especialización]. He trabajado con [número aproximado] de clientes,
+                            especializándome en [tu nicho específico] mediante [tu metodología o enfoque principal]."
+                        </p>
+                        <p>
+                            Continúa destacando tu expertise y enfoque profesional. ¿Cuál es tu especialización?
+                            ¿Qué metodologías dominas? ¿Qué resultados obtienes con tus clientes? Mantén un tono
+                            profesional y seguro que inspire confianza y credibilidad.
+                        </p>
+                    </div>
+
+                    <a href="presentacion-profesional.html" class="btn btn-secondary" style="margin-top: 1.5rem;">
+                        [Más sobre mí]
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mi Misión -->
+            <div class="about-mission">
+                <h3>[Mi Misión]</h3>
+                <p>
+                    Aquí describe tu misión profesional y el compromiso con tus clientes. ¿Qué resultados te comprometes a lograr?
+                    ¿Cuál es tu estándar de excelencia? Este es el espacio para mostrar tu compromiso profesional y tu visión.
+                    Ejemplo: "Mi misión es proporcionar un servicio de la más alta calidad profesional a [tu nicho de clientes],
+                    utilizando metodologías probadas y un enfoque personalizado que garantice resultados medibles y transformaciones duraderas."
+                </p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         OFERTA DE SERVICIOS
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Oferta de Servicios</h4>
+                <p><strong>Propósito:</strong> Presentar claramente tus diferentes modalidades de servicio para que el visitante elija la que mejor se adapta a sus necesidades.</p>
+                <p><strong>Función:</strong> Mostrar las opciones disponibles con información clave: qué incluye cada servicio, para quién es ideal y cómo acceder a él.</p>
+            </div>
+
+            <div class="section-header">
+                <p class="section-subtitle">[Subtítulo de Sección (opcional)]</p>
+                <h2 class="section-title">[Título de Sección: Oferta de Servicios]</h2>
+                <p class="section-description">
+                    Descripción breve que introduce las diferentes modalidades de servicio disponibles.
+                    Explica cómo cada opción responde a diferentes necesidades, objetivos y preferencias de tus clientes.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">[Nombre de tu Opción 1]</h3>
+                    <p class="card-text">
+                        Descripción breve de esta modalidad de servicio. ¿Qué incluye? ¿Cómo funciona?
+                        Ejemplo: Sesiones individuales, programas personalizados, acompañamiento uno a uno.
+                    </p>
+                    <p class="card-text" style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 1rem;">
+                        <strong>Ideal para:</strong> Lista aquí el perfil de cliente ideal para esta opción.
+                    </p>
+                    <a href="servicios-individual.html" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
+                        [Texto del Botón]
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">[Nombre de tu Opción 2]</h3>
+                    <p class="card-text">
+                        Descripción de la segunda modalidad. Ejemplo: Cursos online, programas grabados,
+                        recursos digitales, talleres pregrabados, etc.
+                    </p>
+                    <p class="card-text" style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 1rem;">
+                        <strong>Ideal para:</strong> Describe para quién es perfecta esta opción.
+                    </p>
+                    <a href="cursos.html" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
+                        [Texto del Botón]
+                    </a>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h3 class="card-title">[Nombre de tu Opción 3]</h3>
+                    <p class="card-text">
+                        Descripción de la tercera opción. Ejemplo: Membresía mensual, comunidad privada,
+                        eventos grupales en vivo, círculos de apoyo, etc.
+                    </p>
+                    <p class="card-text" style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 1rem;">
+                        <strong>Ideal para:</strong> Tipo de cliente que se beneficia más de esta modalidad.
+                    </p>
+                    <a href="registro.html" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
+                        [Texto del Botón]
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRUEBA SOCIAL (Testimonios)
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Prueba Social (Testimonios)</h4>
+                <p><strong>Propósito:</strong> Generar confianza mostrando resultados reales de clientes anteriores.</p>
+                <p><strong>Mejores prácticas:</strong> 2-3 testimonios específicos con resultados concretos. Incluir foto y nombre completo si es posible.</p>
+            </div>
+
+            <div class="section-header">
+                <p class="section-subtitle">[Subtítulo de Testimonios (opcional)]</p>
+                <h2 class="section-title">[Título de Sección de Testimonios]</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Aquí va el testimonio completo de un cliente real. Debe ser específico y mencionar
+                        resultados concretos. Evita testimonios vagos como 'fue genial'. En su lugar, busca
+                        testimonios que mencionen: problema inicial, cómo fue el proceso, y resultado específico obtenido.
+                        Ideal: 3-5 líneas de extensión."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">XY</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nombre del Cliente</div>
+                            <div class="testimonial-role">Profesión, Ubicación</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Segundo testimonio de cliente real. Idealmente de alguien que haya usado una
+                        modalidad diferente de servicio. Incluye detalles específicos sobre la experiencia,
+                        el proceso y los resultados obtenidos."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AB</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nombre del Cliente</div>
+                            <div class="testimonial-role">Profesión, Ubicación</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Tercer testimonio real. Los mejores testimonios son aquellos que un futuro cliente puede
+                        leer y pensar 'eso es exactamente lo que yo necesito'. Debe resonar con tu audiencia objetivo
+                        y mostrar resultados tangibles o transformaciones específicas."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CD</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nombre del Cliente</div>
+                            <div class="testimonial-role">Profesión, Ubicación</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRÓXIMOS EVENTOS
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Próximos Eventos</h4>
+                <p><strong>Propósito:</strong> Mostrar talleres, webinars, retiros o eventos próximos para generar interés y crear urgencia.</p>
+                <p><strong>Estrategia:</strong> Destacar eventos próximos con fecha, descripción breve y CTA para inscribirse. Ideal para construir comunidad y aumentar engagement.</p>
+            </div>
+
+            <div class="section-header">
+                <p class="section-subtitle">[Subtítulo de Eventos (opcional)]</p>
+                <h2 class="section-title">[Próximos Eventos]</h2>
+                <p class="section-description">
+                    Descripción breve introduciendo tus próximos eventos, talleres, webinars o círculos.
+                    Invita a tu audiencia a unirse y ser parte de la comunidad.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card event-card">
+                    <div class="event-date">
+                        <span class="event-day">15</span>
+                        <span class="event-month">Enero</span>
+                    </div>
+                    <h3 class="card-title">[Nombre del Evento 1]</h3>
+                    <p class="event-time">🕐 Hora: [18:00 - 20:00 hrs]</p>
+                    <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
+                    <p class="card-text">
+                        Descripción breve del evento. ¿Qué aprenderán? ¿Qué experiencia vivirán?
+                        ¿Para quién es ideal? Menciona los beneficios principales de asistir.
+                    </p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
+                        [Inscribirme]
+                    </a>
+                </div>
+
+                <div class="card event-card">
+                    <div class="event-date">
+                        <span class="event-day">22</span>
+                        <span class="event-month">Enero</span>
+                    </div>
+                    <h3 class="card-title">[Nombre del Evento 2]</h3>
+                    <p class="event-time">🕐 Hora: [10:00 - 13:00 hrs]</p>
+                    <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
+                    <p class="card-text">
+                        Descripción del segundo evento. Enfócate en lo que hace único a este evento
+                        y por qué vale la pena asistir. Menciona el formato, contenido o enfoque especial.
+                    </p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
+                        [Inscribirme]
+                    </a>
+                </div>
+
+                <div class="card event-card">
+                    <div class="event-date">
+                        <span class="event-day">05</span>
+                        <span class="event-month">Feb</span>
+                    </div>
+                    <h3 class="card-title">[Nombre del Evento 3]</h3>
+                    <p class="event-time">🕐 Hora: [19:00 - 21:00 hrs]</p>
+                    <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
+                    <p class="card-text">
+                        Tercer evento próximo. Puede ser un retiro, círculo de mujeres, taller intensivo,
+                        o cualquier experiencia grupal. Describe la transformación o aprendizaje que ofreces.
+                    </p>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
+                        [Inscribirme]
+                    </a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" class="btn btn-secondary btn-large">
+                    [Ver Todos los Eventos]
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LEAD MAGNET (Imán de Prospectos)
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Lead Magnet (Captura de Email)</h4>
+                <p><strong>Propósito:</strong> Capturar el email del visitante a cambio de algo valioso y gratuito para construir tu lista de contactos.</p>
+                <p><strong>Qué ofrecer:</strong> Guía PDF, checklist, plantilla, video tutorial, mini-curso, consulta gratuita, diagnóstico, o cualquier recurso de valor relevante a tu industria.</p>
+                <p><strong>Técnica:</strong> Este es tu activo más importante para construir relaciones a largo plazo con potenciales clientes.</p>
+            </div>
+
+            <div class="lead-magnet-container">
+                <div class="section-header" style="margin-bottom: 3rem;">
+                    <h2 class="section-title">[Título del Lead Magnet: Tu Regalo Gratuito]</h2>
+                    <p class="section-description" style="max-width: 700px; margin: 0 auto;">
+                        Descripción breve del recurso gratuito. ¿Qué obtendrán? ¿Qué valor aporta? ¿Qué problema resuelve?
+                        Ejemplos: Guía práctica, checklist paso a paso, plantilla personalizable, video tutorial, mini-curso, consulta gratuita.
+                    </p>
+                </div>
+
+                <div class="lead-magnet-card">
+                    <form class="lead-magnet-form" id="leadMagnetForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input
+                                    type="text"
+                                    placeholder="Tu nombre"
+                                    class="form-input"
+                                    id="leadName"
+                                    required
+                                >
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    type="email"
+                                    placeholder="Tu mejor email"
+                                    class="form-input"
+                                    id="leadEmail"
+                                    required
+                                >
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-large" id="leadSubmitBtn" disabled>
+                                    Descargar Ahora
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group consent-group">
+                            <label class="consent-label">
+                                <input type="checkbox" id="consentCheckbox" class="consent-checkbox" required>
+                                <span class="consent-text">
+                                    He leído y acepto la <a href="#" class="consent-link">Política de Privacidad</a> y doy mi consentimiento para recibir comunicaciones y contenido de valor por email.
+                                </span>
+                            </label>
+                        </div>
+                    </form>
+
+                    <div class="lead-magnet-benefits">
+                        <p class="privacy-note">
+                            🔒 Tu información está segura. Nunca compartimos tus datos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CALL TO ACTION FINAL
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: CTA Final</h4>
+                <p><strong>Propósito:</strong> Dar una última oportunidad al visitante de tomar acción antes de abandonar la página.</p>
+                <p><strong>Estrategia:</strong> Ofrecer algo de bajo compromiso que elimine objeciones (ej: consulta gratuita de 15 min, sesión de descubrimiento, análisis sin costo, llamada informativa).</p>
+            </div>
+
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p class="section-subtitle">[Pregunta Pre-CTA (opcional)]</p>
+                <h2 class="section-title">[Título del CTA Final: Última Oportunidad de Acción]</h2>
+                <p class="section-description" style="margin-bottom: 2rem;">
+                    Descripción breve de tu oferta de bajo compromiso. Explica claramente qué obtendrán, sin presión.
+                    Ejemplos: Consulta inicial gratuita, sesión de descubrimiento sin costo, análisis personalizado,
+                    llamada de 15 minutos. Elimina objeciones y aclara qué pueden esperar del siguiente paso.
+                </p>
+                <a href="agenda.html" class="btn btn-primary btn-large">
+                    [Texto del Botón de CTA]
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="model-description">
+                <h4>📍 Módulo: Footer (Pie de Página)</h4>
+                <p><strong>Propósito:</strong> Proveer navegación secundaria, enlaces legales, redes sociales y contacto.</p>
+                <p><strong>Siempre incluir:</strong> Política de privacidad, Términos y condiciones, Contacto, Login miembros (discreto).</p>
+            </div>
+
+            <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                    <li><a href="recursos.html">Recursos/Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
+                    <li><a href="cursos.html">Cursos Online</a></li>
+                    <li><a href="membresia.html">Membresía</a></li>
+                    <li><a href="agenda.html">Agendar Sesión</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Conecta</h3>
+                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="loginModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="loginModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Iniciar Sesión</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Accede a tu área de miembros
+                </p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Tu contraseña">
+                </div>
+
+                <div style="margin-bottom: 1.5rem; text-align: right;">
+                    <a href="#" style="font-size: 0.9rem; color: var(--color-primary);">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Iniciar Sesión
+                </button>
+
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                    <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                        ¿No tienes cuenta?
+                    </p>
+                    <button type="button" onclick="cerrarModalLogin(); abrirModalRegistro();" class="btn btn-secondary" style="width: 100%;">
+                        Crear Cuenta Nueva
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registroModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="registroModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="registroModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Crear Cuenta</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Únete para acceder a contenido exclusivo
+                </p>
+            </div>
+
+            <form id="registroForm">
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo *</label>
+                    <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña *</label>
+                    <input type="password" id="password" class="form-input" required placeholder="Mínimo 6 caracteres" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmPassword" class="form-input" required placeholder="Repite tu contraseña" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="terminos" required style="margin-top: 0.25rem;">
+                        <span style="font-size: 0.9rem; color: var(--color-text-light);">
+                            Acepto los <a href="#" style="color: var(--color-primary); text-decoration: underline;">términos y condiciones</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div id="mensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: #efe; border-left: 4px solid #3c3; color: #3c3; margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Crear Mi Cuenta
+                </button>
+
+                <p style="text-align: center; font-size: 0.9rem; color: var(--color-text-light);">
+                    ¿Ya tienes cuenta? <a href="#" onclick="cerrarModalRegistro(); abrirModalLogin(); return false;" style="color: var(--color-primary); font-weight: 500;">Inicia sesión aquí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    // Lead Magnet - Control del botón de descarga con checkbox de consentimiento
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    const leadSubmitBtn = document.getElementById('leadSubmitBtn');
+
+    if (consentCheckbox && leadSubmitBtn) {
+        consentCheckbox.addEventListener('change', function() {
+            leadSubmitBtn.disabled = !this.checked;
+        });
+
+        // Opcional: manejar el envío del formulario
+        const leadForm = document.getElementById('leadMagnetForm');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (consentCheckbox.checked) {
+                    const name = document.getElementById('leadName').value;
+                    const email = document.getElementById('leadEmail').value;
+
+                    // Aquí puedes agregar la lógica de envío al servidor
+                    console.log('Formulario enviado:', { name, email, consent: true });
+
+                    // Mensaje temporal de éxito
+                    alert('¡Gracias! Tu recurso se descargará automáticamente.');
+
+                    // Limpiar formulario
+                    leadForm.reset();
+                    leadSubmitBtn.disabled = true;
+                }
+            });
+        }
+    }
+    </script>
+</body>
+</html>

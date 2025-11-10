@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice Visual - Website Modelo Terapeuta Holístico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.2rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .page-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .page-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .page-card h2 {
+            color: #5a67d8;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+        .page-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .page-card p {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .page-card a {
+            display: inline-block;
+            background: #5a67d8;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        .page-card a:hover {
+            background: #434190;
+        }
+        .info-box {
+            background: #f7fafc;
+            border-left: 4px solid #48bb78;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+        .info-box h3 {
+            color: #2d3748;
+            margin-bottom: 0.75rem;
+        }
+        .info-box ul {
+            list-style-position: inside;
+            color: #4a5568;
+            line-height: 2;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .stat-card .number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .stat-card .label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        .footer {
+            text-align: center;
+            color: #718096;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌿 Website Modelo para Terapeutas Holísticos</h1>
+        <p class="subtitle">Índice Visual y Navegación del Proyecto</p>
+
+        <div class="info-box">
+            <h3>✨ Características del Proyecto</h3>
+            <ul>
+                <li><strong>6 páginas HTML completas</strong> con contenido estructurado</li>
+                <li><strong>Diseño 100% responsive</strong> (móvil, tablet, desktop)</li>
+                <li><strong>Paleta de colores tenues</strong> ideal para terapeutas</li>
+                <li><strong>Descripciones educativas</strong> en cada módulo</li>
+                <li><strong>HTML/CSS/JS puro</strong> sin dependencias</li>
+            </ul>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="number">6</div>
+                <div class="label">Páginas Completas</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">3</div>
+                <div class="label">Carpetas Organizadas</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">100%</div>
+                <div class="label">Responsive</div>
+            </div>
+            <div class="stat-card">
+                <div class="number">0</div>
+                <div class="label">Dependencias</div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; margin: 2rem 0; color: #2d3748;">📄 Páginas del Sitio</h2>
+
+        <div class="grid">
+            <div class="page-card">
+                <div class="icon">🏠</div>
+                <h2>Página Principal</h2>
+                <p>
+                    <strong>Archivo:</strong> index.html<br>
+                    Hero section, filtro de caminos, testimonios, lead magnet y CTAs.
+                    Primera impresión del sitio.
+                </p>
+                <a href="index.html" target="_blank">Ver Página →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">👤</div>
+                <h2>Sobre Mí</h2>
+                <p>
+                    <strong>Archivo:</strong> sobre-mi.html<br>
+                    Tu historia personal, filosofía de trabajo y credenciales.
+                    Página de conexión emocional.
+                </p>
+                <a href="sobre-mi.html" target="_blank">Ver Página →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">🤝</div>
+                <h2>Trabaja Conmigo</h2>
+                <p>
+                    <strong>Archivo:</strong> trabaja-conmigo.html<br>
+                    Portal distribuidor con los 3 caminos principales:
+                    1 a 1, Cursos, y Membresía.
+                </p>
+                <a href="trabaja-conmigo.html" target="_blank">Ver Página →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">📚</div>
+                <h2>Recursos/Blog</h2>
+                <p>
+                    <strong>Archivo:</strong> recursos.html<br>
+                    Blog con artículos, sistema de búsqueda, categorías y
+                    sidebar con lead magnet.
+                </p>
+                <a href="recursos.html" target="_blank">Ver Página →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">📅</div>
+                <h2>Agenda tu Sesión</h2>
+                <p>
+                    <strong>Archivo:</strong> agenda.html<br>
+                    Sistema de reservas con formulario de contacto y
+                    descripción de sesiones.
+                </p>
+                <a href="agenda.html" target="_blank">Ver Página →</a>
+            </div>
+
+            <div class="page-card">
+                <div class="icon">✉️</div>
+                <h2>Contacto</h2>
+                <p>
+                    <strong>Archivo:</strong> contacto.html<br>
+                    Formulario de contacto general, información de contacto,
+                    FAQ y newsletter.
+                </p>
+                <a href="contacto.html" target="_blank">Ver Página →</a>
+            </div>
+        </div>
+
+        <div class="info-box" style="border-left-color: #ed8936;">
+            <h3>📁 Estructura de Archivos</h3>
+            <p style="font-family: monospace; background: white; padding: 1rem; border-radius: 5px; margin-top: 1rem;">
+                Web_modelo/<br>
+                ├── index.html<br>
+                ├── sobre-mi.html<br>
+                ├── trabaja-conmigo.html<br>
+                ├── recursos.html<br>
+                ├── agenda.html<br>
+                ├── contacto.html<br>
+                ├── css/<br>
+                │   └── styles.css<br>
+                ├── js/<br>
+                │   └── main.js<br>
+                ├── images/<br>
+                ├── README.md<br>
+                ├── COMO-ABRIR.txt<br>
+                └── INDICE-VISUAL.html (este archivo)
+            </p>
+        </div>
+
+        <div class="info-box" style="border-left-color: #9f7aea;">
+            <h3>🎨 Paleta de Colores</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div style="background: #8B9D9D; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                    <strong>#8B9D9D</strong><br>Primary
+                </div>
+                <div style="background: #C4A896; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                    <strong>#C4A896</strong><br>Secondary
+                </div>
+                <div style="background: #A8B5C0; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                    <strong>#A8B5C0</strong><br>Accent
+                </div>
+                <div style="background: #9CAF9E; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                    <strong>#9CAF9E</strong><br>Sage
+                </div>
+                <div style="background: #B8A8C4; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                    <strong>#B8A8C4</strong><br>Lavender
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box" style="border-left-color: #4299e1;">
+            <h3>📖 Documentación Incluida</h3>
+            <ul>
+                <li><strong>README.md</strong> - Guía completa de uso y personalización</li>
+                <li><strong>COMO-ABRIR.txt</strong> - Instrucciones para abrir el sitio localmente</li>
+                <li><strong>INDICE-VISUAL.html</strong> - Este archivo (navegación visual del proyecto)</li>
+            </ul>
+        </div>
+
+        <div class="info-box" style="border-left-color: #f56565;">
+            <h3>🚀 Próximos Pasos</h3>
+            <ul>
+                <li>Personaliza todos los textos con tu información real</li>
+                <li>Agrega tus propias imágenes en la carpeta /images/</li>
+                <li>Configura los formularios con tu email</li>
+                <li>Conecta tus redes sociales</li>
+                <li>Integra sistema de calendario (Calendly, Acuity)</li>
+                <li>Publica en hosting (Netlify, Vercel, o hosting tradicional)</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>Diseñado por FactoriApp</strong></p>
+            <p>Enero 2025 - Versión 1.0</p>
+            <p style="margin-top: 1rem;">
+                <a href="README.md" style="color: #5a67d8; text-decoration: underline;">
+                    📄 Leer Documentación Completa
+                </a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

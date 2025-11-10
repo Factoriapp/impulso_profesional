@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce mi historia de transformación y por qué dedico mi vida a la sanación holística">
+    <title>Sobre Mí - Terapeuta Holístico (MODELO)</title>
+
+    <!-- Fuentes de Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">Tu Logo Aquí</div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="presentacion-profesional.html">Presentación Profesional</a></li>
+                <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+            </ul>
+
+            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <div class="auth-buttons" id="authButtons">
+                <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
+                <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
+            </div>
+
+            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
+            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
+                <div id="userProfileButton" style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%236B9080'/%3E%3Ctext x='20' y='26' font-size='16' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                         alt="Avatar"
+                         style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--color-primary);">
+                    <div>
+                        <div id="userNameHeader" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text);">Usuario</div>
+                        <span style="font-size: 0.8rem; color: var(--color-primary);">Ver opciones ▼</span>
+                    </div>
+                </div>
+
+                <!-- Menú desplegable -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <a href="area-miembros.html" class="user-menu-item">
+                        <span>👤</span> Mi Área
+                    </a>
+                    <button onclick="cerrarSesion()" class="user-menu-item" style="border: none; background: transparent; width: 100%; text-align: left;">
+                        <span>🚪</span> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <span class="nav-toggle-text">Menú</span>
+                <div class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Overlay para el menú -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ============================================
+         INTRODUCCIÓN CON FOTO
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Página: SOBRE MÍ - Introducción</h4>
+                <p><strong>Propósito de esta página:</strong> Generar confianza y conexión profunda. El visitante debe sentir "Esta persona me entiende, ha pasado por algo similar y es la indicada para ayudarme".</p>
+                <p><strong>Estructura:</strong> Tu historia (el "por qué") + Tu filosofía de trabajo + Credenciales al final.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem;">
+                <div style="background: var(--color-sage); height: 500px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; text-align: center; padding: 2rem;">
+                    <p><strong>Tu Foto Profesional</strong><br><br>
+                    Foto que transmita calidez, confianza y autenticidad. No corporativa, sino humana y accesible.</p>
+                </div>
+
+                <div>
+                    <span class="model-tag">Introducción Personal</span>
+                    <h1 style="font-size: 2.5rem; margin-bottom: 1.5rem;">
+                        Título de Introducción Personal
+                    </h1>
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: var(--color-text-light);">
+                        Primer párrafo de introducción. Debe conectar inmediatamente con el dolor o deseo
+                        de tu cliente ideal. Hazles sentir que los entiendes porque tú también has estado ahí.
+                        Ejemplo: "Sé exactamente lo que se siente estar desconectada de ti misma..."
+                    </p>
+                    <p style="font-size: 1.15rem; line-height: 1.8; color: var(--color-text-light); margin-top: 1rem;">
+                        <strong style="color: var(--color-primary);">Frase de conexión empática que genera confianza.</strong>
+                        Ejemplo: "Porque yo también estuve ahí" o "Y entiendo profundamente tu camino".
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TU HISTORIA (La pieza más importante)
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Tu Historia Profesional (El "Por Qué")</h4>
+                <p><strong>Propósito:</strong> Esta es la pieza CENTRAL de la página. Conecta tu historia personal con tu propósito profesional.</p>
+                <p><strong>Estructura narrativa flexible (adapta según tu profesión):</strong></p>
+                <p>1. <strong>Los Inicios:</strong> ¿Cómo empezaste? ¿Qué te motivó a entrar en este campo?</p>
+                <p>2. <strong>El Punto de Inflexión:</strong> ¿Qué momento, evento o experiencia definió tu camino?</p>
+                <p>3. <strong>El Desarrollo:</strong> ¿Qué camino recorriste para llegar donde estás? ¿Qué aprendiste?</p>
+                <p>4. <strong>Tu Enfoque Actual:</strong> ¿Cómo trabajas hoy? ¿Qué te hace diferente?</p>
+                <p>5. <strong>Tu Propósito:</strong> ¿Por qué haces lo que haces? ¿A quién sirves?</p>
+                <p><em>Nota: Puedes adaptar esta estructura según tu profesión (terapeuta, consultor, diseñador, coach, etc.)</em></p>
+            </div>
+
+            <div style="max-width: 800px; margin: 2rem auto;">
+                <span class="model-tag">Mi Historia Profesional</span>
+                <h2 class="section-title" style="text-align: left;">Título de Tu Historia Profesional</h2>
+
+                <!-- Los Inicios -->
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="color: #6B9080; margin-bottom: 1rem;">Los Inicios</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
+                        Cuenta cómo empezaste en tu campo profesional. ¿Qué te atrajo inicialmente?
+                        ¿Hubo una experiencia personal que te motivó? ¿Descubriste tu vocación gradualmente?
+                        Conecta tu historia con la de tu cliente ideal para generar empatía.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text); margin-top: 1rem;">
+                        Segundo párrafo: Profundiza en tu motivación inicial. ¿Qué problema querías resolver?
+                        ¿Qué necesidad viste en el mundo? ¿Qué te inspiró a tomar acción?
+                    </p>
+                </div>
+
+                <!-- El Punto de Inflexión -->
+                <div style="margin-bottom: 2.5rem; padding: 2rem; background: var(--color-white); border-radius: 12px; border-left: 4px solid var(--color-secondary);">
+                    <h3 style="color: #6B9080; margin-bottom: 1rem;">El Punto de Inflexión</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
+                        Describe un momento clave que definió tu camino profesional. Puede ser: un proyecto
+                        revelador, un mentor importante, un desafío superado, un fracaso que te enseñó algo crucial,
+                        o una experiencia que cambió tu perspectiva sobre tu trabajo.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text); margin-top: 1rem;">
+                        Reflexión: ¿Qué aprendiste de esa experiencia? ¿Cómo te transformó profesionalmente?
+                    </p>
+                </div>
+
+                <!-- El Desarrollo -->
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="color: #6B9080; margin-bottom: 1rem;">El Camino de Desarrollo</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
+                        Describe tu evolución profesional. ¿Qué formaciones completaste? ¿Con quién trabajaste o estudiaste?
+                        ¿Qué experiencias clave te dieron expertise? No necesitas listar todo, enfócate en lo más relevante
+                        para tu cliente ideal.
+                    </p>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text); margin-top: 1rem;">
+                        Momento clave: ¿Cuál fue el aprendizaje o experiencia más importante en tu desarrollo?
+                        <strong>Usa negritas para resaltar tu descubrimiento o metodología principal.</strong>
+                    </p>
+                </div>
+
+                <!-- Tu Enfoque Actual -->
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="color: #6B9080; margin-bottom: 1rem;">Mi Enfoque Actual</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
+                        Describe cómo trabajas HOY. ¿Cuál es tu metodología? ¿Qué te hace diferente?
+                        ¿Cómo has refinado tu enfoque con la experiencia? Muestra la evolución desde tus inicios
+                        hasta tu expertise actual.
+                    </p>
+                </div>
+
+                <!-- El Propósito -->
+                <div style="background: linear-gradient(135deg, #8d998e, #b8c9d4); padding: 2.5rem; border-radius: 16px; color: white; text-align: center;">
+                    <h3 style="color: white; margin-bottom: 1rem; font-size: 1.8rem;">Mi Propósito Hoy</h3>
+                    <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95;">
+                        [Tu declaración de propósito: Por qué haces lo que haces. A quién sirves específicamente.
+                        Qué impacto quieres generar en el mundo. Qué te motiva cada día a continuar.]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FILOSOFÍA DE TRABAJO
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Tu Propuesta de Valor</h4>
+                <p><strong>Propósito:</strong> Comunicar claramente qué te hace único y cómo beneficias a tus clientes.</p>
+                <p><strong>Elementos clave:</strong> Tu metodología, principios de trabajo, valores diferenciales, y transparencia sobre lo que NO ofreces (ayuda a filtrar clientes no ideales).</p>
+                <p><strong>Formato sugerido:</strong> Usa las tarjetas para destacar 4-6 aspectos clave de tu enfoque profesional.</p>
+            </div>
+
+            <div class="section-header">
+                <p class="section-subtitle">Mi Enfoque</p>
+                <h2 class="section-title">Título Centrado en el Valor para el Cliente</h2>
+                <p class="section-description">
+                    Descripción breve orientada a resultados. Enfócate en los beneficios tangibles,
+                    la transformación que ofreces, o el problema específico que resuelves.
+                </p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Aspecto Clave #1</h3>
+                    <p class="card-text">
+                        Describe un valor diferencial importante. ¿Qué te hace único? Ejemplo: "Enfoque personalizado",
+                        "Metodología probada", "Experiencia internacional", "Atención al detalle".
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">⭐</div>
+                    <h3 class="card-title">Aspecto Clave #2</h3>
+                    <p class="card-text">
+                        Tu segundo valor distintivo. Puede ser sobre tu proceso, tu enfoque, tus principios
+                        de trabajo, o lo que priorizas en cada proyecto/servicio.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">💎</div>
+                    <h3 class="card-title">Aspecto Clave #3</h3>
+                    <p class="card-text">
+                        Tercer diferenciador clave. Piensa en: ¿qué valoran más tus clientes de trabajar contigo?
+                        ¿Qué promesa cumples consistentemente?
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🔧</div>
+                    <h3 class="card-title">Aspecto Clave #4</h3>
+                    <p class="card-text">
+                        Cuarto aspecto distintivo. Puede hablar de tu metodología, herramientas que usas,
+                        o tu filosofía de servicio al cliente.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">🌟</div>
+                    <h3 class="card-title">Aspecto Clave #5</h3>
+                    <p class="card-text">
+                        Quinto valor diferencial. Considera mencionar: compromiso a largo plazo, disponibilidad,
+                        transparencia, innovación, o tradición.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h3 class="card-title">Aspecto Clave #6</h3>
+                    <p class="card-text">
+                        Sexto aspecto (opcional). Puedes eliminar esta tarjeta si solo necesitas 4-5 puntos,
+                        o agregar más según tu propuesta de valor.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CREDENCIALES Y FORMACIÓN
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Formación y Credenciales</h4>
+                <p><strong>Propósito:</strong> Validar tu autoridad mostrando títulos, certificaciones y preparación académica.</p>
+                <p><strong>Ubicación:</strong> Al FINAL de la página (después de conectar emocionalmente con tu historia).</p>
+                <p><strong>Importante:</strong> Lista credenciales relevantes de forma clara pero humana, no como un CV. Adapta según tu profesión (títulos universitarios, certificaciones, membresías profesionales, etc.).</p>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="section-header">
+                    <p class="section-subtitle">Formación</p>
+                    <h2 class="section-title">Título de Tu Formación Profesional</h2>
+                    <p class="section-description">
+                        Frase sobre tu compromiso con el aprendizaje continuo, tu preparación especializada,
+                        o tu formación con mentores y expertos reconocidos.
+                    </p>
+                </div>
+
+                <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
+                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
+                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                            🎓
+                        </div>
+                        <div style="flex: 1;">
+                            <h4 style="color: var(--color-text); margin-bottom: 0.5rem;">Título de Formación o Certificación Principal</h4>
+                            <p style="color: var(--color-text-light); font-size: 0.95rem;">Institución, Año | Detalles relevantes (horas, especialización, etc.)</p>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
+                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                            📚
+                        </div>
+                        <div style="flex: 1;">
+                            <h4 style="color: var(--color-text); margin-bottom: 0.5rem;">Segunda Formación o Certificación Relevante</h4>
+                            <p style="color: var(--color-text-light); font-size: 0.95rem;">Institución, Año | Información adicional</p>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
+                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                            ⭐
+                        </div>
+                        <div style="flex: 1;">
+                            <h4 style="color: var(--color-text); margin-bottom: 0.5rem;">Tercera Credencial o Experiencia Importante</h4>
+                            <p style="color: var(--color-text-light); font-size: 0.95rem;">Organización, Año | Contexto relevante</p>
+                        </div>
+                    </div>
+
+                    <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
+                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                            💼
+                        </div>
+                        <div style="flex: 1;">
+                            <h4 style="color: var(--color-text); margin-bottom: 0.5rem;">Título Académico o Experiencia Base</h4>
+                            <p style="color: var(--color-text-light); font-size: 0.95rem;">Universidad/Empresa, Año | Área de estudio/trabajo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem; text-align: center; padding: 2rem; background: var(--color-white); border-radius: 12px;">
+                    <p style="font-size: 1.05rem; color: var(--color-text-light);">
+                        <strong>[X horas]</strong> de formación acumulada <br>
+                        <strong>[X certificaciones]</strong> profesionales <br>
+                        <strong>Formación continua</strong> y actualización constante
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CALL TO ACTION
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+                <h2 class="section-title">Título de Tu Call to Action</h2>
+                <p class="section-description" style="margin-bottom: 2rem;">
+                    Texto de cierre que invite al siguiente paso. Crea conexión emocional y motiva
+                    a la acción. Ejemplo: "¿Te identificas con mi historia?" o "¿Listo para empezar?"
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="agenda.html" class="btn btn-primary btn-large">Texto del Botón Principal</a>
+                    <a href="trabaja-conmigo.html" class="btn btn-secondary btn-large">Texto del Botón Secundario</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                    <li><a href="recursos.html">Recursos/Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
+                    <li><a href="cursos.html">Cursos Online</a></li>
+                    <li><a href="membresia.html">Membresía</a></li>
+                    <li><a href="agenda.html">Agendar Sesión</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Conecta</h3>
+                <p>Sígueme en redes sociales para contenido diario de bienestar y consciencia.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                    <a href="#" class="social-link" aria-label="Facebook">📘</a>
+                    <a href="#" class="social-link" aria-label="YouTube">📹</a>
+                    <a href="#" class="social-link" aria-label="Email">✉️</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 [Tu Nombre] - Terapeuta Holística | Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="loginModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="loginModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Iniciar Sesión</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Accede a tu área de miembros
+                </p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Tu contraseña">
+                </div>
+
+                <div style="margin-bottom: 1.5rem; text-align: right;">
+                    <a href="#" style="font-size: 0.9rem; color: var(--color-primary);">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Iniciar Sesión
+                </button>
+
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                    <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                        ¿No tienes cuenta?
+                    </p>
+                    <button type="button" onclick="cerrarModalLogin(); abrirModalRegistro();" class="btn btn-secondary" style="width: 100%;">
+                        Crear Cuenta Nueva
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registroModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="registroModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="registroModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Crear Cuenta</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Únete para acceder a contenido exclusivo
+                </p>
+            </div>
+
+            <form id="registroForm">
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo *</label>
+                    <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña *</label>
+                    <input type="password" id="password" class="form-input" required placeholder="Mínimo 6 caracteres" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmPassword" class="form-input" required placeholder="Repite tu contraseña" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="terminos" required style="margin-top: 0.25rem;">
+                        <span style="font-size: 0.9rem; color: var(--color-text-light);">
+                            Acepto los <a href="#" style="color: var(--color-primary); text-decoration: underline;">términos y condiciones</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div id="mensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: #efe; border-left: 4px solid #3c3; color: #3c3; margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Crear Mi Cuenta
+                </button>
+
+                <p style="text-align: center; font-size: 0.9rem; color: var(--color-text-light);">
+                    ¿Ya tienes cuenta? <a href="#" onclick="cerrarModalRegistro(); abrirModalLogin(); return false;" style="color: var(--color-primary); font-weight: 500;">Inicia sesión aquí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conoce mi historia profesional, enfoque de trabajo y formación">
+    <title>Presentación Profesional - Profesional Independiente (MODELO)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        .content-column {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .intro-image {
+            background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
+            border-radius: 15px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-light);
+            font-size: 1rem;
+            font-style: italic;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .intro-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-text p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--color-text-light);
+        }
+
+        .intro-text .highlight {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .intro-image {
+                height: 350px;
+            }
+
+            .intro-text h1 {
+                font-size: 2rem;
+            }
+
+            .intro-text p {
+                font-size: 1rem;
+            }
+        }
+
+        .profile-guide {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--color-text);
+        }
+
+        .profile-content {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--color-text);
+        }
+
+        .mission-box {
+            background: var(--color-white);
+            border-left: 4px solid var(--color-primary);
+            padding: 2rem 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .mission-box h3 {
+            color: var(--color-primary);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-family: 'Lora', serif;
+        }
+
+        .mission-box p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--color-text);
+        }
+
+        .approach-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .credential-item {
+            background: var(--color-white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+            border: 1px solid var(--color-border);
+        }
+
+        .credential-content {
+            flex: 1;
+        }
+
+        .credential-content h4 {
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .credential-content p {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .section-header-center {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header-center h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header-center p {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.8;
+        }
+
+        .credentials-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">Tu Logo Aquí</div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="presentacion-profesional.html">Presentación Profesional</a></li>
+                <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+            </ul>
+
+            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <div class="auth-buttons" id="authButtons">
+                <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
+                <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
+            </div>
+
+            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
+            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
+                <div id="userProfileButton" style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%236B9080'/%3E%3Ctext x='20' y='26' font-size='16' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                         alt="Avatar"
+                         style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--color-primary);">
+                    <div>
+                        <div id="userNameHeader" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text);">Usuario</div>
+                        <span style="font-size: 0.8rem; color: var(--color-primary);">Ver opciones ▼</span>
+                    </div>
+                </div>
+
+                <!-- Menú desplegable -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <a href="area-miembros.html" class="user-menu-item">
+                        <span>👤</span> Mi Área
+                    </a>
+                    <button onclick="cerrarSesion()" class="user-menu-item" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <span>🚪</span> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <span class="nav-toggle-text">Menú</span>
+                <div class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ============================================
+         MÓDULO 1: INTRODUCCIÓN PROFESIONAL
+         Incluye foto profesional y título principal
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Introducción Profesional</h4>
+                <p><strong>Propósito:</strong> Captar la atención y establecer tu tono. Esta es la primera impresión de tu página de presentación. Usa la foto y el título para transmitir tu autoridad o tu cercanía.</p>
+            </div>
+
+            <div class="intro-grid">
+                <div class="intro-image">
+                    <p><strong>Foto Profesional</strong><br>
+                    Aquí va tu fotografía profesional que transmita autoridad y confianza.
+                    Debe proyectar competencia, experiencia y profesionalismo.
+                    Considera una foto en tu espacio de trabajo o consulta.</p>
+                </div>
+
+                <div class="intro-text">
+                    <span class="model-tag">Presentación</span>
+                    <h1>
+                        [Escribe un Título que te Defina]
+                    </h1>
+                    <p>
+                        [Escribe un párrafo corto que invite al visitante a conocerte.
+                        Ej. "Soy especialista en..." o "Con más de 15 años de experiencia ayudando a..."]
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <strong class="highlight">[Escribe una frase clave que resuma tu valor único.]</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MÓDULO 2: PERFIL PROFESIONAL
+         Historia, experiencia y propuesta de valor
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Perfil Profesional</h4>
+                <p><strong>Propósito:</strong> Desarrollar tu historia y propuesta de valor. Este es el espacio para generar confianza y diferenciarte. Usa la guía de abajo para no empezar desde cero.</p>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">[Mi Perfil Profesional]</h2>
+
+                <div class="profile-content">
+
+                    <p class="profile-guide">
+                        <strong>Guía Rápida para Redactar tu Perfil (Borra esto al editar):</strong><br><br>
+
+                        Este es tu espacio para conectar. No tiene que ser un currículum frío. Te sugerimos
+                        incluir una combinación de lo siguiente:<br><br>
+
+                        * **Tu Experiencia (La "Autoridad"):** ¿Cuáles son tus años de experiencia? ¿Tu especialización principal? ¿Hitos o logros clave?
+                            <em>(Especialmente útil para consultores, abogados, perfiles técnicos).</em><br><br>
+
+                        * **Tu Metodología:** ¿Cómo es trabajar contigo? ¿Qué te hace diferente?
+                    </p>
+
+                    <p style="margin-bottom: 1.5rem;">
+                        <strong>[EJEMPLO DE TEXTO INICIAL - REEMPLÁZAME]</strong><br>
+                        [Soy (Tu Nombre), y me dedico a (tu especialidad) desde hace (X años). Mi enfoque
+                        se basa en (tu metodología, ej: "una metodología probada de..." o "un trato cercano
+                        y personalizado...").]
+                    </p>
+
+                    <p>
+                        [A lo largo de mi carrera, he tenido el privilegio de (logro clave,
+                        ej: "guiar a más de 100 clientes..." o "gestionar con éxito proyectos complejos...").
+                        Lo que más valoran mis clientes es (tu valor diferencial, ej: "la claridad y la estrategia"
+                        o "la empatía y la conexión").]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MÓDULO 3: MISIÓN O PROPÓSITO (Opcional)
+         Para conectar emocionalmente con el visitante
+         ============================================ -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Misión o Propósito (Opcional)</h4>
+                <p><strong>Propósito:</strong> Este recuadro es ideal para perfiles (coaches, terapeutas) que quieran destacar su "por qué". Si se deja en blanco, este módulo no aparecerá.</p>
+            </div>
+
+            <div class="mission-box">
+                    <h3>[Mi Misión / Mi Propósito]</h3>
+                    <p>
+                        [Escribe aquí tu "por qué". ¿Qué te impulsa? ¿Qué problema te apasiona resolver?
+                        Este es el espacio para la conexión humana y la misión que te mueve.]
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MÓDULO 4: ENFOQUE DE TRABAJO
+         Tarjetas con valores y pilares principales
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Enfoque de Trabajo (Tarjetas)</h4>
+                <p><strong>Propósito:</strong> Resumir tus valores o pilares de trabajo en puntos clave. Ayuda a tu cliente a entender tu forma de trabajar de un vistazo.</p>
+            </div>
+
+            <div class="content-column" style="margin-top: 3rem;">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">[Mi Enfoque de Trabajo]</h2>
+
+                <div class="approach-cards">
+                    <div class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            ✓
+                        </div>
+                        <h3 class="card-title">[Aspecto Clave #1]</h3>
+                        <p class="card-text">
+                            [Ej. "Enfoque Personalizado", "Metodología Probada", "Confidencialidad Absoluta", "Creatividad Estratégica".]
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            ★
+                        </div>
+                        <h3 class="card-title">[Aspecto Clave #2]</h3>
+                        <p class="card-text">
+                            [Tu segundo valor distintivo. Ej. "Resultados Medibles", "Proceso Transparente", "Visión Holística".]
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon" aria-hidden="true">
+                            ◆
+                        </div>
+                        <h3 class="card-title">[Aspecto Clave #3]</h3>
+                        <p class="card-text">
+                            [Tercer diferenciador clave. Ej. "Compromiso a Largo Plazo", "Actualización Constante", "Red de Expertos".]
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MÓDULO 5: FORMACIÓN Y CREDENCIALES
+         Títulos, certificaciones y experiencia
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Formación y Credenciales</h4>
+                <p><strong>Propósito:</strong> Establecer tu autoridad "dura". Este es el lugar para listar las certificaciones, títulos y experiencia que validan tu expertise.</p>
+            </div>
+
+            <div style="margin-top: 3rem;">
+                <div class="section-header-center">
+                    <h2>[Formación y Credenciales]</h2>
+                    <p>
+                        [Escribe una frase sobre tu compromiso con la formación continua o la excelencia profesional.]
+                    </p>
+                </div>
+
+                <div class="credentials-grid">
+                    <div class="credential-item">
+                        <div class="credential-content">
+                            <h4>[Título de Formación o Certificación Principal]</h4>
+                            <p>[Institución, Año | Detalles relevantes (ej. Colegiado N°, Master en...)]</p>
+                        </div>
+                    </div>
+
+                    <div class="credential-item">
+                        <div class="credential-content">
+                            <h4>[Segunda Formación o Certificación Relevante]</h4>
+                            <p>[Institución, Año | Información adicional]</p>
+                        </div>
+                    </div>
+
+                    <div class="credential-item">
+                       <div class="credential-content">
+                            <h4>[Título Académico o Experiencia Base]</h4>
+                            <p>[Universidad/Empresa, Año | Área de estudio/trabajo]</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         MÓDULO 6: LLAMADA A LA ACCIÓN (CTA)
+         Guiar al visitante al siguiente paso
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Llamada a la Acción (CTA)</h4>
+                <p><strong>Propósito:</strong> Guiar al visitante al siguiente paso lógico. Una vez que te conocen, ¿qué deben hacer? Invítalos a ver tus servicios o a agendar una cita.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h2 class="section-title">¿Listo para Trabajar Juntos?</h2>
+                <p class="section-description" style="margin-bottom: 2rem;">
+                    Ahora que conoces mi enfoque profesional, te invito a dar el siguiente paso.
+                </p>
+                <div class="cta-buttons">
+                    <a href="agenda.html" class="btn btn-primary btn-large">Agendar una Sesión</a>
+                    <a href="trabaja-conmigo.html" class="btn btn-secondary btn-large">Ver Servicios</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+         Información de contacto y enlaces
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre Mí</h4>
+                    <p>[Tu nombre] - Profesional Independiente</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: [tu-email@ejemplo.com]</p>
+                    <p>Teléfono: [Tu teléfono]</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="presentacion-profesional.html">Presentación</a></li>
+                        <li><a href="trabaja-conmigo.html">Servicios</a></li>
+                        <li><a href="agenda.html">Agenda</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Tu Nombre]. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         MODALES DE AUTENTICACIÓN
+         Login y Registro
+         ============================================ -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalLogin()">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email:</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña:</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="registroModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModalRegistro()">&times;</span>
+            <h2>Registro</h2>
+            <form id="registroForm">
+                <div class="form-group">
+                    <label for="registroNombre">Nombre:</label>
+                    <input type="text" id="registroNombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="registroEmail">Email:</label>
+                    <input type="email" id="registroEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="registroPassword">Contraseña:</label>
+                    <input type="password" id="registroPassword" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

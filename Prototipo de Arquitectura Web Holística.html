@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prototipo de Arquitectura Web Holística</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Tipografía Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .nav-item {
+            @apply px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 transition-colors;
+        }
+        .cta-button {
+            @apply px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-all shadow-md;
+        }
+        .secondary-nav-item {
+            @apply text-xs text-gray-500 hover:text-blue-600 transition-colors;
+        }
+        .card {
+            @apply bg-white p-6 rounded-2xl shadow-lg border border-gray-100;
+        }
+        .card-title {
+            @apply text-2xl font-bold text-gray-800 mb-3;
+        }
+        .card-subtitle {
+            @apply text-lg font-semibold text-blue-700 mb-2;
+        }
+        .card-desc {
+            @apply text-gray-600 mb-4;
+        }
+        .list-item {
+            @apply flex items-start space-x-2 mb-2;
+        }
+        .list-icon {
+            @apply w-5 h-5 text-blue-600 flex-shrink-0 mt-1;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- 1. BARRA DE NAVEGACIÓN (Prototipo) -->
+    <header class="bg-white shadow-sm sticky top-0 z-50 border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo (Placeholder) -->
+                <div class="text-xl font-bold text-gray-900">TuLogoAquí</div>
+
+                <!-- Navegación Principal (El Menú de 5 Items) -->
+                <nav class="hidden md:flex items-center space-x-2">
+                    <a href="#inicio" class="nav-item">Inicio</a>
+                    <a href="#sobre-mi" class="nav-item">Sobre Mí</a>
+                    <a href="#trabaja-conmigo" class="nav-item">Trabaja Conmigo</a>
+                    <a href="#recursos" class="nav-item">Recursos</a>
+                    <a href="#agenda" class="cta-button">Agenda tu Sesión</a>
+                </nav>
+
+                <!-- Navegación Secundaria -->
+                <div class="hidden md:block">
+                    <a href="#login" class="secondary-nav-item">Login Miembros</a>
+                </div>
+                
+                <!-- Menú Móvil (Icono) -->
+                <div class="md:hidden">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. CONTENIDO DEL PROTOTIPO (Explicación de cada página) -->
+    <main class="container mx-auto px-6 py-12 md:py-16">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Prototipo de Arquitectura Web Holística</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">Este documento es un "mapa conceptual" que explica la función y los componentes de cada página clave del sitio web.</p>
+        </div>
+
+        <div class="space-y-10">
+
+            <!-- INICIO -->
+            <section id="inicio" class="card">
+                <h2 class="card-title">1. Página: INICIO (Home)</h2>
+                <h3 class="card-subtitle">Propósito Principal</h3>
+                <p class="card-desc">Es la recepción. Su trabajo es captar la atención, generar empatía instantánea y dirigir al visitante hacia el "camino" correcto para él/ella.</p>
+                <h3 class="card-subtitle">Componentes Clave</h3>
+                <ul class="text-gray-700 space-y-2">
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.414a4 4 0 00-5.656-5.656l-6.415 6.415a6 6 0 108.486 8.486L20.5 13"></path></svg>
+                        <span><strong>Título Empático:</strong> Habla del dolor o del deseo. (Ej. "Recupera tu poder, reconecta con tu esencia").</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                        <span><strong>Declaración de Valor:</strong> A quién ayudas y cómo. (Ej. "Ayudo a mujeres profesionales a sanar su linaje...").</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                        <span><strong>Filtro de Caminos:</strong> Botones visuales que dirigen a las 3 áreas de "Trabaja Conmigo".</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path></svg>
+                        <span><strong>Prueba Social:</strong> 2-3 testimonios potentes y destacados.</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v11.494m0 0l-5-5m5 5l5-5M5 12h14a2 2 0 012 2v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4a2 2 0 012-2z"></path></svg>
+                        <span><strong>Lead Magnet (Imán de Prospectos):</strong> Cajetín para descargar una meditación gratuita a cambio del email.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SOBRE MÍ -->
+            <section id="sobre-mi" class="card">
+                <h2 class="card-title">2. Página: SOBRE MÍ</h2>
+                <h3 class="card-subtitle">Propósito Principal</h3>
+                <p class="card-desc">Generar confianza y conexión profunda. El visitante debe sentir: "Esta persona me entiende, ha pasado por algo similar y es la indicada".</p>
+                <h3 class="card-subtitle">Componentes Clave</h3>
+                <ul class="text-gray-700 space-y-2">
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h6m-6 4h6m-6 4h6"></path></svg>
+                        <span><strong>Tu Historia (El "Por Qué"):</strong> La pieza central. Tu propia transformación y por qué te dedicas a esto.</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16v4m-2-2h4m5 10v4m-2-2h4M5 7h14a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2z"></path></svg>
+                        <span><strong>Tu Filosofía de Trabajo:</strong> En qué crees, cómo es tu enfoque (ej. "holístico", "compasivo", "sin juicios").</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                        <span><strong>Credenciales y Formación:</strong> Al final, para dar seguridad y autoridad (certificados, escuelas, etc.).</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- TRABAJA CONMIGO -->
+            <section id="trabaja-conmigo" class="card bg-blue-50 border-blue-200">
+                <h2 class="card-title">3. Página: TRABAJA CONMIGO (El Portal de Ofertas)</h2>
+                <h3 class="card-subtitle text-blue-800">Propósito Principal</h3>
+                <p class="card-desc">Es un "distribuidor" o "portal". No vende nada, solo clasifica las ofertas para que el visitante elija su propio camino sin sentirse abrumado.</p>
+                <h3 class="card-subtitle text-blue-800">Componentes Clave (Los 3 Caminos)</h3>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- Camino 1 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">Opción A: Acompañamiento 1 a 1</h4>
+                        <p class="text-sm text-gray-600 mb-3">Para un viaje profundo y personalizado.</p>
+                        <a href="#" class="text-sm font-semibold text-blue-600 hover:underline">Ir a -> PÁGINA "SERVICIOS 1 A 1"</a>
+                        <p class="text-xs text-gray-500 mt-2">(Contiene: Consultas, Acompañamiento, Carta Astral, etc.)</p>
+                    </div>
+                    <!-- Camino 2 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">Opción B: Cursos y Programas</h4>
+                        <p class="text-sm text-gray-600 mb-3">Aprende a tu propio ritmo.</p>
+                        <a href="#" class="text-sm font-semibold text-blue-600 hover:underline">Ir a -> PÁGINA "CURSOS"</a>
+                        <p class="text-xs text-gray-500 mt-2">(Contiene: Cursos grabados, Productos digitales, Meditaciones de pago.)</p>
+                    </div>
+                    <!-- Camino 3 -->
+                    <div class="bg-white p-4 rounded-lg shadow-md">
+                        <h4 class="font-bold text-lg text-gray-800 mb-2">Opción C: Comunidad y Eventos</h4>
+                        <p class="text-sm text-gray-600 mb-3">Crece en grupo y en vivo.</p>
+                        <a href="#" class="text-sm font-semibold text-blue-600 hover:underline">Ir a -> PÁGINA "MEMBRESÍA"</a>
+                        <p class="text-xs text-gray-500 mt-2">(Contiene: Venta de la Membresía/Privilegios, Talleres, Retiros.)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- RECURSOS -->
+            <section id="recursos" class="card">
+                <h2 class="card-title">4. Página: RECURSOS (Blog)</h2>
+                <h3 class="card-subtitle">Propósito Principal</h3>
+                <p class="card-desc">Atraer tráfico orgánico (SEO), demostrar autoridad, captar emails y nutrir a la audiencia que aún no está lista para comprar.</p>
+                <h3 class="card-subtitle">Componentes Clave</h3>
+                <ul class="text-gray-700 space-y-2">
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6-4h.01M12 12h.01M15 12h.01M9 12h.01"></path></svg>
+                        <span><strong>Artículos del Blog:</strong> El contenido principal, clasificado por categorías (ej. "Astrología", "Sanación", "Mindfulness").</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                        <span><strong>Barra de Búsqueda:</strong> Para encontrar artículos fácilmente.</span>
+                    </li>
+                    <li class="list-item">
+                        <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.206A8.959 8.959 0 011 12a8.959 8.959 0 014.5-7.794m13.794 0A8.959 8.959 0 0123 12c0 .99-.136 1.953-.394 2.859"></path></svg>
+                        <span><strong>Recursos Gratuitos:</strong> Acceso a las Meditaciones gratuitas, guías en PDF, etc. (reforzando el Lead Magnet).</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- OTROS ELEMENTOS -->
+            <section id="otros" class="card bg-gray-100">
+                <h2 class="card-title">5. Otros Elementos Clave</h2>
+                
+                <!-- Botón CTA -->
+                <div id="agenda" class="mb-6">
+                    <h3 class="card-subtitle">Botón CTA: "AGENDA TU SESIÓN"</h3>
+                    <p class="card-desc">Este es un **botón** (no una página) siempre visible en el menú. Su objetivo es capturar al cliente decidido.</p>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="list-item">
+                            <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                            <span><strong>Destino:</strong> Enlace directo a tu sistema de **Citas** (Calendly, Acuity, etc.).</span>
+                        </li>
+                        <li class="list-item">
+                            <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2zM12 10c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2zM12 16c-1.104 0-2 .896-2 2s.896 2 2 2 2-.896 2-2-.896-2-2-2z"></path></svg>
+                            <span><strong>Oferta Ideal:</strong> Una "Sesión de Descubrimiento Gratuita" de 15 min, que sirve como embudo de ventas para tus servicios 1 a 1.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Login -->
+                <div id="login" class="pt-6 border-t border-gray-300">
+                    <h3 class="card-subtitle">Enlace: "LOGIN / ACCESO MIEMBROS"</h3>
+                    <p class="card-desc">Este es un enlace secundario (no un ítem grande del menú). Es la puerta de entrada para usuarios que **ya han pagado** la membresía.</p>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="list-item">
+                            <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                            <span><strong>Ubicación:</strong> Esquina superior derecha o pie de página (discreto).</span>
+                        </li>
+                        <li class="list-item">
+                            <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            <span><strong>Destino:</strong> Lleva a una página de inicio de sesión que da acceso al **ÁREA PRIVADA DE MIEMBROS** (donde están los recursos premium).</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Footer -->
+                <div id="footer" class="pt-6 border-t border-gray-300 mt-6">
+                    <h3 class="card-subtitle">Pie de Página (Footer)</h3>
+                    <p class="card-desc">Presente en todas las páginas. Contiene los enlaces "legales" y secundarios.</p>
+                    <ul class="text-gray-700 space-y-2">
+                         <li class="list-item">
+                            <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span><strong>Contacto:</strong> Formulario o email para dudas generales, prensa, etc.</span>
+                        </li>
+                        <li class="list-item">
+                            <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span><strong>Enlaces Sociales:</strong> Instagram, YouTube, etc.</span>
+                        </li>
+                        <li class="list-item">
+                            <svg class="list-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            <span><strong>Legal:</strong> Política de Privacidad, Términos y Condiciones, Aviso Legal.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer (Placeholder) -->
+    <footer class="bg-gray-800 text-white mt-20">
+        <div class="container mx-auto px-6 py-8 text-center text-sm">
+            <p>© 2025 Tu Nombre Holístico | <a href="#" class="hover:underline">Contacto</a> | <a href="#" class="hover:underline">Aviso Legal</a> | <a href="#" class="hover:underline">Login</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>
