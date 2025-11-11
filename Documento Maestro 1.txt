@@ -1,0 +1,324 @@
+PROYECTO: WEB DE IMPULSO PROFESIONAL
+DOCUMENTO MAESTRO 1 (DM1)
+Actualizado al: 07 de Noviembre de 2025
+1. LIBRO DE DECISIONES ESTRATÉGICAS
+-Decisión Estratégica: Foco Exclusivo en Producto (07-Nov-2025)
+
+-Decisión: Se acuerda pausar todas las discusiones sobre Go-to-Market (GTM), marketing, modelo de negocio y ventas.
+
+Razón: El foco estratégico actual es 100% en la definición de la arquitectura y la funcionalidad del producto (Pilares 1-5). Primero definimos qué construimos, luego cómo lo vendemos.
+
+-Decisión de Arquitectura: Estrategia de Conversión de Lead Magnet (07-Nov-2025)
+
+Foco (Cliente-del-Cliente): La experiencia del cliente final ("Ana") debe ser de mínima fricción.
+
+-Decisión (Firme): El Lead Magnet (ej. descarga de Ebook) en las webs de nuestros clientes nunca debe forzar un "Registro" (creación de cuenta con contraseña).
+
+Razón: El "Registro" es una acción de alta fricción (BoFu) que debe reservarse para una transacción de alto valor (pago de sesión, compra de curso). El Lead Magnet es una acción de baja fricción (ToFu) y solo debe capturar email y nombre para no aniquilar la conversión en la boca del embudo.
+
+-Decisión de Arquitectura: Gestión de Identidad y Permisos (07-Nov-2025)
+
+Foco (Cliente-del-Cliente): La arquitectura debe proporcionar a "Ana" (la cliente final) una experiencia fluida: baja fricción para el contenido gratuito (ToFu) y un único portal seguro para todos sus productos de pago (BoFu).
+
+-Decisión (Firme): Se adopta una arquitectura de múltiples tablas para gestionar la identidad y los permisos. Se rechaza explícitamente el enfoque de "una sola tabla con un status" por ser inseguro, ineficiente, ilógico e inescalable.
+
+Nivel 1: Identidad (Leads vs. Users)
+
+Tabla leads (o subscribers):
+
+Propósito: Sirve al Pilar 3 (Marketing). Gestiona la audiencia (ToFu) captada por lead magnets.
+
+Regla: Sin contraseña. Sin autenticación.
+
+Tabla users (o clients):
+
+Propósito: Sirve a los Pilares 2 y 4 (Operaciones/Escalabilidad). Gestiona los clientes autenticados (BoFu) que compran o agendan.
+
+Regla: Con password_hash, stripe_customer_id, etc. Gestiona el login y el acceso.
+
+Nivel 2: Permisos (Productos y Miembros)
+
+Contexto: Un "Miembro" (Pilar 4) no es una identidad separada, sino un permiso que se le otorga a un user.
+
+Tabla products (o offerings):
+
+Propósito: Define los productos que vende el profesional (ej. "Membresía Oro", "Curso Ansiedad", "Sesión 1-a-1").
+
+Contenido: professional_id, name, type ('membership', 'course', 'session'), stripe_price_id.
+
+Tabla user_enrollments (o subscriptions):
+
+Propósito: Tabla de unión que conecta users con products. Define qué ha comprado un cliente.
+
+Contenido: user_id, product_id, status ('active', 'cancelled').
+
+Decisión de Arquitectura de Producto: La Gran División (Cursos vs. Eventos) (07-Nov-2025)
+
+Contexto: Se debatió cómo clasificar productos híbridos como un "curso con fecha de inicio".
+
+
+-Decisión (Firme): La clasificación de un producto en nuestra plataforma (Pilar 4)  no se basa en su formato (video, taller), sino en su modelo de venta. El factor determinante es la urgencia (fecha de inicio).
+
+
+El Filtro de Producto (Para el Dashboard): Al crear un producto, el "Dashboard de Gestión" (la "trastienda") forzará una elección binaria simple para el profesional (nuestro cliente), alineada con nuestro "Principio de Simplicidad Radical":
+
+"¿Este producto tiene una fecha de inicio?"
+
+Clasificación Automática:
+
+Si el profesional marca [ NO ]:
+
+Se clasifica como: Producto "Evergreen" (ej. Curso pregrabado, Ebook).
+
+Aparece en index.html: En la sección "Oferta de Servicios" (enlazado desde la tarjeta "📚 Cursos Online").
+
+Si el profesional marca [ SÍ ]:
+
+Se clasifica como: Producto "Time-Sensitive" (ej. Webinar en vivo, Taller de un día, o un "Curso por cohortes" que empieza en una fecha fija).
+
+Aparece en index.html: En la sección "Próximos Eventos".
+
+Razón Estratégica: Esta distinción innegociable elimina la confusión del cliente final ("Ana"), alinea la oferta con la psicología de compra (compra "ahora mismo" vs. compra "con urgencia"), y mantiene una arquitectura de producto limpia y escalable.
+
+-Decisión de UX: Lógica de Consentimiento del Lead Magnet (Pilar 3) (07-Nov-2025)
+
+Contexto: Se definió la UX exacta para el módulo "Lead Magnet" para cumplir con los requisitos legales (GDPR/LOPD) y estratégicos (Pilar 3: Marketing).
+
+-Decisión (Firme):
+
+Se requiere un checkbox de consentimiento explícito y obligatorio (required). Se rechaza explícitamente la táctica de "consentimiento implícito" ("al descargar aceptas").
+
+El botón "Descargar Ahora" debe estar deshabilitado (disabled) por defecto.
+
+El botón solo se habilitará (enabled) cuando el usuario marque el checkbox de consentimiento.
+
+Razón Estratégica: Esta implementación proactiva (1) asegura la viabilidad legal de nuestro Pilar 3, (2) protege la reputación de envío de IPs de nuestra plataforma, y (3) pre-cualifica al lead, construyendo una lista de mayor calidad.
+
+Entrada para el DMU
+-Decisión de Roadmap: Módulo de Autoridad (Pilar 1: Blog) (07-Nov-2025)
+
+-Decisión: Se aprueba la necesidad de añadir un módulo de "Artículos Recientes" (Blog) a la página de inicio (index.html).
+
+Razón Estratégica: El modal "Sobre Mí" establece "Autoridad Estática" (Credibilidad). El módulo de Blog es necesario para demostrar "Autoridad Dinámica" (Confianza y Relevancia actual), siendo un pilar de nuestra estrategia de Autoridad (Pilar 1) y combustible esencial para el Pilar 3 (Marketing).
+
+Prioridad: Siguiente iteración (Post-MVP inicial).
+
+-Decisión de Arquitectura: Lógica del Módulo "Próximos Eventos" (Pilar 4) (07-Nov-2025)
+
+Contexto: Se definió cómo el módulo "Próximos Eventos" debe funcionar dinámicamente en el index.html para alinearse con nuestra estrategia SaaS.
+
+-Decisión (Firme): El módulo debe ser:
+
+"Activatable": El profesional debe "activar" el Módulo de Eventos en su Dashboard para que esta sección sea una opción.
+
+"Auto-Ocultable": La sección <section> entera solo será visible en el index.html si se cumplen dos condiciones: (A) El módulo está "Activo" Y (B) Hay "al menos 1 evento futuro" programado en la base de datos.
+
+"Flexible": El cards-grid debe adaptarse (vía CSS Flex/Grid) para mostrar 1, 2 o 3 tarjetas de evento de forma profesional y centrada, evitando "huecos" vacíos.
+
+Razón Estratégica: Evita una apariencia "rota" o poco profesional, se alinea con el "Principio de Simplicidad Radical" (la plataforma lo hace automáticamente) y demuestra el poder de nuestra arquitectura modular.
+
+-Decisión de Estrategia de Producto y Precios: "Accesibilidad Estratégica" (07-Nov-2025)
+
+Contexto: Se debatió la viabilidad de un enfoque "Low Cost" para hacer la plataforma accesible a profesionales que están comenzando.
+
+-Decisión (Firme):
+
+Se rechaza explícitamente un posicionamiento "Low Cost". Esta estrategia atrae al cliente equivocado (bajo valor, alto churn) y socava nuestra promesa de valor "Premium Integrado" ("Todo-en-Uno").
+
+Se adopta una estrategia de "Accesibilidad Estratégica" (Strategic Accessibility). No competimos en precio, competimos en simplicidad e integración.
+
+Implementación (El Modelo SaaS): La accesibilidad se logrará mediante "Precios por Etapas de Crecimiento" (Tiered Pricing), alineados directamente con nuestros Pilares de Producto.
+
+Estrategia: "Land and Expand" (Plantar y Expandir).
+
+Definición de Tiers (Niveles):
+
+Tier 1: "PRESENCIA" (Accesible):
+
+Target: El profesional que empieza.
+
+Misión: Reemplazar Web + Agenda.
+
+Pilares: Pilar 1 (Web/Blog) y Pilar 2 (Agenda/Pagos).
+
+Tier 2: "CRECIMIENTO" (Profesional):
+
+Target: El profesional que necesita marketing.
+
+Misión: Reemplazar Email Marketing.
+
+Pilares: Todo lo anterior + Pilar 3 (Marketing/Embudos).
+
+Tier 3: "ESCALA" (Premium):
+
+Target: El profesional que productiza su conocimiento.
+
+Misión: Reemplazar Kajabi/Teachable.
+
+Pilares: Todo lo anterior + Pilar 4 (Cursos/Membresías/Eventos) y Pilar 5 (IA).
+
+Razón Estratégica: Este modelo nos permite capturar al profesional en su "Día 1" (Land) con una oferta accesible (Tier 1) y crecer con él (Expand), alineando nuestros ingresos con su éxito.
+
+Entendido. Es la decisión de arquitectura más importante que has tomado, porque impone la restricción de rentabilidad a todo el proyecto.
+
+Aquí está la entrada oficial para el Documento Maestro 1.txt. Añádelo al final.
+
+Entrada para el DMU
+Decisión de Arquitectura y Negocio: La Restricción de "Eficiencia de Costes" (07-Nov-2025)
+
+
+Contexto: El fundador (tú) ha introducido una estrategia de Go-to-Market (GTM)  basada en "ganancias compartidas" (afiliados, alianzas con agencias).
+
+Análisis Estratégico: Se reconoce que esta estrategia de GTM no es solo marketing, sino una restricción fundamental de arquitectura de producto. Un GTM de ganancias compartidas reduce drásticamente el margen de beneficio por cliente.
+
+-Decisión (Firme): Para que el modelo de negocio sea rentable, la plataforma DEBE diseñarse para un coste operativo marginal (COGS) por usuario cercano a cero.
+
+ANULACIÓN Y REFINAMIENTO DE DECISIONES ANTERIORES:
+
+Esta decisión refina la "Decisión Estratégica: Foco Exclusivo en Producto" (del 07-Nov). Se confirma que el GTM (el modelo de ingresos) sí impacta la arquitectura.
+
+Esta decisión añade un segundo filtro a nuestro "Principio de Simplicidad Radical" (del 07-Nov).
+
+El Filtro de Producto (v2):
+
+"¿Lo entendería nuestro cliente menos técnico en 30 segundos?"
+
+"¿Y podemos operar esta función con un coste marginal (por usuario) cercano a cero?"
+
+Implicaciones Tácticas Inmediatas (Arquitectura "Lean"):
+
+
+Pilar 4 (Cursos): Queda prohibido ofrecer hosting de vídeo nativo "ilimitado". La arquitectura debe forzar al profesional a conectar su propia cuenta (Vimeo, Mux, Wistia). Nosotros gestionamos permisos; ellos pagan el ancho de banda.
+
+
+Pilar 5 (IA): El "Asistente de IA" no puede ser un "buffet libre". Debe ser un add-on de pago por créditos o estar severamente limitado.
+
+
+Pilar 3 (Email): Los Tiers deben tener límites de contactos/envíos estrictos para controlar los costes de las APIs de envío.
+
+
+Pilar 2 (Video): La videollamada integrada debe usar APIs de terceros (no WebRTC propio) y su uso debe ser monitorizado y, si es necesario, cobrado por uso.
+
+Perfecto. Con esta restricción de "arquitectura lean" establecida, tenemos un camino mucho más claro y financieramente viable.
+
+-Decisión de UX/Arquitectura: Personalización de Títulos Estructurales (07-Nov-2025)
+
+Contexto: Se debatió el nivel de flexibilidad para los títulos de las secciones principales del index.html (ej. "Oferta de Servicios", "Próximos Eventos"). Se buscaba un equilibrio entre la flexibilidad de marca (petición del Fundador) y la "Simplicidad Radical" y la integridad del diseño (preocupación de Stratego).
+
+-Decisión (Firme): Se aprueba la solución del Fundador de usar "Listas Desplegables" (Dropdowns).
+
+Implementación (El Dashboard):
+
+Para los Títulos Estructurales (las secciones principales del index.html), el profesional no tendrá un campo de texto libre.
+
+En su lugar, el "Dashboard de Gestión" (la "trastienda") le ofrecerá una lista desplegable (<select>) con 3-5 opciones de tono pre-aprobadas por nosotros (ej. "Oferta de Servicios" / "Cómo Puedo Ayudarte" / "Soluciones Profesionales").
+
+-Decisión Complementaria (Títulos de Contenido):
+
+Se reitera que para los Títulos de Contenido (sub-secciones, como las del modal sobreMiModal - "Perfil Profesional", "Enfoque", "Credenciales"), el profesional SÍ tendrá campos de texto libre para una personalización detallada.
+
+Razón Estratégica: Esta solución híbrida es el equilibrio perfecto: (1) Cumple la "Simplicidad Radical" (es un solo clic). (2) Da flexibilidad de tono/marca. (3) Mantiene la integridad del diseño (evita que se rompa el layout). (4) Cumple la "Arquitectura Lean" (coste cero).
+
+-Decisión de Arquitectura: Pilar 5 (IA) - "Encuesta Asistida por IA" (07-Nov-2025)
+
+Contexto: Se identificó la "parálisis del lienzo en blanco" (el miedo a la redacción) como el principal punto de fricción para nuestro cliente no-técnico, violando nuestro "Principio de Simplicidad Radical". Se debatió una solución de "guía de prompts" externa vs. una solución integrada.
+
+Decisión (Firme):
+
+Se rechaza explícitamente la idea de "guía de prompts". Viola nuestra promesa "Todo-en-Uno" al obligar al cliente a salir de la plataforma.
+
+Se aprueba la implementación de una "Encuesta Asistida por IA" como la funcionalidad central del Pilar 5: Inteligencia (IA).
+
+Implementación (Tiers):
+
+Tier 1 (Presencia): Recibe una "Encuesta Pasiva". Los campos de texto (textarea) incluirán "Textos Guía" (placeholders) que actúan como una entrevista guiada, pero el profesional redacta el texto final.
+
+Tier 3 (Escala): Recibe la "Encuesta Activa" (Asistente IA). Un botón "Escríbelo por mí con IA" abre una encuesta simple (ej. 3-5 preguntas).
+
+Arquitectura (Lean):
+
+Se aprueba usar el VPS y n8n existentes del Fundador como un microservicio de generación de contenido (Pilar 5).
+
+Definición: El agente n8n es un "generador de borrador de un solo uso". No es una dependencia crítica del sistema.
+
+Flujo: El Dashboard llama al n8n (que gestiona los prompts "Abogado vs. Astrólogo") -> n8n devuelve un borrador de texto al Dashboard -> El profesional lo aprueba/edita -> El texto final se guarda en nuestra base de datos.
+
+Razón Estratégica: Esta arquitectura nos da una feature premium (Pilar 5) para el Tier 3 con coste de desarrollo y operación casi cero, sin comprometer la estabilidad del sitio (index.html).
+
+Entrada para el DMU
+Decisión de Arquitectura: Sistema de Gestión de Activos Visuales (Imágenes) (07-Nov-2025)
+
+Contexto: Se abordó el problema de cómo los clientes no-técnicos gestionan las imágenes (sourcing, optimización, coste) sin destruir el rendimiento (SEO, Pilar 1) ni nuestra rentabilidad (Arquitectura Lean).
+
+-Decisión (Firme): Se aprueba un sistema de gestión de imágenes "Todo-en-Uno" basado en tres componentes:
+
+Sourcing (Coste Cero): Se integrará una API de biblioteca de stock gratuita (ej. Unsplash, Pexels) directamente en el Dashboard. El profesional busca y selecciona imágenes legales y de alta calidad sin salir de la plataforma.
+
+Optimización (Simplicidad Radical): Se creará un motor de optimización automático. Todas las imágenes subidas por el cliente (ej. su foto de perfil) serán procesadas en el backend (redimensionadas, comprimidas y convertidas a WebP) para garantizar la máxima velocidad de carga por defecto.
+
+Coste y Entrega (Arquitectura Lean):
+
+Almacenamiento: Las imágenes se guardarán en un servicio de almacenamiento de objetos (ej. S3, B2), no en el disco del servidor.
+
+Entrega: Las imágenes se servirán a través de un CDN (ej. Cloudflare).
+
+Modelo de Negocio: El almacenamiento (ej. 1GB, 5GB, 20GB) estará limitado según el Tier (Nivel) del cliente para controlar los costes.
+
+Decisión de Arquitectura: Rechazo del Trabajo Manual y Confirmación del Sistema de Imágenes Automatizado (07-Nov-2025)
+
+Contexto: Se debatió si el "Sistema de Gestión de Activos Visuales" (imágenes) podría manejarse manualmente por el fundador (usando "FreeImageHost") para un MVP, en lugar de automatizarlo.
+
+-Decisión (Firme): Se rechaza explícitamente cualquier flujo de trabajo manual o "concierge" para la gestión de imágenes. Es una trampa de escalabilidad y una violación de la promesa del producto.
+
+Razón Estratégica (Violación de Pilares):
+
+Falla el Pilar 1 (SEO/Autoridad): Usar hosts gratuitos (no-CDN) y no optimizar a WebP da como resultado un sitio (index.html) lento, penalizado por Google y poco profesional desde el Cliente #1.
+
+Falla la "Simplicidad Radical": Una experiencia de "enviar un email para cambiar una foto" es una UX rota, lenta y lo opuesto a un "Dashboard de Gestión".
+
+Falla la "Arquitectura Lean": El trabajo manual crea un "coste marginal infinito" (el tiempo del fundador) por cada cliente, en lugar de un "coste marginal cero".
+
+Confirmación de Arquitectura (El "Puente" Mínimo Viable):
+
+La automatización (S3/Almacenamiento de Objetos + Optimizador WebP Automático + CDN) no es una "complicación innecesaria".
+
+Se define como la funcionalidad central y mínima viable requerida para lanzar un producto profesional. Es la arquitectura estándar de la industria, diseñada para evitar el "lío" (deuda técnica), no para crearlo.
+
+El "Dashboard" (la trastienda) solo tendrá un botón [Subir Imagen], nunca un campo de URL.
+
+-Decisión Estratégica de Proceso: (PRIORIDAD CRÍTICA) - "El Plano Completo" (La Vitrina Define la Trastienda) (07-Nov-2025)
+
+MUY IMPORTANTE
+
+Contexto: "Stratego Web" (el asistente) intentó avanzar al diseño del "Dashboard de Gestión" (la "trastienda" o "motor") asumiendo erróneamente que el index.html era un prototipo suficiente del "plano".
+
+Corrección del Fundador (Decisiva): El Fundador (tú) corrigió esta suposición, estableciendo que este proyecto NO es una landing page, sino una plataforma web "Todo-en-Uno". Por lo tanto, el "plano" está incompleto. Faltan por definir todas las sub-páginas (la "vitrina" completa).
+
+Decisión (Firme): Se aprueba la corrección del Fundador. Esta es una directriz de proceso fundamental. Se pausa indefinidamente el diseño del "Dashboard de Gestión" (la trastienda). El foco estratégico 100%  debe ser definir y diseñar el "Plano Completo" (toda la "vitrina") primero.
+
+El "Plano Completo" (Mínimo Viable) Incluye:
+
+index.html (Fachada) - Definido.
+
+
+servicios-1-a-1.html (Página de Servicios, Pilar 2).
+
+
+formacion-y-productos.html (Catálogo Evergreen, Pilar 4).
+
+
+eventos.html (Catálogo Time-Sensitive, Pilar 4).
+
+
+membresia.html (Página de Venta Comunidad, Pilar 4).
+
+
+agenda.html (Herramienta Booking, Pilar 2).
+
+blog.html y post-articulo.html (Autoridad, Pilar 1).
+
+Razón Estratégica (La Importancia): "No podemos instalar las tuberías (Dashboard) sin el plano completo de la casa (el Website)". Las páginas de la "vitrina" definen todos los requisitos funcionales (los datos) que el "motor" (la trastienda) debe gestionar. Intentar construir el Dashboard ahora nos llevaría a errores de arquitectura catastróficos, como el que ya cometimos al mezclar "Servicios" y "Productos Digitales".
+
+
+
+
