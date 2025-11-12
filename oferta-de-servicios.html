@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Catálogo completo de soluciones profesionales: Servicios, Formación y Recursos.">
+    <title>Catálogo de Soluciones - Profesional Independiente</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">Tu Logo Aquí</div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="oferta-de-servicios.html" class="active">Catálogo de Soluciones</a></li>
+                <li><a href="membresia.html">Comunidad</a></li>
+                <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+            </ul>
+
+            <button class="nav-toggle" id="navToggle">
+                <span class="nav-toggle-text">Menú</span>
+                <div class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <section class="section" style="padding-top: 4rem; padding-bottom: 2rem;">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Página Unificada: Lista Única de Soluciones</h4>
+                <p><strong>Estrategia:</strong> Sin barreras. Servicios, Cursos y Eventos conviven en el mismo espacio.</p>
+                <p><strong>Orden:</strong> El profesional decide qué aparece primero según su prioridad de venta (ej. llenar un evento urgente).</p>
+                <p><strong>Claridad:</strong> Las "Etiquetas" (Badges) en la esquina superior derecha indican al usuario qué tipo de solución es.</p>
+                <p><strong>Nueva Funcionalidad:</strong> Cada tarjeta lleva a una sección de detalle en la misma página. El usuario hace scroll para ver más información antes de comprar.</p>
+            </div>
+
+            <div class="section-header">
+                <span class="model-tag">Mis Propuestas</span>
+                <h1 class="section-title">[Cómo Puedo Ayudarte]</h1>
+                <p class="section-description">
+                    [Intro: Explora las diferentes formas en las que podemos trabajar juntos. Haz clic en "Ver Detalles" para conocer en profundidad qué incluye cada opción.]
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding: 2rem 0;">
+        <div class="container">
+
+            <div class="cards-grid">
+
+                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--color-primary); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                        📅 EVENTO EN VIVO
+                    </div>
+
+                    <div class="card-icon" style="background: #eef2ff; color: var(--color-primary);">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    </div>
+
+                    <h3 class="card-title">[Taller: Gestión del Tiempo]</h3>
+                    <p class="card-text">
+                        [Descripción: Masterclass intensiva este Jueves. Aprende a organizar tu agenda sin estrés y recupera tu tiempo.]
+                    </p>
+
+                    <div style="margin-top: auto;">
+                        <a href="#detalle-evento" class="btn btn-primary" style="width: 100%;">Ver Detalles ↓</a>
+                    </div>
+                </div>
+
+                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--color-text); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                        👤 SERVICIO 1:1
+                    </div>
+
+                    <div class="card-icon" style="background: var(--color-light); color: var(--color-text);">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+
+                    <h3 class="card-title">[Sesión de Diagnóstico]</h3>
+                    <p class="card-text">
+                        [Descripción: Una hora privada conmigo para resolver tu bloqueo principal. Análisis de situación y plan de acción inmediato.]
+                    </p>
+
+                    <div style="margin-top: auto;">
+                        <a href="#detalle-servicio" class="btn btn-secondary" style="width: 100%;">Ver Detalles ↓</a>
+                    </div>
+                </div>
+
+                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--color-secondary); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                        🎓 CURSO ONLINE
+                    </div>
+
+                    <div class="card-icon" style="background: #fffbf0; color: var(--color-secondary);">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+
+                    <h3 class="card-title">[Programa: Calma Mental]</h3>
+                    <p class="card-text">
+                        [Descripción: Curso grabado paso a paso. Accede de inmediato a las 10 lecciones y avanza a tu propio ritmo.]
+                    </p>
+
+                    <div style="margin-top: auto;">
+                        <a href="#detalle-curso" class="btn btn-secondary" style="width: 100%;">Ver Detalles ↓</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- DETALLE: EVENTO EN VIVO -->
+    <!-- Layout A: Texto Izquierda / Box Derecha -->
+    <section id="detalle-evento" class="section section-alt" style="padding: 4rem 0;">
+        <div class="container">
+            <div style="background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md); border: 1px solid var(--color-border);">
+                <div style="padding: 3rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+                        <div>
+                            <span class="model-tag" style="background: var(--color-primary); color: white;">📅 Evento en Vivo</span>
+                            <h2 style="margin-top: 0.5rem; font-size: 2rem;">[Nombre del Taller / Evento]</h2>
+                        </div>
+                        <div style="text-align: right;">
+                            <p style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin: 0;">[25 Noviembre]</p>
+                            <p style="margin: 0; color: var(--color-text-light);">18:00h - 20:00h</p>
+                        </div>
+                    </div>
+
+                    <hr style="border: 0; border-top: 1px solid var(--color-border); margin: 2rem 0;">
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+                        <div>
+                            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">¿Qué vas a conseguir?</h3>
+                            <p style="line-height: 1.8; color: var(--color-text-light); margin-bottom: 1.5rem;">
+                                [Descripción detallada del evento. Aquí explicas la transformación. "En estas 2 horas intensivas, vamos a desmontar tus creencias sobre la productividad y te irás con un sistema listo para usar..."]
+                            </p>
+                            <ul style="list-style: none; padding: 0; line-height: 2;">
+                                <li>✅ Estrategias prácticas aplicables al momento.</li>
+                                <li>✅ Ronda de preguntas y respuestas en directo.</li>
+                                <li>✅ Acceso a la grabación por si no puedes asistir.</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #f9f9f9; padding: 2rem; border-radius: 12px;">
+                            <h3 style="font-size: 1.2rem; margin-bottom: 1rem;">Reserva tu Plaza</h3>
+                            <p style="font-size: 0.9rem; color: var(--color-text-light);">Las plazas son limitadas para garantizar la interacción.</p>
+
+                            <div style="margin: 2rem 0;">
+                                <span style="font-size: 2.5rem; font-weight: 700; color: var(--color-text);">[€47]</span>
+                            </div>
+
+                            <a href="#" class="btn btn-primary btn-large" style="width: 100%;">Inscribirme Ahora</a>
+
+                            <p style="margin-top: 1rem; font-size: 0.8rem; color: #999; text-align: center;">Pago seguro con Tarjeta / Stripe</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETALLE: SERVICIO 1:1 -->
+    <!-- Layout B: Imagen Izquierda / Texto Derecha (ZIG-ZAG) -->
+    <section id="detalle-servicio" class="section" style="padding: 4rem 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <!-- IMAGEN IZQUIERDA -->
+                <div style="position: relative; height: 400px; border-radius: 20px; overflow: hidden; background: #f0f0f0;">
+                    <!-- <img src="ruta/a/tu/imagen-servicio.jpg" alt="[Descripción de la imagen]" style="width: 100%; height: 100%; object-fit: cover;"> -->
+
+                    <!-- PLACEHOLDER TEMPORAL (Eliminar cuando tengas la imagen real) -->
+                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #999; background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);">
+                        <p style="margin: 0; font-size: 3rem; margin-bottom: 1rem;">📷</p>
+                        <p style="margin: 0; font-weight: 600;">Aquí va tu imagen real</p>
+                        <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem;">Foto profesional • 800x800px</p>
+                    </div>
+                </div>
+
+                <!-- TEXTO DERECHA -->
+                <div>
+                    <span class="model-tag">👤 Servicio Personalizado</span>
+                    <h2 style="margin-top: 0.5rem; font-size: 2rem; margin-bottom: 1.5rem;">[Sesión de Diagnóstico y Claridad]</h2>
+
+                    <p style="line-height: 1.8; color: var(--color-text-light); margin-bottom: 2rem;">
+                        [Descripción detallada del servicio. "A veces solo necesitas una visión externa para desbloquearte. En esta sesión de 60 minutos, analizaremos tu caso específico y..."]
+                    </p>
+
+                    <h4 style="font-size: 1.1rem; margin-bottom: 1rem;">Perfecto si:</h4>
+                    <ul style="margin-bottom: 2rem; padding-left: 1.2rem; color: var(--color-text-light); line-height: 1.8;">
+                        <li style="margin-bottom: 0.5rem;">Te sientes estancado y no sabes el siguiente paso.</li>
+                        <li style="margin-bottom: 0.5rem;">Necesitas una segunda opinión profesional.</li>
+                        <li style="margin-bottom: 0.5rem;">Quieres resolver un problema concreto de forma rápida.</li>
+                    </ul>
+
+                    <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                        <span style="font-size: 2rem; font-weight: 700; color: var(--color-text);">[€97]</span>
+                        <a href="agenda.html" class="btn btn-secondary btn-large">Consultar Disponibilidad</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETALLE: CURSO ONLINE -->
+    <!-- Layout C: Texto Izquierda / Sidebar Derecha (ZIG-ZAG) -->
+    <section id="detalle-curso" class="section section-alt" style="padding: 4rem 0;">
+        <div class="container">
+            <div style="background: white; border-radius: 20px; padding: 3rem; box-shadow: var(--shadow-sm); border: 1px solid var(--color-border);">
+                <span class="model-tag" style="background: var(--color-secondary); color: white;">🎓 Formación Online</span>
+                <h2 style="margin-top: 0.5rem; font-size: 2rem; margin-bottom: 2rem;">[Programa: Calma Mental]</h2>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem;">
+                    <!-- TEXTO IZQUIERDA -->
+                    <div>
+                        <p style="line-height: 1.8; color: var(--color-text-light); margin-bottom: 2rem;">
+                            [Copywriting del curso. "Un programa diseñado para personas ocupadas que quieren recuperar su paz mental sin retirarse a una montaña. Aprenderás herramientas de gestión emocional aplicables desde el día 1..."]
+                        </p>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <div style="background: #f9f9f9; padding: 1.5rem; border-radius: 12px;">
+                                <h4 style="margin-top: 0; margin-bottom: 1rem;">📚 Qué incluye</h4>
+                                <ul style="margin: 0; padding-left: 1rem; font-size: 0.9rem; color: var(--color-text-light); line-height: 1.8;">
+                                    <li>10 Lecciones en Video HD</li>
+                                    <li>Cuaderno de trabajo PDF</li>
+                                    <li>Audio-meditaciones guiadas</li>
+                                    <li>Plantillas descargables</li>
+                                </ul>
+                            </div>
+                            <div style="background: #f9f9f9; padding: 1.5rem; border-radius: 12px;">
+                                <h4 style="margin-top: 0; margin-bottom: 1rem;">⚙️ Formato</h4>
+                                <ul style="margin: 0; padding-left: 1rem; font-size: 0.9rem; color: var(--color-text-light); line-height: 1.8;">
+                                    <li>100% Online y Grabado</li>
+                                    <li>Acceso inmediato</li>
+                                    <li>De por vida</li>
+                                    <li>Actualizaciones incluidas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SIDEBAR DERECHA -->
+                    <div style="text-align: center; padding: 2rem; border: 1px solid var(--color-border); border-radius: 16px; height: fit-content;">
+                        <p style="color: var(--color-text-light); margin-bottom: 0.5rem;">Inversión Única</p>
+                        <p style="font-size: 2.5rem; font-weight: 700; color: var(--color-secondary); margin: 0.5rem 0 1.5rem 0;">[€129]</p>
+                        <a href="#" class="btn btn-secondary" style="width: 100%; margin-bottom: 1rem;">Acceder al Curso</a>
+                        <p style="margin: 0; font-size: 0.8rem; color: var(--color-text-light);">✓ Garantía de 15 días</p>
+                        <p style="margin: 0.25rem 0 0 0; font-size: 0.8rem; color: var(--color-text-light);">✓ Pago seguro</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO DE ORIENTACIÓN -->
+    <section class="section" style="background-color: #fafafa; border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Asistente de Orientación</h4>
+                <p><strong>Propósito:</strong> Si la lista unificada abruma al usuario, este módulo lo rescata. "Cuéntame tu problema y yo te digo qué elegir de la lista de arriba".</p>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+
+                <div id="acordeonHeader" onclick="toggleOrientacion()" style="background: white; padding: 1.5rem 2rem; border-radius: 12px; box-shadow: var(--shadow-sm); cursor: pointer; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; transition: all 0.3s;">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="background: var(--color-primary); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">?</div>
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.1rem; color: var(--color-text);">¿No sabes qué opción es para ti?</h3>
+                            <p style="margin: 0; font-size: 0.9rem; color: var(--color-text-light);">Haz clic aquí y te ayudo a elegir.</p>
+                        </div>
+                    </div>
+                    <div id="acordeonIcon" style="font-size: 1.2rem; color: var(--color-primary); transition: transform 0.3s;">▼</div>
+                </div>
+
+                <div id="acordeonContent" style="max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;">
+                    <div style="background: white; padding: 2rem; border-radius: 0 0 12px 12px; border: 1px solid var(--color-border); border-top: none; margin-top: -5px; box-shadow: var(--shadow-sm);">
+                        <form id="formOrientacion" style="display: grid; gap: 1rem;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                                <input type="text" class="form-input" placeholder="Tu Nombre" required>
+                                <input type="email" class="form-input" placeholder="Tu Email" required>
+                            </div>
+                            <textarea class="form-input" rows="3" placeholder="Cuéntame brevemente tu situación o duda..." required></textarea>
+
+                            <label style="font-size: 0.85rem; display: flex; gap: 0.5rem; align-items: start; cursor: pointer;">
+                                <input type="checkbox" id="consentimiento" required style="margin-top: 3px;">
+                                <span style="color: var(--color-text-light);">Acepto la política de privacidad y recibir la recomendación por email.</span>
+                            </label>
+
+                            <div style="text-align: right;">
+                                <button type="submit" id="btnOrientacion" class="btn btn-primary" disabled style="opacity: 0.5; cursor: not-allowed;">
+                                    Enviar Consulta
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            function toggleOrientacion() {
+                const content = document.getElementById('acordeonContent');
+                const icon = document.getElementById('acordeonIcon');
+                const header = document.getElementById('acordeonHeader');
+
+                if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                    // Cerrar
+                    content.style.maxHeight = '0px';
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Abrir
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            }
+
+            // Habilitar botón solo con checkbox
+            document.getElementById('consentimiento').addEventListener('change', function() {
+                const btn = document.getElementById('btnOrientacion');
+                if(this.checked) {
+                    btn.disabled = false;
+                    btn.style.opacity = '1';
+                    btn.style.cursor = 'pointer';
+                } else {
+                    btn.disabled = true;
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                }
+            });
+        </script>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="oferta-de-servicios.html">Catálogo Completo</a></li>
+                    <li><a href="membresia.html">Comunidad</a></li>
+                    <li><a href="agenda.html">Agenda</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>contacto@midominio.com</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">LI</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Profesional Independiente | Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -26,9 +26,8 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
                 <li><a href="sobre-mi.html">Sobre Mí</a></li>
-                <li><a href="presentacion-profesional.html">Presentación Profesional</a></li>
-                <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
-                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+                <li><a href="recursos.html">Blog</a></li>
                 <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
             </ul>
 
@@ -97,7 +96,7 @@
                     Usa un lenguaje accesible que resuene con tu audiencia objetivo.
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <a href="trabaja-conmigo.html" class="btn btn-primary btn-large">[Texto Botón Principal (CTA)]</a>
+                    <a href="oferta-de-servicios.html" class="btn btn-primary btn-large">[Texto Botón Principal (CTA)]</a>
                     <a href="sobre-mi.html" class="btn btn-secondary btn-large">[Texto Botón Secundario]</a>
                 </div>
             </div>
@@ -167,151 +166,92 @@
     </section>
 
     <!-- ============================================
-         OFERTA DE SERVICIOS
+         RECURSOS DESTACADOS (Vitrina Flexible)
          ============================================ -->
     <section class="section section-alt">
         <div class="container">
             <div class="model-description">
-                <h4>📍 Módulo: Oferta de Servicios</h4>
-                <p><strong>Propósito:</strong> Presentar claramente tus diferentes modalidades de servicio para que el visitante elija la que mejor se adapta a sus necesidades.</p>
-                <p><strong>Función:</strong> Mostrar las opciones disponibles con información clave: qué incluye cada servicio, para quién es ideal y cómo acceder a él.</p>
+                <h4>📍 Módulo: Recursos Destacados (Vitrina Flexible)</h4>
+                <p><strong>Estrategia:</strong> Destacar lo más relevante según tu estrategia actual. Los ejemplos mostrados (Servicio 1:1, Curso, Comunidad) son solo una configuración posible.</p>
+                <p><strong>Flexibilidad Total:</strong> Puedes mostrar 3 servicios, 3 cursos, una mezcla de eventos y productos, o cualquier combinación que necesites destacar este mes.</p>
+                <p><strong>Personalización:</strong> Los badges, títulos, descripciones y enlaces se adaptan completamente a tus recursos específicos.</p>
             </div>
 
             <div class="section-header">
-                <p class="section-subtitle">[Subtítulo de Sección (opcional)]</p>
-                <h2 class="section-title">[Título de Sección: Oferta de Servicios]</h2>
+                <p class="section-subtitle">[Subtítulo Opcional]</p>
+                <h2 class="section-title">[Recursos Destacados]</h2>
                 <p class="section-description">
-                    Descripción breve que introduce las diferentes modalidades de servicio disponibles.
-                    Explica cómo cada opción responde a diferentes necesidades, objetivos y preferencias de tus clientes.
+                    [Descripción introductoria: presenta los recursos que has seleccionado destacar este mes.
+                    Puede ser tu servicio estrella, un nuevo curso, o tu comunidad. Adapta según tu estrategia actual.]
                 </p>
             </div>
 
             <div class="cards-grid">
-                <div class="card">
-                    <div class="card-icon">
+                <!-- EJEMPLO: Tarjeta Servicio 1:1 -->
+                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--color-text); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                        👤 SERVICIO 1:1
+                    </div>
+
+                    <div class="card-icon" style="background: var(--color-light); color: var(--color-text);">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
                     </div>
-                    <h3 class="card-title">[Nombre de tu Opción 1]</h3>
+                    <h3 class="card-title">[Título del Servicio]</h3>
                     <p class="card-text">
-                        Descripción breve de esta modalidad de servicio. ¿Qué incluye? ¿Cómo funciona?
-                        Ejemplo: Sesiones individuales, programas personalizados, acompañamiento uno a uno.
+                        [Descripción breve del servicio. Ejemplo: "Sesión personalizada de 60 minutos para resolver tu desafío principal".]
                     </p>
-                    <p class="card-text" style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 1rem;">
-                        <strong>Ideal para:</strong> Lista aquí el perfil de cliente ideal para esta opción.
-                    </p>
-                    <a href="servicios-individual.html" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
-                        [Texto del Botón]
-                    </a>
+
+                    <div style="margin-top: auto;">
+                        <a href="oferta-de-servicios.html#detalle-servicio" class="btn btn-primary" style="width: 100%;">Ver Detalles ↓</a>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">
+                <!-- EJEMPLO: Tarjeta Curso Online -->
+                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--color-secondary); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                        🎓 CURSO ONLINE
+                    </div>
+
+                    <div class="card-icon" style="background: #fffbf0; color: var(--color-secondary);">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
                         </svg>
                     </div>
-                    <h3 class="card-title">[Nombre de tu Opción 2]</h3>
+                    <h3 class="card-title">[Título del Curso]</h3>
                     <p class="card-text">
-                        Descripción de la segunda modalidad. Ejemplo: Cursos online, programas grabados,
-                        recursos digitales, talleres pregrabados, etc.
+                        [Descripción breve del curso. Ejemplo: "Programa completo para dominar [habilidad específica] a tu propio ritmo".]
                     </p>
-                    <p class="card-text" style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 1rem;">
-                        <strong>Ideal para:</strong> Describe para quién es perfecta esta opción.
-                    </p>
-                    <a href="cursos.html" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
-                        [Texto del Botón]
-                    </a>
+
+                    <div style="margin-top: auto;">
+                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-secondary" style="width: 100%;">Ver Detalles ↓</a>
+                    </div>
                 </div>
 
-                <div class="card">
-                    <div class="card-icon">
+                <!-- EJEMPLO: Tarjeta Evento/Taller -->
+                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--color-primary); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                        📅 EVENTO EN VIVO
+                    </div>
+
+                    <div class="card-icon" style="background: #eef2ff; color: var(--color-primary);">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
                     </div>
-                    <h3 class="card-title">[Nombre de tu Opción 3]</h3>
+                    <h3 class="card-title">[Nombre del Taller/Evento]</h3>
                     <p class="card-text">
-                        Descripción de la tercera opción. Ejemplo: Membresía mensual, comunidad privada,
-                        eventos grupales en vivo, círculos de apoyo, etc.
+                        [Descripción breve del evento. Ejemplo: "Masterclass en vivo para aprender [tema específico] con sesión de preguntas".]
                     </p>
-                    <p class="card-text" style="font-size: 0.9rem; color: var(--color-text-light); margin-top: 1rem;">
-                        <strong>Ideal para:</strong> Tipo de cliente que se beneficia más de esta modalidad.
-                    </p>
-                    <a href="registro.html" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
-                        [Texto del Botón]
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ============================================
-         PRUEBA SOCIAL (Testimonios)
-         ============================================ -->
-    <section class="section">
-        <div class="container">
-            <div class="model-description">
-                <h4>📍 Módulo: Prueba Social (Testimonios)</h4>
-                <p><strong>Propósito:</strong> Generar confianza mostrando resultados reales de clientes anteriores.</p>
-                <p><strong>Mejores prácticas:</strong> 2-3 testimonios específicos con resultados concretos. Incluir foto y nombre completo si es posible.</p>
-            </div>
-
-            <div class="section-header">
-                <p class="section-subtitle">[Subtítulo de Testimonios (opcional)]</p>
-                <h2 class="section-title">[Título de Sección de Testimonios]</h2>
-            </div>
-
-            <div class="cards-grid">
-                <div class="testimonial">
-                    <p class="testimonial-text">
-                        "Aquí va el testimonio completo de un cliente real. Debe ser específico y mencionar
-                        resultados concretos. Evita testimonios vagos como 'fue genial'. En su lugar, busca
-                        testimonios que mencionen: problema inicial, cómo fue el proceso, y resultado específico obtenido.
-                        Ideal: 3-5 líneas de extensión."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">XY</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">Nombre del Cliente</div>
-                            <div class="testimonial-role">Profesión, Ubicación</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <p class="testimonial-text">
-                        "Segundo testimonio de cliente real. Idealmente de alguien que haya usado una
-                        modalidad diferente de servicio. Incluye detalles específicos sobre la experiencia,
-                        el proceso y los resultados obtenidos."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">AB</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">Nombre del Cliente</div>
-                            <div class="testimonial-role">Profesión, Ubicación</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <p class="testimonial-text">
-                        "Tercer testimonio real. Los mejores testimonios son aquellos que un futuro cliente puede
-                        leer y pensar 'eso es exactamente lo que yo necesito'. Debe resonar con tu audiencia objetivo
-                        y mostrar resultados tangibles o transformaciones específicas."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">CD</div>
-                        <div class="testimonial-info">
-                            <div class="testimonial-name">Nombre del Cliente</div>
-                            <div class="testimonial-role">Profesión, Ubicación</div>
-                        </div>
+                    <div style="margin-top: auto;">
+                        <a href="oferta-de-servicios.html#detalle-evento" class="btn btn-primary" style="width: 100%;">Ver Detalles ↓</a>
                     </div>
                 </div>
             </div>
@@ -400,9 +340,289 @@
     </section>
 
     <!-- ============================================
-         LEAD MAGNET (Imán de Prospectos)
+         MEMBRESÍA / COMUNIDAD (Destacado)
+         ============================================ -->
+    <section class="section section-community">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Invitación a Membresía/Comunidad (Pilar 4)</h4>
+                <p><strong>Propósito:</strong> Invitar a unirse a tu comunidad o membresía. Módulo destacado visualmente para generar interés.</p>
+                <p><strong>Estrategia:</strong> Diseño especial que rompe el patrón visual - fondo degradado, bordes llamativos, énfasis en beneficios de comunidad.</p>
+                <p><strong>Nota DM1:</strong> La membresía es un producto recurrente (MRR) - más valioso que productos one-time.</p>
+            </div>
+
+            <div class="community-hero">
+                <div class="community-content">
+                    <div class="community-badge">✨ Únete a la Comunidad</div>
+
+                    <h2 class="community-title">[Nombre de tu Membresía/Comunidad]</h2>
+
+                    <p class="community-subtitle">
+                        [Tagline o propuesta de valor única - 1 línea que capture la esencia de pertenecer]
+                    </p>
+
+                    <p class="community-description">
+                        Descripción de tu comunidad o membresía. ¿Qué experiencia vivirán? ¿Qué transformación
+                        lograrán al formar parte? Explica el valor de pertenecer a un grupo de personas con
+                        objetivos similares. Menciona el apoyo, recursos exclusivos, y la experiencia de crecimiento
+                        en comunidad. Enfócate en la conexión humana y el camino compartido.
+                    </p>
+
+                    <div class="community-benefits">
+                        <div class="benefit-item-community">
+                            <div class="benefit-icon-community">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>[Beneficio 1]</h4>
+                                <p>Descripción breve del primer beneficio de pertenecer</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item-community">
+                            <div class="benefit-icon-community">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>[Beneficio 2]</h4>
+                                <p>Descripción del segundo beneficio clave</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item-community">
+                            <div class="benefit-icon-community">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>[Beneficio 3]</h4>
+                                <p>Descripción del tercer beneficio principal</p>
+                            </div>
+                        </div>
+
+                        <div class="benefit-item-community">
+                            <div class="benefit-icon-community">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                            </div>
+                            <div>
+                                <h4>[Beneficio 4]</h4>
+                                <p>Descripción del cuarto beneficio especial</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="community-cta">
+                        <div class="community-pricing">
+                            <span class="community-price-label">Desde</span>
+                            <span class="community-price">[€XX/mes]</span>
+                        </div>
+                        <a href="membresia.html" class="btn btn-primary btn-large btn-glow">
+                            [Únete Ahora]
+                        </a>
+                    </div>
+
+                    <p class="community-note">
+                        💫 [Nota especial: ej. "Cancela cuando quieras" / "Primeros 7 días gratis" / "Sin permanencia"]
+                    </p>
+                </div>
+
+                <div class="community-visual">
+                    <!-- <img src="ruta/a/tu/imagen-comunidad.jpg" alt="Experiencia de la comunidad" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"> -->
+
+                    <!-- PLACEHOLDER TEMPORAL (Eliminar cuando tengas la imagen real) -->
+                    <p class="community-visual-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%); border-radius: 20px; padding: 3rem;">
+                        <span style="font-size: 4rem; margin-bottom: 1rem;">🖼️</span>
+                        <strong style="font-size: 1.2rem; margin-bottom: 1rem;">Aquí va tu imagen real</strong>
+                        <span style="font-size: 0.9rem;">Imagen que muestre la experiencia de la comunidad:</span>
+                        <span style="font-size: 0.85rem; margin-top: 0.5rem;">• Mockup del área de miembros</span>
+                        <span style="font-size: 0.85rem;">• Collage de contenido exclusivo</span>
+                        <span style="font-size: 0.85rem;">• Pantallas de la app/plataforma</span>
+                        <span style="font-size: 0.85rem; margin-bottom: 1rem;">• Imagen que represente el acceso y valor</span>
+                        <span style="font-size: 0.8rem; color: #999;">Recomendado: 1200x800px</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRUEBA SOCIAL (Testimonios)
+         ============================================ -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Prueba Social (Testimonios)</h4>
+                <p><strong>Propósito:</strong> Generar confianza mostrando resultados reales de clientes anteriores.</p>
+                <p><strong>Mejores prácticas:</strong> 2-3 testimonios específicos con resultados concretos. Incluir foto y nombre completo si es posible.</p>
+            </div>
+
+            <div class="section-header">
+                <p class="section-subtitle">[Subtítulo de Testimonios (opcional)]</p>
+                <h2 class="section-title">[Título de Sección de Testimonios]</h2>
+            </div>
+
+            <div class="cards-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Aquí va el testimonio completo de un cliente real. Debe ser específico y mencionar
+                        resultados concretos. Evita testimonios vagos como 'fue genial'. En su lugar, busca
+                        testimonios que mencionen: problema inicial, cómo fue el proceso, y resultado específico obtenido.
+                        Ideal: 3-5 líneas de extensión."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">XY</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nombre del Cliente</div>
+                            <div class="testimonial-role">Profesión, Ubicación</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Segundo testimonio de cliente real. Idealmente de alguien que haya usado una
+                        modalidad diferente de servicio. Incluye detalles específicos sobre la experiencia,
+                        el proceso y los resultados obtenidos."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AB</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nombre del Cliente</div>
+                            <div class="testimonial-role">Profesión, Ubicación</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial">
+                    <p class="testimonial-text">
+                        "Tercer testimonio real. Los mejores testimonios son aquellos que un futuro cliente puede
+                        leer y pensar 'eso es exactamente lo que yo necesito'. Debe resonar con tu audiencia objetivo
+                        y mostrar resultados tangibles o transformaciones específicas."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">CD</div>
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Nombre del Cliente</div>
+                            <div class="testimonial-role">Profesión, Ubicación</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         BLOG - ARTÍCULOS RECIENTES (Pilar 1: Autoridad)
          ============================================ -->
     <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Blog - Artículos Recientes (Pilar 1: Autoridad)</h4>
+                <p><strong>Propósito:</strong> Construir autoridad mediante contenido gratuito de valor. Última oportunidad de demostrar expertise antes del Lead Magnet.</p>
+                <p><strong>Estrategia:</strong> Escaparate curado de máximo 3 artículos (más recientes o fijados por el profesional).</p>
+                <p><strong>Nota DM1:</strong> Este es el gancho para contenido gratuito que alimenta el Pilar 3 (Marketing) y refuerza la credibilidad antes de capturar email.</p>
+            </div>
+
+            <div class="section-header">
+                <p class="section-subtitle">[Subtítulo de Blog (opcional)]</p>
+                <h2 class="section-title">[Últimos Artículos del Blog]</h2>
+                <p class="section-description">
+                    [Contenido de valor gratuito para impulsar tu camino y mantenerte actualizado.]
+                </p>
+            </div>
+
+            <div class="blog-grid">
+                <!-- Artículo 1 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <p><strong>Imagen del Artículo</strong><br>
+                        Aquí va la imagen destacada del artículo (optimizada automáticamente).</p>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">[DD de Mes, AAAA]</span>
+                            <span class="blog-category">[Categoría]</span>
+                        </div>
+                        <h3 class="blog-title">[Título del Artículo más Reciente]</h3>
+                        <p class="blog-excerpt">
+                            [Resumen breve de la enseñanza clave del artículo. Enfócate en el valor que obtendrá
+                            el lector. Máximo 2 líneas que generen curiosidad y ganas de leer más.]
+                        </p>
+                        <a href="blog.html" class="blog-link">
+                            [Leer Artículo] →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artículo 2 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <p><strong>Imagen del Artículo</strong><br>
+                        Aquí va la imagen destacada del artículo (optimizada automáticamente).</p>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">[DD de Mes, AAAA]</span>
+                            <span class="blog-category">[Categoría]</span>
+                        </div>
+                        <h3 class="blog-title">[Título del Segundo Artículo]</h3>
+                        <p class="blog-excerpt">
+                            [Resumen del segundo artículo. Destaca el aprendizaje principal o la transformación
+                            que el contenido ofrece. Genera interés sin revelar todo.]
+                        </p>
+                        <a href="blog.html" class="blog-link">
+                            [Leer Artículo] →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Artículo 3 -->
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <p><strong>Imagen del Artículo</strong><br>
+                        Aquí va la imagen destacada del artículo (optimizada automáticamente).</p>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span class="blog-date">[DD de Mes, AAAA]</span>
+                            <span class="blog-category">[Categoría]</span>
+                        </div>
+                        <h3 class="blog-title">[Título del Tercer Artículo]</h3>
+                        <p class="blog-excerpt">
+                            [Resumen del tercer artículo. Menciona el problema que resuelve o la pregunta que
+                            responde. Invita a profundizar en el contenido completo.]
+                        </p>
+                        <a href="blog.html" class="blog-link">
+                            [Leer Artículo] →
+                        </a>
+                    </div>
+                </article>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="blog.html" class="btn btn-secondary btn-large">
+                    [Ver Todos los Artículos]
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         LEAD MAGNET (Imán de Prospectos)
+         ============================================ -->
+    <section class="section">
         <div class="container">
             <div class="model-description">
                 <h4>📍 Módulo: Lead Magnet (Captura de Email)</h4>
@@ -471,7 +691,7 @@
     <!-- ============================================
          CALL TO ACTION FINAL
          ============================================ -->
-    <section class="section">
+    <section class="section section-alt">
         <div class="container">
             <div class="model-description">
                 <h4>📍 Módulo: CTA Final</h4>
@@ -511,7 +731,7 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="sobre-mi.html">Sobre Mí</a></li>
-                    <li><a href="trabaja-conmigo.html">Trabaja Conmigo</a></li>
+                    <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
                     <li><a href="recursos.html">Recursos/Blog</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
