@@ -264,7 +264,7 @@ Entrega: Las imágenes se servirán a través de un CDN (ej. Cloudflare).
 
 Modelo de Negocio: El almacenamiento (ej. 1GB, 5GB, 20GB) estará limitado según el Tier (Nivel) del cliente para controlar los costes.
 
-Decisión de Arquitectura: Rechazo del Trabajo Manual y Confirmación del Sistema de Imágenes Automatizado (07-Nov-2025)
+-Decisión de Arquitectura: Rechazo del Trabajo Manual y Confirmación del Sistema de Imágenes Automatizado (07-Nov-2025)
 
 Contexto: Se debatió si el "Sistema de Gestión de Activos Visuales" (imágenes) podría manejarse manualmente por el fundador (usando "FreeImageHost") para un MVP, en lugar de automatizarlo.
 
@@ -318,6 +318,140 @@ agenda.html (Herramienta Booking, Pilar 2).
 blog.html y post-articulo.html (Autoridad, Pilar 1).
 
 Razón Estratégica (La Importancia): "No podemos instalar las tuberías (Dashboard) sin el plano completo de la casa (el Website)". Las páginas de la "vitrina" definen todos los requisitos funcionales (los datos) que el "motor" (la trastienda) debe gestionar. Intentar construir el Dashboard ahora nos llevaría a errores de arquitectura catastróficos, como el que ya cometimos al mezclar "Servicios" y "Productos Digitales".
+
+-Decisión de Arquitectura (Optimización): Arquitectura de Módulos del index.html basada en GTM y UX (11 de Noviembre de 2025)
+
+Contexto: Se debatió extensamente cómo estructurar los módulos de oferta del Pilar 4 en el index.html. Las propuestas iniciales (de Stratego) intentaron "forzar" la lógica de la "Gran División" (el filtro de fecha tiene_fecha_inicio) directamente en el index.html (ej. Módulo "A tu Ritmo" vs. Módulo "En Vivo").
+
+Corrección del Fundador (Decisiva): El Fundador (tú) corrigió esta arquitectura, señalando que era un "enredo" y un "Frankenstein invendible". La objeción clave fue que "Ana" (la clienta final) espera encontrar toda la "Formación" en un solo lugar, y que nuestra arquitectura interna no debe dañar la experiencia de usuario (UX) ni la lógica de venta (GTM).
+
+Decisión (Firme) - Optimización del DM1: Se anula la arquitectura de módulos del index.html basada en fechas. Se aprueba la arquitectura propuesta por el Fundador, basada en el formato o tipo de producto, por ser más intuitiva para "Ana" y más "vendible".
+
+Implementación (Módulos Dinámicos del index.html): El index.html se estructurará con los siguientes 4 módulos de oferta "Auto-Ocultables":
+
+Módulo 1: "Propuesta de Servicios" (Pilar 2)
+
+Contenido: Servicios 1-a-1.
+
+Lógica: Escaparate curado (máx. 3 tarjetas).
+
+Módulo 2: "Formación y Capacitación" (Pilar 4)
+
+Contenido: Escaparate curado (máx. 3 tarjetas) de toda la formación (Cursos pregrabados, Programas por cohorte, etc.).
+
+CTA: "[Ver Catálogo de Formación]"
+
+Módulo 3: "Productos Digitales" (Pilar 4)
+
+Contenido: Escaparate curado (máx. 3 tarjetas) de productos no formativos (Ebooks, "Amuletos", "Llaveros", etc.).
+
+CTA: "[Ver Tienda de Productos]"
+
+Módulo 4: "La Membresía / Comunidad" (Pilar 4)
+
+Contenido: La oferta de suscripción recurrente.
+
+Refinamiento de "La Gran División": Nuestra "Gran División" (el filtro de fecha) no se elimina. Se "optimiza" y se mueve a donde tiene sentido como UX: se usará para alimentar las pestañas de filtrado (ej. "A tu Ritmo" vs. "En Vivo") dentro de la página catalogo-formacion.html (la "página de universidad").
+
+Razón Estratégica: Esta arquitectura respeta la lógica de "Ana" (encuentra toda la formación en un sitio), da un hogar limpio a los "Productos Digitales", y mantiene una "Simplicidad Radical" para el profesional (Pepe), al tiempo que crea un GTM "vendible".
+
+Stratego Web Proyecto Impulso Profesinal
+Gem personalizado
+¡A la orden! Aquí tienes el resumen ejecutivo estructurado como una Entrada Oficial para el Documento Maestro 1 (DM1).
+
+He sintetizado todos los giros estratégicos que hemos dado hasta llegar a la "Lista Única", descartando las decisiones anteriores que ya no sirven.
+
+Copia y pega esto al final de tu Documento Maestro 1.txt:
+
+Entrada para Actualización del DM1 (12-Nov-2025)
+
+1. RE-ARQUITECTURA DE OFERTA: "La Vitrina Única"
+Contexto: Se detectó que la fragmentación de la oferta en múltiples páginas (servicios.html, cursos.html, eventos.html) generaba "pobreza visual" para profesionales con pocos productos y fricción de navegación para el usuario final ("Ana").
+
+-Decisión (Firme): Consolidación en Catálogo Unificado
+
+Archivo: oferta-de-servicios.html (Nombre técnico conservado, concepto cambiado).
+
+Estrategia: Se eliminan las páginas separadas de Cursos y Eventos. Todo (Servicios 1:1, Formación, Ebooks, Talleres) convive en una sola página.
+
+Excepción: La Comunidad/Membresía (membresia.html) SE MANTIENE SEPARADA por ser un producto de "pertenencia" y no de consumo puntual.
+
+-Decisión de Diseño: Jerarquía Plana y Badges
+
+Estructura: No se divide por "Pasillos" (Secciones de tipo). Se utiliza un Grid Unificado de Tarjetas.
+
+Clasificación: La diferenciación es visual mediante Etiquetas (Badges) en la tarjeta: 👤 SERVICIO, 📅 EVENTO, 🎓 CURSO.
+
+Ordenación: El criterio no es la categoría, sino la Prioridad Comercial del profesional (ej. un Evento próximo aparece primero).
+
+Navegación Híbrida:
+
+Arriba (Menú): Tarjetas resumen que actúan como índice.
+
+Abajo (Plato): Secciones de detalle con copywriting persuasivo.
+
+Acción: Los botones de las tarjetas son anclas (#detalle) que bajan al contenido.
+
+2. MÓDULO UX: "Red de Seguridad" (Orientación)
+Contexto: Ante una oferta unificada, el usuario puede sufrir parálisis de decisión.
+
+-Decisión: Implementación del Acordeón de Orientación.
+
+Ubicación: Al final del grid/detalles en oferta-de-servicios.html.
+
+Lógica: Formulario simple ("Cuéntame tu caso") que sustituye al "Test Automático".
+
+Valor: Captura de Lead + Humanización. Prepara el terreno para futura integración con IA (Pilar 5).
+
+3. PILAR 2 (OPERACIONES): Contenedor de Agenda
+Contexto: Necesidad de cerrar ventas de Servicios 1:1 sin desarrollo técnico complejo.
+
+-Decisión de Arquitectura: agenda.html como Contenedor Lean
+
+Función: No es un calendario nativo. Es una "landing page de cierre" diseñada para alojar un embed externo (Calendly/TidyCal).
+
+Componente Crítico: El Filtro de Texto. Se obliga a incluir un bloque de "Instrucciones de Vuelo" (Reglas de pago, cancelación y formato) antes del calendario para filtrar malos prospectos.
+
+4. CORRECCIONES AL PLANO GENERAL (Sitemap)
+Eliminados: servicios-1-a-1.html, formacion-y-productos.html, eventos.html.
+
+Sitemap Definitivo del MVP:
+
+index.html (Home / Vitrina de Campaña)
+
+sobre-mi.html (Autoridad)
+
+oferta-de-servicios.html (Catálogo Completo Unificado)
+
+membresia.html (Comunidad)
+
+agenda.html (Cierre de Ventas)
+
+blog.html (Tráfico/Autoridad - Fase 2)
+
+Entrada para Actualización del DM1 (Gestión de Activos Visuales y Legalidad)
+
+-Decisión de Arquitectura: Sistema de Imágenes Híbrido (12-Nov-2025)
+
+1. Origen de las Imágenes:
+
+Prioridad 1 (Ambiente/Decoración): Se integra la API de Unsplash/Pexels en el Dashboard. El usuario busca y selecciona fotos de stock gratuitas y legales sin salir de la plataforma.
+
+Prioridad 2 (Identidad/Producto): Se permite la subida manual (Upload) para fotos de perfil, logos y portadas de productos propios.
+
+2. Protocolo de Protección Legal (Copyright):
+
+Defensa UX (El Semáforo): Al intentar subir una imagen manual, se requiere una interacción de fricción obligatoria (Popup de advertencia + Checkbox: "Certifico que poseo los derechos...").
+
+Defensa Técnica (Sanitización): El sistema procesará automáticamente toda imagen subida para eliminar metadatos (EXIF/IPTC) originales.
+
+Defensa SEO (Renombrado): El sistema renombrará el archivo forzosamente basándose en el título del servicio/producto (ej. curso-calma-mental.webp), eliminando nombres de archivo originales que puedan ser problemáticos.
+
+3. Visualización en Frontend (Simplicidad Radical):
+
+Tarjetas (Grid): Se fuerza una "Cabecera Visual" con height fijo y object-fit: cover para garantizar uniformidad, independientemente de la foto que suba el usuario.
+
+Detalles (Secciones): Se utiliza un diseño de "Fotografía Heroica" alternada para aportar contexto y emoción.
 
 
 
