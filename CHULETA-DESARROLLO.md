@@ -22,18 +22,19 @@ Web_modelo/
 ├── index.html                    # Página principal (home)
 ├── presentacion-profesional.html # Página "Sobre Mí" (ACTIVA)
 ├── oferta-de-servicios.html     # Catálogo de soluciones
-├── recursos.html                # Blog/recursos
-├── contacto-agenda.html         # Landing híbrida: Reserva + Contacto (NUEVA v1.5)
+├── recursos.html                # Blog/recursos (Fase 2)
+├── contacto-agenda.html         # Landing híbrida: Reserva + Contacto (v1.5)
+├── membresia.html               # Sales page para suscripción recurrente (v1.8)
 ├── area-miembros.html           # Dashboard privado
 ├── Obsoleto/
 │   ├── sobre-mi.html            # ⚠️ DEPRECATED - Usar presentacion-profesional.html
 │   ├── agenda.html              # ⚠️ DEPRECATED - Usar contacto-agenda.html
 │   └── contacto.html            # ⚠️ DEPRECATED - Usar contacto-agenda.html
 ├── css/
-│   └── styles.css               # Hoja de estilos única (2800+ líneas)
+│   └── styles.css               # Hoja de estilos única (2900+ líneas)
 ├── js/
 │   └── main.js                  # JavaScript principal
-└── CHULETA-DESARROLLO.md        # Este archivo
+└── CHULETA-DESARROLLO.md        # Este archivo (v1.8)
 ```
 
 **Decisiones arquitectónicas recientes:**
@@ -770,6 +771,21 @@ Web_modelo/
 
 ## 🔄 HISTORIAL DE CAMBIOS
 
+### 2025-01-13 (Versión 1.8 - Integración membresia.html al proyecto)
+- ✅ **PÁGINA NUEVA**: membresia.html auditada e integrada
+  - Footer unificado agregado (82 líneas SVG + estructura 4 columnas)
+  - Verificadas 4 optimizaciones: ✅ Todas cumplen
+  - 0 colores HEX hardcoded (Opt #3)
+  - Open Graph Protocol completo (Opt #4)
+  - Clases CSS reutilizables del sistema (Opt #1)
+  - Sin imágenes = Lazy loading N/A (Opt #2)
+- ✅ **ARQUITECTURA**: Sales page vertical modelo "Club Privado"
+  - 5 secciones: Hero Pertenencia → Stack Valor (4 pilares) → Sneak Peek → Pricing → FAQ
+  - Integración Stripe/PayPal preparada (pendiente Fase 2)
+  - 528 líneas totales (446 originales + 82 footer)
+- 📊 Total páginas completas: 6/6 del sitio web
+- 🎯 Objetivo: Habilitar monetización recurrente (MRR)
+
 ### 2025-01-13 (Versión 1.7 - Rediseño contacto-agenda.html + Unificación Footer)
 - ✅ **REDISEÑO COMPLETO**: contacto-agenda.html transformada a layout 2 columnas
   - Calendario a la izquierda (2fr, más ancho, borde destacado)
@@ -952,9 +968,9 @@ Los comentarios HTML `<!-- INSTRUCCIÓN: ... -->` son tus guías. No necesitas s
 
 ---
 
-**📅 Última actualización**: 2025-11-12
+**📅 Última actualización**: 2025-01-13
 **👤 Autor**: Claude (Asistente IA)
-**📄 Versión**: 1.3
+**📄 Versión**: 1.8
 **🔒 Estado**: Documento vivo (actualizar con cada optimización)
 **📊 Documentos Relacionados**:
 - INVENTARIO-ACTIVOS-ESPECIFICACIONES.md (valoración y due diligence)
@@ -1218,5 +1234,5 @@ git status --short
 ---
 
 **🎓 Fin de la Chuleta - ¡Úsala como referencia constante!**
-**📅 Última actualización**: 2025-01-12 - Versión 1.1
+**📅 Última actualización**: 2025-01-13 - Versión 1.8
 **💾 Recuerda**: Actualizar esta Chuleta después de cada optimización importante

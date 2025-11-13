@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membresía Exclusiva - [Tu Nombre Profesional] (MODELO)</title>
+
+    <!-- Open Graph Protocol -->
+    <meta property="og:title" content="Únete al Círculo de [NOMBRE]">
+    <meta property="og:description" content="Acceso exclusivo a formación, mentoría y comunidad.">
+    <meta property="og:image" content="images/og-membresia.jpg">
+    <meta property="og:url" content="https://tupagina.com/membresia.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Únete al Círculo de [NOMBRE]">
+    <meta name="twitter:description" content="Acceso exclusivo a formación, mentoría y comunidad.">
+    <meta name="twitter:image" content="images/og-membresia.jpg">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">Tu Logo Aquí</div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+                <li><a href="contacto-agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+            </ul>
+
+            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <div class="auth-buttons" id="authButtons">
+                <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
+                <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
+            </div>
+
+            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
+            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
+                <div id="userProfileButton" style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%236B9080'/%3E%3Ctext x='20' y='26' font-size='16' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                         alt="Avatar"
+                         style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--color-primary);">
+                    <div>
+                        <div id="userNameHeader" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text);">Usuario</div>
+                        <span style="font-size: 0.8rem; color: var(--color-primary);">Ver opciones ▼</span>
+                    </div>
+                </div>
+
+                <!-- Menú desplegable -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <a href="area-miembros.html" class="user-menu-item">
+                        <span>👤</span> Mi Área
+                    </a>
+                    <button onclick="cerrarSesion()" class="user-menu-item">
+                        <span>🚪</span> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <span class="nav-toggle-text">Menú</span>
+                <div class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Overlay para el menú -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- DOCUMENTACIÓN -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Página: MEMBRESÍA (Sales Page - MRR)</h4>
+                <p><strong>Propósito:</strong> Página de venta para suscripción recurrente (Monthly Recurring Revenue). Modelo "Club Privado" no "Netflix".</p>
+                <p><strong>Estrategia:</strong> Vendemos Pertenencia y Seguridad (Acceso al profesional, a la tribu, a la bóveda). NO vendemos "más información".</p>
+                <p><strong>Arquitectura:</strong> Carta de ventas vertical con 5 secciones clave: Hero Pertenencia → Stack de Valor (4 pilares) → Sneak Peek → Pricing → FAQ.</p>
+                <p><strong>Integración requerida:</strong> Stripe/PayPal para pagos recurrentes. Gestión de suscripciones desde area-miembros.html.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO: Pertenencia -->
+    <section class="section section--hero" style="background: linear-gradient(to bottom, var(--color-bg-primary-light), var(--color-white)); padding: 4rem 0;">
+        <div class="container text-center">
+            <div class="badge badge--evento" style="display: inline-block; margin-bottom: 1rem; position: static;">🌟 [Badge: Ej. "COMUNIDAD PRIVADA" / "CLUB EXCLUSIVO"]</div>
+            <h1 class="section-title display-text" style="margin-bottom: 1rem;">[Título Hero: Ej. "No tienes que hacerlo solo"]</h1>
+            <p class="section-subtitle" style="max-width: 700px; margin: 0 auto 2rem auto; font-size: 1.15rem; line-height: 1.6;">
+                [Subtítulo explicativo. Ejemplo: "Únete a <strong>[Nombre de la Membresía]</strong> y accede a la formación, el soporte y la tribu que necesitas para avanzar."]
+            </p>
+            <div style="margin-top: 2rem;">
+                <a href="#pricing" class="btn btn-primary btn-large">[CTA: Ej. "Ver Planes de Acceso ↓" / "Descubrir la Membresía"]</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- STACK DE VALOR: Los 4 Pilares -->
+    <section class="section">
+        <div class="container">
+            <div class="model-description" style="margin-bottom: 2rem;">
+                <h4>💡 Sección: Stack de Valor (4 Pilares)</h4>
+                <p><strong>Propósito:</strong> Desglosar por qué vale la pena pagar cada mes. Cada tarjeta representa un pilar de valor.</p>
+                <p><strong>Los 4 Pilares:</strong></p>
+                <ol style="line-height: 1.8;">
+                    <li><strong>La Bóveda:</strong> Contenido grabado, cursos, masterclasses previas (tu "Netflix")</li>
+                    <li><strong>El Directo:</strong> Sesión mensual en vivo (Q&A, mentoría grupal)</li>
+                    <li><strong>La Tribu:</strong> Grupo privado externo (Telegram/WhatsApp/Discord)</li>
+                    <li><strong>La Herramienta:</strong> Recursos descargables mensuales (plantillas, PDFs, workbooks)</li>
+                </ol>
+            </div>
+
+            <h2 class="text-center mb-lg">[Título Sección: Ej. "Lo que desbloqueas al entrar" / "Tu acceso incluye"]</h2>
+
+            <div class="cards-grid">
+
+                <div class="card card--enhanced">
+                    <div class="card-icon card-icon--primary" style="font-size: 1.5rem;">📚</div>
+                    <h3 class="card-title">[Pilar 1: Ej. "La Bóveda de Conocimiento"]</h3>
+                    <p class="card-text">[Descripción. Ej: "Acceso inmediato a todos mis cursos grabados y masterclasses anteriores. Tu 'Netflix' de crecimiento."]</p>
+                </div>
+
+                <div class="card card--enhanced">
+                    <div class="card-icon card-icon--secondary" style="font-size: 1.5rem;">🔴</div>
+                    <h3 class="card-title">[Pilar 2: Ej. "Mentoría Mensual en Vivo"]</h3>
+                    <p class="card-text">[Descripción. Ej: "Una sesión por Zoom cada mes para resolver tus dudas cara a cara. Si no vienes, tienes la grabación."]</p>
+                </div>
+
+                <div class="card card--enhanced">
+                    <div class="card-icon card-icon--sage" style="font-size: 1.5rem;">💬</div>
+                    <h3 class="card-title">[Pilar 3: Ej. "La Tribu Privada"]</h3>
+                    <p class="card-text">[Descripción. Ej: "Acceso a nuestro grupo exclusivo (Telegram/WhatsApp). Conecta con personas en tu misma sintonía."]</p>
+                </div>
+
+                <div class="card card--enhanced">
+                    <div class="card-icon card-icon--text" style="font-size: 1.5rem;">🛠️</div>
+                    <h3 class="card-title">[Pilar 4: Ej. "Herramientas Prácticas"]</h3>
+                    <p class="card-text">[Descripción. Ej: "Plantillas, PDFs y recursos descargables nuevos cada mes para facilitarte el trabajo."]</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SNEAK PEEK: La Prueba Visual -->
+    <section class="section section-alt">
+        <div class="container text-center">
+            <div class="model-description" style="margin-bottom: 2rem;">
+                <h4>💡 Sección: Sneak Peek (Prueba Visual)</h4>
+                <p><strong>Propósito:</strong> Mostrar un pantallazo "falso" de lo que hay dentro. Psicología: "Mira todo lo que te estás perdiendo".</p>
+                <p><strong>En producción:</strong> Reemplazar con captura de pantalla real del área de miembros, dashboard, o vista de cursos.</p>
+            </div>
+
+            <h2 class="section-title">[Título: Ej. "Así se ve por dentro" / "Un vistazo al área privada"]</h2>
+
+            <div class="image-placeholder" style="height: 400px; max-width: 800px; margin: 2rem auto; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
+                <p class="text-muted" style="font-size: 3rem;">📷</p>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-muted-text);">(En producción: Captura del Área de Miembros)</p>
+
+            <p class="text-muted">[Texto de apoyo. Ej: "Todo organizado, limpio y fácil de usar."]</p>
+        </div>
+    </section>
+
+    <!-- PRICING: La Oferta Irresistible -->
+    <section class="section" id="pricing">
+        <div class="container" style="max-width: 700px;">
+            <div class="model-description" style="margin-bottom: 2rem;">
+                <h4>💡 Sección: Pricing (Oferta Irresistible)</h4>
+                <p><strong>Propósito:</strong> Mostrar el precio de forma que parezca ridículo comparado con el valor del Stack.</p>
+                <p><strong>Estrategia:</strong> Una sola tarjeta destacada (o dos: Mensual vs Anual con descuento). Destacar "Sin permanencia".</p>
+                <p><strong>Integración:</strong> El botón debe conectar con Stripe/PayPal. URL de ejemplo: https://buy.stripe.com/tu-producto-id</p>
+            </div>
+
+            <div class="pricing-box text-center" style="border: 3px solid var(--color-primary); padding: 3rem 2rem; border-radius: 16px; background: var(--color-white); box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <h3 class="card-title" style="font-size: 1.75rem; margin-bottom: 0.5rem;">[Nombre del Plan: Ej. "Acceso Total" / "Membresía Premium"]</h3>
+                <p class="text-muted" style="margin-bottom: 2rem;">[Subtítulo. Ej: "Cancela cuando quieras. Sin permanencia."]</p>
+
+                <div class="price-display" style="margin: 2rem 0;">
+                    <span class="price price--xlarge price--primary">[Precio: Ej. "29€"]</span>
+                    <span class="text-muted" style="font-size: 1.1rem;">/mes</span>
+                </div>
+
+                <ul class="list-unstyled text-left" style="display: inline-block; margin-bottom: 2rem; text-align: left;">
+                    <li class="mb-xs" style="margin-bottom: 0.5rem;">✅ [Beneficio 1: Ej. "Acceso inmediato a La Bóveda"]</li>
+                    <li class="mb-xs" style="margin-bottom: 0.5rem;">✅ [Beneficio 2: Ej. "Sesiones de Q&A mensuales"]</li>
+                    <li class="mb-xs" style="margin-bottom: 0.5rem;">✅ [Beneficio 3: Ej. "Comunidad privada"]</li>
+                    <li class="mb-xs" style="margin-bottom: 0.5rem;">✅ [Beneficio 4: Ej. "Nuevos recursos cada mes"]</li>
+                </ul>
+
+                <a href="#" class="btn btn-primary btn-large w-full">[CTA Final: Ej. "Unirme al Club Ahora →" / "Activar mi Membresía"]</a>
+                <p class="mt-sm text-sm text-muted" style="margin-top: 1rem;">🔒 [Texto seguridad: "Pago seguro vía Stripe" / "Garantía de devolución 7 días"]</p>
+            </div>
+
+            <div class="model-description" style="margin-top: 2rem;">
+                <h4>💡 Variante: Plan Anual con Descuento</h4>
+                <p>Si quieres ofrecer plan anual, duplica la tarjeta de pricing y usa este cálculo:</p>
+                <ul style="line-height: 1.8;">
+                    <li><strong>Mensual:</strong> 29€/mes = 348€/año</li>
+                    <li><strong>Anual:</strong> 290€/año (ahorro de 58€ = 2 meses gratis)</li>
+                    <li><strong>Psicología:</strong> Resalta "Ahorra X€" o "2 meses gratis"</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ: Resolver Ansiedad de Suscripción -->
+    <section class="section">
+        <div class="container" style="max-width: 800px;">
+            <div class="model-description" style="margin-bottom: 2rem;">
+                <h4>💡 Sección: FAQ de Miedo</h4>
+                <p><strong>Propósito:</strong> Resolver la ansiedad de la suscripción. Las preguntas más importantes:</p>
+                <ul style="line-height: 1.8;">
+                    <li>¿Tengo permanencia? → NO (clave para conversión)</li>
+                    <li>¿Qué pasa si me pierdo un directo? → Grabación disponible</li>
+                    <li>¿El contenido es para siempre? → Mientras esté activa la suscripción</li>
+                    <li>¿Cómo cancelo? → Un clic desde tu perfil</li>
+                    <li>¿Puedo volver a entrar si cancelo? → Sí, en cualquier momento</li>
+                </ul>
+            </div>
+
+            <h2 class="text-center section-title" style="margin-bottom: 3rem;">[Título: Ej. "Preguntas Frecuentes" / "Resolvemos tus dudas"]</h2>
+
+            <div class="faq-grid">
+                <div class="mb-md" style="margin-bottom: 2rem;">
+                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 1: Ej. "¿Tengo permanencia?"]</h4>
+                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "No. Puedes darte de baja en cualquier momento desde tu perfil con un solo clic."]</p>
+                </div>
+                <div class="mb-md" style="margin-bottom: 2rem;">
+                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 2: Ej. "¿Qué pasa si me pierdo un directo?"]</h4>
+                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "No te preocupes. Todas las sesiones quedan grabadas y se suben a la Bóveda en menos de 24h."]</p>
+                </div>
+                <div class="mb-md" style="margin-bottom: 2rem;">
+                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 3: Ej. "¿El contenido es para siempre?"]</h4>
+                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "Tienes acceso a todo el material mientras tu suscripción esté activa."]</p>
+                </div>
+                <div class="mb-md" style="margin-bottom: 2rem;">
+                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 4: Ej. "¿Cómo cancelo si quiero?"]</h4>
+                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "Desde tu área de miembros, sección 'Mi Suscripción', un clic en 'Cancelar'. Sin preguntas ni retención."]</p>
+                </div>
+            </div>
+
+            <!-- CTA Final de cierre -->
+            <div class="text-center" style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--color-border);">
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: var(--color-text);">[Texto cierre. Ej: "¿Listo para formar parte del club?"]</p>
+                <a href="#pricing" class="btn btn-primary btn-large">[CTA: Ej. "Ver Planes y Unirme" / "Comenzar Ahora"]</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="model-description">
+                <h4>📍 Módulo: Footer (Pie de Página)</h4>
+                <p><strong>Propósito:</strong> Proveer navegación secundaria, enlaces legales, redes sociales y contacto.</p>
+                <p><strong>Siempre incluir:</strong> Política de privacidad, Términos y condiciones, Contacto, Login miembros (discreto).</p>
+            </div>
+
+            <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                    <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
+                    <li><a href="recursos.html">Recursos/Blog</a></li>
+                    <li><a href="contacto-agenda.html">Contacto y Agenda</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
+                    <li><a href="cursos.html">Cursos Online</a></li>
+                    <li><a href="membresia.html">Membresía</a></li>
+                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Conecta</h3>
+                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="loginModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="loginModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Iniciar Sesión</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Accede a tu área de miembros
+                </p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Tu contraseña">
+                </div>
+
+                <div style="margin-bottom: 1.5rem; text-align: right;">
+                    <a href="#" style="font-size: 0.9rem; color: var(--color-primary);">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Iniciar Sesión
+                </button>
+
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                    <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                        ¿No tienes cuenta?
+                    </p>
+                    <button type="button" onclick="cerrarModalLogin(); abrirModalRegistro();" class="btn btn-secondary" style="width: 100%;">
+                        Crear Cuenta Nueva
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registroModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="registroModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="registroModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Crear Cuenta</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Únete para acceder a contenido exclusivo
+                </p>
+            </div>
+
+            <form id="registroForm">
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo *</label>
+                    <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña *</label>
+                    <input type="password" id="password" class="form-input" required placeholder="Mínimo 6 caracteres" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmPassword" class="form-input" required placeholder="Repite tu contraseña" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="terminos" required style="margin-top: 0.25rem;">
+                        <span style="font-size: 0.9rem; color: var(--color-text-light);">
+                            Acepto los <a href="#" style="color: var(--color-primary); text-decoration: underline;">términos y condiciones</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div id="mensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: var(--color-success-bg); border-left: 4px solid var(--color-success); color: var(--color-success-dark); margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Crear Mi Cuenta
+                </button>
+
+                <p style="text-align: center; font-size: 0.9rem; color: var(--color-text-light);">
+                    ¿Ya tienes cuenta? <a href="#" onclick="cerrarModalRegistro(); abrirModalLogin(); return false;" style="color: var(--color-primary); font-weight: 500;">Inicia sesión aquí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="model-description">
+                <h4>📍 Módulo: Footer (Pie de Página)</h4>
+                <p><strong>Propósito:</strong> Proveer navegación secundaria, enlaces legales, redes sociales y contacto.</p>
+                <p><strong>Siempre incluir:</strong> Política de privacidad, Términos y condiciones, Contacto, Login miembros (discreto).</p>
+            </div>
+
+            <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                    <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
+                    <li><a href="recursos.html">Recursos/Blog</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
+                    <li><a href="cursos.html">Cursos Online</a></li>
+                    <li><a href="membresia.html">Membresía</a></li>
+                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Conecta</h3>
+                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
