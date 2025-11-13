@@ -453,6 +453,24 @@ Tarjetas (Grid): Se fuerza una "Cabecera Visual" con height fijo y object-fit: c
 
 Detalles (Secciones): Se utiliza un diseño de "Fotografía Heroica" alternada para aportar contexto y emoción.
 
+Entrada para Actualización del DM1 (13-Nov-2025)
+
+-Decisión de Arquitectura: Fusión de Agenda y Contacto (Pilar 2)
+
+Contexto: Se debatía tener páginas separadas. Se concluye que dispersa el tráfico.
+Decisión (Firme): Se unifica en un solo archivo `contacto-agenda.html`.
+Estrategia: "Red de Seguridad". El calendario (Venta) es el protagonista. El formulario de contacto (Soporte) es el secundario/modal (oculto bajo botón o sticky sidebar).
+Objetivo: Centralizar toda la intención del usuario en una sola URL.
+
+-Decisión de Producto: Modelo de Membresía "Bóveda + Llave" (Pilar 4)
+Contexto: Evitar el modelo "Periódico" (creación constante de contenido) que quema al profesional.
+Decisión (Firme): La membresía vende acceso a lo ya creado (Bóveda), eventos en vivo (Directo) y comunidad externa (Tribu).
+Arquitectura Visual: `membresia.html` se diseña como "Carta de Ventas Vertical" con Pricing Único para eliminar parálisis de decisión en el MVP.
+
+-Decisión de UX: El "Ancla de Confianza"
+Decisión: Todas las páginas transaccionales (`contacto-agenda` y `membresia`) deben incluir obligatoriamente el Avatar del profesional en el Hero Section.
+Razón: Humanizar la transacción aumenta la conversión en servicios profesionales.
+
 
 
 
