@@ -23,10 +23,8 @@
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobre-mi.html">Sobre Mí</a></li>
-                <li><a href="presentacion-profesional.html">Presentación Profesional</a></li>
-                <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
-                <li><a href="recursos.html">Recursos</a></li>
+                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
                 <li><a href="area-miembros.html" class="nav-cta">Mi Área</a></li>
             </ul>
 
@@ -337,15 +335,22 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-content">
+        <div class="footer-wrapper">
+            <div class="model-description">
+                <h4>📍 Módulo: Footer (Pie de Página)</h4>
+                <p><strong>Propósito:</strong> Proveer navegación secundaria, enlaces legales, redes sociales y contacto.</p>
+                <p><strong>Siempre incluir:</strong> Política de privacidad, Términos y condiciones, Contacto, Login miembros (discreto).</p>
+            </div>
+
+            <div class="footer-content">
             <div class="footer-section">
                 <h3>Navegación</h3>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
                     <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
                     <li><a href="recursos.html">Recursos/Blog</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="contacto-agenda.html">Contacto y Agenda</a></li>
                 </ul>
             </div>
 
@@ -355,7 +360,7 @@
                     <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
                     <li><a href="cursos.html">Cursos Online</a></li>
                     <li><a href="membresia.html">Membresía</a></li>
-                    <li><a href="agenda.html">Agendar Sesión</a></li>
+                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
                 </ul>
             </div>
 
@@ -365,24 +370,45 @@
                     <li><a href="#">Política de Privacidad</a></li>
                     <li><a href="#">Términos y Condiciones</a></li>
                     <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="index.html">Volver al Inicio</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
                 </ul>
             </div>
 
             <div class="footer-section">
                 <h3>Conecta</h3>
-                <p>Sígueme en redes sociales para contenido diario de bienestar y consciencia.</p>
+                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
                 <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Instagram">📷</a>
-                    <a href="#" class="social-link" aria-label="Facebook">📘</a>
-                    <a href="#" class="social-link" aria-label="YouTube">📹</a>
-                    <a href="#" class="social-link" aria-label="Email">✉️</a>
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 [Tu Nombre] - Terapeuta Holística | Todos los derechos reservados</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
+            </div>
         </div>
     </footer>
 

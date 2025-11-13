@@ -6,173 +6,121 @@
     <meta name="description" content="Conoce mi historia profesional, enfoque de trabajo y formación">
     <title>Presentación Profesional - Profesional Independiente (MODELO)</title>
 
+    <!-- ============================================
+         OPTIMIZACIÓN #4: OPEN GRAPH PROTOCOL
+         Meta tags para redes sociales (WhatsApp, Facebook, LinkedIn, Twitter)
+         ============================================ -->
+
+    <!-- Open Graph: Meta tags principales -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="[TU_URL_COMPLETA]/presentacion-profesional.html">
+    <meta property="og:site_name" content="[TU_NOMBRE_MARCA]">
+    <meta property="og:title" content="[TU_NOMBRE] - Presentación Profesional">
+    <meta property="og:description" content="Conoce mi historia profesional, enfoque de trabajo y formación. [AÑADE_FRASE_CLAVE]">
+
+    <!-- Open Graph: Imagen (CRÍTICO para visual en redes) -->
+    <meta property="og:image" content="[TU_URL_COMPLETA]/images/og-image-presentacion.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="[TU_NOMBRE] - Perfil Profesional">
+
+    <!-- Open Graph: Configuración regional -->
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Cards (para compartir en Twitter/X) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[TU_NOMBRE] - Presentación Profesional">
+    <meta name="twitter:description" content="Conoce mi historia profesional, enfoque de trabajo y formación">
+    <meta name="twitter:image" content="[TU_URL_COMPLETA]/images/og-image-presentacion.jpg">
+    <meta name="twitter:image:alt" content="[TU_NOMBRE] - Perfil Profesional">
+    <meta name="twitter:site" content="@[TU_USUARIO_TWITTER]">
+
+    <!-- SEO Adicional -->
+    <link rel="canonical" href="[TU_URL_COMPLETA]/presentacion-profesional.html">
+    <meta name="author" content="[TU_NOMBRE_COMPLETO]">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="[TU_NOMBRE], [TU_ESPECIALIDAD], [TU_CIUDAD], perfil profesional, presentación">
+
+    <!-- Favicons (usa https://realfavicongenerator.net/) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#c5d9e8">
+
+    <!--
+    ============================================
+    📝 INSTRUCCIONES PARA "PEPE" (EL CLIENTE FINAL)
+    ============================================
+
+    PASO 1: Reemplazar PLACEHOLDERS en este <head>
+    ========================================
+    Busca y reemplaza estos textos en TODO el bloque de arriba:
+
+    [TU_URL_COMPLETA]          → https://www.tudominio.com (SIN barra final)
+    [TU_NOMBRE_MARCA]          → Tu Nombre o Marca Personal
+    [TU_NOMBRE]                → Tu Nombre Completo
+    [TU_NOMBRE_COMPLETO]       → Tu Nombre y Apellidos
+    [TU_ESPECIALIDAD]          → Ej: "Psicóloga", "Coach", "Terapeuta Holística"
+    [TU_CIUDAD]                → Tu ciudad (opcional para SEO local)
+    [TU_USUARIO_TWITTER]       → @tunombre (si tienes Twitter)
+    [AÑADE_FRASE_CLAVE]        → Ej: "15 años de experiencia ayudando a profesionales"
+
+    PASO 2: Crear imagen Open Graph
+    ================================
+    CRÍTICO: Debes crear una imagen llamada "og-image-presentacion.jpg"
+
+    Especificaciones:
+    - Tamaño: 1200x630 píxeles (ratio 1.91:1)
+    - Formato: JPG (peso < 200KB) o PNG (< 300KB)
+    - Ubicación: /images/og-image-presentacion.jpg
+    - Contenido sugerido:
+      * Tu foto profesional (retrato, primer plano)
+      * Texto: "Conoce Mi Historia" o "[Tu Nombre] - Perfil Profesional"
+      * Tu nombre completo
+      * Tu título/especialidad
+      * Colores de tu marca
+
+    Guía completa: Ver /images/README-OG-IMAGES.md
+
+    PASO 3: Crear Favicons
+    =======================
+    1. Ve a https://realfavicongenerator.net/
+    2. Sube tu logo (PNG cuadrado, mínimo 260x260px)
+    3. Descarga el paquete generado
+    4. Sube todos los archivos a la raíz de tu web
+
+    PASO 4: Validar antes de publicar
+    ==================================
+    Usa estas herramientas ANTES de compartir:
+
+    - Facebook/WhatsApp: https://developers.facebook.com/tools/debug/
+      (Si cambiaste la imagen, usa "Scrape Again" para invalidar caché)
+
+    - LinkedIn: https://www.linkedin.com/post-inspector/
+      (Pega tu URL y verás preview exacto)
+
+    - Twitter: https://cards-dev.twitter.com/validator
+      (Requiere cuenta Twitter)
+
+    - Universal: https://www.opengraph.xyz/
+      (No requiere cuenta, muestra todas las plataformas)
+
+    PASO 5: Testing final
+    ======================
+    1. Comparte tu link en WhatsApp a ti mismo
+    2. Espera 5-10 segundos
+    3. Debe aparecer una tarjeta bonita con tu imagen
+    4. Si no aparece: invalida caché en Facebook Debugger
+
+    ============================================
+    -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/styles.css">
-
-    <style>
-        .content-column {
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .intro-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .intro-image {
-            background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
-            border-radius: 15px;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-light);
-            font-size: 1rem;
-            font-style: italic;
-            text-align: center;
-            padding: 2rem;
-            box-shadow: var(--shadow-soft);
-        }
-
-        .intro-text h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .intro-text p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: var(--color-text-light);
-        }
-
-        .intro-text .highlight {
-            color: var(--color-primary);
-        }
-
-        @media (max-width: 768px) {
-            .intro-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .intro-image {
-                height: 350px;
-            }
-
-            .intro-text h1 {
-                font-size: 2rem;
-            }
-
-            .intro-text p {
-                font-size: 1rem;
-            }
-        }
-
-        .profile-guide {
-            margin-bottom: 1.5rem;
-            padding: 1.5rem;
-            background: #fdfdfd;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: var(--color-text);
-        }
-
-        .profile-content {
-            font-size: 1.05rem;
-            line-height: 1.9;
-            color: var(--color-text);
-        }
-
-        .mission-box {
-            background: var(--color-white);
-            border-left: 4px solid var(--color-primary);
-            padding: 2rem 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        .mission-box h3 {
-            color: var(--color-primary);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            font-family: 'Lora', serif;
-        }
-
-        .mission-box p {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--color-text);
-        }
-
-        .approach-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .credential-item {
-            background: var(--color-white);
-            padding: 1.5rem;
-            border-radius: 12px;
-            display: flex;
-            gap: 1.5rem;
-            align-items: start;
-            border: 1px solid var(--color-border);
-        }
-
-        .credential-content {
-            flex: 1;
-        }
-
-        .credential-content h4 {
-            color: var(--color-text);
-            margin-bottom: 0.5rem;
-        }
-
-        .credential-content p {
-            color: var(--color-text-light);
-            font-size: 0.95rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .section-header-center {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .section-header-center h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-header-center p {
-            font-size: 1.1rem;
-            color: var(--color-text-light);
-            line-height: 1.8;
-        }
-
-        .credentials-grid {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-    </style>
 </head>
 <body>
 
@@ -185,10 +133,9 @@
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="presentacion-profesional.html">Presentación Profesional</a></li>
-                <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
-                <li><a href="recursos.html">Recursos</a></li>
-                <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+                <li><a href="contacto-agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
             </ul>
 
             <!-- Botones de autenticación (mostrar si NO está logueado) -->
@@ -448,7 +395,7 @@
                     Ahora que conoces mi enfoque profesional, te invito a dar el siguiente paso.
                 </p>
                 <div class="cta-buttons">
-                    <a href="agenda.html" class="btn btn-primary btn-large">Agendar una Sesión</a>
+                    <a href="contacto-agenda.html" class="btn btn-primary btn-large">Agendar una Sesión</a>
                     <a href="oferta-de-servicios.html" class="btn btn-secondary btn-large">Ver Servicios</a>
                 </div>
             </div>
@@ -460,29 +407,79 @@
          Información de contacto y enlaces
          ============================================ -->
     <footer class="footer">
-        <div class="footer-container">
+        <div class="footer-wrapper">
+            <div class="model-description">
+                <h4>📍 Módulo: Footer (Pie de Página)</h4>
+                <p><strong>Propósito:</strong> Proveer navegación secundaria, enlaces legales, redes sociales y contacto.</p>
+                <p><strong>Siempre incluir:</strong> Política de privacidad, Términos y condiciones, Contacto, Login miembros (discreto).</p>
+            </div>
+
             <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Sobre Mí</h4>
-                    <p>[Tu nombre] - Profesional Independiente</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Email: [tu-email@ejemplo.com]</p>
-                    <p>Teléfono: [Tu teléfono]</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="index.html">Inicio</a></li>
-                        <li><a href="presentacion-profesional.html">Presentación</a></li>
-                        <li><a href="oferta-de-servicios.html">Servicios</a></li>
-                        <li><a href="agenda.html">Agenda</a></li>
-                    </ul>
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                    <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
+                    <li><a href="recursos.html">Recursos/Blog</a></li>
+                    <li><a href="contacto-agenda.html">Contacto y Agenda</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Servicios</h3>
+                <ul>
+                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
+                    <li><a href="cursos.html">Cursos Online</a></li>
+                    <li><a href="membresia.html">Membresía</a></li>
+                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Conecta</h3>
+                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>&copy; 2025 [Tu Nombre]. Todos los derechos reservados.</p>
+                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
             </div>
         </div>
     </footer>

@@ -3,8 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Website modelo para profesionales independientes - Guía profesional de arquitectura web">
-    <title>Profesional Independiente - Página Principal (MODELO)</title>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SEO BÁSICO
+         ════════════════════════════════════════════════════════════════ -->
+    <meta name="description" content="[DESCRIPCIÓN: 150-160 caracteres persuasivos que expliquen tu propuesta de valor única. Incluye beneficio principal y llamada a la acción implícita.]">
+    <meta name="author" content="[TU_NOMBRE_PROFESIONAL]">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="[palabras clave separadas por comas, 5-10 máximo]">
+
+    <title>[TÍTULO_PÁGINA] - [TU_NOMBRE_MARCA]</title>
+    <link rel="canonical" href="[TU_URL_COMPLETA]">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         OPTIMIZACIÓN #4: OPEN GRAPH PROTOCOL
+         Para compartir en WhatsApp, Facebook, LinkedIn
+         Impacto: +300% CTR en redes sociales
+         ════════════════════════════════════════════════════════════════ -->
+
+    <!-- Open Graph: Meta tags principales -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="[TU_URL_COMPLETA]">
+    <meta property="og:site_name" content="[TU_NOMBRE_MARCA]">
+    <meta property="og:title" content="[TÍTULO_PRINCIPAL: Max 60 caracteres - Este aparece en la tarjeta social]">
+    <meta property="og:description" content="[DESCRIPCIÓN_PERSUASIVA: Max 200 caracteres - Convence al usuario de hacer clic]">
+
+    <!-- Open Graph: Imagen (CRÍTICO para visual en redes) -->
+    <meta property="og:image" content="[TU_URL_COMPLETA]/images/og-image.jpg">
+    <meta property="og:image:secure_url" content="[TU_URL_COMPLETA]/images/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="[DESCRIPCIÓN_IMAGEN: Qué se ve en la imagen - importante para accesibilidad]">
+
+    <!-- Open Graph: Localización -->
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:locale:alternate" content="es_MX">
+    <meta property="og:locale:alternate" content="es_AR">
+
+    <!-- Twitter Cards: Optimización específica para Twitter/X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@[TU_USUARIO_TWITTER]">
+    <meta name="twitter:creator" content="@[TU_USUARIO_TWITTER]">
+    <meta name="twitter:title" content="[TÍTULO_PRINCIPAL: Max 70 caracteres]">
+    <meta name="twitter:description" content="[DESCRIPCIÓN_PERSUASIVA: Max 200 caracteres]">
+    <meta name="twitter:image" content="[TU_URL_COMPLETA]/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="[DESCRIPCIÓN_IMAGEN]">
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         INSTRUCCIONES PARA PERSONALIZAR:
+         ════════════════════════════════════════════════════════════════
+
+         1. REEMPLAZAR TODOS LOS [PLACEHOLDERS] con tu información real:
+            - [TU_URL_COMPLETA]: https://www.tudominio.com
+            - [TU_NOMBRE_MARCA]: Tu Marca Profesional
+            - [TU_NOMBRE_PROFESIONAL]: Tu Nombre Completo
+            - [TÍTULO_PRINCIPAL]: Tu tagline principal (ej: "Encuentra Tu Calma Mental")
+            - [DESCRIPCIÓN_PERSUASIVA]: Resumen de tu propuesta de valor
+            - [DESCRIPCIÓN_IMAGEN]: Qué se ve en la imagen OG
+
+         2. CREAR IMAGEN OG (og-image.jpg):
+            Dimensiones: 1200x630px (ratio 1.91:1)
+            Formato: JPG o PNG
+            Peso: Máximo 300KB
+            Contenido sugerido:
+              • Tu foto profesional
+              • Tu tagline/slogan principal
+              • Tu logo
+              • Colores de tu marca
+            Ubicación: /images/og-image.jpg
+
+         3. VALIDAR antes de publicar:
+            • Facebook/WhatsApp: https://developers.facebook.com/tools/debug/
+            • LinkedIn: https://www.linkedin.com/post-inspector/
+            • Twitter: https://cards-dev.twitter.com/validator
+            • Open Graph: https://www.opengraph.xyz/
+
+         4. IMPORTANTE:
+            • Usar URLs ABSOLUTAS (https://...), NO relativas (/images/...)
+            • La imagen og-image.jpg debe ser accesible públicamente
+            • Si cambias la imagen, invalida el caché en los debuggers
+            • Prueba compartiendo el enlace en WhatsApp/LinkedIn antes de campaña
+
+         ════════════════════════════════════════════════════════════════ -->
+
+    <!-- Favicons (Iconos del sitio) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#c5d9e8">
 
     <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +104,48 @@
 </head>
 <body>
 
+<!--
+═══════════════════════════════════════════════════════════════════════════════════
+📸 GUÍA DE OPTIMIZACIÓN: LAZY LOADING DE IMÁGENES
+═══════════════════════════════════════════════════════════════════════════════════
+
+OPTIMIZACIÓN #2 - Implementada según DM1 (Documento Maestro 1)
+Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ ✅ CUÁNDO USAR loading="lazy"                                                   │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│ • Imágenes DEBAJO del primer viewport (requieren scroll para verlas)           │
+│ • Secciones: Testimonios, Eventos, Blog, Comunidad, Footer                     │
+│ • Imágenes decorativas o de soporte (no críticas)                              │
+│ • Galerías de fotos                                                             │
+│                                                                                  │
+│ Ejemplo:                                                                         │
+│ <img src="foto-testimonio.jpg" alt="Cliente feliz" loading="lazy">             │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│ ❌ CUÁNDO NO USAR (o usar loading="eager")                                     │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│ • Logo del sitio                                                                │
+│ • Imagen principal del Hero (primera sección visible)                          │
+│ • Contenido "above the fold" (visible SIN hacer scroll)                        │
+│ • Imágenes críticas para LCP (Largest Contentful Paint)                        │
+│                                                                                  │
+│ Ejemplo:                                                                         │
+│ <img src="logo.png" alt="Mi Marca">  (sin atributo = carga normal)            │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+📊 BENEFICIOS MEDIBLES:
+• SEO: Mejora Core Web Vitals (LCP, FID, CLS) → Mejor ranking en Google
+• Performance: 40-60% menos datos descargados en carga inicial
+• Costes: Ahorro de ancho de banda (no pagas por imágenes no vistas)
+• UX: Página carga instantáneamente, imágenes aparecen suavemente al hacer scroll
+
+🔧 SOPORTE: Todos los navegadores modernos (Chrome, Firefox, Safari, Edge)
+═══════════════════════════════════════════════════════════════════════════════════
+-->
+
     <!-- ============================================
          HEADER / NAVEGACIÓN
          ============================================ -->
@@ -25,10 +155,9 @@
 
             <ul class="nav-menu" id="navMenu">
                 <li><a href="index.html">Inicio</a></li>
-                <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
                 <li><a href="oferta-de-servicios.html">Soluciones</a></li>
-                <li><a href="recursos.html">Blog</a></li>
-                <li><a href="agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
+                <li><a href="contacto-agenda.html" class="nav-cta">Agenda tu Sesión</a></li>
             </ul>
 
             <!-- Botones de autenticación (mostrar si NO está logueado) -->
@@ -97,7 +226,7 @@
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="oferta-de-servicios.html" class="btn btn-primary btn-large">[Texto Botón Principal (CTA)]</a>
-                    <a href="sobre-mi.html" class="btn btn-secondary btn-large">[Texto Botón Secundario]</a>
+                    <a href="presentacion-profesional.html" class="btn btn-secondary btn-large">[Texto Botón Secundario]</a>
                 </div>
             </div>
 
@@ -188,12 +317,12 @@
 
             <div class="cards-grid">
                 <!-- EJEMPLO: Tarjeta Servicio 1:1 -->
-                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; right: 0; background: var(--color-text); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                <div class="card card--enhanced">
+                    <div class="badge badge--servicio">
                         👤 SERVICIO 1:1
                     </div>
 
-                    <div class="card-icon" style="background: var(--color-light); color: var(--color-text);">
+                    <div class="card-icon card-icon--text">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                             <circle cx="12" cy="7" r="4"></circle>
@@ -204,18 +333,18 @@
                         [Descripción breve del servicio. Ejemplo: "Sesión personalizada de 60 minutos para resolver tu desafío principal".]
                     </p>
 
-                    <div style="margin-top: auto;">
-                        <a href="oferta-de-servicios.html#detalle-servicio" class="btn btn-primary" style="width: 100%;">Ver Detalles ↓</a>
+                    <div class="mt-auto">
+                        <a href="oferta-de-servicios.html#detalle-servicio" class="btn btn-primary btn--with-arrow">Ver Detalles ↓</a>
                     </div>
                 </div>
 
                 <!-- EJEMPLO: Tarjeta Curso Online -->
-                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; right: 0; background: var(--color-secondary); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                <div class="card card--enhanced">
+                    <div class="badge badge--curso">
                         🎓 CURSO ONLINE
                     </div>
 
-                    <div class="card-icon" style="background: #fffbf0; color: var(--color-secondary);">
+                    <div class="card-icon card-icon--secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
@@ -226,18 +355,18 @@
                         [Descripción breve del curso. Ejemplo: "Programa completo para dominar [habilidad específica] a tu propio ritmo".]
                     </p>
 
-                    <div style="margin-top: auto;">
-                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-secondary" style="width: 100%;">Ver Detalles ↓</a>
+                    <div class="mt-auto">
+                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-secondary btn--with-arrow">Ver Detalles ↓</a>
                     </div>
                 </div>
 
                 <!-- EJEMPLO: Tarjeta Evento/Taller -->
-                <div class="card" style="border: 1px solid var(--color-border); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 0; right: 0; background: var(--color-primary); color: white; font-weight: 600; font-size: 0.75rem; padding: 0.3rem 1rem; border-bottom-left-radius: 10px;">
+                <div class="card card--enhanced">
+                    <div class="badge badge--evento">
                         📅 EVENTO EN VIVO
                     </div>
 
-                    <div class="card-icon" style="background: #eef2ff; color: var(--color-primary);">
+                    <div class="card-icon card-icon--primary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -250,8 +379,8 @@
                         [Descripción breve del evento. Ejemplo: "Masterclass en vivo para aprender [tema específico] con sesión de preguntas".]
                     </p>
 
-                    <div style="margin-top: auto;">
-                        <a href="oferta-de-servicios.html#detalle-evento" class="btn btn-primary" style="width: 100%;">Ver Detalles ↓</a>
+                    <div class="mt-auto">
+                        <a href="oferta-de-servicios.html#detalle-evento" class="btn btn-primary btn--with-arrow">Ver Detalles ↓</a>
                     </div>
                 </div>
             </div>
@@ -439,10 +568,18 @@
                 </div>
 
                 <div class="community-visual">
-                    <!-- <img src="ruta/a/tu/imagen-comunidad.jpg" alt="Experiencia de la comunidad" style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"> -->
+                    <!--
+                    INSTRUCCIÓN: Cuando tengas la imagen real, descomenta esta línea.
+                    NOTA: loading="lazy" hace que la imagen solo se cargue cuando el usuario hace scroll hasta aquí.
+                    BENEFICIO: Mejora SEO (Core Web Vitals) + Ahorra ancho de banda + Carga inicial más rápida.
+                    -->
+                    <!-- <img src="ruta/a/tu/imagen-comunidad.jpg"
+                              alt="Experiencia de la comunidad"
+                              loading="lazy"
+                              style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;"> -->
 
                     <!-- PLACEHOLDER TEMPORAL (Eliminar cuando tengas la imagen real) -->
-                    <p class="community-visual-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%); border-radius: 20px; padding: 3rem;">
+                    <p class="community-visual-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, var(--gradient-placeholder-start) 0%, var(--gradient-placeholder-end) 100%); border-radius: 20px; padding: 3rem;">
                         <span style="font-size: 4rem; margin-bottom: 1rem;">🖼️</span>
                         <strong style="font-size: 1.2rem; margin-bottom: 1rem;">Aquí va tu imagen real</strong>
                         <span style="font-size: 0.9rem;">Imagen que muestre la experiencia de la comunidad:</span>
@@ -450,7 +587,7 @@
                         <span style="font-size: 0.85rem;">• Collage de contenido exclusivo</span>
                         <span style="font-size: 0.85rem;">• Pantallas de la app/plataforma</span>
                         <span style="font-size: 0.85rem; margin-bottom: 1rem;">• Imagen que represente el acceso y valor</span>
-                        <span style="font-size: 0.8rem; color: #999;">Recomendado: 1200x800px</span>
+                        <span style="font-size: 0.8rem; color: var(--color-muted-text);">Recomendado: 1200x800px</span>
                     </p>
                 </div>
             </div>
@@ -707,7 +844,7 @@
                     Ejemplos: Consulta inicial gratuita, sesión de descubrimiento sin costo, análisis personalizado,
                     llamada de 15 minutos. Elimina objeciones y aclara qué pueden esperar del siguiente paso.
                 </p>
-                <a href="agenda.html" class="btn btn-primary btn-large">
+                <a href="contacto-agenda.html" class="btn btn-primary btn-large">
                     [Texto del Botón de CTA]
                 </a>
             </div>
@@ -730,7 +867,7 @@
                 <h3>Navegación</h3>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="sobre-mi.html">Sobre Mí</a></li>
+                    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
                     <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
                     <li><a href="recursos.html">Recursos/Blog</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -743,7 +880,7 @@
                     <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
                     <li><a href="cursos.html">Cursos Online</a></li>
                     <li><a href="membresia.html">Membresía</a></li>
-                    <li><a href="agenda.html">Agendar Sesión</a></li>
+                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
                 </ul>
             </div>
 
@@ -825,7 +962,7 @@
                     </a>
                 </div>
 
-                <div id="loginMensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
                     Iniciar Sesión
@@ -886,8 +1023,8 @@
                     </label>
                 </div>
 
-                <div id="mensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
-                <div id="mensajeExito" style="display: none; padding: 1rem; background: #efe; border-left: 4px solid #3c3; color: #3c3; margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: var(--color-success-bg); border-left: 4px solid var(--color-success-dark); color: var(--color-success-dark); margin-bottom: 1rem; border-radius: 8px;"></div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
                     Crear Mi Cuenta

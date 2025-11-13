@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!--
+    ⚠️⚠️⚠️ ADVERTENCIA: ARCHIVO DEPRECATED ⚠️⚠️⚠️
+
+    Este archivo (sobre-mi.html) ha sido MARCADO COMO OBSOLETO.
+
+    USAR EN SU LUGAR: presentacion-profesional.html
+
+    RAZONES:
+    - presentacion-profesional.html tiene arquitectura modular superior
+    - 6 módulos claramente separados con guías para edición
+    - Mejor UX para clientes finales (explicaciones en cada sección)
+    - Más fácil de mantener y personalizar
+
+    ACCIÓN RECOMENDADA:
+    1. Actualizar todos los links del menú → presentacion-profesional.html
+    2. Configurar redirect 301: sobre-mi.html → presentacion-profesional.html
+    3. O eliminar este archivo tras migración
+
+    Fecha deprecación: 12-Noviembre-2025
+    Ver: README.md sección "Archivos Legacy"
+    -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Conoce mi historia de transformación y por qué dedico mi vida a la sanación holística">
-    <title>Sobre Mí - Terapeuta Holístico (MODELO)</title>
+
+    <!-- SEO Básico -->
+    <meta name="description" content="[DESCRIPCIÓN: Mi historia, mi formación y por qué hago lo que hago. Conecta con mi propósito y filosofía de trabajo.]">
+    <meta name="author" content="[TU_NOMBRE_PROFESIONAL]">
+    <meta name="robots" content="index, follow">
+    <title>Sobre Mí - [TU_NOMBRE_MARCA]</title>
+    <link rel="canonical" href="[TU_URL_COMPLETA]/sobre-mi.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="[TU_URL_COMPLETA]/sobre-mi.html">
+    <meta property="og:site_name" content="[TU_NOMBRE_MARCA]">
+    <meta property="og:title" content="Conoce Mi Historia - [TU_NOMBRE]">
+    <meta property="og:description" content="[DESCRIPCIÓN: Resumen persuasivo de tu historia y credenciales]">
+    <meta property="og:image" content="[TU_URL_COMPLETA]/images/og-image-sobre-mi.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="[TU_NOMBRE] - Foto profesional">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Conoce Mi Historia - [TU_NOMBRE]">
+    <meta name="twitter:description" content="[DESCRIPCIÓN: Resumen persuasivo]">
+    <meta name="twitter:image" content="[TU_URL_COMPLETA]/images/og-image-sobre-mi.jpg">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#c5d9e8">
 
     <!-- Fuentes de Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -87,15 +138,23 @@
             </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2rem;">
-                <div style="position: relative; height: 500px; border-radius: 20px; overflow: hidden; background: #f0f0f0;">
-                    <!-- <img src="ruta/a/tu/foto-profesional.jpg" alt="[Tu nombre] - Foto profesional" style="width: 100%; height: 100%; object-fit: cover;"> -->
+                <div style="position: relative; height: 500px; border-radius: 20px; overflow: hidden; background: var(--color-bg-text-light);">
+                    <!--
+                    INSTRUCCIÓN: Cuando tengas la imagen real, descomenta esta línea.
+                    NOTA: Esta imagen NO lleva loading="lazy" porque está en la parte superior de la página (above the fold).
+                    RAZÓN: Las imágenes visibles inmediatamente deben cargarse rápido para mejorar el LCP (Core Web Vital).
+                    REGLA: Solo usa lazy loading en imágenes que están más abajo y requieren scroll para verlas.
+                    -->
+                    <!-- <img src="ruta/a/tu/foto-profesional.jpg"
+                              alt="[Tu nombre] - Foto profesional"
+                              style="width: 100%; height: 100%; object-fit: cover;"> -->
 
                     <!-- PLACEHOLDER TEMPORAL (Eliminar cuando tengas la imagen real) -->
-                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #999; background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%); padding: 2rem; text-align: center;">
+                    <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--color-muted-text); background: linear-gradient(135deg, var(--gradient-placeholder-start) 0%, var(--gradient-placeholder-end) 100%); padding: 2rem; text-align: center;">
                         <p style="margin: 0; font-size: 4rem; margin-bottom: 1rem;">📷</p>
                         <p style="margin: 0; font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem;">Aquí va tu foto profesional</p>
                         <p style="margin: 0; font-size: 0.9rem; line-height: 1.6;">Foto que transmita calidez, confianza y autenticidad.<br>No corporativa, sino humana y accesible.</p>
-                        <p style="margin: 1rem 0 0 0; font-size: 0.8rem; color: #aaa;">Recomendado: 800x1000px (vertical)</p>
+                        <p style="margin: 1rem 0 0 0; font-size: 0.8rem; color: var(--color-muted-text);">Recomendado: 800x1000px (vertical)</p>
                     </div>
                 </div>
 
@@ -141,7 +200,7 @@
 
                 <!-- Los Inicios -->
                 <div style="margin-bottom: 2.5rem;">
-                    <h3 style="color: #6B9080; margin-bottom: 1rem;">Los Inicios</h3>
+                    <h3 style="color: var(--color-sage); margin-bottom: 1rem;">Los Inicios</h3>
                     <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
                         Cuenta cómo empezaste en tu campo profesional. ¿Qué te atrajo inicialmente?
                         ¿Hubo una experiencia personal que te motivó? ¿Descubriste tu vocación gradualmente?
@@ -155,7 +214,7 @@
 
                 <!-- El Punto de Inflexión -->
                 <div style="margin-bottom: 2.5rem; padding: 2rem; background: var(--color-white); border-radius: 12px; border-left: 4px solid var(--color-secondary);">
-                    <h3 style="color: #6B9080; margin-bottom: 1rem;">El Punto de Inflexión</h3>
+                    <h3 style="color: var(--color-sage); margin-bottom: 1rem;">El Punto de Inflexión</h3>
                     <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
                         Describe un momento clave que definió tu camino profesional. Puede ser: un proyecto
                         revelador, un mentor importante, un desafío superado, un fracaso que te enseñó algo crucial,
@@ -168,7 +227,7 @@
 
                 <!-- El Desarrollo -->
                 <div style="margin-bottom: 2.5rem;">
-                    <h3 style="color: #6B9080; margin-bottom: 1rem;">El Camino de Desarrollo</h3>
+                    <h3 style="color: var(--color-sage); margin-bottom: 1rem;">El Camino de Desarrollo</h3>
                     <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
                         Describe tu evolución profesional. ¿Qué formaciones completaste? ¿Con quién trabajaste o estudiaste?
                         ¿Qué experiencias clave te dieron expertise? No necesitas listar todo, enfócate en lo más relevante
@@ -182,7 +241,7 @@
 
                 <!-- Tu Enfoque Actual -->
                 <div style="margin-bottom: 2.5rem;">
-                    <h3 style="color: #6B9080; margin-bottom: 1rem;">Mi Enfoque Actual</h3>
+                    <h3 style="color: var(--color-sage); margin-bottom: 1rem;">Mi Enfoque Actual</h3>
                     <p style="font-size: 1.05rem; line-height: 1.9; color: var(--color-text);">
                         Describe cómo trabajas HOY. ¿Cuál es tu metodología? ¿Qué te hace diferente?
                         ¿Cómo has refinado tu enfoque con la experiencia? Muestra la evolución desde tus inicios
@@ -191,7 +250,7 @@
                 </div>
 
                 <!-- El Propósito -->
-                <div style="background: linear-gradient(135deg, #8d998e, #b8c9d4); padding: 2.5rem; border-radius: 16px; color: white; text-align: center;">
+                <div style="background: linear-gradient(135deg, var(--color-sage-alt), var(--color-sage-blue)); padding: 2.5rem; border-radius: 16px; color: white; text-align: center;">
                     <h3 style="color: white; margin-bottom: 1rem; font-size: 1.8rem;">Mi Propósito Hoy</h3>
                     <p style="font-size: 1.1rem; line-height: 1.8; opacity: 0.95;">
                         [Tu declaración de propósito: Por qué haces lo que haces. A quién sirves específicamente.
@@ -305,7 +364,7 @@
 
                 <div style="display: grid; gap: 1.5rem; margin-top: 2rem;">
                     <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
-                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                        <div style="background: var(--color-sage); color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
                             🎓
                         </div>
                         <div style="flex: 1;">
@@ -315,7 +374,7 @@
                     </div>
 
                     <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
-                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                        <div style="background: var(--color-sage); color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
                             📚
                         </div>
                         <div style="flex: 1;">
@@ -325,7 +384,7 @@
                     </div>
 
                     <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
-                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                        <div style="background: var(--color-sage); color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
                             ⭐
                         </div>
                         <div style="flex: 1;">
@@ -335,7 +394,7 @@
                     </div>
 
                     <div style="background: var(--color-white); padding: 1.5rem; border-radius: 12px; display: flex; gap: 1.5rem; align-items: start;">
-                        <div style="background: #6B9080; color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
+                        <div style="background: var(--color-sage); color: white; width: 50px; height: 50px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.5rem;">
                             💼
                         </div>
                         <div style="flex: 1;">
@@ -458,7 +517,7 @@
                     </a>
                 </div>
 
-                <div id="loginMensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
                     Iniciar Sesión
@@ -519,8 +578,8 @@
                     </label>
                 </div>
 
-                <div id="mensajeError" style="display: none; padding: 1rem; background: #fee; border-left: 4px solid #c33; color: #c33; margin-bottom: 1rem; border-radius: 8px;"></div>
-                <div id="mensajeExito" style="display: none; padding: 1rem; background: #efe; border-left: 4px solid #3c3; color: #3c3; margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: var(--color-success-bg); border-left: 4px solid var(--color-success-dark); color: var(--color-success-dark); margin-bottom: 1rem; border-radius: 8px;"></div>
 
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
                     Crear Mi Cuenta
