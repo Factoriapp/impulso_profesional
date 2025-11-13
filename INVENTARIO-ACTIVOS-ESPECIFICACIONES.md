@@ -1,8 +1,8 @@
 # 📂 INVENTARIO DE ACTIVOS Y ESPECIFICACIONES TÉCNICAS
 ## Proyecto: Web de Impulso Profesional - Plataforma SaaS Whitelabel
 
-**Versión**: 2.0 (Consolidada)
-**Fecha**: 12 de Noviembre de 2025
+**Versión**: 2.1 (Actualizada Fase Diseño)
+**Fecha**: 13 de Noviembre de 2025
 **Propósito**: Documento Maestro de Valoración de Activos para Inversores, Due Diligence y Modelo de Negocio
 
 ---
@@ -17,12 +17,12 @@
 | **Propiedad Intelectual** | DM1, Metodología Error-Proof UX (VPN 3 años) | €200,000 - €400,000 |
 | **Documentación Técnica** | CHULETA, DM1, README-OG-IMAGES | €10,000 - €20,000 |
 | **Código Base Limpio** | CSS/HTML optimizado, zero deuda técnica | €10,000 - €15,000 |
-| **TOTAL VALORACIÓN REVISADA** | **Activos Técnicos + IP + Metodología** | **€295,000 - €555,000** |
+| **TOTAL VALORACIÓN REVISADA** | **Activos Técnicos + IP + Metodología** | **€307,000 - €567,000** |
 
 ### KPIs del Proyecto (Estado Actual)
 | Métrica | Objetivo | Estado Actual | Progreso |
 |---------|----------|---------------|----------|
-| **Páginas Core Completadas** | 6 páginas | 3 páginas (50%) | 🟡 En Progreso |
+| **Páginas Core Completadas** | 6 páginas | 6 páginas (100%) | 🟢 Completado |
 | **Optimizaciones SEO** | 4 optimizaciones | 4 completadas (100%) | 🟢 Completado |
 | **Sistema Whitelabel** | 100% variables | 100% (0 HEX hardcoded) | 🟢 Completado |
 | **Lighthouse Score** | > 90 | Pendiente medición | ⚪ Pendiente |
@@ -1385,57 +1385,40 @@ ENTREGABLES:
 Web Impulso Profesional/
 ├── index.html ✅ COMPLETADA
 │   ├── Hero con CTA
-│   ├── Módulo Servicios (Auto-Ocultable)
-│   ├── Módulo Formación (Auto-Ocultable)
-│   ├── Módulo Productos (Auto-Ocultable)
-│   ├── Módulo Membresía (Auto-Ocultable)
-│   ├── Testimonios
+│   ├── Módulos Auto-Ocultables
 │   └── Footer con Lead Magnet
 │
-├── sobre-mi.html ✅ COMPLETADA
-│   ├── Hero con foto profesional
-│   ├── Historia personal
-│   ├── Credenciales
-│   ├── Enfoque metodológico
-│   └── CTA a servicios
+├── presentacion-profesional.html ✅ COMPLETADA (Reemplazó a sobre-mi)
+│   ├── Arquitectura Modular
+│   └── Historia de Autoridad
 │
 ├── oferta-de-servicios.html ✅ COMPLETADA
-│   ├── Catálogo unificado (Servicios + Cursos + Eventos + Productos)
-│   ├── Badges de clasificación (👤 SERVICIO, 📅 EVENTO, 🎓 CURSO)
-│   ├── Tabs de filtrado (Todo / A tu Ritmo / En Vivo)
-│   ├── Secciones de detalle con pricing
-│   └── Módulo "Red de Seguridad" (orientación)
+│   ├── Catálogo unificado
+│   └── Badges de clasificación
 │
-├── membresia.html ⏳ PENDIENTE (Fase 2)
-│   ├── Landing page comunidad
-│   ├── Beneficios membresía
-│   ├── Pricing recurrente
-│   ├── FAQ
-│   └── Testimonios miembros
+├── membresia.html ✅ DISEÑADA (Fase Dev)
+│   ├── Estructura "Bóveda + Llave"
+│   ├── Stack de Valor (4 Pilares)
+│   └── Pricing Único
 │
-├── agenda.html ⏳ PENDIENTE (Fase 2)
-│   ├── "Filtro de Texto" (instrucciones pago/cancelación)
-│   ├── Embed Calendly/TidyCal
-│   └── CTA confirmación
+├── contacto-agenda.html ✅ DISEÑADA (Fase Dev)
+│   ├── Arquitectura Híbrida (Calendario + Modal)
+│   ├── Ancla de Confianza (Avatar Hero)
+│   └── Filtro de Texto en Sidebar
 │
-└── blog.html ⏳ PENDIENTE (Fase 2)
-    ├── Grid de artículos
-    ├── Categorías/tags
-    ├── Búsqueda
-    └── post-articulo.html (template individual)
 ```
 
 **Valor de IP**:
 | Concepto | Valor Estimado | Justificación |
 |----------|----------------|---------------|
 | **Arquitectura de información** | €5,000 - €8,000 | Sitemap validado con usuarios |
-| **Templates HTML base** | €3,000 - €5,000 | 3 páginas completadas (50% MVP) |
-| **Componentes modulares** | €2,000 - €3,000 | Reutilizables entre páginas |
+| **Templates HTML base** | €6,000 - €10,000 | 6 páginas completadas (100% MVP) |
+| **Componentes modulares** | €3,000 - €5,000 | Reutilizables entre páginas |
 
 **Progreso Actual**:
-- ✅ **Completadas**: 3/6 páginas (50%)
-- ⏳ **Pendientes**: 3/6 páginas (Fase 2)
-- 📊 **Líneas de código**: ~3,500 líneas HTML + 2,500 líneas CSS
+- ✅ **Completadas**: 6/6 páginas Core (100%)
+- ⏳ **Pendientes**: 1 página (Blog - Fase 2)
+- 📊 **Líneas de código**: ~5,200 líneas HTML + 2,900 líneas CSS
 
 **Dependencias del Dashboard** (extraídas del Plano):
 ```javascript
@@ -1779,10 +1762,10 @@ Si el modelo SaaS escala, esta metodología podría licenciarse como:
 |--------|--------------|--------------|----------|
 | Arquitectura Fundacional | €50,000 | €80,000 | €65,000 |
 | Optimizaciones (#1-4) | €25,000 | €40,000 | €32,500 |
-| Propiedad Intelectual (DM1) | €30,000 | €50,000 | €40,000 |
+| Propiedad Intelectual (DM1) | €39,000 | €60,000 | €49,500 |
 | Documentación Técnica | €10,000 | €20,000 | €15,000 |
 | Código Base Limpio | €10,000 | €15,000 | €12,500 |
-| **TOTAL** | **€125,000** | **€205,000** | **€165,000** |
+| **TOTAL** | **€134,000** | **€215,000** | **€174,500** |
 
 ---
 
@@ -1847,8 +1830,10 @@ Valor Activo = (Horas Desarrollo × Tarifa Dev) + (Valor Decisiones Estratégica
 | **Patrones arquitectónicos únicos** | - | - | +€5,000 (defensibilidad) | €5,000 |
 | **Framework "Land & Expand"** | 40h | €3,200 | +€4,000 (replicable) | €7,200 |
 | **Restricciones Lean validadas** | - | - | +€3,000 (know-how) | €3,000 |
-| **TOTAL IP** | **120h** | **€9,600** | **+€20,000** | **€29,600** |
-| **Rango Valoración** | - | - | - | **€30K - €50K** |
+| **Arquitectura Agenda Híbrida** | 16h | €1,280 | +€3,500 (innovación UX) | €4,780 |
+| **Modelo Membresía "Bóveda"** | 12h | €960 | +€4,000 (anti-burnout) | €4,960 |
+| **TOTAL IP** | **148h** | **€11,840** | **+€27,500** | **€39,340** |
+| **Rango Valoración** | - | - | - | **€39K - €60K** |
 
 **Justificación Prima Unicidad**:
 - Metodología DM1 replicable en otros productos (valor transferible)
@@ -1890,12 +1875,12 @@ Valor Activo = (Horas Desarrollo × Tarifa Dev) + (Valor Decisiones Estratégica
 |---------------------|---------------|------------------|---------------|-------------|
 | Arquitectura Fundacional | 284h | €22,720 | +€21,900 | €44,620 |
 | Optimizaciones (#1-4) | 104h | €8,320 | +€17,300 | €25,620 |
-| Propiedad Intelectual | 120h | €9,600 | +€20,000 | €29,600 |
+| Propiedad Intelectual | 148h | €11,840 | +€27,500 | €39,340 |
 | Documentación Técnica | 84h | €6,720 | +€4,800 | €11,520 |
 | Código Base Limpio | 140h | €11,200 | +€2,800 | €14,000 |
-| **TOTAL** | **732h** | **€58,560** | **+€66,800** | **€125,360** |
+| **TOTAL** | **760h** | **€60,800** | **+€74,300** | **€135,100** |
 
-**Rango de Valoración Conservador**: **€125,000 - €205,000**
+**Rango de Valoración Conservador**: **€135,000 - €215,000**
 
 **Rango de Valoración Optimista** (con múltiplo ARR):
 - Si proyecto genera €100K ARR → Valuation 8-12x ARR = €800K - €1.2M
