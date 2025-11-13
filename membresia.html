@@ -121,7 +121,9 @@
 
             <h2 class="text-center mb-lg">[Título Sección: Ej. "Privilegios exclusivos de la membresía" / "Ventajas VIP que obtienes"]</h2>
 
-            <div class="cards-grid">
+            <!-- Carrusel de Privilegios -->
+            <div class="carousel-container">
+                <div class="carousel-wrapper" id="privilegiosCarousel">
 
                 <div class="card card--enhanced">
                     <div class="card-icon card-icon--primary">
@@ -170,6 +172,22 @@
                     <p class="card-text">[Descripción. Ej: "Cada mes recibes nuevas plantillas, PDFs premium y herramientas que solo tienen los miembros. Contenido que no se vende por separado."]</p>
                 </div>
 
+                </div>
+
+                <!-- Navegación del carrusel -->
+                <div class="carousel-nav">
+                    <button class="carousel-btn carousel-btn--prev" id="prevBtn" aria-label="Anterior">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                    <button class="carousel-btn carousel-btn--next" id="nextBtn" aria-label="Siguiente">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -546,5 +564,86 @@
 
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
+
+    <!-- Script del Carrusel de Privilegios -->
+    <script>
+        (function() {
+            const carousel = document.getElementById('privilegiosCarousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const dotsContainer = document.getElementById('carouselDots');
+
+            if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
+
+            const cards = carousel.querySelectorAll('.card');
+            let currentIndex = 0;
+
+            // Crear dots
+            cards.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'carousel-dot';
+                dot.setAttribute('aria-label', `Ir a privilegio ${index + 1}`);
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+
+            function updateCarousel() {
+                // Actualizar tarjetas
+                cards.forEach((card, index) => {
+                    card.classList.toggle('active', index === currentIndex);
+                });
+
+                // Actualizar dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+
+                // Actualizar botones
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === cards.length - 1;
+            }
+
+            function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+
+            function nextSlide() {
+                if (currentIndex < cards.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            }
+
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+
+            // Event listeners
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+
+            // Soporte para teclado
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+
+            // Inicializar
+            updateCarousel();
+
+            // Auto-play opcional (descomentarar si se desea)
+            // setInterval(() => {
+            //     currentIndex = (currentIndex + 1) % cards.length;
+            //     updateCarousel();
+            // }, 5000);
+        })();
+    </script>
 </body>
 </html>
