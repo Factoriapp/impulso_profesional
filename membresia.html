@@ -20,6 +20,76 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* Estilos para FAQ Acordeón */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--color-primary);
+        }
+
+        .faq-item[open] {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item[open] .faq-question::after {
+            content: '−';
+        }
+
+        .faq-question:hover {
+            color: var(--color-primary);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        .faq-answer p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -121,11 +191,10 @@
 
             <h2 class="text-center mb-lg">[Título Sección: Ej. "Privilegios exclusivos de la membresía" / "Ventajas VIP que obtienes"]</h2>
 
-            <!-- Carrusel de Privilegios -->
-            <div class="carousel-container">
-                <div class="carousel-wrapper" id="privilegiosCarousel">
+            <!-- Grid de Privilegios (Flexbox centrado - Desktop) -->
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 2rem; margin-top: 2rem;">
 
-                <div class="card card--enhanced">
+                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
                     <div class="card-icon card-icon--primary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
@@ -136,7 +205,7 @@
                     <p class="card-text">[Descripción. Ej: "Acceso ilimitado a todo mi contenido exclusivo: cursos completos, masterclasses y formaciones que no están disponibles en ningún otro lugar."]</p>
                 </div>
 
-                <div class="card card--enhanced">
+                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
                     <div class="card-icon card-icon--secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -148,7 +217,7 @@
                     <p class="card-text">[Descripción. Ej: "Sesiones mensuales en vivo conmigo para resolver tus casos específicos. Trato personalizado que acorta tu curva de aprendizaje."]</p>
                 </div>
 
-                <div class="card card--enhanced">
+                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
                     <div class="card-icon card-icon--sage">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -158,7 +227,7 @@
                     <p class="card-text">[Descripción. Ej: "Tus consultas tienen prioridad. Respuestas rápidas y atención preferencial para que avances sin bloqueos."]</p>
                 </div>
 
-                <div class="card card--enhanced">
+                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
                     <div class="card-icon card-icon--text">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <polyline points="20 12 20 22 4 22 4 12"></polyline>
@@ -172,22 +241,6 @@
                     <p class="card-text">[Descripción. Ej: "Cada mes recibes nuevas plantillas, PDFs premium y herramientas que solo tienen los miembros. Contenido que no se vende por separado."]</p>
                 </div>
 
-                </div>
-
-                <!-- Navegación del carrusel -->
-                <div class="carousel-nav">
-                    <button class="carousel-btn carousel-btn--prev" id="prevBtn" aria-label="Anterior">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-                    <div class="carousel-dots" id="carouselDots"></div>
-                    <button class="carousel-btn carousel-btn--next" id="nextBtn" aria-label="Siguiente">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
             </div>
         </div>
     </section>
@@ -271,23 +324,34 @@
 
             <h2 class="text-center section-title" style="margin-bottom: 3rem;">[Título: Ej. "Preguntas Frecuentes" / "Resolvemos tus dudas"]</h2>
 
-            <div class="faq-grid">
-                <div class="mb-md" style="margin-bottom: 2rem;">
-                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 1: Ej. "¿Tengo permanencia?"]</h4>
-                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "No. Puedes darte de baja en cualquier momento desde tu perfil con un solo clic."]</p>
-                </div>
-                <div class="mb-md" style="margin-bottom: 2rem;">
-                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 2: Ej. "¿Qué pasa si me pierdo una sesión en vivo?"]</h4>
-                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "Todas las sesiones quedan grabadas y disponibles en tu biblioteca premium en menos de 24h. Cero presión de horarios."]</p>
-                </div>
-                <div class="mb-md" style="margin-bottom: 2rem;">
-                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 3: Ej. "¿Cuánto contenido exclusivo hay disponible?"]</h4>
-                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "Acceso inmediato a todo el catálogo premium: [X] cursos completos, [Y] masterclasses y recursos exclusivos. Todo desde el primer día."]</p>
-                </div>
-                <div class="mb-md" style="margin-bottom: 2rem;">
-                    <h4 style="font-weight: bold; color: var(--color-primary); margin-bottom: 0.5rem;">[Pregunta 4: Ej. "¿Cómo cancelo si quiero?"]</h4>
-                    <p class="text-muted" style="line-height: 1.6;">[Respuesta. Ej: "Desde tu área de miembros, sección 'Mi Suscripción', un clic en 'Cancelar'. Sin preguntas ni retención."]</p>
-                </div>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta 1: Ej. "¿Tengo permanencia?"]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta. Ej: "No. Puedes darte de baja en cualquier momento desde tu perfil con un solo clic."]</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta 2: Ej. "¿Qué pasa si me pierdo una sesión en vivo?"]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta. Ej: "Todas las sesiones quedan grabadas y disponibles en tu biblioteca premium en menos de 24h. Cero presión de horarios."]</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta 3: Ej. "¿Cuánto contenido exclusivo hay disponible?"]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta. Ej: "Acceso inmediato a todo el catálogo premium: [X] cursos completos, [Y] masterclasses y recursos exclusivos. Todo desde el primer día."]</p>
+                    </div>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta 4: Ej. "¿Cómo cancelo si quiero?"]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta. Ej: "Desde tu área de miembros, sección 'Mi Suscripción', un clic en 'Cancelar'. Sin preguntas ni retención."]</p>
+                    </div>
+                </details>
             </div>
 
             <!-- CTA Final de cierre -->
@@ -564,86 +628,5 @@
 
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
-
-    <!-- Script del Carrusel de Privilegios -->
-    <script>
-        (function() {
-            const carousel = document.getElementById('privilegiosCarousel');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const dotsContainer = document.getElementById('carouselDots');
-
-            if (!carousel || !prevBtn || !nextBtn || !dotsContainer) return;
-
-            const cards = carousel.querySelectorAll('.card');
-            let currentIndex = 0;
-
-            // Crear dots
-            cards.forEach((_, index) => {
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot';
-                dot.setAttribute('aria-label', `Ir a privilegio ${index + 1}`);
-                if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-
-            const dots = dotsContainer.querySelectorAll('.carousel-dot');
-
-            function updateCarousel() {
-                // Actualizar tarjetas
-                cards.forEach((card, index) => {
-                    card.classList.toggle('active', index === currentIndex);
-                });
-
-                // Actualizar dots
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
-                });
-
-                // Actualizar botones
-                prevBtn.disabled = currentIndex === 0;
-                nextBtn.disabled = currentIndex === cards.length - 1;
-            }
-
-            function goToSlide(index) {
-                currentIndex = index;
-                updateCarousel();
-            }
-
-            function nextSlide() {
-                if (currentIndex < cards.length - 1) {
-                    currentIndex++;
-                    updateCarousel();
-                }
-            }
-
-            function prevSlide() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    updateCarousel();
-                }
-            }
-
-            // Event listeners
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-
-            // Soporte para teclado
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') prevSlide();
-                if (e.key === 'ArrowRight') nextSlide();
-            });
-
-            // Inicializar
-            updateCarousel();
-
-            // Auto-play opcional (descomentarar si se desea)
-            // setInterval(() => {
-            //     currentIndex = (currentIndex + 1) % cards.length;
-            //     updateCarousel();
-            // }, 5000);
-        })();
-    </script>
 </body>
 </html>

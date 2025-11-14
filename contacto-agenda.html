@@ -6,6 +6,76 @@
     <title>Agenda tu Sesión - [TU NOMBRE PROFESIONAL] (MODELO)</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* Estilos para FAQ Acordeón */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: var(--color-primary);
+        }
+
+        .faq-item[open] {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item[open] .faq-question::after {
+            content: '−';
+        }
+
+        .faq-question:hover {
+            color: var(--color-primary);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+
+        .faq-answer p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
 
@@ -232,42 +302,34 @@
                 [Subtítulo explicativo. Ejemplos: "Resolvemos las dudas más comunes" / "Todo lo que necesitas saber antes de reservar"]
             </p>
 
-            <div style="display: grid; gap: 1.5rem;">
-                <div class="card">
-                    <h4 style="color: var(--color-primary); margin-bottom: 0.75rem;">
-                        [Pregunta Frecuente 1]
-                    </h4>
-                    <p style="color: var(--color-text-light); line-height: 1.7; margin: 0;">
-                        [Respuesta clara y concisa a la pregunta 1. Máximo 2-3 líneas para mantener escaneabilidad.]
-                    </p>
-                </div>
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta Frecuente 1]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta clara y concisa a la pregunta 1. Máximo 2-3 líneas para mantener escaneabilidad.]</p>
+                    </div>
+                </details>
 
-                <div class="card">
-                    <h4 style="color: var(--color-primary); margin-bottom: 0.75rem;">
-                        [Pregunta Frecuente 2]
-                    </h4>
-                    <p style="color: var(--color-text-light); line-height: 1.7; margin: 0;">
-                        [Respuesta clara y concisa a la pregunta 2.]
-                    </p>
-                </div>
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta Frecuente 2]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta clara y concisa a la pregunta 2.]</p>
+                    </div>
+                </details>
 
-                <div class="card">
-                    <h4 style="color: var(--color-primary); margin-bottom: 0.75rem;">
-                        [Pregunta Frecuente 3]
-                    </h4>
-                    <p style="color: var(--color-text-light); line-height: 1.7; margin: 0;">
-                        [Respuesta clara y concisa a la pregunta 3.]
-                    </p>
-                </div>
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta Frecuente 3]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta clara y concisa a la pregunta 3.]</p>
+                    </div>
+                </details>
 
-                <div class="card">
-                    <h4 style="color: var(--color-primary); margin-bottom: 0.75rem;">
-                        [Pregunta Frecuente 4]
-                    </h4>
-                    <p style="color: var(--color-text-light); line-height: 1.7; margin: 0;">
-                        [Respuesta clara y concisa a la pregunta 4.]
-                    </p>
-                </div>
+                <details class="faq-item">
+                    <summary class="faq-question">[Pregunta Frecuente 4]</summary>
+                    <div class="faq-answer">
+                        <p>[Respuesta clara y concisa a la pregunta 4.]</p>
+                    </div>
+                </details>
             </div>
 
             <div class="text-center" style="margin-top: 3rem;">
