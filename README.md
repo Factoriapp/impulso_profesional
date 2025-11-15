@@ -95,18 +95,25 @@ Web_modelo/
 │   ├── index.html ✅                                # Homepage (completada + optimizada 4/4)
 │   ├── presentacion-profesional.html ✅             # Perfil profesional (completada + optimizada 4/4) ⭐ USAR ESTA
 │   ├── oferta-de-servicios.html ✅                  # Catálogo unificado (completada + optimizada 4/4)
-│   ├── membresia.html ⏳                            # Comunidad (pendiente Fase 2)
-│   ├── agenda.html ⏳                               # Booking (pendiente Fase 2)
-│   ├── sobre-mi.html ⚠️                             # DEPRECATED - Usar presentacion-profesional.html
+│   ├── contacto-agenda.html ✅                      # Reserva + Contacto híbrido (v1.7)
+│   ├── membresia.html ✅                            # Sales page membresía (v2.0 - optimizada)
+│   ├── area-privada.html ✅                         # Dashboard privado dinámico (v3.0)
+│   ├── area-privada-ana.html ✅                     # Vista Premium - Hub consumo limpio
+│   ├── area-privada-regina.html ✅                  # Vista Registrada - Con upsell
+│   ├── cuenta.html ✅                               # Gestión de cuenta separada
+│   ├── Obsoleto/
+│   │   ├── sobre-mi.html ⚠️                         # DEPRECATED - Usar presentacion-profesional.html
+│   │   ├── agenda.html ⚠️                           # DEPRECATED - Usar contacto-agenda.html
+│   │   └── contacto.html ⚠️                         # DEPRECATED - Usar contacto-agenda.html
 │   ├── recursos.html 📄                             # Blog/recursos (legacy, sin optimizar)
-│   ├── contacto.html 📄                             # Contacto (legacy)
-│   └── area-privada.html 📄                        # Dashboard privado (legacy)
 │
 ├── 🎨 ESTILOS Y RECURSOS
 │   ├── css/
-│   │   └── styles.css                               # 2,500 líneas CSS (27 variables whitelabel)
+│   │   └── styles.css                               # 2,900+ líneas CSS (27 variables whitelabel)
 │   ├── js/
-│   │   └── main.js                                  # JavaScript interactivo
+│   │   ├── main.js                                  # JavaScript interactivo
+│   │   ├── auth.js                                  # Sistema de autenticación
+│   │   └── area-privada.js                          # Lógica del área privada
 │   └── images/
 │       └── README-OG-IMAGES.md                      # Guía Open Graph (409 líneas)
 │

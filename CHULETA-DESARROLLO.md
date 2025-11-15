@@ -24,7 +24,10 @@ Web_modelo/
 ├── oferta-de-servicios.html     # Catálogo de soluciones
 ├── contacto-agenda.html         # Landing híbrida: Reserva + Contacto (v1.5)
 ├── membresia.html               # Sales page para suscripción recurrente (v2.0)
-├── area-privada.html           # Dashboard privado
+├── area-privada.html            # Dashboard privado dinámico (detecta usuario)
+├── area-privada-ana.html        # Vista Premium: Hub de consumo limpio
+├── area-privada-regina.html     # Vista Registrada: Con upsell
+├── cuenta.html                  # Gestión de cuenta (perfil, suscripción, seguridad)
 ├── Obsoleto/
 │   ├── sobre-mi.html            # ⚠️ DEPRECATED - Usar presentacion-profesional.html
 │   ├── agenda.html              # ⚠️ DEPRECATED - Usar contacto-agenda.html
@@ -32,7 +35,9 @@ Web_modelo/
 ├── css/
 │   └── styles.css               # Hoja de estilos única (2900+ líneas)
 ├── js/
-│   └── main.js                  # JavaScript principal
+│   ├── main.js                  # JavaScript principal
+│   ├── auth.js                  # Sistema de autenticación
+│   └── area-privada.js          # Lógica del área privada
 └── CHULETA-DESARROLLO.md        # Este archivo (v2.0)
 ```
 
@@ -53,6 +58,16 @@ Web_modelo/
 - ✅ Clase `active` en el link de la página actual
 
 **Decisiones arquitectónicas recientes:**
+- **Área Privada** (v3.0 - 2025-11-16): Hub Unificado Vertical
+  - Renombrado: `area-miembros.html` → `area-privada.html`
+  - Arquitectura Stratego: Separación de consumo y gestión
+  - 3 páginas especializadas:
+    - `area-privada.html`: Dinámico, redirige según tipo de usuario
+    - `area-privada-ana.html`: Hub Premium (solo consumo, sin bloques redundantes)
+    - `area-privada-regina.html`: Vista Registrada (con upsell y explorar)
+  - `cuenta.html`: Gestión separada (perfil, suscripción, seguridad)
+  - Headers con dropdown: [Mi Cuenta] y [Cerrar Sesión] en menú desplegable
+  - Placeholders genéricos en [corchetes] para customización
 - **membresia.html** (v2.0): Mejoras UX y optimización
   - Grid Flexbox 2x2 para privilegios (antes carrusel)
   - FAQ con acordeón nativo `<details>` (cero JavaScript)
