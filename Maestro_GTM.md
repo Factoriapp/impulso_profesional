@@ -200,3 +200,27 @@ Sugerencias lógicas entre activaciones.
 ---
 
 **Fin de Maestro_GTM v1.1 – 13/11/2025**
+
+## X. ESTRATEGIA DE VÍDEO "ANCLA DE CONFIANZA"
+
+Basado en la decisión del DM1 (15-Nov-2025), la plataforma soportará embeds de vídeo en 4 zonas estratégicas para maximizar la conversión emocional y la autoridad.
+
+El marketing SÍ debe promover esta capacidad.
+
+1. **`index.html` (Hero):**
+   - **Función:** Captura de Atención Inmediata.
+   - **Mensaje GTM:** "Causa un impacto en 30 segundos. Inserta tu vídeo de bienvenida."
+
+2. **`presentacion-profesional.html`:**
+   - **Función:** Conexión Humana (Bio-Vídeo).
+   - **Mensaje GTM:** "Tu historia, contada por ti. Conecta a un nivel más profundo."
+
+3. **`membresia.html` (Página de Venta):**
+   - **Función:** Cierre de Venta Emocional.
+   - **Mensaje GTM:** "Explica con tu propia voz el valor de tu comunidad. El vídeo vende más que el texto."
+
+4. **`oferta-de-servicios.html` (Catálogo):**
+   - **Función:** Tráiler del Producto.
+   - **Mensaje GTM:** "Añade un vídeo-tráiler a tus cursos y multiplica las ventas."
+
+

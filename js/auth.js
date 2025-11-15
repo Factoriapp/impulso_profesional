@@ -164,7 +164,7 @@ if (document.getElementById('registroForm')) {
             const usuarioSinPassword = { ...nuevoUsuario };
             delete usuarioSinPassword.password;
             guardarUsuarioActual(usuarioSinPassword);
-            window.location.href = 'area-miembros.html';
+            window.location.href = 'area-privada.html';
         }, 2000);
     });
 }
@@ -213,7 +213,7 @@ if (document.getElementById('loginForm')) {
             window.location.reload();
         } else {
             // Si no hay modal (página de login), redirigir al área de miembros
-            window.location.href = 'area-miembros.html';
+            window.location.href = 'area-privada.html';
         }
     });
 }
@@ -235,7 +235,7 @@ if (document.getElementById('cerrarSesion')) {
 // ============================================
 
 // Si estamos en la página de área de miembros, verificar autenticación
-if (window.location.pathname.includes('area-miembros.html')) {
+if (window.location.pathname.includes('area-privada.html')) {
     if (verificarAutenticacion()) {
         // Mostrar nombre del usuario
         const usuario = obtenerUsuarioActual();

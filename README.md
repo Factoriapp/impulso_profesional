@@ -100,7 +100,7 @@ Web_modelo/
 │   ├── sobre-mi.html ⚠️                             # DEPRECATED - Usar presentacion-profesional.html
 │   ├── recursos.html 📄                             # Blog/recursos (legacy, sin optimizar)
 │   ├── contacto.html 📄                             # Contacto (legacy)
-│   └── area-miembros.html 📄                        # Dashboard privado (legacy)
+│   └── area-privada.html 📄                        # Dashboard privado (legacy)
 │
 ├── 🎨 ESTILOS Y RECURSOS
 │   ├── css/
@@ -262,7 +262,7 @@ Los siguientes archivos existen en el proyecto pero **NO tienen las optimizacion
 - Demostrar "Autoridad Dinámica"
 - Combustible para Pilar 3 (Marketing)
 
-#### contacto.html, area-miembros.html
+#### contacto.html, area-privada.html
 **Estado**: Páginas legacy, sin revisión reciente
 **Prioridad**: Baja (post-MVP)
 

@@ -496,4 +496,15 @@ Para llegar a la estrategia final, se evaluaron y descartaron dos enfoques previ
 
 - Razón Estratégica Final: Esta vía elimina la parálisis de decisión del cliente ("no tengo gusto"), evita la carga operativa de crear múltiples marcas (somos un solo producto) y posiciona el servicio como una solución "Llave en Mano" premium.
 
+Entrada para Actualización del DM1 (15-Nov-2025)
+
+-Decisión de Arquitectura: Implementación del "Widget de Vídeo Contextual"
+Contexto: Se identifica la necesidad de aumentar la conversión y confianza en páginas clave de venta.
+Decisión (Firme): Se aprueba la inclusión de un módulo de vídeo opcional en las páginas `index.html` (Hero), `presentacion-profesional.html`, `membresia.html` y en el Catálogo (`oferta-de-servicios.html`).
+
+Arquitectura de Implementación:
+1. "Lean" (Coste Cero): El widget solo aceptará embeds de plataformas externas (YouTube/Vimeo), alineándose con la restricción de COGS ≈ 0 (No hosting de vídeo nativo).
+2. "Auto-Ocultable": El widget se implementará bajo la lógica "Auto-Ocultable". Si el campo de URL en el Dashboard está vacío, el módulo no se renderiza en el HTML público (`display: none;`).
+3. "Simplicidad Radical": La experiencia para "Pepe" (el profesional) será un único campo de texto en el Dashboard: "Pega aquí tu URL de vídeo (Opcional)".
+
 

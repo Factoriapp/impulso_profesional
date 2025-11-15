@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Área - ANA (Premium)</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* HEADER ULTRA-SIMPLIFICADO */
+        .app-header {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .app-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .user-menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+        }
+
+        /* DROPDOWN MENU */
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .user-dropdown.active {
+            display: block;
+        }
+
+        .user-dropdown-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--color-text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+            transition: background 0.2s ease;
+        }
+
+        .user-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-dropdown-item:hover {
+            background: var(--color-bg-secondary);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* BLOQUES */
+        .content-block {
+            margin-bottom: 4rem;
+        }
+
+        .block-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .block-title {
+            font-size: 1.75rem;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .block-subtitle {
+            color: var(--color-text-light);
+            font-size: 1rem;
+        }
+
+        /* SUCCESS BADGE */
+        .success-badge {
+            background: var(--color-success-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--color-success);
+            margin-bottom: 2rem;
+        }
+
+        .success-badge p {
+            margin: 0;
+            color: var(--color-success-dark);
+            font-weight: 500;
+        }
+
+        /* RECURSOS GRID */
+        .recursos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .recurso-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .recurso-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--color-primary);
+            transform: translateY(-2px);
+        }
+
+        .recurso-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .recurso-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .recurso-meta {
+            color: var(--color-text-light);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER CON DROPDOWN -->
+    <header class="app-header">
+        <div class="app-header-container">
+            <div class="app-logo">[Tu Logo]</div>
+
+            <div class="user-menu-btn" onclick="toggleDropdown()">
+                <div>
+                    <div style="font-weight: 600; font-size: 0.95rem;">Ana</div>
+                    <span class="user-badge">Premium</span>
+                </div>
+                <span style="font-size: 0.875rem;">▼</span>
+
+                <!-- DROPDOWN CON GESTIÓN -->
+                <div class="user-dropdown" id="userDropdown">
+                    <a href="cuenta.html" class="user-dropdown-item">⚙️ [Mi Cuenta]</a>
+                    <a href="#" class="user-dropdown-item" style="color: var(--color-error);" onclick="cerrarSesion(); return false;">🚪 [Cerrar Sesión]</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL - SOLO HUB DE CONSUMO -->
+    <div class="app-container">
+
+        <!-- ============================================
+             ÚNICO BLOQUE: HUB DE CONSUMO
+             ============================================ -->
+        <section class="content-block">
+            <div class="block-header">
+                <h2 class="block-title">[Título: Mi Contenido Principal]</h2>
+                <p class="block-subtitle">[Descripción: Todo tu contenido disponible]</p>
+            </div>
+
+            <div class="success-badge">
+                <p>✓ [Mensaje de Estado: Como Miembro Premium, tienes acceso ilimitado]</p>
+            </div>
+
+            <div class="recursos-grid">
+                <!-- Card 1 -->
+                <div class="recurso-card">
+                    <div class="recurso-icon">[Icono 1: 🎓]</div>
+                    <div class="recurso-title">[Categoría 1: Ej. Cursos]</div>
+                    <div class="recurso-meta">[Meta 1: Ej. 12 disponibles]</div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="recurso-card">
+                    <div class="recurso-icon">[Icono 2: 📄]</div>
+                    <div class="recurso-title">[Categoría 2: Ej. Guías PDF]</div>
+                    <div class="recurso-meta">[Meta 2: Ej. 8 disponibles]</div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="recurso-card">
+                    <div class="recurso-icon">[Icono 3: 🎬]</div>
+                    <div class="recurso-title">[Categoría 3: Ej. Videos]</div>
+                    <div class="recurso-meta">[Meta 3: Ej. 15 disponibles]</div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="recurso-card">
+                    <div class="recurso-icon">[Icono 4: 🛠️]</div>
+                    <div class="recurso-title">[Categoría 4: Ej. Plantillas]</div>
+                    <div class="recurso-meta">[Meta 4: Ej. 6 disponibles]</div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="recurso-card">
+                    <div class="recurso-icon">[Icono 5: 🎵]</div>
+                    <div class="recurso-title">[Categoría 5: Ej. Audios]</div>
+                    <div class="recurso-meta">[Meta 5: Ej. 20 disponibles]</div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="recurso-card">
+                    <div class="recurso-icon">[Icono 6: 👥]</div>
+                    <div class="recurso-title">[Categoría 6: Ej. Comunidad]</div>
+                    <div class="recurso-meta">[Meta 6: Ej. Acceso exclusivo]</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        function toggleDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Cerrar dropdown al hacer click fuera
+        document.addEventListener('click', function(e) {
+            const menuBtn = document.querySelector('.user-menu-btn');
+            const dropdown = document.getElementById('userDropdown');
+
+            if (!menuBtn.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Función cerrar sesión
+        function cerrarSesion() {
+            if (confirm('[¿Seguro que quieres cerrar sesión?]')) {
+                localStorage.removeItem('usuario');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+
+</body>
+</html>

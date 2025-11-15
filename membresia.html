@@ -22,6 +22,21 @@
     <link rel="stylesheet" href="css/styles.css">
 
     <style>
+        /* Altura uniforme para tarjetas de privilegios */
+        #privilegios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 500px));
+            gap: 2rem;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        #privilegios-grid .card--enhanced {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
         /* Estilos para FAQ Acordeón */
         .faq-container {
             max-width: 800px;
@@ -125,7 +140,7 @@
 
                 <!-- Menú desplegable -->
                 <div class="user-menu" id="userMenu" style="display: none;">
-                    <a href="area-miembros.html" class="user-menu-item">
+                    <a href="area-privada.html" class="user-menu-item">
                         <span>👤</span> Mi Área
                     </a>
                     <button onclick="cerrarSesion()" class="user-menu-item">
@@ -155,8 +170,8 @@
                 <h4>📍 Página: MEMBRESÍA (Sales Page - MRR)</h4>
                 <p><strong>Propósito:</strong> Página de venta para suscripción recurrente (Monthly Recurring Revenue). Modelo "Privilegios VIP" no "Comunidad".</p>
                 <p><strong>Estrategia:</strong> Vendemos Acceso Exclusivo y Ventajas Tangibles (contenido premium, mentoría directa, recursos únicos). NO vendemos "pertenecer a una tribu".</p>
-                <p><strong>Arquitectura:</strong> Carta de ventas vertical con 5 secciones clave: Hero Privilegios → Stack de Valor (4 pilares) → Sneak Peek → Pricing → FAQ.</p>
-                <p><strong>Integración requerida:</strong> Stripe/PayPal para pagos recurrentes. Gestión de suscripciones desde area-miembros.html.</p>
+                <p><strong>Arquitectura:</strong> Carta de ventas vertical con 4 secciones clave: Hero Privilegios → Stack de Valor (4 pilares) → Pricing → FAQ.</p>
+                <p><strong>Integración requerida:</strong> Stripe/PayPal para pagos recurrentes. Gestión de suscripciones desde area-privada.html.</p>
             </div>
         </div>
     </section>
@@ -192,21 +207,21 @@
 
             <h2 class="text-center mb-lg">[Título Sección: Ej. "Privilegios exclusivos de la membresía" / "Ventajas VIP que obtienes"]</h2>
 
-            <!-- Grid de Privilegios (Flexbox centrado - Desktop) -->
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch; gap: 2rem; margin-top: 2rem;">
+            <!-- Grid de Privilegios (Grid con altura uniforme) -->
+            <div id="privilegios-grid" style="margin-top: 2rem;">
 
-                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
+                <div class="card card--enhanced">
                     <div class="card-icon card-icon--primary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
                             <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="card-title">[Pilar 1: Ej. "Biblioteca Premium Completa"]</h3>
-                    <p class="card-text">[Descripción. Ej: "Acceso ilimitado a todo mi contenido exclusivo: cursos completos, masterclasses y formaciones que no están disponibles en ningún otro lugar."]</p>
+                    <h3 class="card-title">Desbloquea el Catálogo Completo</h3>
+                    <p class="card-text">Acceso total e inmediato a todos los cursos, artículos premium y servicios exclusivos.</p>
                 </div>
 
-                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
+                <div class="card card--enhanced">
                     <div class="card-icon card-icon--secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <circle cx="12" cy="12" r="10"></circle>
@@ -218,7 +233,7 @@
                     <p class="card-text">[Descripción. Ej: "Sesiones mensuales en vivo conmigo para resolver tus casos específicos. Trato personalizado que acorta tu curva de aprendizaje."]</p>
                 </div>
 
-                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
+                <div class="card card--enhanced">
                     <div class="card-icon card-icon--sage">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -228,7 +243,7 @@
                     <p class="card-text">[Descripción. Ej: "Tus consultas tienen prioridad. Respuestas rápidas y atención preferencial para que avances sin bloqueos."]</p>
                 </div>
 
-                <div class="card card--enhanced" style="flex: 0 1 calc(50% - 1rem); min-width: 280px; max-width: 500px;">
+                <div class="card card--enhanced">
                     <div class="card-icon card-icon--text">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;">
                             <polyline points="20 12 20 22 4 22 4 12"></polyline>
@@ -243,26 +258,6 @@
                 </div>
 
             </div>
-        </div>
-    </section>
-
-    <!-- SNEAK PEEK: La Prueba Visual -->
-    <section class="section section-alt">
-        <div class="container text-center">
-            <div class="model-description" style="margin-bottom: 2rem;">
-                <h4>💡 Sección: Sneak Peek (Prueba Visual)</h4>
-                <p><strong>Propósito:</strong> Mostrar un pantallazo "falso" de lo que hay dentro. Psicología: "Mira todo lo que te estás perdiendo".</p>
-                <p><strong>En producción:</strong> Reemplazar con captura de pantalla real del área de miembros, dashboard, o vista de cursos.</p>
-            </div>
-
-            <h2 class="section-title">[Título: Ej. "Así se ve por dentro" / "Un vistazo al área privada"]</h2>
-
-            <div class="image-placeholder" style="height: 400px; max-width: 800px; margin: 2rem auto; background: var(--color-white); border: 1px solid var(--color-border); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center;">
-                <p class="text-muted" style="font-size: 3rem;">📷</p>
-            </div>
-            <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--color-muted-text);">(En producción: Captura del Área de Miembros)</p>
-
-            <p class="text-muted">[Texto de apoyo. Ej: "Todo organizado, limpio y fácil de usar."]</p>
         </div>
     </section>
 
@@ -546,88 +541,7 @@
         </div>
     </div>
 
-    <!-- ============================================
-         FOOTER
-         ============================================ -->
-    <footer class="footer">
-        <div class="footer-wrapper">
-            <div class="model-description">
-                <h4>📍 Módulo: Footer (Pie de Página)</h4>
-                <p><strong>Propósito:</strong> Proveer navegación secundaria, enlaces legales, redes sociales y contacto.</p>
-                <p><strong>Siempre incluir:</strong> Política de privacidad, Términos y condiciones, Contacto, Login miembros (discreto).</p>
-            </div>
-
-            <div class="footer-content">
-            <div class="footer-section">
-                <h3>Navegación</h3>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
-                    <li><a href="oferta-de-servicios.html">Oferta de Servicios</a></li>
-                    <li><a href="recursos.html">Recursos/Blog</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Servicios</h3>
-                <ul>
-                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
-                    <li><a href="cursos.html">Cursos Online</a></li>
-                    <li><a href="membresia.html">Membresía</a></li>
-                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
-                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Conecta</h3>
-                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link" aria-label="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="YouTube">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" aria-label="Email">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                            <polyline points="22,6 12,13 2,6"></polyline>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="js/auth.js"></script>
+    <script src="js/auth.js">
     <script src="js/main.js"></script>
 </body>
 </html>

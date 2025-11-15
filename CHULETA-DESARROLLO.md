@@ -24,7 +24,7 @@ Web_modelo/
 ├── oferta-de-servicios.html     # Catálogo de soluciones
 ├── contacto-agenda.html         # Landing híbrida: Reserva + Contacto (v1.5)
 ├── membresia.html               # Sales page para suscripción recurrente (v2.0)
-├── area-miembros.html           # Dashboard privado
+├── area-privada.html           # Dashboard privado
 ├── Obsoleto/
 │   ├── sobre-mi.html            # ⚠️ DEPRECATED - Usar presentacion-profesional.html
 │   ├── agenda.html              # ⚠️ DEPRECATED - Usar contacto-agenda.html
@@ -933,7 +933,7 @@ Este MVP se construyó intencionalmente sin sistema de componentes para mantener
 - `presentacion-profesional.html` (líneas 435-596)
 - `oferta-de-servicios.html` (líneas 404-565)
 - `contacto-agenda.html` (líneas 352-513)
-- `area-miembros.html` (líneas modales)
+- `area-privada.html` (líneas modales)
 
 **Impacto**:
 - ❌ Viola principio DRY (Don't Repeat Yourself)

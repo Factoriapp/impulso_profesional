@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de cuenta - Mi perfil">
+    <title>Mi Cuenta - [Tu Nombre Profesional]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* HEADER ULTRA-SIMPLIFICADO */
+        .app-header {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .app-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .back-link:hover {
+            background: var(--color-bg-secondary);
+            color: var(--color-primary);
+        }
+
+        .user-menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .user-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .user-badge--registrada {
+            background: var(--color-bg-secondary);
+            color: var(--color-text-light);
+        }
+
+        .user-badge--premium {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+        }
+
+        /* DROPDOWN MENU */
+        .user-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            min-width: 200px;
+            display: none;
+            z-index: 1000;
+        }
+
+        .user-dropdown.active {
+            display: block;
+        }
+
+        .user-dropdown-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: var(--color-text);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+            transition: background 0.2s ease;
+        }
+
+        .user-dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .user-dropdown-item:hover {
+            background: var(--color-bg-secondary);
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* PAGE HEADER */
+        .page-header {
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .page-title {
+            font-size: 2.25rem;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+        }
+
+        /* ACCOUNT GRID */
+        .account-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .account-card {
+            background: var(--color-bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+
+        .account-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            color: var(--color-text);
+        }
+
+        .account-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .account-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .account-info-label {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        .account-info-value {
+            font-weight: 600;
+        }
+
+        /* UPGRADE BANNER */
+        .upgrade-banner {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .upgrade-banner h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .upgrade-banner p {
+            opacity: 0.95;
+            margin-bottom: 1.25rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 2rem 1rem;
+            }
+
+            .account-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+            }
+
+            .header-nav {
+                gap: 0.5rem;
+            }
+
+            .back-link span {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER CON NAVEGACIÓN -->
+    <header class="app-header">
+        <div class="app-header-container">
+            <div class="app-logo">[Tu Logo]</div>
+
+            <div class="header-nav">
+                <a href="area-privada.html" class="back-link">
+                    <span>←</span>
+                    <span>Volver al Área Privada</span>
+                </a>
+
+                <div class="user-menu-btn" onclick="toggleDropdown()">
+                    <div>
+                        <div style="font-weight: 600; font-size: 0.95rem;" id="userName">Usuario</div>
+                        <span class="user-badge user-badge--registrada" id="userBadge">Registrada</span>
+                    </div>
+                    <span style="font-size: 0.875rem;">▼</span>
+
+                    <!-- DROPDOWN -->
+                    <div class="user-dropdown" id="userDropdown">
+                        <a href="cuenta.html" class="user-dropdown-item">⚙️ [Mi Cuenta]</a>
+                        <a href="#" class="user-dropdown-item" style="color: var(--color-error);" onclick="cerrarSesion(); return false;">🚪 [Cerrar Sesión]</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="app-container">
+
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <h1 class="page-title">⚙️ [Gestión de Cuenta]</h1>
+            <p class="page-subtitle">[Administra tu perfil y suscripción]</p>
+        </div>
+
+        <!-- UPGRADE BANNER (solo para usuarios no-premium) -->
+        <div class="upgrade-banner" id="upgradeBanner" style="display: none;">
+            <h3>⭐ [Actualiza a Premium]</h3>
+            <p>[Desbloquea todos los privilegios exclusivos y acelera tus resultados]</p>
+            <a href="membresia.html" class="btn btn-secondary" style="background: white; color: var(--color-primary); font-weight: 600; display: inline-block; text-decoration: none;">
+                [Ver Planes Premium] →
+            </a>
+        </div>
+
+        <!-- ACCOUNT GRID -->
+        <div class="account-grid">
+            <!-- INFORMACIÓN PERSONAL -->
+            <div class="account-card">
+                <h3>[Información Personal]</h3>
+                <div class="account-info">
+                    <div class="account-info-row">
+                        <span class="account-info-label">Nombre</span>
+                        <span class="account-info-value" id="accountName">Usuario</span>
+                    </div>
+                    <div class="account-info-row">
+                        <span class="account-info-label">Email</span>
+                        <span class="account-info-value" id="accountEmail">email@ejemplo.com</span>
+                    </div>
+                    <div class="account-info-row">
+                        <span class="account-info-label">Tipo de Cuenta</span>
+                        <span class="account-info-value" id="accountType">Registrada</span>
+                    </div>
+                </div>
+                <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="alert('[Función en desarrollo]')">
+                    [Editar Perfil]
+                </button>
+            </div>
+
+            <!-- SUSCRIPCIÓN -->
+            <div class="account-card">
+                <h3>[Mi Suscripción]</h3>
+                <div id="subscriptionContent">
+                    <p style="color: var(--color-text-light);">[No tienes una suscripción activa]</p>
+                    <a href="membresia.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem; display: block; text-align: center; text-decoration: none;">
+                        [Ver Planes Premium]
+                    </a>
+                </div>
+            </div>
+
+            <!-- SEGURIDAD -->
+            <div class="account-card">
+                <h3>[Seguridad]</h3>
+                <button class="btn btn-secondary" style="width: 100%; margin-bottom: 0.75rem;" onclick="alert('[Función en desarrollo]')">
+                    [Cambiar Contraseña]
+                </button>
+                <button class="btn btn-secondary" style="width: 100%;" onclick="cerrarSesion()">
+                    [Cerrar Sesión]
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script>
+        // Toggle user menu
+        function toggleDropdown() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.classList.toggle('active');
+        }
+
+        // Cerrar dropdown al hacer click fuera
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('userDropdown');
+            const btn = document.querySelector('.user-menu-btn');
+            if (dropdown && btn && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Cargar datos del usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+
+            if (!usuario.nombre) {
+                // Si no hay usuario, redirigir a login
+                window.location.href = 'index.html';
+                return;
+            }
+
+            // Actualizar header
+            const userNameElement = document.getElementById('userName');
+            const userBadgeElement = document.getElementById('userBadge');
+
+            if (userNameElement) {
+                userNameElement.textContent = usuario.nombre;
+            }
+
+            // Actualizar badge según tipo de usuario
+            if (userBadgeElement) {
+                if (usuario.tipoUsuario === 'miembro') {
+                    userBadgeElement.textContent = 'Premium';
+                    userBadgeElement.className = 'user-badge user-badge--premium';
+                } else {
+                    userBadgeElement.textContent = 'Registrada';
+                    userBadgeElement.className = 'user-badge user-badge--registrada';
+                }
+            }
+
+            // Actualizar información de cuenta
+            document.getElementById('accountName').textContent = usuario.nombre;
+            document.getElementById('accountEmail').textContent = usuario.email || 'email@ejemplo.com';
+
+            if (usuario.tipoUsuario === 'miembro') {
+                document.getElementById('accountType').textContent = 'Cuenta Premium';
+                // Mostrar información de suscripción premium
+                document.getElementById('subscriptionContent').innerHTML = `
+                    <div class="account-info">
+                        <div class="account-info-row">
+                            <span class="account-info-label">Plan</span>
+                            <span class="account-info-value">Premium</span>
+                        </div>
+                        <div class="account-info-row">
+                            <span class="account-info-label">Estado</span>
+                            <span class="account-info-value" style="color: var(--color-success);">Activa</span>
+                        </div>
+                        <div class="account-info-row">
+                            <span class="account-info-label">Renovación</span>
+                            <span class="account-info-value">--/--/----</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="alert('[Función en desarrollo]')">
+                        [Gestionar Suscripción]
+                    </button>
+                `;
+                // Ocultar upgrade banner
+                document.getElementById('upgradeBanner').style.display = 'none';
+            } else {
+                document.getElementById('accountType').textContent = 'Cuenta Registrada';
+                // Mostrar upgrade banner
+                document.getElementById('upgradeBanner').style.display = 'block';
+            }
+        });
+
+        // Función cerrar sesión
+        function cerrarSesion() {
+            if (confirm('[¿Seguro que quieres cerrar sesión?]')) {
+                localStorage.removeItem('usuario');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+
+</body>
+</html>

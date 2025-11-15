@@ -828,7 +828,7 @@ Checkout Stripe (suscripción recurrente)
     ↓
 Tabla: user_enrollments
     ↓
-Acceso: area-miembros.html (contenido exclusivo)
+Acceso: area-privada.html (contenido exclusivo)
 ```
 
 **Tabla Base de Datos**:
