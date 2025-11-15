@@ -22,9 +22,8 @@ Web_modelo/
 ├── index.html                    # Página principal (home)
 ├── presentacion-profesional.html # Página "Sobre Mí" (ACTIVA)
 ├── oferta-de-servicios.html     # Catálogo de soluciones
-├── recursos.html                # Blog/recursos (Fase 2)
 ├── contacto-agenda.html         # Landing híbrida: Reserva + Contacto (v1.5)
-├── membresia.html               # Sales page para suscripción recurrente (v1.8)
+├── membresia.html               # Sales page para suscripción recurrente (v2.0)
 ├── area-miembros.html           # Dashboard privado
 ├── Obsoleto/
 │   ├── sobre-mi.html            # ⚠️ DEPRECATED - Usar presentacion-profesional.html
@@ -34,10 +33,31 @@ Web_modelo/
 │   └── styles.css               # Hoja de estilos única (2900+ líneas)
 ├── js/
 │   └── main.js                  # JavaScript principal
-└── CHULETA-DESARROLLO.md        # Este archivo (v1.8)
+└── CHULETA-DESARROLLO.md        # Este archivo (v2.0)
 ```
 
+**Navegación Estándar (5 páginas principales):**
+```html
+<ul class="nav-menu" id="navMenu">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+    <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+    <li><a href="membresia.html">Membresía</a></li>
+    <li><a href="contacto-agenda.html" class="nav-cta">Contacto</a></li>
+</ul>
+```
+**Nomenclatura unificada** (2025-11-15):
+- ✅ "Sobre Mí" (antes "Presentación Profesional")
+- ✅ "Soluciones" (antes "Oferta de Servicios")
+- ✅ "Contacto" (antes "Contacto y Agenda" o "Agenda tu Sesión")
+- ✅ Clase `active` en el link de la página actual
+
 **Decisiones arquitectónicas recientes:**
+- **membresia.html** (v2.0): Mejoras UX y optimización
+  - Grid Flexbox 2x2 para privilegios (antes carrusel)
+  - FAQ con acordeón nativo `<details>` (cero JavaScript)
+  - Eliminadas 80 líneas de JavaScript del carrusel
+  - Mejora en accesibilidad y usabilidad móvil
 - **contacto-agenda.html** (v1.7): Unifica reserva + contacto con Modal Strategy
   - Estrategia: "Red de Seguridad" (maximiza conversión)
   - Layout: 2 columnas asimétricas 2fr/1fr
@@ -46,6 +66,10 @@ Web_modelo/
   - Formulario: Modal popup (limpia la vista, foco en calendario)
   - Altura sincronizada: 700px para ambas columnas
   - Footer unificado en todas las páginas (4 columnas, iconos SVG)
+- **Navegación hamburguesa** (v2.0): Corrección técnica
+  - Menú hamburguesa funciona en todas las pantallas
+  - Corregido scroll horizontal (`overflow-x: hidden`)
+  - Posicionamiento preciso: `right: -320px` (antes `-100%`)
 
 ### Filosofía Arquitectónica
 - **Monolito CSS**: Un solo archivo `styles.css` (no usar múltiples hojas)
@@ -786,6 +810,31 @@ Web_modelo/
 - 📊 Total páginas completas: 6/6 del sitio web
 - 🎯 Objetivo: Habilitar monetización recurrente (MRR)
 
+### 2025-11-15 (Versión 2.0 - Estandarización Navegación + UX Optimizations)
+- ✅ **NAVEGACIÓN UNIFICADA**: Estandarizada en todas las 6 páginas HTML
+  - Menú completo con 5 items: Inicio, Sobre Mí, Soluciones, Membresía, Contacto
+  - Nomenclatura profesional unificada (eliminadas variantes inconsistentes)
+  - Clase `active` agregada al link de la página actual
+  - Eliminado enlace roto a `recursos.html` (página inexistente)
+- ✅ **FOOTER UNIFICADO**: Corrección de inconsistencias
+  - Reemplazado "Oferta de Servicios" → "Soluciones"
+  - Reemplazado "Contacto y Agenda" → "Contacto"
+  - Eliminado "Recursos/Blog" (planificado para Fase 2)
+  - Estructura idéntica en todas las páginas
+- ✅ **MEMBRESIA.HTML - UX IMPROVEMENTS**:
+  - **Carrusel → Grid Flexbox 2x2**: Todos los privilegios visibles simultáneamente
+  - **FAQ → Acordeón nativo**: Sistema `<details>` con indicadores +/−
+  - **Eliminadas 80 líneas de JavaScript**: Código del carrusel removido
+  - Mejor accesibilidad (semántica HTML5 nativa)
+  - Mejor usabilidad móvil (no requiere navegación)
+- ✅ **MENÚ HAMBURGUESA - FIX CRÍTICO**:
+  - Corregido scroll horizontal: `right: -320px` (antes `-100%`)
+  - Agregado `overflow-x: hidden` al body
+  - Transición suave: `transition: right 0.3s ease`
+  - Menú ya no expande el ancho de la página
+- 📊 Archivos actualizados: 6 HTML + styles.css + CHULETA
+- 🎯 Objetivo: Consistencia total, mejor UX, eliminación de código innecesario
+
 ### 2025-01-13 (Versión 1.7 - Rediseño contacto-agenda.html + Unificación Footer)
 - ✅ **REDISEÑO COMPLETO**: contacto-agenda.html transformada a layout 2 columnas
   - Calendario a la izquierda (2fr, más ancho, borde destacado)
@@ -909,11 +958,11 @@ Este MVP se construyó intencionalmente sin sistema de componentes para mantener
 ### **Decisiones de Producto**
 
 #### 3. **Blog/Recursos en Fase 2** ✅ RESUELTO
-**Decisión**: Enlaces a "Blog" eliminados del menú de navegación (2025-01-13).
+**Decisión**: Enlaces a "Blog/Recursos" eliminados del menú y footers (2025-11-15).
 
 **Razón**: El blog está planificado para Fase 2 según DM1. No mostrar enlaces a páginas inexistentes.
 
-**Archivos afectados**: 5 archivos HTML principales.
+**Archivos afectados**: 6 archivos HTML principales (última limpieza en v2.0).
 
 #### 4. **Promesa de Tiempo de Respuesta Unificada** ✅ RESUELTO
 **Decisión**: Estandarizada a **"24-48h laborables"** en todos los puntos de contacto (2025-01-13).
