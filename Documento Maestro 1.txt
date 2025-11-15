@@ -471,6 +471,29 @@ Arquitectura Visual: `membresia.html` se diseña como "Carta de Ventas Vertical"
 Decisión: Todas las páginas transaccionales (`contacto-agenda` y `membresia`) deben incluir obligatoriamente el Avatar del profesional en el Hero Section.
 Razón: Humanizar la transacción aumenta la conversión en servicios profesionales.
 
+Entrada para Actualización del DM1 (13-Nov-2025) 
 
+- DEFINICIÓN FINAL DE GTM Y ESTRATEGIA DE VENTA
+
+1. HISTÓRICO DE DECISIONES Y PIVOTES (Contexto Crítico)
+Para llegar a la estrategia final, se evaluaron y descartaron dos enfoques previos. Se documentan aquí para evitar retrocesos futuros:
+
+❌ Intento A: Segmentación por Nicho Vertical (ej. "Web para Psicólogos")
+- Propuesta: Crear funnels y landings específicas para cada profesión.
+- Motivo de Rechazo: Viola la "Arquitectura Lean". Multiplica el coste operativo de marketing y desarrollo. Nos convertiría en una Agencia, no en un SaaS.
+
+❌ Intento B: Segmentación por Dolor/Nivel (ej. "Arregla tu caos", "Deja de ser amateur")
+- Propuesta: Atacar problemas operativos (agenda, web fea).
+- Motivo de Rechazo: Error de Posicionamiento. Insulta el estado actual del cliente ("eres un desastre"). Atrae a clientes de bajo valor. No vende la aspiración de "Sistema Empresarial".
+
+2. DECISIÓN FIRME: ESTRATEGIA "INSPIRACIÓN GUIADA" (Visual First)
+- Decisión: La venta se basará en la identidad visual y la tangibilidad del producto, utilizando nuestra propia tecnología ("Eating our own dog food").
+- Mecanismo:
+  a) La Vitrina: Galería de Demos Reales (webs funcionales) generadas con nuestro Dashboard para diferentes estilos (Místico, Ejecutivo, Salud).
+  b) El Gancho: "Elige tu estilo". El cliente compra una identidad terminada, no una herramienta vacía.
+  c) Conexión Técnica: El clic en la demo pre-carga la configuración en el Onboarding (colores, fotos).
+  d) Personalización: La Encuesta IA (Pilar 5) adapta los textos finales.
+
+- Razón Estratégica Final: Esta vía elimina la parálisis de decisión del cliente ("no tengo gusto"), evita la carga operativa de crear múltiples marcas (somos un solo producto) y posiciona el servicio como una solución "Llave en Mano" premium.
 
 

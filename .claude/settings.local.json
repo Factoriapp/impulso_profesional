@@ -6,7 +6,8 @@
       "Bash(gh:*)",
       "Bash(git push:*)",
       "Bash(git add:*)",
-      "Bash(start contacto-agenda.html)"
+      "Bash(start contacto-agenda.html)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
