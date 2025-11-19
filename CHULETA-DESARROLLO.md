@@ -7,10 +7,11 @@
 1. [Arquitectura del Proyecto](#arquitectura)
 2. [Sistema de Colores](#colores)
 3. [Convenciones de Código](#convenciones)
-4. [Optimizaciones Implementadas](#optimizaciones)
-5. [Reglas de Negocio (DM1)](#reglas-dm1)
-6. [Decisiones Técnicas Clave](#decisiones)
-7. [Checklist de Nuevas Páginas](#checklist)
+4. [Componentes Reutilizables](#componentes-reutilizables) (Iconos SVG, Cards, Botones, Badges, Grids)
+5. [Optimizaciones Implementadas](#optimizaciones)
+6. [Reglas de Negocio (DM1)](#reglas-dm1)
+7. [Decisiones Técnicas Clave](#decisiones)
+8. [Checklist de Nuevas Páginas](#checklist)
 
 ---
 
@@ -625,7 +626,230 @@ Web_modelo/
 
 ---
 
-## 🎨 COMPONENTES REUTILIZABLES
+## 🎨 COMPONENTES REUTILIZABLES {#componentes-reutilizables}
+
+### Sistema de Iconografía SVG
+
+**ESTÁNDAR OBLIGATORIO** (Feather Icons style):
+- `fill="none"`
+- `stroke="currentColor"`
+- `stroke-width="2"`
+- `stroke-linecap="round"`
+- `stroke-linejoin="round"`
+- `xmlns="http://www.w3.org/2000/svg"`
+- `viewBox="0 0 24 24"`
+
+**Razón**: Los iconos usan `stroke="currentColor"` para heredar color CSS automáticamente. Esto permite cambiar el color de cualquier icono modificando solo la propiedad `color` del elemento padre.
+
+**Catálogo de Iconos Disponibles** (18 iconos únicos):
+
+#### 1. Users (Grupo de personas)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+    <circle cx="9" cy="7" r="4"></circle>
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+</svg>
+```
+**Uso**: Servicios 1:1, comunidad, acceso grupal
+
+#### 2. Book-Open (Libro abierto)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+</svg>
+```
+**Uso**: Cursos, recursos educativos, programas
+
+#### 3. Calendar (Calendario)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+    <line x1="16" y1="2" x2="16" y2="6"></line>
+    <line x1="8" y1="2" x2="8" y2="6"></line>
+    <line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+```
+**Uso**: Eventos, talleres, fechas
+
+#### 4. Star (Estrella)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+```
+**Uso**: Premium, favoritos, privilegios exclusivos
+
+#### 5. Clock (Reloj)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+```
+**Uso**: Tiempo, disponibilidad, duración, Pomodoro timer
+
+#### 6. Check-Circle (Verificado)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+</svg>
+```
+**Uso**: Acceso confirmado, completado, verificación
+
+#### 7. Settings/Sun (Ajustes)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path>
+</svg>
+```
+**Uso**: Gestión de cuenta, configuración
+
+#### 8. Message-Square (Mensaje)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+</svg>
+```
+**Uso**: Tablón de anuncios, chat, comunicación
+
+#### 9. File-Text (Documento)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+    <polyline points="14 2 14 8 20 8"></polyline>
+    <line x1="16" y1="13" x2="8" y2="13"></line>
+    <line x1="16" y1="17" x2="8" y2="17"></line>
+    <polyline points="10 9 9 9 8 9"></polyline>
+</svg>
+```
+**Uso**: Recursos descargables, plantillas, ebooks, PDFs
+
+#### 10. Play-Circle (Video)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"></circle>
+    <polygon points="10 8 16 12 10 16 10 8"></polygon>
+</svg>
+```
+**Uso**: Videos, masterclasses, contenido multimedia
+
+#### 11. Headphones (Audio)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M3 18v-6a9 9 0 0 1 18 0v6"></path>
+    <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path>
+</svg>
+```
+**Uso**: Podcast, audio, contenido sonoro
+
+#### 12. Gift (Regalo / Lead Magnet)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="20 12 20 22 4 22 4 12"></polyline>
+    <rect x="2" y="7" width="20" height="5"></rect>
+    <line x1="12" y1="22" x2="12" y2="7"></line>
+    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+</svg>
+```
+**Uso**: Lead magnet, contenido gratuito, regalos
+
+#### 13. Log-Out (Cerrar sesión)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+    <polyline points="16 17 21 12 16 7"></polyline>
+    <line x1="21" y1="12" x2="9" y2="12"></line>
+</svg>
+```
+**Uso**: Cerrar sesión en área privada
+
+#### 14. Package (Productos / Cajas)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line>
+    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+</svg>
+```
+**Uso**: Productos, cajas de contenido, paquetes
+
+**Iconos de Redes Sociales:**
+
+#### 15. Facebook
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+</svg>
+```
+
+#### 16. Instagram
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+</svg>
+```
+
+#### 17. YouTube
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+</svg>
+```
+
+#### 18. Mail (Email)
+```html
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+    <polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+```
+
+**Ejemplo de Uso con Color Heredado:**
+```html
+<!-- El icono hereda el color del elemento padre -->
+<div class="card-icon" style="color: var(--color-primary);">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+        <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+    </svg>
+</div>
+```
+
+**Tamaños Comunes:**
+```css
+/* Iconos pequeños (24px) - Default */
+svg { width: 24px; height: 24px; }
+
+/* Iconos medianos (32px) - Tarjetas */
+.card-icon svg { width: 32px; height: 32px; }
+
+/* Iconos grandes (48px) - Hero sections */
+.icon-large svg { width: 48px; height: 48px; }
+```
+
+**❌ NUNCA hacer:**
+- Usar `fill="currentColor"` (debe ser `fill="none"`)
+- Cambiar `stroke-width` a valores diferentes de `2`
+- Usar emojis en lugar de iconos SVG
+- Hardcodear colores en el SVG (`stroke="#000"`)
+
+**✅ SIEMPRE hacer:**
+- Copiar el SVG completo del catálogo anterior
+- Usar `stroke="currentColor"` para heredar color CSS
+- Mantener todos los atributos estándar
+- Agregar iconos nuevos siguiendo el mismo patrón
+
+---
 
 ### Tarjetas (Cards)
 ```html
