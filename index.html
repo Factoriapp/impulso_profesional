@@ -12,7 +12,7 @@
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="[palabras clave separadas por comas, 5-10 máximo]">
 
-    <title>[TÍTULO_PÁGINA] - [TU_NOMBRE_MARCA]</title>
+    <title>[index]</title>
     <link rel="canonical" href="[TU_URL_COMPLETA]">
 
     <!-- ═══════════════════════════════════════════════════════════════
@@ -100,7 +100,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS Principal -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
 
@@ -154,12 +154,12 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             <div class="logo">Tu Logo Aquí</div>
 
                             <ul class="nav-menu" id="navMenu">
-                                <li><a href="index.html" class="active">Inicio</a></li>
-                                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
-                                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
-                                <li><a href="blog.html">Blog</a></li>
-                                <li><a href="membresia.html">Membresía</a></li>
-                                <li><a href="contacto-agenda.html" class="nav-cta">Contacto</a></li>
+                                <li><a href="index.html" class="active">[index]</a></li>
+                                <li><a href="presentacion-profesional.html">[presentacion-profesional]</a></li>
+                                <li><a href="oferta-de-servicios.html">[oferta-de-servicios]</a></li>
+                                <li><a href="blog.html">[blog]</a></li>
+                                <li><a href="membresia.html">[Membresía / Comunidad]</a></li>
+                                <li><a href="contacto-agenda.html" class="nav-cta">[contacto-agenda]</a></li>
                             </ul>
             <!-- Botones de autenticación (mostrar si NO está logueado) -->
             <div class="auth-buttons" id="authButtons">
@@ -319,14 +319,12 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             <div class="cards-grid">
                 <!-- EJEMPLO: Tarjeta Servicio 1:1 -->
                 <div class="card card--enhanced">
-                    <div class="badge badge--servicio">
-                        👤 SERVICIO 1:1
-                    </div>
-
-                    <div class="card-icon card-icon--text">
+                    <div class="card-icon card-icon--primary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                         </svg>
                     </div>
                     <h3 class="card-title">[Título del Servicio]</h3>
@@ -335,16 +333,12 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </p>
 
                     <div class="mt-auto">
-                        <a href="oferta-de-servicios.html#detalle-servicio" class="btn btn-primary btn--with-arrow">Ver Detalles ↓</a>
+                        <a href="oferta-de-servicios.html#detalle-servicio" class="btn btn-primary">Ver Detalles →</a>
                     </div>
                 </div>
 
                 <!-- EJEMPLO: Tarjeta Curso Online -->
                 <div class="card card--enhanced">
-                    <div class="badge badge--curso">
-                        🎓 CURSO ONLINE
-                    </div>
-
                     <div class="card-icon card-icon--secondary">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
@@ -357,17 +351,13 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </p>
 
                     <div class="mt-auto">
-                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-primary btn--with-arrow">Ver Detalles ↓</a>
+                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-primary">Ver Detalles →</a>
                     </div>
                 </div>
 
                 <!-- EJEMPLO: Tarjeta Evento/Taller -->
                 <div class="card card--enhanced">
-                    <div class="badge badge--evento">
-                        📅 EVENTO EN VIVO
-                    </div>
-
-                    <div class="card-icon card-icon--primary">
+                    <div class="card-icon card-icon--text">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                             <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -381,7 +371,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </p>
 
                     <div class="mt-auto">
-                        <a href="oferta-de-servicios.html#detalle-evento" class="btn btn-primary btn--with-arrow">Ver Detalles ↓</a>
+                        <a href="oferta-de-servicios.html#detalle-evento" class="btn btn-primary">Ver Detalles →</a>
                     </div>
                 </div>
             </div>
@@ -558,7 +548,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             <span class="community-price-label">Desde</span>
                             <span class="community-price">[€XX/mes]</span>
                         </div>
-                        <a href="membresia.html" class="btn btn-primary btn-large btn-glow">
+                        <a href="membresia.html" class="btn btn-primary btn-large">
                             [Únete Ahora]
                         </a>
                     </div>
@@ -800,11 +790,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                                 >
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-large" id="leadSubmitBtn" disabled>
+                                <button type="submit" class="btn btn-secondary btn-large" id="leadSubmitBtn" disabled>
                                     Descargar Ahora
-                                </button>
-                                <button type="button" class="btn btn-primary btn-large" style="margin-top: 1rem;">
-                                    Botón provisional
                                 </button>
                             </div>
                         </div>
@@ -1053,11 +1040,13 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
         consentCheckbox.addEventListener('change', function() {
             leadSubmitBtn.disabled = !this.checked;
             if (this.checked) {
-                leadSubmitBtn.classList.remove('btn-primary');
-                leadSubmitBtn.classList.add('btn-secondary');
-            } else {
+                // Checkbox marcado: Cambia a primario (azul cielo) con hover
                 leadSubmitBtn.classList.remove('btn-secondary');
                 leadSubmitBtn.classList.add('btn-primary');
+            } else {
+                // Checkbox desmarcado: Vuelve a secundario (outline gris)
+                leadSubmitBtn.classList.remove('btn-primary');
+                leadSubmitBtn.classList.add('btn-secondary');
             }
         });
 

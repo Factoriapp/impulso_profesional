@@ -360,8 +360,8 @@
 
             <!-- Dropdown menu (oculto por defecto) -->
             <div id="userDropdown" style="display: none; position: absolute; top: 5rem; right: 2rem; background: white; border: 1px solid var(--color-border); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
-                <a href="#gestion" style="display: block; padding: 1rem 1.5rem; color: var(--color-text); text-decoration: none; border-bottom: 1px solid var(--color-border);" onclick="scrollToSection('gestion'); toggleUserMenu();">⚙️ Mi Cuenta</a>
-                <button onclick="cerrarSesion()" style="display: block; width: 100%; padding: 1rem 1.5rem; background: none; border: none; color: var(--color-error); cursor: pointer; text-align: left; font-size: 1rem;">🚪 Cerrar Sesión</button>
+                <a href="#gestion" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.5rem; color: var(--color-text); text-decoration: none; border-bottom: 1px solid var(--color-border);" onclick="scrollToSection('gestion'); toggleUserMenu();"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path></svg> Mi Cuenta</a>
+                <button onclick="cerrarSesion()" style="display: flex; align-items: center; gap: 0.75rem; width: 100%; padding: 1rem 1.5rem; background: none; border: none; color: var(--color-error); cursor: pointer; text-align: left; font-size: 1rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Cerrar Sesión</button>
             </div>
         </div>
     </header>
@@ -381,7 +381,7 @@
 
             <!-- SEPARADOR -->
             <div class="block-header" style="margin-top: 3rem;">
-                <h2 class="block-title">📦 [Mis Recursos]</h2>
+                <h2 class="block-title" style="display: flex; align-items: center; gap: 0.75rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> [Mis Recursos]</h2>
                 <p class="block-subtitle">[Todo el contenido al que tienes acceso]</p>
             </div>
 
@@ -401,7 +401,7 @@
              ============================================ -->
         <section class="content-block" id="upsell">
             <div class="block-header">
-                <h2 class="block-title">⭐ Privilegios Exclusivos</h2>
+                <h2 class="block-title" style="display: flex; align-items: center; gap: 0.75rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Privilegios Exclusivos</h2>
                 <p class="block-subtitle">Desbloquea acceso premium y acelera tus resultados</p>
             </div>
 
@@ -415,7 +415,7 @@
              ============================================ -->
         <section class="content-block" id="gestion">
             <div class="block-header">
-                <h2 class="block-title">⚙️ Gestión de Cuenta</h2>
+                <h2 class="block-title" style="display: flex; align-items: center; gap: 0.75rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path></svg> Gestión de Cuenta</h2>
                 <p class="block-subtitle">Administra tu suscripción y datos personales</p>
             </div>
 

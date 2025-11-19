@@ -504,58 +504,92 @@ img {
 }
 
 /* ============================================
-   BOTONES
+   BOTONES - SISTEMA SIMPLIFICADO (3 ESTILOS)
    ============================================ */
 
+/* BASE - Estilos compartidos */
 .btn {
     display: inline-block;
-    background-color: var(--color-text);
-    color: var(--color-white);
     padding: 0.9rem 2rem;
     border-radius: 25px;
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    text-align: center;
-    cursor: pointer;
-    transition: var(--transition);
-    border: 2px solid transparent;
     font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    line-height: 1.2;
 }
 
-.btn:hover {
-    background-color: var(--color-sky);
+/* PRIMARIO - Acción principal */
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-text);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* SECUNDARIO - Acción alternativa */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
     color: var(--color-text);
     transform: translateY(-3px);
     box-shadow: var(--shadow-medium);
 }
 
-.btn-primary {
-    background: var(--color-primary);
-    color: var(--color-text);
-    border: 2px solid var(--color-primary);
-}
-
-.btn-primary:hover {
-    background: var(--color-ochre);
-    border-color: var(--color-ochre);
+/* DANGER - Acciones destructivas */
+.btn-danger {
+    background: #dc3545;
     color: var(--color-white);
+    border-color: #dc3545;
 }
 
-.btn-secondary {
-    background: transparent;
-    color: var(--color-text);
-    border: 2px solid var(--color-text);
+.btn-danger:hover {
+    background: #c82333;
+    border-color: #c82333;
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
 }
 
-.btn-secondary:hover {
-    background: var(--color-ochre);
-    border-color: var(--color-ochre);
-    color: var(--color-text);
-}
-
+/* MODIFICADOR: Tamaño grande */
 .btn-large {
     padding: 1.1rem 2.5rem;
     font-size: 1rem;
+}
+
+/* ESTADO: Deshabilitado */
+.btn:disabled,
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-danger:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    /* Opacity eliminado - botón se ve claramente incluso deshabilitado */
+}
+
+.btn:disabled:hover,
+.btn-primary:disabled:hover,
+.btn-secondary:disabled:hover,
+.btn-danger:disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 /* ============================================
@@ -982,10 +1016,7 @@ img {
     color: var(--color-text);
 }
 
-.btn-small {
-    padding: 0.7rem 1.5rem;
-    font-size: 0.9rem;
-}
+/* .btn-small - ELIMINADO: Usar .btn (tamaño base) */
 
 /* Responsive para Recursos */
 @media (max-width: 768px) {
@@ -1158,24 +1189,7 @@ img {
     color: var(--color-text);
 }
 
-.btn-glow {
-    box-shadow: 0 4px 20px rgba(197, 217, 232, 0.4);
-    animation: pulse-glow 2s ease-in-out infinite;
-}
-
-@keyframes pulse-glow {
-    0%, 100% {
-        box-shadow: 0 4px 20px rgba(197, 217, 232, 0.4);
-    }
-    50% {
-        box-shadow: 0 6px 30px rgba(197, 217, 232, 0.6);
-    }
-}
-
-.btn-glow:hover {
-    animation: none;
-    box-shadow: var(--shadow-hover);
-}
+/* .btn-glow - ELIMINADO: Efecto distractor innecesario */
 
 .community-note {
     text-align: center;
@@ -1849,17 +1863,7 @@ img {
     color: var(--color-sky);
 }
 
-.btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background-color: var(--color-text-light);
-    border-color: var(--color-text-light);
-}
-
-.btn:disabled:hover {
-    transform: none;
-    box-shadow: none;
-}
+/* .btn:disabled - ELIMINADO: Regla duplicada, usar la de línea 578 */
 
 .lead-magnet-benefits {
     text-align: center;
@@ -2181,6 +2185,35 @@ img {
     transform: translateY(0);
 }
 
+/* Ocultar elementos (ej: fecha en posts) */
+.hidden {
+    display: none !important;
+}
+
+/* ============================================
+   BREADCRUMBS (MIGAS DE PAN)
+   ============================================ */
+.breadcrumbs {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0;
+}
+
+.breadcrumbs a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--color-primary);
+}
+
+.breadcrumbs span {
+    margin: 0 0.5rem;
+}
+
 /* ============================================
    SISTEMA DE TABS (PESTAÑAS)
    ============================================ */
@@ -2357,6 +2390,11 @@ img {
     background: var(--color-sage);
 }
 
+.badge--categoria {
+    background: rgba(197, 217, 232, 0.8); /* Azul primario suave */
+    color: var(--color-text);
+}
+
 .badge--bold {
     font-weight: 700;
 }
@@ -2389,10 +2427,8 @@ img {
     color: var(--color-sage);
 }
 
-/* ===== BOTONES CON FLECHA ===== */
-.btn--with-arrow {
-    width: 100%;
-}
+/* ===== BOTONES CON FLECHA - ELIMINADO ===== */
+/* .btn--with-arrow - ELIMINADO: Agregar flecha → directamente en el texto */
 
 /* ===== LAYOUTS DE GRID ===== */
 .detail-grid-2col {
@@ -2443,6 +2479,25 @@ img {
     background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
     padding: 2rem;
     text-align: center;
+}
+
+/* ===== VIDEO CONTAINER (16:9 Responsive) ===== */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 
 /* ===== PRICING ===== */
@@ -3090,57 +3145,281 @@ img {
         min-height: 200px;
     }
 }
-
-/* ============================================
-   BOT�N CTA - M�S LLAMATIVO
+n/* ============================================
+   POST (publicacion.html) - ARTÍCULO INDIVIDUAL
    ============================================ */
 
-.btn-cta {
-    background: var(--color-sand); /* Changed to sand */
-    color: var(--color-text); /* Changed to text for readability */
-    border: 2px solid var(--color-sand); /* Changed to sand */
-    font-weight: 600;
+.post-layout {
+    padding: 3rem 0;
 }
 
-.btn-cta:hover {
-    background: var(--color-ochre); /* Changed to ochre */
-    border-color: var(--color-ochre); /* Changed to ochre */
-    filter: none; /* Removed brightness filter */
-    color: var(--color-white); /* Changed to white */
-    transform: translateY(-3px);
+.post-header {
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.post-meta-divider {
+    color: var(--color-text-light);
+}
+
+.post-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.post-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-author-name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.post-author-role {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0.25rem 0 0 0;
+}
+
+.post-content {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 3rem;
+}
+
+.post-content h2 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-content h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.75rem;
+}
+
+.post-content blockquote {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-left: 4px solid var(--color-primary);
+    background: rgba(197, 217, 232, 0.1);
+    font-style: italic;
+}
+
+.post-content blockquote footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: normal;
+}
+
+.post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(197, 217, 232, 0.3);
+}
+
+.post-share {
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    padding: 2rem;
+    border: 2px solid rgba(197, 217, 232, 0.8);
+    border-radius: 15px;
+    background: rgba(197, 217, 232, 0.15);
+    width: fit-content;
+}
+
+.post-share .social-links {
+    justify-content: center;
+}
+
+.post-share-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.post-author-box {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.post-author-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.post-author-name-large {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.post-author-bio {
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title {
+        font-size: 2rem;
+    }
+
+    .post-subtitle {
+        font-size: 1rem;
+    }
+
+    .post-content {
+        font-size: 1rem;
+    }
+
+    .post-author-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* ============================================
+   POST ESCENARIOS ADICIONALES
+   ============================================ */
+
+/* ESCENARIO B: Solo Imagen/Instagram */
+.post-image-fullbleed {
+    margin: 2rem 0 3rem 0;
+}
+
+.post-image-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* ESCENARIO C: Documento PDF */
+.post-document-card {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(197, 217, 232, 0.1), rgba(232, 213, 196, 0.1));
+    border: 2px solid rgba(197, 217, 232, 0.3);
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-document-card:hover {
+    transform: translateY(-5px);
     box-shadow: var(--shadow-medium);
 }
 
-.btn-cta:disabled {
-    background-color: var(--color-text-light);
-    border-color: var(--color-text-light);
-    opacity: 0.6;
+.document-icon {
+    margin-bottom: 1.5rem;
 }
 
-.btn-cta:disabled:hover {
-    filter: none;
-    transform: none;
-    box-shadow: none;
-    background-color: var(--color-text-light);
-    border-color: var(--color-text-light);
+.document-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
 }
+
+.document-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+/* Audio Container (Hero) */
+.audio-container {
+    margin: 2rem 0;
+}
+
+.audio-container audio {
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-document-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .document-title {
+        font-size: 1.5rem;
+    }
+
+    .document-description {
+        font-size: 1rem;
+    }
+}
+
 /* ============================================
-   MODIFICADOR BOT�N CTA - Ocre
+   BOT�N CTA - M�S LLAMATIVO
+/* ============================================
+   CLASES DE BOTONES OBSOLETAS - ELIMINADAS
    ============================================ */
 
-.btn-cta--ochre {
-    background: var(--color-sand);
-    border-color: var(--color-sand);
-    color: var(--color-text); /* Black text for readability on light sand */
-}
-
-.btn-cta--ochre:hover {
-    background: var(--color-ochre);
-    border-color: var(--color-ochre);
-    color: var(--color-white);
-}
-
-
+/* .btn-cta y .btn-cta--ochre - ELIMINADOS: Usar .btn-primary en su lugar */
 
 
 

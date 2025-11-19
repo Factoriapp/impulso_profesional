@@ -270,7 +270,7 @@ Web_modelo/
 **Clases creadas**:
 ```css
 /* Badges/Etiquetas */
-.badge, .badge--evento, .badge--servicio, .badge--curso, .badge--ebook
+.badge, .badge--evento, .badge--servicio, .badge--curso, .badge--ebook, .badge--categoria
 
 /* Tarjetas */
 .card--enhanced
@@ -298,6 +298,30 @@ Web_modelo/
 .mt-auto, .w-full, .text-center, .text-right
 .list-unstyled, .divider, .h-400
 .btn--with-arrow
+.hidden                        /* display: none para ocultar elementos */
+.breadcrumbs                   /* Migas de pan para navegación */
+.video-container               /* Contenedor responsive 16:9 para videos */
+
+/* POST (publicacion.html) - Artículo Individual */
+.post-layout, .post-header, .post-meta, .post-meta-divider
+.post-title, .post-subtitle
+.post-author, .post-author-avatar, .post-author-name, .post-author-role
+.post-content                  /* Estilos para el cuerpo del artículo */
+.post-footer, .post-share, .post-share-title
+.post-author-box, .post-author-avatar-large, .post-author-name-large, .post-author-bio
+
+/* POST - Escenario B: Imagen/Instagram */
+.post-image-fullbleed          /* Contenedor de imagen full-width */
+.post-image-caption            /* Caption opcional debajo de imagen */
+
+/* POST - Escenario C: Documento PDF */
+.post-document-card            /* Tarjeta elegante para documento PDF */
+.document-icon                 /* Icono PDF (80x80px) */
+.document-title                /* Título del documento */
+.document-description          /* Descripción del documento */
+
+/* POST - Hero Multimedia */
+.audio-container               /* Contenedor para audio antes del título */
 ```
 
 **Beneficios logrados**:
@@ -623,25 +647,83 @@ Web_modelo/
     <h3 class="card-title">Título</h3>
     <p class="card-text">Descripción</p>
     <div class="mt-auto">
-        <a href="#" class="btn btn-primary btn--with-arrow">Ver Detalles ↓</a>
+        <a href="#" class="btn btn-primary">Ver Detalles →</a>
     </div>
 </div>
 ```
 
-### Botones
+### Botones (Sistema Simplificado - 3 Estilos)
+
+**IMPORTANTE**: Solo tenemos 3 estilos de botones. Elige según esta regla:
+- ¿Es la acción principal? → `.btn-primary`
+- ¿Es destructiva? → `.btn-danger`
+- ¿Todo lo demás? → `.btn-secondary`
+
 ```html
-<!-- Botón primario -->
-<a href="#" class="btn btn-primary">Texto Botón</a>
+<!-- PRIMARIO - Acción principal (CTA, conversión) -->
+<a href="#" class="btn btn-primary">Agendar Sesión</a>
+<a href="#" class="btn btn-primary btn-large">Comprar Ahora - €129</a>
 
-<!-- Botón secundario -->
-<a href="#" class="btn btn-secondary">Texto Botón</a>
+<!-- SECUNDARIO - Acciones alternativas, navegación -->
+<a href="#" class="btn btn-secondary">Conoce mi Método</a>
+<button onclick="cerrarModal()" class="btn btn-secondary">Cancelar</button>
 
-<!-- Botón grande -->
-<a href="#" class="btn btn-primary btn-large">Texto Botón</a>
+<!-- DANGER - Acciones destructivas/irreversibles (USAR CON PRECAUCIÓN) -->
+<button onclick="eliminarCuenta()" class="btn btn-danger">Eliminar Cuenta</button>
 
-<!-- Botón ancho completo -->
-<a href="#" class="btn btn-primary w-full">Texto Botón</a>
+<!-- Modificadores disponibles -->
+<a href="#" class="btn btn-primary btn-large">Botón grande (hero CTAs)</a>
+<a href="#" class="btn btn-primary w-full">Botón ancho completo (formularios)</a>
+<button class="btn btn-primary" disabled>Botón deshabilitado</button>
 ```
+
+**Matriz de Decisión:**
+| Contexto | Botón |
+|----------|-------|
+| CTA principal (hero) | `.btn-primary .btn-large` |
+| Acción formulario | `.btn-primary` |
+| Cancelar/Volver | `.btn-secondary` |
+| Eliminar/Cancelar suscripción | `.btn-danger` |
+| Navegación | `.btn-secondary` |
+
+**Colores:**
+- Primario: Azul cielo (#c5d9e8) → Hover: Ocre (#e8d5c4)
+- Secundario: Outline gris → Hover: Azul cielo relleno
+- Danger: Rojo (#dc3545) → Hover: Rojo oscuro (#c82333)
+
+**❌ Clases Obsoletas Eliminadas:**
+- `.btn-cta` → Usar `.btn-primary`
+- `.btn-glow` → Eliminado (efecto distractor)
+- `.btn-small` → Usar `.btn` (tamaño base)
+- `.btn--with-arrow` → Agregar `→` en el texto directamente
+
+### Badges (Etiquetas de Categoría)
+
+**IMPORTANTE**: Los badges diferencian **productos de pago** de **contenido gratuito**.
+
+```html
+<!-- PRODUCTOS DE PAGO (Oferta de Servicios) -->
+<span class="badge badge--evento">EVENTO</span>      <!-- Azul cielo -->
+<span class="badge badge--servicio">SERVICIO</span>  <!-- Gris oscuro -->
+<span class="badge badge--curso">CURSO</span>        <!-- Ocre -->
+<span class="badge badge--ebook">EBOOK</span>        <!-- Verde sage -->
+
+<!-- CONTENIDO GRATUITO (Blog) -->
+<span class="badge badge--categoria">GESTIÓN</span>  <!-- Azul suave -->
+<span class="badge badge--categoria">ESTRATEGIA</span>
+<span class="badge badge--categoria">MARKETING</span>
+```
+
+**Regla de Oro:**
+- ¿Es un Producto que Teresa puede comprar? → Usa `.badge--curso`, `.badge--evento`, etc.
+- ¿Es una Categoría de contenido gratuito (artículo de blog)? → Usa `.badge--categoria`
+
+**Colores:**
+- `badge--evento`: Azul cielo (var(--color-primary))
+- `badge--servicio`: Gris oscuro (var(--color-text))
+- `badge--curso`: Ocre (var(--color-secondary))
+- `badge--ebook`: Verde sage (var(--color-sage))
+- `badge--categoria`: Azul primario suave (rgba(197, 217, 232, 0.8)) con texto oscuro
 
 ### Grids de Tarjetas
 ```html
@@ -1258,6 +1340,181 @@ git commit -m "Opt #3: Actualizar documentación whitelabel en Chuleta"
 ```
 
 **Ventaja**: Si algo falla, puedes revertir commits específicos sin perder todo el trabajo.
+
+---
+
+## 📄 publicacion.html - Plantilla de Artículo Individual (VERSIÓN INTELIGENTE)
+
+### Arquitectura
+**Layout**: Columna central única (max-width: 800px) estilo Medium/Substack
+**Lead Magnet**: Al final del contenido ("Cierre Perfecto"), NO en sidebar sticky
+**Fecha**: Oculta por defecto con clase `.hidden` para atemporalidad
+**Contenido Adaptable**: 3 escenarios según tipo de publicación
+
+### 🎯 Los 3 Escenarios de Contenido
+
+#### ESCENARIO A: Texto/Estándar (DEFAULT - Activo)
+**Usar para:** Artículos de blog, tutoriales, casos de estudio, análisis
+**Qué incluye:** Título + metadata + cuerpo con texto + imágenes intercaladas
+
+```html
+<article class="post-content">
+    <p>Párrafo introductorio...</p>
+    <h2>Subtítulo</h2>
+    <p>Más contenido...</p>
+    <blockquote>Cita destacada</blockquote>
+</article>
+```
+
+#### ESCENARIO B: Solo Imagen/Instagram (Comentado)
+**Usar para:** Posts visuales, infografías, quotes visuales, contenido tipo Instagram/Pinterest
+**Qué incluye:** Imagen a ancho completo + caption opcional
+**NUNCA texto adicional** - la imagen ES el contenido
+
+```html
+<!-- Comentar el <article> del Escenario A y descomentar esto: -->
+<div class="post-image-fullbleed">
+    <img src="images/post-visual.jpg" alt="Descripción">
+    <p class="post-image-caption">[Caption opcional]</p>
+</div>
+```
+
+#### ESCENARIO C: Documento PDF (Comentado)
+**Usar para:** Whitepapers, guías descargables, ebooks, reportes, recursos
+**Qué incluye:** Tarjeta elegante con icono PDF + título + descripción + botón de descarga
+**IMPORTANTE:** NUNCA usar `<iframe>` para PDFs (mala UX móvil)
+
+```html
+<!-- Comentar el <article> del Escenario A y descomentar esto: -->
+<div class="post-document-card">
+    <div class="document-icon">
+        <svg><!-- Icono PDF --></svg>
+    </div>
+    <h3 class="document-title">[Título del Documento]</h3>
+    <p class="document-description">[Descripción del valor]</p>
+    <a href="documents/archivo.pdf" target="_blank" class="btn btn-primary btn-large">
+        📄 Leer Documento ↗
+    </a>
+</div>
+```
+
+### Componentes Clave
+
+#### 1. Hero Multimedia (ANTES del título - Opcional)
+```html
+<!-- HERO Video (YouTube/Vimeo) -->
+<div class="video-container" style="margin-bottom: 2rem;">
+    <iframe src="https://www.youtube.com/embed/VIDEO_ID"></iframe>
+</div>
+
+<!-- HERO Audio (Podcast/Interview) -->
+<div class="audio-container" style="margin-bottom: 2rem;">
+    <audio controls style="width: 100%;">
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<!-- HERO Imagen -->
+<div class="image-placeholder h-400" style="margin-bottom: 2rem;">
+    <!-- Imagen hero -->
+</div>
+```
+
+#### 2. Header con Autenticación
+```html
+<!-- IGUAL que blog.html - Incluye authButtons y userProfile -->
+<div class="auth-buttons" id="authButtons">...</div>
+<div class="user-profile" id="userProfile">...</div>
+```
+
+#### 3. Breadcrumbs (Migas de Pan)
+```html
+<nav class="breadcrumbs">
+    <a href="index.html">Inicio</a>
+    <span>›</span>
+    <a href="blog.html">Blog</a>
+    <span>›</span>
+    <span style="color: var(--color-text);">[Título del Artículo]</span>
+</nav>
+```
+
+#### 4. Metadata del Post
+```html
+<div class="post-meta">
+    <span class="badge badge--categoria">GESTIÓN</span>  <!-- NO usar badge--curso -->
+    <span class="post-meta-divider">·</span>
+    <!-- Fecha OCULTA por defecto -->
+    <time datetime="2025-11-18" class="hidden">18 de Noviembre, 2025</time>
+    <span class="post-meta-divider hidden">·</span>
+    <span>Lectura de 7 min</span>
+</div>
+```
+
+#### 5. Lead Magnet al Final
+```html
+<!-- Después de CUALQUIER escenario, ANTES del post-footer -->
+<div class="lead-magnet-container">
+    <h3>📥 ¿Te gustó este contenido?</h3>
+    <p>La Guía Completa te va a encantar. Descárgala gratis 👇</p>
+    <form class="lead-magnet-form" id="postLeadMagnetForm">
+        <!-- Formulario horizontal con checkbox toggle -->
+    </form>
+</div>
+```
+
+### Clases CSS Específicas
+```css
+/* Base Post */
+.post-layout, .post-header, .post-meta, .post-meta-divider
+.post-title, .post-subtitle
+.post-author, .post-author-avatar, .post-author-name, .post-author-role
+.post-content              /* Cuerpo del artículo (1.1rem serif) */
+.post-footer, .post-share, .post-share-title
+.post-author-box, .post-author-avatar-large, .post-author-name-large, .post-author-bio
+
+/* Utilidades */
+.breadcrumbs               /* Migas de pan */
+.video-container           /* Contenedor responsive 16:9 */
+.audio-container           /* Contenedor para audio */
+.badge--categoria          /* Badge para contenido gratuito (azul suave) */
+
+/* Escenario B: Imagen */
+.post-image-fullbleed      /* Contenedor de imagen full-width */
+.post-image-caption        /* Caption opcional debajo de imagen */
+
+/* Escenario C: PDF */
+.post-document-card        /* Tarjeta elegante para PDF */
+.document-icon             /* Icono PDF (80x80px) */
+.document-title            /* Título del documento (1.8rem serif) */
+.document-description      /* Descripción del valor (1.1rem) */
+```
+
+### Reglas Críticas
+
+**❌ NO hacer:**
+- Sidebar sticky persiguiendo al usuario (molesto)
+- Usar `badge--curso` para categorías de blog (confunde productos/contenido)
+- Mostrar fecha por defecto (rompe atemporalidad)
+- Layout multi-columna (dificulta legibilidad)
+- Usar `<iframe>` para PDFs (mala UX en móvil)
+- Mezclar escenarios (usar SOLO uno a la vez)
+
+**✅ SÍ hacer:**
+- Hero multimedia ANTES del título si aplica
+- Lead magnet SOLO al final como recompensa
+- Badge `--categoria` para artículos gratuitos
+- Fecha oculta con `.hidden` + comentario explicativo
+- Header completo con autenticación (continuidad de sesión)
+- Breadcrumbs para navegación contextual
+- Elegir UN escenario según tipo de contenido
+- PDF con tarjeta + botón `target="_blank"`
+
+### Estrategia UX: "El Cierre Perfecto"
+1. **Inicio**: [Hero opcional] + Título + Metadata sin distracciones
+2. **Medio**: Contenido limpio (Escenario A, B o C)
+3. **Final**: Lead magnet como recompensa natural ("Si te gustó...")
+
+**Impacto**: Respeta la Autoridad (Pilar 1 DM1), convierte sin ser molesto, se adapta al tipo de contenido
 
 ---
 
