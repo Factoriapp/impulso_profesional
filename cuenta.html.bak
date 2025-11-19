@@ -43,14 +43,13 @@
             gap: 1rem;
             padding: 0.75rem 1.5rem;
             background: var(--color-bg-secondary);
-            border: 2px solid var(--color-primary);
+            border: 1px solid var(--color-border);
             border-radius: 8px;
             cursor: pointer;
             position: relative;
         }
 
         .user-badge {
-            display: inline-block;
             padding: 0.25rem 0.75rem;
             border-radius: 12px;
             font-size: 0.75rem;
@@ -141,16 +140,12 @@
             overflow: hidden;
         }
 
-        .cuenta-block.bg-alt {
-            background: var(--color-bg-secondary);
-        }
-
         .cuenta-block.full-width {
             grid-column: 1 / -1;
         }
 
         .block-header {
-            background: #e5e7eb;
+            background: var(--color-bg-secondary);
             padding: 1rem 1.5rem;
             border-bottom: 1px solid var(--color-border);
         }
@@ -173,7 +168,6 @@
 
         .block-body {
             padding: 1.5rem;
-            background: inherit;
         }
 
         /* FORMULARIOS */
@@ -292,7 +286,7 @@
         }
 
         .status-active {
-            background: #8db4a0;
+            background: #10b981;
             color: white;
         }
 
@@ -387,16 +381,12 @@
 
         .historial-table td {
             padding: 0.75rem 1.5rem;
-            border-bottom: 1px solid #d1d5db;
+            border-bottom: 1px solid var(--color-border);
             font-size: 0.9rem;
         }
 
         .historial-table tr:last-child td {
             border-bottom: none;
-        }
-
-        .historial-table tbody tr {
-            transition: background 0.2s ease;
         }
 
         .historial-table tbody tr:hover {
@@ -419,26 +409,6 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
-        }
-
-        /* SERVICIOS ESPECIALES GRID */
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            justify-content: center;
-            max-width: 100%;
-        }
-
-        /* Centrar cuando hay menos de 3 tarjetas */
-        .servicios-grid:has(.servicio-card:nth-child(2):last-child) {
-            max-width: 620px;
-            margin: 0 auto;
-        }
-
-        .servicios-grid:has(.servicio-card:only-child) {
-            max-width: 310px;
-            margin: 0 auto;
         }
 
         /* RESPONSIVE */
@@ -492,20 +462,16 @@
         <div class="app-header-container">
             <div class="app-logo">[Tu Logo]</div>
 
-            <div style="padding: 0.5rem 1.5rem; background: #8db4a0; color: white; border-radius: 6px; font-weight: 600; font-size: 0.9rem;">
-                [Premium]
-            </div>
-
             <div class="user-menu-btn" onclick="toggleDropdown()">
                 <div>
-                    <div style="font-weight: 600; font-size: 0.95rem;">Ana</div>
-                    <span class="user-badge">Premium</span>
+                    <div style="font-weight: 600; font-size: 0.95rem;" id="userName">Ana</div>
+                    <span class="user-badge" id="userBadge">Premium</span>
                 </div>
                 <span style="font-size: 0.875rem;">▼</span>
 
                 <div class="user-dropdown" id="userDropdown">
-                    <a href="index.html" class="user-dropdown-item">🏠 [Inicio]</a>
-                    <a href="area-privada-ana.html" class="user-dropdown-item">📚 [Mi Contenido]</a>
+                    <a href="area-privada-ana.html" class="user-dropdown-item">🏠 [Mi Contenido]</a>
+                    <a href="cuenta.html" class="user-dropdown-item">⚙️ [Mi Cuenta]</a>
                     <a href="#" class="user-dropdown-item" style="color: var(--color-error);" onclick="cerrarSesion(); return false;">🚪 [Cerrar Sesión]</a>
                 </div>
             </div>
@@ -677,83 +643,87 @@
         <div style="margin: 3rem 0;"></div>
 
         <!-- SERVICIOS ESPECIALES CONTRATADOS -->
-        <section class="cuenta-block full-width bg-alt" id="serviciosEspeciales">
+        <section class="cuenta-block full-width" id="serviciosEspeciales">
             <div class="block-header">
                 <h2 class="block-title">
                     <svg class="block-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                     </svg>
-                    [Servicios Especiales Contratados]
+                    [Historial de Facturación]
                 </h2>
             </div>
 
-            <div class="block-body">
-                <div class="servicios-grid">
+            <div class="block-body" style="padding: 0;">
 
-                    <!-- Servicio 1: Asistente IA Premium -->
-                    <div class="servicio-card" style="padding: 1rem; background: var(--color-bg-secondary); border-radius: 6px; border-left: 3px solid var(--color-primary);">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <div>
-                                <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">[Asistente IA Premium]</div>
-                                <div style="font-size: 0.8rem; color: var(--color-text-light);">[Add-on activo]</div>
-                            </div>
-                            <span class="status-badge status-active">[Activo]</span>
-                        </div>
-                        <div class="info-row" style="margin-top: 0.75rem;">
-                            <span class="info-label">[Créditos restantes]</span>
-                            <span class="info-value">[150 / 200]</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">[Renovación]</span>
-                            <span class="info-value">[15 Dic 2025]</span>
-                        </div>
-                    </div>
+            <!-- TABLA PREMIUM (ANA) -->
+            <div id="historialPremium">
+                <table class="historial-table">
+                    <thead>
+                        <tr>
+                            <th>[Fecha]</th>
+                            <th>[Concepto]</th>
+                            <th>[Monto]</th>
+                            <th>[Estado]</th>
+                            <th>[Acción]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[15 Nov 2025]</td>
+                            <td>[Membresía Premium - Mensual]</td>
+                            <td>[€29.00]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
+                            <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
+                        </tr>
+                        <tr>
+                            <td>[15 Oct 2025]</td>
+                            <td>[Membresía Premium - Mensual]</td>
+                            <td>[€29.00]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
+                            <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
+                        </tr>
+                        <tr>
+                            <td>[15 Sep 2025]</td>
+                            <td>[Membresía Premium - Mensual]</td>
+                            <td>[€29.00]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
+                            <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    <!-- Servicio 2: Soporte Prioritario -->
-                    <div class="servicio-card" style="padding: 1rem; background: var(--color-bg-secondary); border-radius: 6px; border-left: 3px solid var(--color-primary);">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <div>
-                                <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">[Soporte Prioritario]</div>
-                                <div style="font-size: 0.8rem; color: var(--color-text-light);">[Incluido en Premium]</div>
-                            </div>
-                            <span class="status-badge status-active">[Activo]</span>
-                        </div>
-                        <div class="info-row" style="margin-top: 0.75rem;">
-                            <span class="info-label">[Respuesta]</span>
-                            <span class="info-value">[< 2 horas]</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">[Canal]</span>
-                            <span class="info-value">[Email + Chat]</span>
-                        </div>
-                    </div>
+            <!-- TABLA A LA CARTA (REGINA) -->
+            <div id="historialAlaCarta" class="hidden">
+                <table class="historial-table">
+                    <thead>
+                        <tr>
+                            <th>[Fecha]</th>
+                            <th>[Producto]</th>
+                            <th>[Monto]</th>
+                            <th>[Estado]</th>
+                            <th>[Acción]</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[10 Nov 2025]</td>
+                            <td>[Curso: Gestión del Estrés]</td>
+                            <td>[€49.00]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
+                            <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
+                        </tr>
+                        <tr>
+                            <td>[05 Oct 2025]</td>
+                            <td>[Ebook: Técnicas de Respiración]</td>
+                            <td>[€12.00]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
+                            <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                    <!-- Servicio 3: Almacenamiento Extra -->
-                    <div class="servicio-card" style="padding: 1rem; background: var(--color-bg-secondary); border-radius: 6px; border-left: 3px solid var(--color-primary);">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
-                            <div>
-                                <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">[Almacenamiento Extra]</div>
-                                <div style="font-size: 0.8rem; color: var(--color-text-light);">[Add-on +50GB]</div>
-                            </div>
-                            <span class="status-badge status-active">[Activo]</span>
-                        </div>
-                        <div class="info-row" style="margin-top: 0.75rem;">
-                            <span class="info-label">[Uso actual]</span>
-                            <span class="info-value">[32 / 75 GB]</span>
-                        </div>
-                        <div class="info-row">
-                            <span class="info-label">[Monto]</span>
-                            <span class="info-value">[€5/mes]</span>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Mensaje si no hay servicios -->
-                <div id="noServiciosMsg" style="display: none; text-align: center; padding: 2rem; color: var(--color-text-light);">
-                    [No tienes servicios especiales contratados]
-                </div>
             </div>
         </section>
 
@@ -790,21 +760,21 @@
                             <td>[15 Nov 2025]</td>
                             <td>[Membresía Premium - Mensual]</td>
                             <td>[€29.00]</td>
-                            <td style="color: #8db4a0; font-weight: 600;">[Pagado]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
                             <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
                         </tr>
                         <tr>
                             <td>[15 Oct 2025]</td>
                             <td>[Membresía Premium - Mensual]</td>
                             <td>[€29.00]</td>
-                            <td style="color: #8db4a0; font-weight: 600;">[Pagado]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
                             <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
                         </tr>
                         <tr>
                             <td>[15 Sep 2025]</td>
                             <td>[Membresía Premium - Mensual]</td>
                             <td>[€29.00]</td>
-                            <td style="color: #8db4a0; font-weight: 600;">[Pagado]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
                             <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
                         </tr>
                     </tbody>
@@ -828,14 +798,14 @@
                             <td>[10 Nov 2025]</td>
                             <td>[Curso: Gestión del Estrés]</td>
                             <td>[€49.00]</td>
-                            <td style="color: #8db4a0; font-weight: 600;">[Pagado]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
                             <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
                         </tr>
                         <tr>
                             <td>[05 Oct 2025]</td>
                             <td>[Ebook: Técnicas de Respiración]</td>
                             <td>[€12.00]</td>
-                            <td style="color: #8db4a0; font-weight: 600;">[Pagado]</td>
+                            <td style="color: #10b981; font-weight: 600;">[Pagado]</td>
                             <td><a href="#" style="color: var(--color-primary);">[Descargar]</a></td>
                         </tr>
                     </tbody>
@@ -853,7 +823,79 @@
         // ==========================================
 
         // Variable de simulación (cambiar para probar: 'premium' o 'ala-carta')
-        const tipoUsuario = 'ala-carta';
+        const tipoUsuario = 'premium';
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">[Asistente IA Premium]</div>
+                                <div style="font-size: 0.8rem; color: var(--color-text-light);">[Add-on activo]</div>
+                            </div>
+                            <span class="status-badge status-active">[Activo]</span>
+                        </div>
+                        <div class="info-row" style="margin-top: 0.75rem;">
+                            <span class="info-label">[Créditos restantes]</span>
+                            <span class="info-value">[150 / 200]</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">[Renovación]</span>
+                            <span class="info-value">[15 Dic 2025]</span>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 2: Soporte Prioritario -->
+                    <div style="padding: 1rem; background: var(--color-bg-secondary); border-radius: 6px; border-left: 3px solid var(--color-primary);">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">[Soporte Prioritario]</div>
+                                <div style="font-size: 0.8rem; color: var(--color-text-light);">[Incluido en Premium]</div>
+                            </div>
+                            <span class="status-badge status-active">[Activo]</span>
+                        </div>
+                        <div class="info-row" style="margin-top: 0.75rem;">
+                            <span class="info-label">[Respuesta]</span>
+                            <span class="info-value">[< 2 horas]</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">[Canal]</span>
+                            <span class="info-value">[Email + Chat]</span>
+                        </div>
+                    </div>
+
+                    <!-- Servicio 3: Almacenamiento Extra -->
+                    <div style="padding: 1rem; background: var(--color-bg-secondary); border-radius: 6px; border-left: 3px solid var(--color-primary);">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 0.5rem;">
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">[Almacenamiento Extra]</div>
+                                <div style="font-size: 0.8rem; color: var(--color-text-light);">[Add-on +50GB]</div>
+                            </div>
+                            <span class="status-badge status-active">[Activo]</span>
+                        </div>
+                        <div class="info-row" style="margin-top: 0.75rem;">
+                            <span class="info-label">[Uso actual]</span>
+                            <span class="info-value">[32 / 75 GB]</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">[Monto]</span>
+                            <span class="info-value">[€5/mes]</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Mensaje si no hay servicios -->
+                <div id="noServiciosMsg" style="display: none; text-align: center; padding: 2rem; color: var(--color-text-light);">
+                    [No tienes servicios especiales contratados]
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // ==========================================
+        // SIMULACIÓN: Cambiar entre Ana (Premium) y Regina (A la Carta)
+        // ==========================================
+
+        // Variable de simulación (cambiar para probar: 'premium' o 'ala-carta')
+        const tipoUsuario = 'premium';
 
         // Cargar datos según tipo de usuario
         window.addEventListener('DOMContentLoaded', function() {

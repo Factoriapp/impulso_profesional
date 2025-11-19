@@ -151,9 +151,36 @@ Entrada por aspiración:
 
 ---
 
-## 12. Embudo Comercial
+## 12. Embudo Comercial. ARQUITECTURA DEL EMBUDO DE CAPTACIÓN (Doble Gancho)
 
-ToFu → MoFu → BoFu → Onboarding
+Esta es la única arquitectura de captación de leads aprobada.
+
+**OBJETIVO:** Convertir Visitantes (Teresa) en Leads (Email capturado) y forzar la conversión a Registrados (Regina) para exponerlos al *upsell*.
+
+**EL FLUJO TÁCTICO:**
+
+1.  **LA VITRINA (Blog/Tienda):**
+    * Teresa (Visitante) ve un CTA para un Lead Magnet Gratuito (Ebook, Guía, Meditación).
+    * **Acción:** Clic en "Lo Quiero Gratis".
+
+2.  **LA CAPTURA (Fricción Cero):**
+    * Se abre un formulario simple: **Nombre + Email**. (No se pide contraseña).
+    * **Acción:** Teresa se convierte en Lead.
+
+3.  **EL CEBO (Email):**
+    * El Lead recibe un email automático.
+    * **Mensaje Clave:** "¡Felicidades! Tu [regalo] te espera en tu Área Personal. Haz clic aquí para acceder."
+    * **Enlace:** `dominio.com/area-privada/bienvenida`
+
+4.  **LA CONVERSIÓN (El Registro Forzado):**
+    * El enlace lleva a una página de registro simple.
+    * **Mensaje Clave:** "¡Hola [Nombre]! (Email pre-cargado). Solo necesitas crear una contraseña para acceder a tu Área Personal y tus regalos."
+    * **Acción:** El Lead crea contraseña y se convierte en **Regina (Nivel 2)**.
+
+5.  **EL UPSELL (El Destino):**
+    * [cite_start]Regina aterriza en `area-privada-regina.html`  [cite: 1-403].
+    * Ve el **Widget de "Contenido Gratuito"** (se entrega el valor).
+    * Ve los **Widgets Premium 🔒** (Asistente IA, Eventos en Vivo) (comienza el *upsell*).
 
 ---
 

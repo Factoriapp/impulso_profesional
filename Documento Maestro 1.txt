@@ -507,4 +507,31 @@ Arquitectura de Implementación:
 2. "Auto-Ocultable": El widget se implementará bajo la lógica "Auto-Ocultable". Si el campo de URL en el Dashboard está vacío, el módulo no se renderiza en el HTML público (`display: none;`).
 3. "Simplicidad Radical": La experiencia para "Pepe" (el profesional) será un único campo de texto en el Dashboard: "Pega aquí tu URL de vídeo (Opcional)".
 
+Entrada para Actualización del DM1 (16-Nov-2025)
+
+-Decisión de Arquitectura: Pivote del Embudo de Captación (Estrategia "Doble Gancho")
+[cite_start]Contexto: La decisión original (07-Nov-2025) de "Lead Magnet Fricción Cero" [cite: 56-66] priorizaba la captura de email por encima de todo, entregando el regalo (PDF) directamente.
+Análisis de Fricción: Se concluye que este modelo pierde el 100% de la oportunidad de *upsell* visual.
+
+Decisión (Firme): Se aprueba la arquitectura "Doble Gancho" (propuesta por el Fundador). El embudo de captación se separa en dos fases:
+1.  **Fase 1 (Captura - ToFu):** El formulario de Lead Magnet público solo pide Email y Nombre. La fricción es mínima, asegurando la captura del lead.
+2.  **Fase 2 (Registro - BoFu):** El email de entrega NO contiene el PDF. [cite_start]Contiene un enlace al `area-privada.html`  [cite: 1-403] bajo el pretexto de "Accede a tu Área Personal para retirar tu regalo".
+3.  **Fase 3 (Upsell):** Para acceder, el sistema obliga al lead a convertirse en **Regina (Registrada)** creando una contraseña (con el email ya pre-cargado). [cite_start]Al aterrizar en `area-privada-regina.html`  [cite: 1-403], ve su regalo (ej. "Ebook Gratuito") Y todos los widgets de *upsell* bloqueados (🔒).
+
+Razón Estratégica: Este modelo mantiene una alta tasa de captura de leads (Fase 1) pero garantiza que el 100% de esos leads sean expuestos al ecosistema de *upsell* (Fase 3), convirtiendo el `area-privada.html` en la principal máquina de conversión de "Gratis" a "Premium".
+
+Entrada para Actualización del DM1 (17-Nov-2025)
+
+-Decisión de Arquitectura: "El Gatillo de Adquisición" (Anulación del "Buffet Libre")
+
+Contexto: Se debatió si "Ana" (Miembro Nivel 3) [cite: 1-379] recibía todo el contenido premium automáticamente (modelo "Buffet Libre"), lo cual generaba una area-privada.html [cite: 1-289] abrumadora y confusa.
+
+Corrección del Fundador (Decisiva): El Fundador (tú) corrigió esta arquitectura, estableciendo que la membresía es un "Club de Privilegios" [cite: 1-6], no un buffet. El privilegio es el acceso al "Doble Precio" [cite: 1-6] (ej. 99€ vs 0€), no la posesión automática.
+
+Decisión (Firme): Se aprueba la arquitectura del "Gatillo de Adquisición".
+
+1. La Tienda (oferta-de-servicios.html) es el ÚNICO lugar donde se "adquiere" contenido. 2. El contenido SÓLO aparece en el area-privada.html (sea de Ana [cite: 1-379] o Regina [cite: 1-403]) DESPUÉS de que el usuario complete una "transacción" en la Tienda. 3. "Ana" (Miembro) [cite: 1-379] debe hacer clic en el "Gatillo de Adquisición" (ej. el botón "[Lo Quiero]" o "[Añadir a Mi Área]") en la Tienda para procesar la transacción de 0€.
+
+Razón Estratégica: Esta arquitectura (A) evita la "parálisis por elección" al mantener el area-privada.html [cite: 1-289, 1-403] limpio solo con el contenido que el usuario *activamente* ha querido, y (B) refuerza la Tienda (oferta-de-servicios.html) como el eje central del negocio.
+
 

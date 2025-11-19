@@ -153,14 +153,14 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
         <nav class="nav-container">
             <div class="logo">Tu Logo Aquí</div>
 
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="active">Inicio</a></li>
-                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
-                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
-                <li><a href="membresia.html">Membresía</a></li>
-                <li><a href="contacto-agenda.html" class="nav-cta">Contacto</a></li>
-            </ul>
-
+                            <ul class="nav-menu" id="navMenu">
+                                <li><a href="index.html" class="active">Inicio</a></li>
+                                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+                                <li><a href="blog.html">Blog</a></li>
+                                <li><a href="membresia.html">Membresía</a></li>
+                                <li><a href="contacto-agenda.html" class="nav-cta">Contacto</a></li>
+                            </ul>
             <!-- Botones de autenticación (mostrar si NO está logueado) -->
             <div class="auth-buttons" id="authButtons">
                 <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
@@ -357,7 +357,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </p>
 
                     <div class="mt-auto">
-                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-secondary btn--with-arrow">Ver Detalles ↓</a>
+                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-primary btn--with-arrow">Ver Detalles ↓</a>
                     </div>
                 </div>
 
@@ -675,7 +675,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
             <div class="section-header">
                 <p class="section-subtitle">[Subtítulo de Blog (opcional)]</p>
-                <h2 class="section-title">[Últimos Artículos del Blog]</h2>
+                <h2 class="section-title">[Últimas Publicaciones del Blog]</h2>
                 <p class="section-description">
                     [Contenido de valor gratuito para impulsar tu camino y mantenerte actualizado.]
                 </p>
@@ -699,7 +699,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             el lector. Máximo 2 líneas que generen curiosidad y ganas de leer más.]
                         </p>
                         <a href="blog.html" class="blog-link">
-                            [Leer Artículo] →
+                            [Ver Publicación] →
                         </a>
                     </div>
                 </article>
@@ -721,7 +721,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             que el contenido ofrece. Genera interés sin revelar todo.]
                         </p>
                         <a href="blog.html" class="blog-link">
-                            [Leer Artículo] →
+                            [Ver Publicación] →
                         </a>
                     </div>
                 </article>
@@ -743,7 +743,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             responde. Invita a profundizar en el contenido completo.]
                         </p>
                         <a href="blog.html" class="blog-link">
-                            [Leer Artículo] →
+                            [Ver Publicación] →
                         </a>
                     </div>
                 </article>
@@ -802,6 +802,9 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-large" id="leadSubmitBtn" disabled>
                                     Descargar Ahora
+                                </button>
+                                <button type="button" class="btn btn-primary btn-large" style="margin-top: 1rem;">
+                                    Botón provisional
                                 </button>
                             </div>
                         </div>
@@ -866,13 +869,13 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             <div class="footer-content">
             <div class="footer-section">
                 <h3>Navegación</h3>
-                <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
-                    <li><a href="oferta-de-servicios.html">Soluciones</a></li>
-                    <li><a href="membresia.html">Membresía</a></li>
-                    <li><a href="contacto-agenda.html">Contacto</a></li>
-                </ul>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="presentacion-profesional.html" class="footer-link">Sobre Mí</a></li>
+                        <li><a href="oferta-de-servicios.html" class="footer-link">Soluciones</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="membresia.html" class="footer-link">Membresía</a></li>
+                    </ul>
             </div>
 
             <div class="footer-section">
@@ -1049,6 +1052,13 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
     if (consentCheckbox && leadSubmitBtn) {
         consentCheckbox.addEventListener('change', function() {
             leadSubmitBtn.disabled = !this.checked;
+            if (this.checked) {
+                leadSubmitBtn.classList.remove('btn-primary');
+                leadSubmitBtn.classList.add('btn-secondary');
+            } else {
+                leadSubmitBtn.classList.remove('btn-secondary');
+                leadSubmitBtn.classList.add('btn-primary');
+            }
         });
 
         // Opcional: manejar el envío del formulario

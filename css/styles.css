@@ -530,15 +530,15 @@ img {
 }
 
 .btn-primary {
-    background: var(--color-text);
-    color: var(--color-white);
-    border: 2px solid var(--color-text);
+    background: var(--color-primary);
+    color: var(--color-text);
+    border: 2px solid var(--color-primary);
 }
 
 .btn-primary:hover {
-    background: var(--color-sky);
-    border-color: var(--color-sky);
-    color: var(--color-text);
+    background: var(--color-ochre);
+    border-color: var(--color-ochre);
+    color: var(--color-white);
 }
 
 .btn-secondary {
@@ -3030,3 +3030,120 @@ img {
         gap: 1rem;
     }
 }
+
+/* ============================================
+   BLOG - TARJETAS HORIZONTALES
+   ============================================ */
+
+.blog-posts-list .card--horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* Make items of same height */
+    gap: 2rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    overflow: hidden; /* Ensure badge doesn't overflow rounded corners */
+}
+
+.blog-posts-list .card--horizontal .card__image-container {
+    flex: 1 1 40%; /* Flex-grow, flex-shrink, flex-basis */
+    min-width: 300px;
+}
+
+.blog-posts-list .card--horizontal .card__content {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-posts-list .card--horizontal .image-placeholder {
+    height: 100%;
+    min-height: 280px;
+}
+
+/* Alternating layout for even cards */
+.blog-posts-list > article:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Reset for badge positioning */
+.blog-posts-list .card--horizontal .badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border-bottom-left-radius: 0;
+    border-radius: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .blog-posts-list .card--horizontal,
+    .blog-posts-list > article:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .blog-posts-list .card--horizontal .card__image-container {
+        min-width: 100%;
+    }
+
+    .blog-posts-list .card--horizontal .image-placeholder {
+        min-height: 200px;
+    }
+}
+
+/* ============================================
+   BOT�N CTA - M�S LLAMATIVO
+   ============================================ */
+
+.btn-cta {
+    background: var(--color-sand); /* Changed to sand */
+    color: var(--color-text); /* Changed to text for readability */
+    border: 2px solid var(--color-sand); /* Changed to sand */
+    font-weight: 600;
+}
+
+.btn-cta:hover {
+    background: var(--color-ochre); /* Changed to ochre */
+    border-color: var(--color-ochre); /* Changed to ochre */
+    filter: none; /* Removed brightness filter */
+    color: var(--color-white); /* Changed to white */
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-cta:disabled {
+    background-color: var(--color-text-light);
+    border-color: var(--color-text-light);
+    opacity: 0.6;
+}
+
+.btn-cta:disabled:hover {
+    filter: none;
+    transform: none;
+    box-shadow: none;
+    background-color: var(--color-text-light);
+    border-color: var(--color-text-light);
+}
+/* ============================================
+   MODIFICADOR BOT�N CTA - Ocre
+   ============================================ */
+
+.btn-cta--ochre {
+    background: var(--color-sand);
+    border-color: var(--color-sand);
+    color: var(--color-text); /* Black text for readability on light sand */
+}
+
+.btn-cta--ochre:hover {
+    background: var(--color-ochre);
+    border-color: var(--color-ochre);
+    color: var(--color-white);
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Impulso Profesional</title>
+    <meta name="description" content="Artículos y recursos para potenciar tu práctica profesional. Descubre insights sobre crecimiento, gestión y mucho más.">
+
+    <!-- Open Graph (para redes sociales) -->
+    <meta property="og:title" content="Blog - Impulso Profesional">
+    <meta property="og:description" content="Artículos y recursos para potenciar tu práctica profesional.">
+    <meta property="og:image" content="images/og-image-blog.jpg"> <!-- Crear esta imagen -->
+    <meta property="og:url" content="https://[TU-DOMINIO.COM]/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicons y Fuentes -->
+    <link rel="icon" href="assets/favicons/favicon.ico" sizes="any">
+    <link rel="icon" href="assets/favicons/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="assets/favicons/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- ============================================
+         HEADER / NAVEGACIÓN
+         ============================================ -->
+    <header class="header" id="header">
+        <nav class="nav-container">
+            <div class="logo">Tu Logo Aquí</div>
+
+                            <ul class="nav-menu" id="navMenu">
+                                <li><a href="index.html">Inicio</a></li>
+                                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+                                <li><a href="blog.html" class="active">Blog</a></li>
+                                <li><a href="membresia.html">Membresía</a></li>
+                                <li><a href="contacto-agenda.html" class="nav-cta">Contacto</a></li>
+                            </ul>
+            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <div class="auth-buttons" id="authButtons">
+                <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
+                <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
+            </div>
+
+            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
+            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
+                <div id="userProfileButton" style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
+                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%236B9080'/%3E%3Ctext x='20' y='26' font-size='16' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                         alt="Avatar"
+                         style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--color-primary);">
+                    <div>
+                        <div id="userNameHeader" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text);">Usuario</div>
+                        <span style="font-size: 0.8rem; color: var(--color-primary);">Ver opciones ▼</span>
+                    </div>
+                </div>
+
+                <!-- Menú desplegable -->
+                <div class="user-menu" id="userMenu" style="display: none;">
+                    <a href="area-privada.html" class="user-menu-item">
+                        <span>👤</span> Mi Área
+                    </a>
+                    <button onclick="cerrarSesion()" class="user-menu-item" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
+                        <span>🚪</span> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+
+            <button class="nav-toggle" id="navToggle">
+                <span class="nav-toggle-text">Menú</span>
+                <div class="nav-toggle-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Overlay para el menú -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- Main Content -->
+    <main>
+        <section class="section section-alt">
+            <div class="container text-center">
+                <h1 class="section-title">Nuestro Blog</h1>
+                <p class="section-subtitle" style="max-width: 600px; margin: 0 auto;">Ideas, estrategias y reflexiones para llevar tu práctica profesional al siguiente nivel.</p>
+            </div>
+        </section>
+
+    <!-- ============================================
+         LEAD MAGNET (DIETA APLICADA)
+         ============================================ -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="model-description">
+                <h4>📍 Módulo: Lead Magnet (Dieta)</h4>
+                <p><strong>Propósito:</strong> Transformado a un layout horizontal y compacto para ser menos invasivo, siguiendo la "Dieta del Lead Magnet".</p>
+                <p><strong>Técnica:</strong> Usa la clase <code>.detail-grid-asymmetric</code> para un layout 1/3 (imagen) y 2/3 (contenido). El formulario es horizontal.</p>
+            </div>
+
+            <div class="info-box lead-magnet-sticky" style="padding: 2.5rem;">
+                <div class="detail-grid-asymmetric" style="align-items: center;">
+                    
+                    <!-- Columna Izquierda: Imagen del Recurso -->
+                    <div class="image-placeholder h-200">
+                        <div class="image-placeholder__content text-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-gift"><polyline points="20 12 20 22 4 22 4 12"></polyline><rect x="2" y="7" width="20" height="5"></rect><line x1="12" y1="22" x2="12" y2="7"></line><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path></svg>
+                            <p style="font-weight: 600; margin-top: 0.5rem;">Portada de tu<br>Recurso Gratuito</p>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha: Contenido y Formulario -->
+                    <div>
+                        <h3 class="section-title" style="font-size: 1.8rem; margin-top: 0; margin-bottom: 0.75rem;">[Título Atractivo de tu Regalo]</h3>
+                        <p class="section-description" style="margin-bottom: 1.5rem;">
+                            Descripción breve y persuasiva del recurso. ¿Qué problema clave resuelve para tu lector?
+                        </p>
+                        <form id="leadMagnetForm">
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+                                <input
+                                    type="text"
+                                    placeholder="Tu nombre"
+                                    class="form-input"
+                                    id="leadName"
+                                    required
+                                    style="flex: 1 1 150px;"
+                                >
+                                <input
+                                    type="email"
+                                    placeholder="Tu mejor email"
+                                    class="form-input"
+                                    id="leadEmail"
+                                    required
+                                    style="flex: 1 1 200px;"
+                                >
+                                <button type="submit" class="btn btn-primary btn-large" id="leadSubmitBtn" disabled>
+                                    Descargar Ahora
+                                </button>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="consent-label" style="font-size: 0.8rem;">
+                                    <input type="checkbox" id="consentCheckbox" class="consent-checkbox" required>
+                                    <span class="consent-text">Acepto la <a href="#" class="consent-link">Política de Privacidad</a> y recibir contenido de valor.</span>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="blog-posts-list">
+                    <!-- Artículo 1 -->
+                    <article class="card card--horizontal">
+                        <div class="card__image-container">
+                            <div class="image-placeholder">
+                                 <div class="image-placeholder__content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    <p style="margin: 0; font-weight: 600;">Imagen de la Publicación</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card-title">5 Claves para Organizar tu Agenda y Dejar de Sentirte Abrumado</h3>
+                            <p class="card-text">Descubre un método sencillo para tomar el control de tu tiempo, priorizar tareas y liberar espacio mental.</p>
+                            <div class="mt-auto">
+                                <a href="publicacion.html" class="btn btn-primary btn--with-arrow">Ver Publicación →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 2 -->
+                    <article class="card card--horizontal">
+                        <div class="card__image-container">
+                            <div class="image-placeholder">
+                                 <div class="image-placeholder__content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    <p style="margin: 0; font-weight: 600;">Imagen de la Publicación</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card-title">El Síndrome del Impostor: Cómo Afecta a Profesionales y Qué Hacer al Respecto</h3>
+                            <p class="card-text">Una reflexión profunda sobre un mal común en el desarrollo profesional y estrategias prácticas para superarlo.</p>
+                            <div class="mt-auto">
+                                <a href="publicacion.html" class="btn btn-primary btn--with-arrow">Ver Publicación →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Artículo 3 -->
+                    <article class="card card--horizontal">
+                        <div class="card__image-container">
+                            <div class="image-placeholder">
+                                 <div class="image-placeholder__content">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    <p style="margin: 0; font-weight: 600;">Imagen de la Publicación</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card-title">¿Página Web o Redes Sociales? El Dilema del Profesional Independiente</h3>
+                            <p class="card-text">Analizamos los pros y contras de cada plataforma para que puedas decidir dónde invertir tu energía y recursos.</p>
+                            <div class="mt-auto">
+                                <a href="publicacion.html" class="btn btn-primary btn--with-arrow">Ver Publicación →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
+    <footer class="footer">
+        <div class="footer-wrapper">
+            <div class="model-description">
+                <h4>📍 Módulo: Footer (Pie de Página)</h4>
+                <p><strong>Propósito:</strong> Proveer navegación secundaria, enlaces legales, redes sociales y contacto.</p>
+                <p><strong>Siempre incluir:</strong> Política de privacidad, Términos y condiciones, Contacto, Login miembros (discreto).</p>
+            </div>
+
+            <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navegación</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="footer-link">Inicio</a></li>
+                        <li><a href="presentacion-profesional.html" class="footer-link">Sobre Mí</a></li>
+                        <li><a href="oferta-de-servicios.html" class="footer-link">Soluciones</a></li>
+                        <li><a href="blog.html" class="footer-link">Blog</a></li>
+                        <li><a href="membresia.html" class="footer-link">Membresía</a></li>
+                    </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Acceso Rápido</h3>
+                <ul>
+                    <li><a href="area-privada.html">Área de Miembros</a></li>
+                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
+                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
+                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidad</a></li>
+                    <li><a href="#">Términos y Condiciones</a></li>
+                    <li><a href="#">Aviso Legal</a></li>
+                    <li><a href="#">Cookies</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Conecta</h3>
+                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="YouTube">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Login -->
+    <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="loginModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="loginModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Iniciar Sesión</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Accede a tu área de miembros
+                </p>
+            </div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Tu contraseña">
+                </div>
+
+                <div style="margin-bottom: 1.5rem; text-align: right;">
+                    <a href="#" style="font-size: 0.9rem; color: var(--color-primary);">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Iniciar Sesión
+                </button>
+
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                    <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                        ¿No tienes cuenta?
+                    </p>
+                    <button type="button" onclick="cerrarModalLogin(); abrirModalRegistro();" class="btn btn-secondary" style="width: 100%;">
+                        Crear Cuenta Nueva
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div id="registroModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="registroModalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="registroModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Crear Cuenta</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Únete para acceder a contenido exclusivo
+                </p>
+            </div>
+
+            <form id="registroForm">
+                <div class="form-group">
+                    <label class="form-label">Nombre Completo *</label>
+                    <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre completo">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contraseña *</label>
+                    <input type="password" id="password" class="form-input" required placeholder="Mínimo 6 caracteres" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmPassword" class="form-input" required placeholder="Repite tu contraseña" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="terminos" required style="margin-top: 0.25rem;">
+                        <span style="font-size: 0.9rem; color: var(--color-text-light);">
+                            Acepto los <a href="#" style="color: var(--color-primary); text-decoration: underline;">términos y condiciones</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div id="mensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: var(--color-success-bg); border-left: 4px solid var(--color-success-dark); color: var(--color-success-dark); margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Crear Mi Cuenta
+                </button>
+
+                <p style="text-align: center; font-size: 0.9rem; color: var(--color-text-light);">
+                    ¿Ya tienes cuenta? <a href="#" onclick="cerrarModalRegistro(); abrirModalLogin(); return false;" style="color: var(--color-primary); font-weight: 500;">Inicia sesión aquí</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+    // Lead Magnet - Control del botón de descarga con checkbox de consentimiento
+    const consentCheckbox = document.getElementById('consentCheckbox');
+    const leadSubmitBtn = document.getElementById('leadSubmitBtn');
+
+    if (consentCheckbox && leadSubmitBtn) {
+        consentCheckbox.addEventListener('change', function() {
+            leadSubmitBtn.disabled = !this.checked;
+        });
+
+        // Opcional: manejar el envío del formulario
+        const leadForm = document.getElementById('leadMagnetForm');
+        if (leadForm) {
+            leadForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                if (consentCheckbox.checked) {
+                    const name = document.getElementById('leadName').value;
+                    const email = document.getElementById('leadEmail').value;
+
+                    // Aquí puedes agregar la lógica de envío al servidor
+                    console.log('Formulario enviado:', { name, email, consent: true });
+
+                    // Mensaje temporal de éxito
+                    alert('¡Gracias! Tu recurso se descargará automáticamente.');
+
+                    // Limpiar formulario
+                    leadForm.reset();
+                    leadSubmitBtn.disabled = true;
+                }
+            });
+        }
+    }
+    </script>
+</body>
+</html>
