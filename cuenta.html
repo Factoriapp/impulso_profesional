@@ -225,7 +225,7 @@
             font-size: 0.9rem;
         }
 
-        .btn-small {
+        .btn {
             padding: 0.5rem 1rem;
             font-size: 0.85rem;
         }
@@ -262,15 +262,18 @@
         }
 
         .btn-upgrade {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white;
+            background: var(--color-primary);
+            color: var(--color-text);
             font-size: 1.1rem;
             padding: 1rem 2rem;
+            border: 2px solid var(--color-secondary);
+            font-weight: 700;
         }
 
         .btn-upgrade:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: var(--color-secondary);
         }
 
         /* ESTADO DE SUSCRIPCIÓN */
@@ -332,23 +335,24 @@
 
         /* UPSELL BANNER */
         .upsell-banner {
-            background: linear-gradient(135deg, #5a6c7d, #6b7c8d);
+            background: linear-gradient(135deg, #dbeafe, #e0e7ff);
             padding: 2rem;
             border-radius: 12px;
-            color: white;
+            color: #1e3a8a;
             margin-bottom: 1.5rem;
-            border-left: 4px solid #8ba4b8;
+            border-left: 4px solid #93c5fd;
         }
 
         .upsell-banner h3 {
             font-size: 1.25rem;
             margin-bottom: 1rem;
+            color: #1e40af;
         }
 
         .upsell-banner p {
             margin-bottom: 1.5rem;
             line-height: 1.6;
-            color: #ecf0f1;
+            color: #3b5998;
         }
 
         .upsell-features {
@@ -361,11 +365,12 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            color: #1e3a8a;
         }
 
         .upsell-feature::before {
             content: "✓";
-            color: #a8c5db;
+            color: #60a5fa;
             font-weight: 700;
         }
 
@@ -492,23 +497,11 @@
         <div class="app-header-container">
             <div class="app-logo">[Tu Logo]</div>
 
-            <div style="padding: 0.5rem 1.5rem; background: #8db4a0; color: white; border-radius: 6px; font-weight: 600; font-size: 0.9rem;">
+            <div id="headerBadge" style="padding: 0.5rem 1.5rem; background: #8db4a0; color: white; border-radius: 6px; font-weight: 600; font-size: 0.9rem;">
                 [Premium]
             </div>
 
-            <div class="user-menu-btn" onclick="toggleDropdown()">
-                <div>
-                    <div style="font-weight: 600; font-size: 0.95rem;">Ana</div>
-                    <span class="user-badge">Premium</span>
-                </div>
-                <span style="font-size: 0.875rem;">▼</span>
-
-                <div class="user-dropdown" id="userDropdown">
-                    <a href="index.html" class="user-dropdown-item">🏠 [Inicio]</a>
-                    <a href="area-privada-ana.html" class="user-dropdown-item">📚 [Mi Contenido]</a>
-                    <a href="#" class="user-dropdown-item" style="color: var(--color-error);" onclick="cerrarSesion(); return false;">🚪 [Cerrar Sesión]</a>
-                </div>
-            </div>
+            <a href="area-privada.html" class="btn btn-primary">← Volver</a>
         </div>
     </header>
 
@@ -558,7 +551,7 @@
                     </div>
 
                     <!-- Botón editar perfil -->
-                    <button class="btn btn-secondary btn-small" style="width: 100%; margin-bottom: 1rem;" onclick="toggleEditProfile()">[Editar Email]</button>
+                    <button class="btn btn-secondary btn" style="width: 100%; margin-bottom: 1rem;" onclick="toggleEditProfile()">[Editar Email]</button>
 
                     <!-- Formulario de edición (oculto por defecto) -->
                     <form id="profileForm" style="display: none; margin-bottom: 1rem; padding-top: 1rem; border-top: 1px solid var(--color-border);">
@@ -566,12 +559,12 @@
                             <label class="form-label">[Nuevo Email]</label>
                             <input type="email" class="form-input" value="ana@ejemplo.com" id="userEmail">
                         </div>
-                        <button type="submit" class="btn btn-primary btn-small" style="width: 100%;">[Guardar Email]</button>
+                        <button type="submit" class="btn btn-primary btn" style="width: 100%;">[Guardar Email]</button>
                     </form>
 
                     <!-- Sección de seguridad (colapsable) -->
                     <div style="border-top: 1px solid var(--color-border); padding-top: 1rem;">
-                        <button class="btn btn-secondary btn-small" style="width: 100%;" onclick="togglePasswordForm()">
+                        <button class="btn btn-secondary btn" style="width: 100%;" onclick="togglePasswordForm()">
                             <span id="passwordBtnText">[▼ Cambiar Contraseña]</span>
                         </button>
 
@@ -588,14 +581,14 @@
                                 <label class="form-label">[Confirmar Contraseña]</label>
                                 <input type="password" class="form-input" placeholder="[Repetir nueva contraseña]">
                             </div>
-                            <button type="submit" class="btn btn-primary btn-small" style="width: 100%;">[Actualizar Contraseña]</button>
+                            <button type="submit" class="btn btn-primary btn" style="width: 100%;">[Actualizar Contraseña]</button>
                         </form>
                     </div>
                 </div>
             </section>
 
             <!-- COLUMNA 2: MI SUSCRIPCIÓN (PREMIUM - ANA) -->
-            <section class="cuenta-block" id="subscriptionPremium">
+            <section class="cuenta-block" id="subscriptionPremium" data-user-type="ana">
                 <div class="block-header">
                     <h2 class="block-title">
                         <svg class="block-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -628,50 +621,53 @@
                     </div>
 
                     <div class="actions-group">
-                        <button class="btn btn-secondary btn-small" style="flex: 1;">[Gestionar Pago]</button>
-                        <button class="btn btn-danger btn-small" style="flex: 1;">[Cancelar]</button>
+                        <button class="btn btn-secondary btn" style="flex: 1;">[Gestionar Pago]</button>
+                        <button class="btn btn-danger btn" style="flex: 1;">[Cancelar]</button>
                     </div>
                 </div>
             </section>
 
-        </div>
-
-        <!-- ========================================
-             BLOQUE 2B: MI SUSCRIPCIÓN (A LA CARTA - REGINA - UPSELL)
-             ======================================== -->
-        <section class="cuenta-block hidden" id="subscriptionAlaCarta">
-            <h2 class="block-title">
-                <svg class="block-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                </svg>
-                [Mi Suscripción]
-            </h2>
-
-            <div class="subscription-status">
-                <span class="status-badge status-inactive">[Sin Suscripción]</span>
-                <span style="flex: 1;">[Cliente A la Carta]</span>
-            </div>
-
-            <div class="upsell-banner">
-                <h3>[¡Actualiza a Premium y Desbloquea Todo!]</h3>
-                <p>[Actualmente compras productos individuales. Con una Membresía Premium accedes a:]</p>
-
-                <div class="upsell-features">
-                    <div class="upsell-feature">[Biblioteca Completa de Cursos y Recursos]</div>
-                    <div class="upsell-feature">[Acceso a Eventos en Vivo Exclusivos]</div>
-                    <div class="upsell-feature">[Asistente IA Personalizado]</div>
-                    <div class="upsell-feature">[Comunidad Privada de Miembros]</div>
-                    <div class="upsell-feature">[Ahorra en comparación con compras individuales]</div>
+            <!-- COLUMNA 2B: MI SUSCRIPCIÓN (A LA CARTA - REGINA - UPSELL) -->
+            <section class="cuenta-block" id="subscriptionAlaCarta" data-user-type="regina">
+                <div class="block-header">
+                    <h2 class="block-title">
+                        <svg class="block-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        [Mi Suscripción]
+                    </h2>
                 </div>
 
-                <button class="btn btn-upgrade" onclick="window.location.href='membresia.html'">[Ver Planes de Membresía]</button>
-            </div>
+                <div class="block-body">
+                    <div class="subscription-status">
+                        <span class="status-badge status-active">[Activa]</span>
+                        <span style="flex: 1; font-size: 0.9rem; font-weight: 500;">[Cuenta Estándar]</span>
+                    </div>
 
-            <p style="color: var(--color-text-light); font-size: 0.875rem; text-align: center;">
-                [Ya tienes acceso a los productos que has comprado. La membresía es opcional.]
-            </p>
-        </section>
+                    <div class="upsell-banner">
+                        <h3>[¡Actualiza a Premium y Desbloquea Todo!]</h3>
+                        <p>[Actualmente compras productos individuales. Con una Membresía Premium accedes a:]</p>
+
+                        <div class="upsell-features">
+                            <div class="upsell-feature">[Biblioteca Completa de Cursos y Recursos]</div>
+                            <div class="upsell-feature">[Acceso a Eventos en Vivo Exclusivos]</div>
+                            <div class="upsell-feature">[Asistente IA Personalizado]</div>
+                            <div class="upsell-feature">[Comunidad Privada de Miembros]</div>
+                            <div class="upsell-feature">[Descuentos Exclusivos en Productos y Servicios]</div>
+                            <div class="upsell-feature">[Ahorra en comparación con compras individuales]</div>
+                        </div>
+
+                        <button class="btn btn-upgrade" onclick="window.location.href='membresia.html'">[Ver Planes de Membresía]</button>
+                    </div>
+
+                    <p style="color: var(--color-text-light); font-size: 0.875rem; text-align: center;">
+                        [Ya tienes acceso a los productos que has comprado. La membresía es opcional.]
+                    </p>
+                </div>
+            </section>
+
+        </div>
 
         <!-- SEPARADOR -->
         <div style="margin: 3rem 0;"></div>
@@ -774,7 +770,7 @@
             <div class="block-body" style="padding: 0;">
 
             <!-- TABLA PREMIUM (ANA) -->
-            <div id="historialPremium">
+            <div id="historialPremium" data-user-type="ana">
                 <table class="historial-table">
                     <thead>
                         <tr>
@@ -812,7 +808,7 @@
             </div>
 
             <!-- TABLA A LA CARTA (REGINA) -->
-            <div id="historialAlaCarta" class="hidden">
+            <div id="historialAlaCarta" data-user-type="regina">
                 <table class="historial-table">
                     <thead>
                         <tr>
@@ -847,74 +843,128 @@
 
     </div>
 
+    <!-- SCRIPT DE GESTIÓN USUARIO UNIFICADO -->
+    <script src="js/auth.js"></script>
+
     <script>
         // ==========================================
-        // SIMULACIÓN: Cambiar entre Ana (Premium) y Regina (A la Carta)
+        // SISTEMA UNIFICADO: Detección de Usuario Real
         // ==========================================
 
-        // Variable de simulación (cambiar para probar: 'premium' o 'ala-carta')
-        const tipoUsuario = 'ala-carta';
-
-        // Cargar datos según tipo de usuario
+        // Función principal de inicialización
         window.addEventListener('DOMContentLoaded', function() {
-            if (tipoUsuario === 'premium') {
-                mostrarVistaPremium();
+            // Obtener usuario actual desde user-manager.js
+            const usuario = obtenerUsuarioActual();
+
+            if (!usuario) {
+                // Si no hay usuario, redirigir a login
+                console.warn('[cuenta.html] No hay usuario. Redirigiendo a login...');
+                window.location.href = 'index.html';
+                return;
+            }
+
+            console.log('[cuenta.html] Usuario detectado:', usuario.nombre, '| Nivel:', usuario.nivel);
+
+            // Aplicar vista según nivel de usuario
+            if (usuario.nivel === 3) {
+                // Ana: Usuario Premium (nivel 3)
+                aplicarVistaAna(usuario);
+            } else if (usuario.nivel === 2) {
+                // Regina: Usuario Registrado (nivel 2)
+                aplicarVistaRegina(usuario);
             } else {
-                mostrarVistaAlaCarta();
+                // Nivel 1 (Teresa) no debería acceder aquí
+                console.warn('[cuenta.html] Usuario Teresa no tiene acceso. Redirigiendo...');
+                window.location.href = 'index.html';
             }
         });
 
-        function mostrarVistaPremium() {
-            // Header
-            document.getElementById('userName').textContent = 'Ana';
-            document.getElementById('userBadge').textContent = 'Premium';
-            document.getElementById('userBadge').classList.remove('ala-carta');
+        // ==========================================
+        // VISTA ANA (PREMIUM - NIVEL 3)
+        // ==========================================
+        function aplicarVistaAna(usuario) {
+            console.log('[cuenta.html] Aplicando vista ANA (Premium)');
 
-            // Bloques de suscripción
-            document.getElementById('subscriptionPremium').classList.remove('hidden');
-            document.getElementById('subscriptionAlaCarta').classList.add('hidden');
+            // 1. Badge del header
+            const headerBadge = document.getElementById('headerBadge');
+            if (headerBadge) {
+                headerBadge.textContent = '[Premium]';
+                headerBadge.style.background = '#8db4a0';
+            }
 
-            // Historial
-            document.getElementById('historialPremium').classList.remove('hidden');
-            document.getElementById('historialAlaCarta').classList.add('hidden');
+            // 2. Datos del perfil
+            document.getElementById('userName').textContent = usuario.nombre;
+            document.getElementById('userEmailDisplay').textContent = usuario.email;
+            document.getElementById('userEmail').value = usuario.email;
+            document.getElementById('accountTypeDisplay').textContent = '[Premium]';
 
-            // Email
-            document.getElementById('userEmail').value = 'ana@ejemplo.com';
-        }
-
-        function mostrarVistaAlaCarta() {
-            // Header
-            document.getElementById('userName').textContent = 'Regina';
-            document.getElementById('userBadge').textContent = 'A la Carta';
-            document.getElementById('userBadge').classList.add('ala-carta');
-
-            // Bloques de suscripción
-            document.getElementById('subscriptionPremium').classList.add('hidden');
-            document.getElementById('subscriptionAlaCarta').classList.remove('hidden');
-
-            // Historial
-            document.getElementById('historialPremium').classList.add('hidden');
-            document.getElementById('historialAlaCarta').classList.remove('hidden');
-
-            // Email
-            document.getElementById('userEmail').value = 'regina@ejemplo.com';
+            // 3. Mostrar sección de suscripción Premium
+            mostrarSeccionesPorTipo('ana');
         }
 
         // ==========================================
-        // FUNCIONES COMUNES
+        // VISTA REGINA (REGISTRADA - NIVEL 2)
+        // ==========================================
+        function aplicarVistaRegina(usuario) {
+            console.log('[cuenta.html] Aplicando vista REGINA (Cuenta Estándar)');
+
+            // 1. Badge del header
+            const headerBadge = document.getElementById('headerBadge');
+            if (headerBadge) {
+                headerBadge.textContent = '[Cuenta Estándar]';
+                headerBadge.style.background = '#a3aab5';
+            }
+
+            // 2. Datos del perfil
+            document.getElementById('userName').textContent = usuario.nombre;
+            document.getElementById('userEmailDisplay').textContent = usuario.email;
+            document.getElementById('userEmail').value = usuario.email;
+            document.getElementById('accountTypeDisplay').textContent = '[Cuenta Estándar]';
+
+            // 3. Mostrar sección de upsell (A la Carta)
+            mostrarSeccionesPorTipo('regina');
+        }
+
+        // ==========================================
+        // FUNCIONES DE CONTROL DE VISIBILIDAD
+        // ==========================================
+        function mostrarSeccionesPorTipo(tipo) {
+            // Obtener todas las secciones con data-user-type
+            const todasLasSecciones = document.querySelectorAll('[data-user-type]');
+
+            todasLasSecciones.forEach(seccion => {
+                const tipoSeccion = seccion.getAttribute('data-user-type');
+
+                if (tipoSeccion === tipo) {
+                    // Mostrar secciones del tipo correcto
+                    seccion.classList.remove('hidden');
+                } else {
+                    // Ocultar secciones de otros tipos
+                    seccion.classList.add('hidden');
+                }
+            });
+
+            console.log(`[cuenta.html] Secciones visibles para tipo: ${tipo}`);
+        }
+
+        // ==========================================
+        // FUNCIONES COMUNES (AMBOS USUARIOS)
         // ==========================================
 
-        // Dropdown
+        // Dropdown (si existiera en el futuro)
         function toggleDropdown() {
             const dropdown = document.getElementById('userDropdown');
-            dropdown.classList.toggle('active');
+            if (dropdown) {
+                dropdown.classList.toggle('active');
+            }
         }
 
+        // Cerrar clic fuera del dropdown
         document.addEventListener('click', function(e) {
             const menuBtn = document.querySelector('.user-menu-btn');
             const dropdown = document.getElementById('userDropdown');
 
-            if (!menuBtn.contains(e.target)) {
+            if (menuBtn && dropdown && !menuBtn.contains(e.target)) {
                 dropdown.classList.remove('active');
             }
         });
@@ -927,10 +977,20 @@
             }
         }
 
-        // Formulario perfil
+        // Formulario de perfil (editar email)
         document.getElementById('profileForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('[Email actualizado correctamente]');
+            const nuevoEmail = document.getElementById('userEmail').value;
+
+            // Actualizar en localStorage (simulación)
+            const usuario = obtenerUsuarioActual();
+            if (usuario) {
+                usuario.email = nuevoEmail;
+                localStorage.setItem('usuario', JSON.stringify(usuario));
+                document.getElementById('userEmailDisplay').textContent = nuevoEmail;
+                alert('[Email actualizado correctamente]');
+            }
+
             toggleEditProfile();
         });
 

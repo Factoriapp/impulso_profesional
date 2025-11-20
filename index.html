@@ -12,7 +12,7 @@
     <meta name="robots" content="index, follow">
     <meta name="keywords" content="[palabras clave separadas por comas, 5-10 máximo]">
 
-    <title>[index]</title>
+    <title>## index ##</title>
     <link rel="canonical" href="[TU_URL_COMPLETA]">
 
     <!-- ═══════════════════════════════════════════════════════════════
@@ -158,7 +158,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                                 <li><a href="presentacion-profesional.html">[presentacion-profesional]</a></li>
                                 <li><a href="oferta-de-servicios.html">[oferta-de-servicios]</a></li>
                                 <li><a href="blog.html">[blog]</a></li>
-                                <li><a href="membresia.html">[Membresía / Comunidad]</a></li>
+                                <li><a href="#" id="areaPersonalLink" onclick="navegarAreaPersonal(event)">[area-privada]</a></li>
+                                <li><a href="membresia.html">[membresía / comunidad]</a></li>
                                 <li><a href="contacto-agenda.html" class="nav-cta">[contacto-agenda]</a></li>
                             </ul>
             <!-- Botones de autenticación (mostrar si NO está logueado) -->
@@ -169,20 +170,23 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
             <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
             <div class="user-profile" id="userProfile" style="display: none; position: relative;">
-                <div id="userProfileButton" style="display: flex; align-items: center; gap: 1rem; cursor: pointer;">
-                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='20' fill='%236B9080'/%3E%3Ctext x='20' y='26' font-size='16' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                <div id="userProfileButton" style="display: flex; align-items: center; gap: 0.85rem; cursor: pointer;">
+                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%236B9080'/%3E%3Ctext x='18' y='23' font-size='14' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
                          alt="Avatar"
-                         style="width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--color-primary);">
-                    <div>
-                        <div id="userNameHeader" style="font-weight: 600; font-size: 0.95rem; color: var(--color-text);">Usuario</div>
-                        <span style="font-size: 0.8rem; color: var(--color-primary);">Ver opciones ▼</span>
+                         style="width: 36px; height: 36px; border-radius: 50%;">
+                    <div style="display: flex; flex-direction: column; gap: 0.15rem;">
+                        <span id="userNameHeader" style="font-weight: 600; font-size: 1rem; color: var(--color-text); line-height: 1.1;">Usuario</span>
+                        <span style="font-size: 0.85rem; color: var(--color-text); opacity: 0.7; line-height: 1;">Ver opciones ▼</span>
                     </div>
                 </div>
 
                 <!-- Menú desplegable -->
                 <div class="user-menu" id="userMenu" style="display: none;">
                     <a href="area-privada.html" class="user-menu-item">
-                        <span>👤</span> Mi Área
+                        <span>👤</span> [area-privada]
+                    </a>
+                    <a href="cuenta.html" class="user-menu-item">
+                        <span>⚙️</span> [cuenta]
                     </a>
                     <button onclick="cerrarSesion()" class="user-menu-item" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
                         <span>🚪</span> Cerrar Sesión
@@ -220,10 +224,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             <div class="hero-content">
                 <h1>[Título Principal (Hero Headline)]</h1>
                 <p class="hero-subtitle">
-                    Aquí escribe tu propuesta de valor única dirigida a tu cliente ideal.
-                    Este texto debe comunicar el beneficio principal o la solución que ofreces en 1-2 líneas.
-                    Enfócate en el resultado que tu cliente busca o el problema que resuelves de manera clara y directa.
-                    Usa un lenguaje accesible que resuene con tu audiencia objetivo.
+                    ##Propuesta de valor única para tu cliente ideal. Comunica el beneficio principal en 1-2 líneas. Enfócate en el resultado que buscan. ##
                 </p>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <a href="oferta-de-servicios.html" class="btn btn-primary btn-large">[Texto Botón Principal (CTA)]</a>
@@ -233,8 +234,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
             <div class="hero-image">
                 <p><strong>Imagen Principal</strong><br>
-                Aquí va una foto profesional que transmita confianza y credibilidad.
-                Puede ser tu foto, tu equipo, o una imagen relacionada con tu servicio.</p>
+                ##Aquí va una foto profesional que transmita confianza y credibilidad.
+                Puede ser tu foto, tu equipo, o una imagen relacionada con tu servicio. ##</p>
             </div>
         </div>
     </section>
@@ -253,9 +254,9 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             <div class="about-container">
                 <div class="about-image">
                     <p><strong>Foto Profesional</strong><br>
-                    Aquí va tu fotografía profesional que transmita autoridad y confianza.
+                    ##Aquí va tu fotografía profesional que transmita autoridad y confianza.
                     Debe proyectar competencia, experiencia y profesionalismo.
-                    Considera una foto en tu espacio de trabajo o consulta.</p>
+                    Considera una foto en tu espacio de trabajo o consulta. ##</p>
                 </div>
 
                 <div class="about-content">
@@ -263,15 +264,10 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
                     <div class="about-text">
                         <p>
-                            Aquí presenta tu perfil profesional en 1-2 párrafos. Destaca tu formación, años de experiencia,
-                            especialización y el tipo de clientes con los que trabajas. Ejemplo: "Soy [tu nombre], [profesión/título]
-                            con [X años] de experiencia en [tu área de especialización]. He trabajado con [número aproximado] de clientes,
-                            especializándome en [tu nicho específico] mediante [tu metodología o enfoque principal]."
+                            ##Perfil profesional en 1-2 párrafos. Destaca: formación, años experiencia, especialización, tipo de clientes. Ejemplo: "Soy [nombre], [profesión] con [X años] de experiencia en [área]..." ##
                         </p>
                         <p>
-                            Continúa destacando tu expertise y enfoque profesional. ¿Cuál es tu especialización?
-                            ¿Qué metodologías dominas? ¿Qué resultados obtienes con tus clientes? Mantén un tono
-                            profesional y seguro que inspire confianza y credibilidad.
+                            ##Continúa con tu expertise. ¿Especialización? ¿Metodologías? ¿Resultados con clientes? Tono profesional que inspire confianza. ##
                         </p>
                     </div>
 
@@ -285,10 +281,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             <div class="about-mission">
                 <h3>[Mi Misión]</h3>
                 <p>
-                    Aquí describe tu misión profesional y el compromiso con tus clientes. ¿Qué resultados te comprometes a lograr?
-                    ¿Cuál es tu estándar de excelencia? Este es el espacio para mostrar tu compromiso profesional y tu visión.
-                    Ejemplo: "Mi misión es proporcionar un servicio de la más alta calidad profesional a [tu nicho de clientes],
-                    utilizando metodologías probadas y un enfoque personalizado que garantice resultados medibles y transformaciones duraderas."
+                    ##Misión profesional y compromiso con clientes. ¿Qué resultados lograrás? ¿Tu estándar? Ejemplo: "Mi misión es [servicio de calidad a tu nicho], con [metodología] y resultados medibles." ##
                 </p>
             </div>
             </div>
@@ -311,8 +304,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <p class="section-subtitle">[Subtítulo Opcional]</p>
                 <h2 class="section-title">[Recursos Destacados]</h2>
                 <p class="section-description">
-                    [Descripción introductoria: presenta los recursos que has seleccionado destacar este mes.
-                    Puede ser tu servicio estrella, un nuevo curso, o tu comunidad. Adapta según tu estrategia actual.]
+                    ##Descripción introductoria: presenta los recursos que has seleccionado destacar este mes.
+                    Puede ser tu servicio estrella, un nuevo curso, o tu comunidad. Adapta según tu estrategia actual. ##
                 </p>
             </div>
 
@@ -329,7 +322,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </div>
                     <h3 class="card-title">[Título del Servicio]</h3>
                     <p class="card-text">
-                        [Descripción breve del servicio. Ejemplo: "Sesión personalizada de 60 minutos para resolver tu desafío principal".]
+                        ##Descripción breve del servicio. Ejemplo: "Sesión personalizada de 60 minutos para resolver tu desafío principal". ##
                     </p>
 
                     <div class="mt-auto">
@@ -347,7 +340,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </div>
                     <h3 class="card-title">[Título del Curso]</h3>
                     <p class="card-text">
-                        [Descripción breve del curso. Ejemplo: "Programa completo para dominar [habilidad específica] a tu propio ritmo".]
+                        ##Descripción breve del curso. Ejemplo: "Programa completo para dominar [habilidad específica] a tu propio ritmo". ##
                     </p>
 
                     <div class="mt-auto">
@@ -367,7 +360,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </div>
                     <h3 class="card-title">[Nombre del Taller/Evento]</h3>
                     <p class="card-text">
-                        [Descripción breve del evento. Ejemplo: "Masterclass en vivo para aprender [tema específico] con sesión de preguntas".]
+                        ##Descripción breve del evento. Ejemplo: "Masterclass en vivo para aprender [tema específico] con sesión de preguntas". ##
                     </p>
 
                     <div class="mt-auto">
@@ -393,8 +386,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <p class="section-subtitle">[Subtítulo de Eventos (opcional)]</p>
                 <h2 class="section-title">[Próximos Eventos]</h2>
                 <p class="section-description">
-                    Descripción breve introduciendo tus próximos eventos, talleres, webinars o círculos.
-                    Invita a tu audiencia a unirse y ser parte de la comunidad.
+                    ##Descripción breve introduciendo tus próximos eventos, talleres, webinars o círculos.
+                    Invita a tu audiencia a unirse y ser parte de la comunidad. ##
                 </p>
             </div>
 
@@ -408,8 +401,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     <p class="event-time">🕐 Hora: [18:00 - 20:00 hrs]</p>
                     <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
                     <p class="card-text">
-                        Descripción breve del evento. ¿Qué aprenderán? ¿Qué experiencia vivirán?
-                        ¿Para quién es ideal? Menciona los beneficios principales de asistir.
+                        ##Descripción breve del evento. ¿Qué aprenderán? ¿Qué experiencia vivirán?
+                        ¿Para quién es ideal? Menciona los beneficios principales de asistir. ##
                     </p>
                     <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
                         [Inscribirme]
@@ -425,8 +418,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     <p class="event-time">🕐 Hora: [10:00 - 13:00 hrs]</p>
                     <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
                     <p class="card-text">
-                        Descripción del segundo evento. Enfócate en lo que hace único a este evento
-                        y por qué vale la pena asistir. Menciona el formato, contenido o enfoque especial.
+                        ##Descripción del segundo evento. Enfócate en lo que hace único a este evento
+                        y por qué vale la pena asistir. Menciona el formato, contenido o enfoque especial. ##
                     </p>
                     <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
                         [Inscribirme]
@@ -442,8 +435,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     <p class="event-time">🕐 Hora: [19:00 - 21:00 hrs]</p>
                     <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
                     <p class="card-text">
-                        Tercer evento próximo. Puede ser un retiro, círculo de mujeres, taller intensivo,
-                        o cualquier experiencia grupal. Describe la transformación o aprendizaje que ofreces.
+                        ## Tercer evento próximo. Puede ser un webinar, taller intensivo, sesión grupal,
+                        o cualquier experiencia formativa. Describe la transformación o aprendizaje que ofreces. ##
                     </p>
                     <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
                         [Inscribirme]
@@ -478,14 +471,11 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     <h2 class="community-title">[Nombre de tu Membresía/Comunidad]</h2>
 
                     <p class="community-subtitle">
-                        [Tagline o propuesta de valor única - 1 línea que capture la esencia de pertenecer]
+                        ##Tagline o propuesta de valor única - 1 línea que capture la esencia de pertenecer ##
                     </p>
 
                     <p class="community-description">
-                        Descripción de tu comunidad o membresía. ¿Qué experiencia vivirán? ¿Qué transformación
-                        lograrán al formar parte? Explica el valor de pertenecer a un grupo de personas con
-                        objetivos similares. Menciona el apoyo, recursos exclusivos, y la experiencia de crecimiento
-                        en comunidad. Enfócate en la conexión humana y el camino compartido.
+                        ##Describe tu comunidad o membresía. ¿Qué experiencia vivirán? ¿Qué transformación lograrán? Menciona apoyo, recursos exclusivos y crecimiento compartido. ##
                     </p>
 
                     <div class="community-benefits">
@@ -500,7 +490,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             </div>
                             <div>
                                 <h4>[Beneficio 1]</h4>
-                                <p>Descripción breve del primer beneficio de pertenecer</p>
+                                <p>##Descripción breve del primer beneficio de pertenecer ##</p>
                             </div>
                         </div>
 
@@ -513,7 +503,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             </div>
                             <div>
                                 <h4>[Beneficio 2]</h4>
-                                <p>Descripción del segundo beneficio clave</p>
+                                <p>##Descripción del segundo beneficio clave ##</p>
                             </div>
                         </div>
 
@@ -526,7 +516,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             </div>
                             <div>
                                 <h4>[Beneficio 3]</h4>
-                                <p>Descripción del tercer beneficio principal</p>
+                                <p>##Descripción del tercer beneficio principal ##</p>
                             </div>
                         </div>
 
@@ -538,7 +528,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             </div>
                             <div>
                                 <h4>[Beneficio 4]</h4>
-                                <p>Descripción del cuarto beneficio especial</p>
+                                <p>##Descripción del cuarto beneficio especial ##</p>
                             </div>
                         </div>
                     </div>
@@ -572,13 +562,13 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     <!-- PLACEHOLDER TEMPORAL (Eliminar cuando tengas la imagen real) -->
                     <p class="community-visual-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, var(--gradient-placeholder-start) 0%, var(--gradient-placeholder-end) 100%); border-radius: 20px; padding: 3rem;">
                         <span style="font-size: 4rem; margin-bottom: 1rem;">🖼️</span>
-                        <strong style="font-size: 1.2rem; margin-bottom: 1rem;">Aquí va tu imagen real</strong>
-                        <span style="font-size: 0.9rem;">Imagen que muestre la experiencia de la comunidad:</span>
+                        <strong style="font-size: 1.2rem; margin-bottom: 1rem;">##Aquí va tu imagen real ##</strong>
+                        <span style="font-size: 0.9rem;">##Imagen que muestre la experiencia de la comunidad:</span>
                         <span style="font-size: 0.85rem; margin-top: 0.5rem;">• Mockup del área de miembros</span>
                         <span style="font-size: 0.85rem;">• Collage de contenido exclusivo</span>
                         <span style="font-size: 0.85rem;">• Pantallas de la app/plataforma</span>
                         <span style="font-size: 0.85rem; margin-bottom: 1rem;">• Imagen que represente el acceso y valor</span>
-                        <span style="font-size: 0.8rem; color: var(--color-muted-text);">Recomendado: 1200x800px</span>
+                        <span style="font-size: 0.8rem; color: var(--color-muted-text);">Recomendado: 1200x800px ##</span>
                     </p>
                 </div>
             </div>
@@ -604,10 +594,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             <div class="cards-grid">
                 <div class="testimonial">
                     <p class="testimonial-text">
-                        "Aquí va el testimonio completo de un cliente real. Debe ser específico y mencionar
-                        resultados concretos. Evita testimonios vagos como 'fue genial'. En su lugar, busca
-                        testimonios que mencionen: problema inicial, cómo fue el proceso, y resultado específico obtenido.
-                        Ideal: 3-5 líneas de extensión."
+                        ##"Testimonio de cliente real. Debe mencionar: problema inicial, proceso seguido y resultado específico obtenido. Evita testimonios vagos. Ideal: 3-4 líneas." ##
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">XY</div>
@@ -620,9 +607,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
                 <div class="testimonial">
                     <p class="testimonial-text">
-                        "Segundo testimonio de cliente real. Idealmente de alguien que haya usado una
-                        modalidad diferente de servicio. Incluye detalles específicos sobre la experiencia,
-                        el proceso y los resultados obtenidos."
+                        ##"Segundo testimonio de cliente real. Idealmente de otra modalidad de servicio. Incluye experiencia, proceso y resultados específicos." ##
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">AB</div>
@@ -635,9 +620,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
                 <div class="testimonial">
                     <p class="testimonial-text">
-                        "Tercer testimonio real. Los mejores testimonios son aquellos que un futuro cliente puede
-                        leer y pensar 'eso es exactamente lo que yo necesito'. Debe resonar con tu audiencia objetivo
-                        y mostrar resultados tangibles o transformaciones específicas."
+                        ##"Tercer testimonio real. Debe resonar con tu audiencia: que un futuro cliente piense 'eso es lo que yo necesito'. Muestra resultados tangibles." ##
                     </p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">CD</div>
@@ -667,7 +650,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <p class="section-subtitle">[Subtítulo de Blog (opcional)]</p>
                 <h2 class="section-title">[Últimas Publicaciones del Blog]</h2>
                 <p class="section-description">
-                    [Contenido de valor gratuito para impulsar tu camino y mantenerte actualizado.]
+                    ##Contenido de valor gratuito para impulsar tu camino y mantenerte actualizado. ##
                 </p>
             </div>
 
@@ -676,7 +659,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <article class="blog-card">
                     <div class="blog-image">
                         <p><strong>Imagen del Artículo</strong><br>
-                        Aquí va la imagen destacada del artículo (optimizada automáticamente).</p>
+                        ##Aquí va la imagen destacada del artículo (optimizada automáticamente). ##</p>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -685,8 +668,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                         </div>
                         <h3 class="blog-title">[Título del Artículo más Reciente]</h3>
                         <p class="blog-excerpt">
-                            [Resumen breve de la enseñanza clave del artículo. Enfócate en el valor que obtendrá
-                            el lector. Máximo 2 líneas que generen curiosidad y ganas de leer más.]
+                            ##Resumen de la enseñanza clave. Valor para el lector en 2 líneas. Genera curiosidad. ##
                         </p>
                         <a href="blog.html" class="blog-link">
                             [Ver Publicación] →
@@ -698,7 +680,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <article class="blog-card">
                     <div class="blog-image">
                         <p><strong>Imagen del Artículo</strong><br>
-                        Aquí va la imagen destacada del artículo (optimizada automáticamente).</p>
+                        ##Aquí va la imagen destacada del artículo (optimizada automáticamente). ##</p>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -707,8 +689,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                         </div>
                         <h3 class="blog-title">[Título del Segundo Artículo]</h3>
                         <p class="blog-excerpt">
-                            [Resumen del segundo artículo. Destaca el aprendizaje principal o la transformación
-                            que el contenido ofrece. Genera interés sin revelar todo.]
+                            ##Resumen del segundo artículo. Destaca aprendizaje o transformación. Genera interés. ##
                         </p>
                         <a href="blog.html" class="blog-link">
                             [Ver Publicación] →
@@ -720,7 +701,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <article class="blog-card">
                     <div class="blog-image">
                         <p><strong>Imagen del Artículo</strong><br>
-                        Aquí va la imagen destacada del artículo (optimizada automáticamente).</p>
+                        ##Aquí va la imagen destacada del artículo (optimizada automáticamente). ##</p>
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
@@ -729,8 +710,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                         </div>
                         <h3 class="blog-title">[Título del Tercer Artículo]</h3>
                         <p class="blog-excerpt">
-                            [Resumen del tercer artículo. Menciona el problema que resuelve o la pregunta que
-                            responde. Invita a profundizar en el contenido completo.]
+                            ##Resumen del tercer artículo. Problema que resuelve o pregunta que responde. ##
                         </p>
                         <a href="blog.html" class="blog-link">
                             [Ver Publicación] →
@@ -763,8 +743,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <div class="section-header" style="margin-bottom: 3rem;">
                     <h2 class="section-title">[Título del Lead Magnet: Tu Regalo Gratuito]</h2>
                     <p class="section-description" style="max-width: 700px; margin: 0 auto;">
-                        Descripción breve del recurso gratuito. ¿Qué obtendrán? ¿Qué valor aporta? ¿Qué problema resuelve?
-                        Ejemplos: Guía práctica, checklist paso a paso, plantilla personalizable, video tutorial, mini-curso, consulta gratuita.
+                        ##Descripción breve del recurso gratuito. ¿Qué obtendrán? ¿Qué valor aporta? ¿Qué problema resuelve?
+                        Ejemplos: Guía práctica, checklist paso a paso, plantilla personalizable, video tutorial, mini-curso, consulta gratuita. ##
                     </p>
                 </div>
 
@@ -831,9 +811,9 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                 <p class="section-subtitle">[Pregunta Pre-CTA (opcional)]</p>
                 <h2 class="section-title">[Título del CTA Final: Última Oportunidad de Acción]</h2>
                 <p class="section-description" style="margin-bottom: 2rem;">
-                    Descripción breve de tu oferta de bajo compromiso. Explica claramente qué obtendrán, sin presión.
+                    ##Descripción breve de tu oferta de bajo compromiso. Explica claramente qué obtendrán, sin presión.
                     Ejemplos: Consulta inicial gratuita, sesión de descubrimiento sin costo, análisis personalizado,
-                    llamada de 15 minutos. Elimina objeciones y aclara qué pueden esperar del siguiente paso.
+                    llamada de 15 minutos. Elimina objeciones y aclara qué pueden esperar del siguiente paso. ##
                 </p>
                 <a href="contacto-agenda.html" class="btn btn-primary btn-large">
                     [Texto del Botón de CTA]

@@ -23,9 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
             if (authButtons) authButtons.style.display = 'none';
             if (userProfile) userProfile.style.display = 'flex';
 
-            // Actualizar nombre del usuario
+            // Actualizar nombre del usuario (solo primer nombre)
             if (userNameHeader) {
-                userNameHeader.textContent = usuario.nombre;
+                const primerNombre = typeof obtenerPrimerNombre === 'function'
+                    ? obtenerPrimerNombre(usuario.nombre)
+                    : usuario.nombre.split(' ')[0];
+                userNameHeader.textContent = primerNombre;
             }
 
             // Crear avatar con iniciales
@@ -623,5 +626,37 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ============================================
+// NAVEGACIÓN INTELIGENTE A ÁREA PERSONAL
+// ============================================
+
+/**
+ * Función que gestiona el click en "👤 Área Personal" del menú
+ * - Si el usuario está autenticado → Navega a area-privada.html
+ * - Si NO está autenticado → Abre modal de login
+ */
+function navegarAreaPersonal(event) {
+    event.preventDefault(); // Prevenir navegación por defecto
+
+    // Verificar si el usuario está autenticado
+    if (typeof obtenerUsuarioActual === 'function') {
+        const usuario = obtenerUsuarioActual();
+
+        if (usuario) {
+            // Usuario autenticado → Navegar a área privada
+            window.location.href = 'area-privada.html';
+        } else {
+            // Usuario NO autenticado → Abrir modal de login
+            if (typeof abrirModalLogin === 'function') {
+                abrirModalLogin();
+            } else {
+                console.error('Función abrirModalLogin no encontrada');
+            }
+        }
+    } else {
+        console.error('Función obtenerUsuarioActual no encontrada');
+    }
+}
 
 console.log('✨ Website Modelo para Terapeutas Holísticos - JavaScript cargado correctamente');

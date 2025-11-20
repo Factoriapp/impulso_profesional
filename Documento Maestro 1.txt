@@ -534,4 +534,18 @@ Decisión (Firme): Se aprueba la arquitectura del "Gatillo de Adquisición".
 
 Razón Estratégica: Esta arquitectura (A) evita la "parálisis por elección" al mantener el area-privada.html [cite: 1-289, 1-403] limpio solo con el contenido que el usuario *activamente* ha querido, y (B) refuerza la Tienda (oferta-de-servicios.html) como el eje central del negocio.
 
+Entrada para Actualización del DM1 (18-Nov-2025)
+
+-Decisión de Producto: Flujo de Publicación Seguro (Brand Safety)
+
+Contexto: Se identificó el riesgo de que el profesional ("Pepe") cometa errores de redacción o formato al publicar contenido, dañando su autoridad (Pilar 1).
+-Decisión (Firme): Se prohíbe la publicación directa e inmediata. Se establece un flujo de "Tres Redes de Seguridad" en el Dashboard.
+
+Implementación:
+1. Estado por Defecto "DRAFT": Al crear una entrada, se guarda automáticamente como Borrador. Nunca es pública hasta que se pulsa "[PUBLICAR AHORA]".
+2. Vista Previa Obligatoria: El sistema debe ofrecer un botón "[Ver como Queda]" que renderiza la plantilla `publicacion.html` con el contenido del borrador en una pestaña nueva antes de publicar.
+3. Edición en Caliente: El sistema debe permitir la edición instantánea de entradas ya publicadas (UPDATE) sin necesidad de bajarlas y volverlas a subir.
+
+Razón Estratégica: La arquitectura web debe perdonar errores humanos. Este flujo protege la reputación del profesional y reduce el miedo a publicar.
+
 

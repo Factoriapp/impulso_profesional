@@ -209,15 +209,22 @@ img {
 .user-profile {
     display: flex;
     align-items: center;
-    padding: 0.25rem 0.75rem;
-    background: rgba(255, 255, 255, 0.5);
+    padding: 0.6rem 1.75rem 0.6rem 0.65rem;
+    background: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--color-text);
     border-radius: 50px;
     transition: var(--transition);
+    margin-left: auto;
+    margin-right: 1rem;
+    cursor: pointer;
 }
 
 .user-profile:hover {
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: var(--shadow-soft);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
 }
 
 /* Menú desplegable del usuario */
@@ -702,6 +709,11 @@ img {
     line-height: 1.8;
     font-size: 0.95rem;
     flex-grow: 1;
+    /* Truncar con ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 /* ============================================
@@ -1112,6 +1124,11 @@ img {
     line-height: 1.9;
     margin-bottom: 2.5rem;
     font-size: 1.05rem;
+    /* Truncar con ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .community-benefits {
@@ -1352,6 +1369,11 @@ img {
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     flex-grow: 1;
+    /* Truncar con ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .blog-link {
@@ -1491,6 +1513,11 @@ img {
     font-size: 1.05rem;
     color: var(--color-text);
     margin-bottom: var(--spacing-md);
+    /* Truncar con ellipsis */
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
     line-height: 1.9;
 }
 
@@ -3420,6 +3447,74 @@ n/* ============================================
    ============================================ */
 
 /* .btn-cta y .btn-cta--ochre - ELIMINADOS: Usar .btn-primary en su lugar */
+
+/* ============================================
+   THEME PREMIUM - ANA (NIVEL 3)
+   ============================================
+
+   Aplicado cuando usuario.nivel === 3
+   Cambios visuales que crean "Ambiente VIP"
+   sin duplicar páginas.
+
+   RESTRICCIÓN: Tablón de anuncios mantiene
+   mismo tamaño y posición, solo cambia apariencia.
+   ============================================ */
+
+.theme-premium {
+    /* Fondo general más cálido */
+    background-color: var(--color-cream);
+}
+
+/* Header Premium: Fondo con degradado sutil */
+.theme-premium .app-header {
+    background: linear-gradient(135deg, var(--color-sand), var(--color-cream));
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+/* Tarjetas principales: Bordes dorados */
+.theme-premium .recurso-card {
+    border-color: var(--color-secondary);
+    box-shadow: 0 4px 16px rgba(232, 213, 196, 0.2);
+}
+
+.theme-premium .recurso-card:hover {
+    border-color: var(--color-ochre);
+    box-shadow: 0 8px 24px rgba(232, 213, 196, 0.3);
+}
+
+/* Tablón de anuncios: Apariencia premium (mismo tamaño y posición) */
+.theme-premium .tablon-anuncios {
+    background: linear-gradient(135deg, var(--color-sand), var(--color-cream));
+    border-left: 4px solid var(--color-secondary);
+    box-shadow: 0 4px 16px rgba(232, 213, 196, 0.25);
+}
+
+.theme-premium .tablon-icon,
+.theme-premium .tablon-title {
+    color: var(--color-secondary);
+}
+
+/* Success Badge Premium */
+.theme-premium .success-badge {
+    background: linear-gradient(135deg, var(--color-sand), var(--color-secondary));
+    border: 2px solid var(--color-secondary);
+}
+
+/* Iconos de recursos: Fondo más cálido */
+.theme-premium .recurso-icon {
+    background: var(--color-bg-secondary-light);
+}
+
+.theme-premium .recurso-icon svg {
+    stroke: var(--color-secondary);
+}
+
+/* Badge recurso: Color premium */
+.theme-premium .recurso-badge {
+    background: var(--color-sand);
+    color: var(--color-text);
+    border-color: var(--color-secondary);
+}
 
 
 

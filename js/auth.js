@@ -8,6 +8,12 @@
 // FUNCIONES DE UTILIDAD
 // ============================================
 
+// Obtener solo el primer nombre (para mostrar en header y área privada)
+function obtenerPrimerNombre(nombreCompleto) {
+    if (!nombreCompleto) return '';
+    return nombreCompleto.trim().split(' ')[0];
+}
+
 // Obtener usuarios del localStorage
 function obtenerUsuarios() {
     const usuarios = localStorage.getItem('usuarios');
@@ -22,7 +28,29 @@ function guardarUsuarios(usuarios) {
 // Obtener usuario actual logueado
 function obtenerUsuarioActual() {
     const usuario = localStorage.getItem('usuarioActual');
-    return usuario ? JSON.parse(usuario) : null;
+    if (!usuario) return null;
+
+    const usuarioObj = JSON.parse(usuario);
+
+    // Asegurar que el usuario tiene el campo 'nivel' basado en tipoUsuario
+    if (!usuarioObj.nivel) {
+        usuarioObj.nivel = mapearTipoANivel(usuarioObj.tipoUsuario || 'gratuito');
+    }
+
+    return usuarioObj;
+}
+
+// Mapear tipoUsuario a nivel numérico
+function mapearTipoANivel(tipoUsuario) {
+    switch(tipoUsuario) {
+        case 'miembro':
+            return 3; // Ana (Premium)
+        case 'comprador':
+            return 2; // Regina (Registrada/Compradora)
+        case 'gratuito':
+        default:
+            return 1; // Teresa (Visitante registrada)
+    }
 }
 
 // Guardar usuario actual
@@ -48,13 +76,14 @@ function verificarAutenticacion() {
     return true;
 }
 
-// Actualizar tipo de usuario (gratuito → miembro)
+// Actualizar tipo de usuario (gratuito → comprador → miembro)
 function actualizarTipoUsuario(nuevoTipo) {
     const usuario = obtenerUsuarioActual();
     if (!usuario) return false;
 
     // Actualizar en el usuario actual
     usuario.tipoUsuario = nuevoTipo;
+    usuario.nivel = mapearTipoANivel(nuevoTipo);
     guardarUsuarioActual(usuario);
 
     // Actualizar en la lista de usuarios
@@ -62,11 +91,48 @@ function actualizarTipoUsuario(nuevoTipo) {
     const index = usuarios.findIndex(u => u.id === usuario.id);
     if (index !== -1) {
         usuarios[index].tipoUsuario = nuevoTipo;
+        usuarios[index].nivel = mapearTipoANivel(nuevoTipo);
         guardarUsuarios(usuarios);
     }
 
     return true;
 }
+
+// ============================================
+// MIGRACIÓN AUTOMÁTICA DE USUARIOS ANTIGUOS
+// ============================================
+// Asegura que todos los usuarios tengan el campo 'nivel'
+function migrarUsuariosAntiguos() {
+    // 1. Migrar lista de usuarios
+    const usuarios = obtenerUsuarios();
+    let migrados = false;
+
+    usuarios.forEach(usuario => {
+        if (!usuario.nivel) {
+            usuario.nivel = mapearTipoANivel(usuario.tipoUsuario || 'gratuito');
+            migrados = true;
+        }
+    });
+
+    if (migrados) {
+        guardarUsuarios(usuarios);
+        console.log('✅ Usuarios migrados: campo "nivel" agregado');
+    }
+
+    // 2. Migrar usuario actual si está logueado
+    const usuarioActual = localStorage.getItem('usuarioActual');
+    if (usuarioActual) {
+        const usuario = JSON.parse(usuarioActual);
+        if (!usuario.nivel) {
+            usuario.nivel = mapearTipoANivel(usuario.tipoUsuario || 'gratuito');
+            guardarUsuarioActual(usuario);
+            console.log('✅ Usuario actual migrado: campo "nivel" agregado');
+        }
+    }
+}
+
+// Ejecutar migración automáticamente al cargar el script
+migrarUsuariosAntiguos();
 
 // Mostrar mensaje de error
 function mostrarError(mensaje, elementoId = 'mensajeError') {
@@ -145,7 +211,8 @@ if (document.getElementById('registroForm')) {
             nombre: nombre,
             email: email,
             password: password, // En producción, esto debe estar encriptado
-            tipoUsuario: 'gratuito', // Puede ser 'gratuito' o 'miembro'
+            tipoUsuario: 'gratuito', // Puede ser 'gratuito', 'comprador' o 'miembro'
+            nivel: 1, // 1: Teresa (gratuito), 2: Regina (comprador), 3: Ana (miembro)
             fechaRegistro: new Date().toISOString()
         };
 
@@ -204,6 +271,12 @@ if (document.getElementById('loginForm')) {
         // Guardar sesión (sin la contraseña)
         const usuarioSinPassword = { ...usuario };
         delete usuarioSinPassword.password;
+
+        // Asegurar que tiene el campo nivel
+        if (!usuarioSinPassword.nivel) {
+            usuarioSinPassword.nivel = mapearTipoANivel(usuarioSinPassword.tipoUsuario || 'gratuito');
+        }
+
         guardarUsuarioActual(usuarioSinPassword);
 
         // Cerrar modal si existe

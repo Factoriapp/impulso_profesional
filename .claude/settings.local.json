@@ -9,7 +9,9 @@
       "Bash(start contacto-agenda.html)",
       "Bash(git commit:*)",
       "Bash(xargs:*)",
-      "Bash(start cuenta-regina.html)"
+      "Bash(start cuenta-regina.html)",
+      "Bash(start publicacion.html)",
+      "Bash(cat:*)"
     ],
     "deny": [],
     "ask": []

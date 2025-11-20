@@ -7,6 +7,7 @@
 1. [Arquitectura del Proyecto](#arquitectura)
 2. [Sistema de Colores](#colores)
 3. [Convenciones de Código](#convenciones)
+   - [Convenciones de Contenido HTML](#convenciones-contenido) (Sistema `## ##`, Truncamiento, Primer Nombre)
 4. [Componentes Reutilizables](#componentes-reutilizables) (Iconos SVG, Cards, Botones, Badges, Grids)
 5. [Optimizaciones Implementadas](#optimizaciones)
 6. [Reglas de Negocio (DM1)](#reglas-dm1)
@@ -258,6 +259,83 @@ Web_modelo/
     cursor: pointer;
     transition: var(--transition);
 }
+```
+
+### Convenciones de Contenido HTML {#convenciones-contenido}
+
+#### Sistema de Instrucciones `## texto ##`
+**Propósito**: Diferenciar instrucciones para Pepe (profesional) de placeholders rellenables.
+
+**Formato**:
+```html
+<!-- Instrucción para Pepe (texto explicativo) -->
+<p class="card-text">
+    ## Descripción breve del servicio. Ejemplo: "Sesión personalizada de 60 minutos para resolver tu desafío principal". ##
+</p>
+
+<!-- Placeholder rellenable -->
+<h3 class="card-title">[Título del Servicio]</h3>
+```
+
+**Diferencia**:
+- `## texto ##` = Instrucción/guía para Pepe sobre qué escribir
+- `[Texto]` = Placeholder que Pepe debe reemplazar directamente
+
+**Aplicado en**: `index.html` (33 instrucciones), próximamente en otros archivos HTML.
+
+#### Sistema de Truncamiento con Ellipsis
+**Propósito**: Blindar tarjetas contra textos largos. Teresa ve "..." y hace clic en "Ver Detalles".
+
+**Clases con truncamiento automático**:
+```css
+.card-text               /* 4 líneas máximo */
+.blog-excerpt            /* 3 líneas máximo */
+.testimonial-text        /* 5 líneas máximo */
+.community-description   /* 4 líneas máximo */
+```
+
+**Implementación CSS** (`styles.css`):
+```css
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+```
+
+**Flujo de información**:
+1. **index.html** = Resumen truncado con "..." + botón "Ver Detalles →"
+2. **oferta-de-servicios.html** = Contenido completo sin límites
+
+#### Patrón "Primer Nombre" en UI
+**Propósito**: Mostrar solo el primer nombre del usuario en header/área privada, nombre completo solo en cuenta.
+
+**Ubicaciones**:
+- **Header** (todas las páginas): Solo primer nombre
+- **Área Privada**: Solo primer nombre
+- **cuenta.html**: Nombre completo
+
+**Función auxiliar** (`js/auth.js` líneas 11-15):
+```javascript
+function obtenerPrimerNombre(nombreCompleto) {
+    if (!nombreCompleto) return '';
+    return nombreCompleto.trim().split(' ')[0];
+}
+```
+
+**Uso**:
+```javascript
+// En main.js (header)
+const primerNombre = obtenerPrimerNombre(usuario.nombre);
+userNameHeader.textContent = primerNombre;
+
+// En area-privada.html
+const primerNombre = obtenerPrimerNombre(usuario.nombre);
+document.getElementById('userNameDisplay').textContent = primerNombre;
+
+// En cuenta.html (SIN usar la función)
+document.getElementById('userName').textContent = usuario.nombre; // Nombre completo
 ```
 
 ---
