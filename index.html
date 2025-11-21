@@ -153,45 +153,36 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
         <nav class="nav-container">
             <div class="logo">Tu Logo Aquí</div>
 
-                            <ul class="nav-menu" id="navMenu">
-                                <li><a href="index.html" class="active">[index]</a></li>
-                                <li><a href="presentacion-profesional.html">[presentacion-profesional]</a></li>
-                                <li><a href="oferta-de-servicios.html">[oferta-de-servicios]</a></li>
-                                <li><a href="blog.html">[blog]</a></li>
-                                <li><a href="#" id="areaPersonalLink" onclick="navegarAreaPersonal(event)">[area-privada]</a></li>
-                                <li><a href="membresia.html">[membresía / comunidad]</a></li>
-                                <li><a href="contacto-agenda.html" class="nav-cta">[contacto-agenda]</a></li>
-                            </ul>
-            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <!-- CENTRO: Área Personal (TODOS) - Con lógica de portero -->
+            <div class="header-center-action" id="headerCenterAction" onclick="navegarAreaPersonal(event)" style="cursor: pointer;">
+                <span>👤</span>
+                <span>Área Personal</span>
+            </div>
+
+            <!-- DERECHA: Avatar + Nombre (Usuarios) - Indicador visual sin link -->
+            <div class="header-center-profile" id="headerCenterProfile" style="display: none;">
+                <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%236B9080'/%3E%3Ctext x='18' y='23' font-size='14' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                     alt="Avatar"
+                     style="width: 36px; height: 36px; border-radius: 50%;">
+                <span id="userNameHeader">Usuario</span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="javascript:void(0);" id="areaPersonalLink" onclick="navegarAreaPersonal(event)">Área Personal</a></li>
+                <li id="cuentaMenuItem" class="hidden"><a href="javascript:void(0);" id="cuentaLink" onclick="navegarCuenta(event)">Mi Cuenta</a></li>
+                <li><a href="membresia.html">Membresía</a></li>
+                <li><a href="contacto-agenda.html" class="nav-cta">Contacto</a></li>
+                <li id="salirMenuItem" class="hidden"><a href="javascript:void(0);" onclick="cerrarSesion()">Salir</a></li>
+            </ul>
+
+            <!-- DERECHA: Botones de autenticación -->
             <div class="auth-buttons" id="authButtons">
                 <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
                 <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
-            </div>
-
-            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
-            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
-                <div id="userProfileButton" style="display: flex; align-items: center; gap: 0.85rem; cursor: pointer;">
-                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%236B9080'/%3E%3Ctext x='18' y='23' font-size='14' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
-                         alt="Avatar"
-                         style="width: 36px; height: 36px; border-radius: 50%;">
-                    <div style="display: flex; flex-direction: column; gap: 0.15rem;">
-                        <span id="userNameHeader" style="font-weight: 600; font-size: 1rem; color: var(--color-text); line-height: 1.1;">Usuario</span>
-                        <span style="font-size: 0.85rem; color: var(--color-text); opacity: 0.7; line-height: 1;">Ver opciones ▼</span>
-                    </div>
-                </div>
-
-                <!-- Menú desplegable -->
-                <div class="user-menu" id="userMenu" style="display: none;">
-                    <a href="area-privada.html" class="user-menu-item">
-                        <span>👤</span> [area-privada]
-                    </a>
-                    <a href="cuenta.html" class="user-menu-item">
-                        <span>⚙️</span> [cuenta]
-                    </a>
-                    <button onclick="cerrarSesion()" class="user-menu-item" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
-                        <span>🚪</span> Cerrar Sesión
-                    </button>
-                </div>
             </div>
 
             <button class="nav-toggle" id="navToggle">
@@ -233,9 +224,25 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             </div>
 
             <div class="hero-image">
-                <p><strong>Imagen Principal</strong><br>
-                ##Aquí va una foto profesional que transmita confianza y credibilidad.
-                Puede ser tu foto, tu equipo, o una imagen relacionada con tu servicio. ##</p>
+                <!--
+                    INSTRUCCIONES TÉCNICAS (No visibles para Pepe):
+                    - PRIORIDAD: Si el vídeo está activo, oculta la imagen automáticamente
+                    - Para activar vídeo: elimina clase 'hidden' de #heroVideo, agrega iframe de YouTube/Vimeo, y oculta #heroImage
+                    - Proporción 16:9 garantizada por CSS
+                -->
+
+                <!-- Hijo A (Oculto por defecto): Contenedor de vídeo con iframe -->
+                <div id="heroVideo" class="hidden video-container">
+                    <!-- Placeholder para iframe de YouTube/Vimeo con proporción 16:9 -->
+                    <!-- Ejemplo: <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                </div>
+
+                <!-- Hijo B (Visible por defecto): Imagen principal -->
+                <div id="heroImage" class="hero-image-content">
+                    <p><strong>Imagen o Vídeo Principal</strong><br>
+                    ##Aquí va una foto profesional o un vídeo de presentación que transmita confianza y credibilidad.
+                    Puede ser tu foto, un vídeo explicativo, tu equipo trabajando, o contenido relacionado con tu servicio. ##</p>
+                </div>
             </div>
         </div>
     </section>
@@ -326,7 +333,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </p>
 
                     <div class="mt-auto">
-                        <a href="oferta-de-servicios.html#detalle-servicio" class="btn btn-primary">Ver Detalles →</a>
+                        <a href="oferta-de-servicios.html#detalle-servicio" class="card-link-action"><strong>[Ver detalles] →</strong></a>
                     </div>
                 </div>
 
@@ -344,11 +351,11 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </p>
 
                     <div class="mt-auto">
-                        <a href="oferta-de-servicios.html#detalle-curso" class="btn btn-primary">Ver Detalles →</a>
+                        <a href="oferta-de-servicios.html#detalle-curso" class="card-link-action"><strong>[Ver detalles] →</strong></a>
                     </div>
                 </div>
 
-                <!-- EJEMPLO: Tarjeta Evento/Taller -->
+                <!-- EJEMPLO: Tarjeta Taller -->
                 <div class="card card--enhanced">
                     <div class="card-icon card-icon--text">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -358,15 +365,19 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
                     </div>
-                    <h3 class="card-title">[Nombre del Taller/Evento]</h3>
+                    <h3 class="card-title">[Nombre del Taller]</h3>
                     <p class="card-text">
-                        ##Descripción breve del evento. Ejemplo: "Masterclass en vivo para aprender [tema específico] con sesión de preguntas". ##
+                        ##Descripción breve del taller. Ejemplo: "Masterclass en vivo para aprender [tema específico] con sesión de preguntas". ##
                     </p>
 
                     <div class="mt-auto">
-                        <a href="oferta-de-servicios.html#detalle-evento" class="btn btn-primary">Ver Detalles →</a>
+                        <a href="oferta-de-servicios.html#detalle-taller" class="card-link-action"><strong>[Ver detalles] →</strong></a>
                     </div>
                 </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="oferta-de-servicios.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">[Ver todos los Recursos]</a>
             </div>
         </div>
     </section>
@@ -398,15 +409,21 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                         <span class="event-month">Enero</span>
                     </div>
                     <h3 class="card-title">[Nombre del Evento 1]</h3>
-                    <p class="event-time">🕐 Hora: [18:00 - 20:00 hrs]</p>
-                    <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
+                    <p class="event-time">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 0.5rem;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Hora: [18:00 - 20:00 hrs]
+                    </p>
+                    <p class="event-location">Modalidad: [Online / Presencial / Híbrido]</p>
                     <p class="card-text">
                         ##Descripción breve del evento. ¿Qué aprenderán? ¿Qué experiencia vivirán?
                         ¿Para quién es ideal? Menciona los beneficios principales de asistir. ##
                     </p>
-                    <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
-                        [Inscribirme]
-                    </a>
+                    <div class="mt-auto">
+                        <a href="#" class="card-link-action"><strong>[Ver detalles] →</strong></a>
+                    </div>
                 </div>
 
                 <div class="card event-card">
@@ -415,15 +432,21 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                         <span class="event-month">Enero</span>
                     </div>
                     <h3 class="card-title">[Nombre del Evento 2]</h3>
-                    <p class="event-time">🕐 Hora: [10:00 - 13:00 hrs]</p>
-                    <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
+                    <p class="event-time">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 0.5rem;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Hora: [10:00 - 13:00 hrs]
+                    </p>
+                    <p class="event-location">Modalidad: [Online / Presencial / Híbrido]</p>
                     <p class="card-text">
                         ##Descripción del segundo evento. Enfócate en lo que hace único a este evento
                         y por qué vale la pena asistir. Menciona el formato, contenido o enfoque especial. ##
                     </p>
-                    <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
-                        [Inscribirme]
-                    </a>
+                    <div class="mt-auto">
+                        <a href="#" class="card-link-action"><strong>[Ver detalles] →</strong></a>
+                    </div>
                 </div>
 
                 <div class="card event-card">
@@ -432,22 +455,26 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                         <span class="event-month">Feb</span>
                     </div>
                     <h3 class="card-title">[Nombre del Evento 3]</h3>
-                    <p class="event-time">🕐 Hora: [19:00 - 21:00 hrs]</p>
-                    <p class="event-location">📍 Modalidad: [Online / Presencial / Híbrido]</p>
+                    <p class="event-time">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 0.5rem;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        Hora: [19:00 - 21:00 hrs]
+                    </p>
+                    <p class="event-location">Modalidad: [Online / Presencial / Híbrido]</p>
                     <p class="card-text">
                         ## Tercer evento próximo. Puede ser un webinar, taller intensivo, sesión grupal,
                         o cualquier experiencia formativa. Describe la transformación o aprendizaje que ofreces. ##
                     </p>
-                    <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; width: 100%;">
-                        [Inscribirme]
-                    </a>
+                    <div class="mt-auto">
+                        <a href="#" class="card-link-action"><strong>[Ver detalles] →</strong></a>
+                    </div>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="#" class="btn btn-secondary btn-large">
-                    [Ver Todos los Eventos]
-                </a>
+                <a href="oferta-de-servicios.html" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">[Ver Todos los Eventos]</a>
             </div>
         </div>
     </section>
@@ -466,7 +493,12 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
             <div class="community-hero">
                 <div class="community-content">
-                    <div class="community-badge">✨ Únete a la Comunidad</div>
+                    <div class="community-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 18px; height: 18px; vertical-align: middle; margin-right: 0.5rem;">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                        Únete a la Comunidad
+                    </div>
 
                     <h2 class="community-title">[Nombre de tu Membresía/Comunidad]</h2>
 
@@ -544,7 +576,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                     </div>
 
                     <p class="community-note">
-                        💫 [Nota especial: ej. "Cancela cuando quieras" / "Primeros 7 días gratis" / "Sin permanencia"]
+                        [Nota especial: ej. "Cancela cuando quieras" / "Primeros 7 días gratis" / "Sin permanencia"]
                     </p>
                 </div>
 
@@ -561,7 +593,6 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
                     <!-- PLACEHOLDER TEMPORAL (Eliminar cuando tengas la imagen real) -->
                     <p class="community-visual-placeholder" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; background: linear-gradient(135deg, var(--gradient-placeholder-start) 0%, var(--gradient-placeholder-end) 100%); border-radius: 20px; padding: 3rem;">
-                        <span style="font-size: 4rem; margin-bottom: 1rem;">🖼️</span>
                         <strong style="font-size: 1.2rem; margin-bottom: 1rem;">##Aquí va tu imagen real ##</strong>
                         <span style="font-size: 0.9rem;">##Imagen que muestre la experiencia de la comunidad:</span>
                         <span style="font-size: 0.85rem; margin-top: 0.5rem;">• Mockup del área de miembros</span>
@@ -834,40 +865,27 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
             </div>
 
             <div class="footer-content">
-            <div class="footer-section">
-                <h3>Navegación</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="presentacion-profesional.html" class="footer-link">Sobre Mí</a></li>
-                        <li><a href="oferta-de-servicios.html" class="footer-link">Soluciones</a></li>
-                        <li><a href="blog.html" class="footer-link">Blog</a></li>
-                        <li><a href="membresia.html" class="footer-link">Membresía</a></li>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                        <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="membresia.html">Membresía</a></li>
+                        <li><a href="contacto-agenda.html">Contacto</a></li>
                     </ul>
-            </div>
+                </div>
 
-            <div class="footer-section">
-                <h3>Acceso Rápido</h3>
-                <ul>
-                    <li><a href="area-privada.html">Área de Miembros</a></li>
-                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
-                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
-                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
-                </ul>
-            </div>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Cookies</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Conecta</h3>
-                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="footer-section">
+                    <p>Sígueme en redes sociales.</p>
                 <div class="social-links">
                     <a href="#" class="social-link" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
@@ -894,6 +912,7 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
                         </svg>
                     </a>
                 </div>
+            </div>
             </div>
 
             <div class="footer-bottom">
@@ -1009,8 +1028,8 @@ Objetivo: Mejorar SEO (Pilar 1: Autoridad) + Reducir costes (Arquitectura Lean)
 
 
     <!-- JavaScript -->
-    <script src="js/auth.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/auth.js?v=9"></script>
+    <script src="js/main.js?v=9"></script>
     <script>
     // Lead Magnet - Control del botón de descarga con checkbox de consentimiento
     const consentCheckbox = document.getElementById('consentCheckbox');

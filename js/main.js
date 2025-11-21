@@ -14,14 +14,24 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof obtenerUsuarioActual === 'function') {
         const usuario = obtenerUsuarioActual();
         const authButtons = document.getElementById('authButtons');
-        const userProfile = document.getElementById('userProfile');
+        const headerCenterAction = document.getElementById('headerCenterAction');
+        const headerCenterProfile = document.getElementById('headerCenterProfile');
         const userNameHeader = document.getElementById('userNameHeader');
         const userAvatar = document.getElementById('userAvatar');
 
         if (usuario) {
-            // Usuario logueado - Mostrar perfil, ocultar botones
+            // Usuario logueado
+            // CENTRO: "Área Personal" siempre visible (con lógica de portero)
+            // DERECHA: Mostrar Avatar+Nombre, ocultar botones de autenticación
+            if (headerCenterAction) headerCenterAction.style.display = 'flex';
+            if (headerCenterProfile) headerCenterProfile.style.display = 'flex';
             if (authButtons) authButtons.style.display = 'none';
-            if (userProfile) userProfile.style.display = 'flex';
+
+            // Mostrar botones "Mi Cuenta" y "Salir" en el menú
+            const cuentaMenuItem = document.getElementById('cuentaMenuItem');
+            const salirMenuItem = document.getElementById('salirMenuItem');
+            if (cuentaMenuItem) cuentaMenuItem.classList.remove('hidden');
+            if (salirMenuItem) salirMenuItem.classList.remove('hidden');
 
             // Actualizar nombre del usuario (solo primer nombre)
             if (userNameHeader) {
@@ -44,38 +54,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 userAvatar.src = avatarSvg;
             }
         } else {
-            // Usuario NO logueado - Mostrar botones, ocultar perfil
+            // Usuario NO logueado (Visitante)
+            // CENTRO: Mostrar "Área Personal" (texto + icono)
+            // DERECHA: Mostrar botones de autenticación
+            if (headerCenterAction) headerCenterAction.style.display = 'flex';
+            if (headerCenterProfile) headerCenterProfile.style.display = 'none';
             if (authButtons) authButtons.style.display = 'flex';
-            if (userProfile) userProfile.style.display = 'none';
+
+            // Ocultar botones "Mi Cuenta" y "Salir" en el menú
+            const cuentaMenuItem = document.getElementById('cuentaMenuItem');
+            const salirMenuItem = document.getElementById('salirMenuItem');
+            if (cuentaMenuItem) cuentaMenuItem.classList.add('hidden');
+            if (salirMenuItem) salirMenuItem.classList.add('hidden');
         }
-    }
-
-    // ============================================
-    // 0.5. MENÚ DESPLEGABLE DEL USUARIO
-    // ============================================
-
-    const userProfileButton = document.getElementById('userProfileButton');
-    const userMenu = document.getElementById('userMenu');
-
-    // Toggle del menú al hacer clic en el perfil
-    if (userProfileButton && userMenu) {
-        userProfileButton.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const isVisible = userMenu.style.display === 'block';
-            userMenu.style.display = isVisible ? 'none' : 'block';
-        });
-
-        // Cerrar el menú al hacer clic fuera
-        document.addEventListener('click', function(e) {
-            if (!userProfile.contains(e.target)) {
-                userMenu.style.display = 'none';
-            }
-        });
-
-        // Prevenir que clics dentro del menú lo cierren
-        userMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
     }
 
     // ============================================
@@ -659,4 +650,36 @@ function navegarAreaPersonal(event) {
     }
 }
 
-console.log('✨ Website Modelo para Terapeutas Holísticos - JavaScript cargado correctamente');
+/**
+ * Función que gestiona el click en "⚙️ Mi Cuenta" del menú
+ * - Si el usuario está autenticado → Navega a cuenta.html
+ * - Si NO está autenticado → Abre modal de login
+ */
+function navegarCuenta(event) {
+    event.preventDefault(); // Prevenir navegación por defecto
+
+    // Verificar si el usuario está autenticado
+    if (typeof obtenerUsuarioActual === 'function') {
+        const usuario = obtenerUsuarioActual();
+
+        if (usuario) {
+            // Usuario autenticado → Navegar a cuenta
+            window.location.href = 'cuenta.html';
+        } else {
+            // Usuario NO autenticado → Abrir modal de login
+            if (typeof abrirModalLogin === 'function') {
+                abrirModalLogin();
+            } else {
+                console.error('Función abrirModalLogin no encontrada');
+            }
+        }
+    } else {
+        console.error('Función obtenerUsuarioActual no encontrada');
+    }
+}
+
+// Verificación de carga exitosa con timestamp para debugging de caché
+console.log('✨ main.js v8 cargado correctamente - ' + new Date().toLocaleTimeString());
+console.log('✅ Header: Logo (izq) + Área Personal CENTRADO + Auth (der)');
+console.log('✅ Visitante: [👤 Área Personal] centrado + hover scale(1.1)');
+console.log('✅ Usuario: [Avatar+Nombre] centrado → area-privada.html');

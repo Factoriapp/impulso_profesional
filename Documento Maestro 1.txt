@@ -548,4 +548,37 @@ Implementación:
 
 Razón Estratégica: La arquitectura web debe perdonar errores humanos. Este flujo protege la reputación del profesional y reduce el miedo a publicar.
 
+Entrada para Actualización del DM1 (20-Nov-2025)
+
+-Decisión de Diseño: Arquitectura del Blog y Lectura
+1. Índice (blog.html): Layout "Zig-Zag" (Editorial Alternado). Lead Magnet compacto horizontal.
+2. Post (publicacion.html): Layout "Lectura Limpia" (Columna central, SIN Sidebar). Lead Magnet al final del contenido ("Cierre Perfecto").
+3. Formatos: Se permiten Texto, Video (Embed) y Audio. Las imágenes y PDFs se adaptan con contenedores inteligentes, no iframes.
+
+-Decisión de Navegación: Acceso Universal
+1. El "Área Personal" y "Mi Cuenta" aparecen en el menú principal.
+2. Lógica de Portero: Si es visitante, el clic abre Login. Si es usuario, entra directo.
+
+Entrada para Actualización del DM1 (21-Nov-2025)
+
+-Decisión de Arquitectura: Navegación Unificada y "Portero Automático"
+Contexto: Se eliminó la dualidad de menús (Menú Principal vs. Menú Avatar) para reducir la fricción cognitiva de Ana/Regina.
+-Decisión (Firme):
+1. Menú Único: Todas las opciones (Públicas y Privadas) viven en el Menú de Navegación Principal.
+   Orden: ... Blog > Área Personal > Mi Cuenta > [Salir] > Membresía > Contacto.
+2. Lógica de Portero: Los enlaces "Área Personal" y "Mi Cuenta" son visibles para todos.
+   - Si es Visitante: Clic -> Abre Modal Login.
+   - Si es Usuario: Clic -> Navega al destino.
+3. Avatar Estático: El icono de usuario en la cabecera es solo informativo (Insignia de Identidad). Se elimina el menú desplegable.
+4. Acceso Permanente: Se añade un botón extra de "Área Personal" junto al Logo (izquierda) para máxima visibilidad.
+
+-Decisión de Arquitectura: El Catálogo Flexible (Grid Único)
+Contexto: Se descartó la división rígida por secciones (#servicios, #formacion) en la página de oferta.
+-Decisión (Firme):
+1. Archivo: Se renombra `oferta-de-servicios.html` a `catalogo.html`.
+2. Estructura: Un solo contenedor (Grid Unificado). Todos los productos conviven juntos.
+3. Clasificación: Se confía 100% en las Etiquetas (Badges) visuales para diferenciar (Servicio, Formación, Recurso, Evento).
+4. Libertad de Acción: Pepe define qué hace el botón de la tarjeta (Agendar, Comprar, Descargar o Ver Detalle).
+5. Enlaces Cruzados: Los 3 destacados de la Home son "Curados" (manuales) y enlazan directamente al bloque de detalle en el Catálogo (Deep Linking).
+
 

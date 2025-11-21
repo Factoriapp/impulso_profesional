@@ -178,6 +178,7 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -205,7 +206,40 @@ img {
     text-align: center;
 }
 
-/* Perfil de usuario en el header */
+/* Área Personal centrado (Visitantes) - Solo texto e icono */
+.header-center-action {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text);
+    transition: var(--transition);
+}
+
+.header-center-action:hover {
+    color: var(--color-primary);
+    transform: translateX(-50%) scale(1.1);
+}
+
+/* Avatar + Nombre (Usuarios) - Indicador visual (sin link) */
+.header-center-profile {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.25rem 1.8rem 0.25rem 0.25rem;
+    background: transparent;
+    color: var(--color-text);
+    margin-left: auto;
+    margin-right: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Perfil de usuario en el header (DEPRECADO - mantener por compatibilidad) */
 .user-profile {
     display: flex;
     align-items: center;
@@ -402,9 +436,36 @@ img {
 }
 
 .hero-image {
-    background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
     border-radius: 15px;
     height: 450px;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Contenedor de vídeo con proporción 16:9 */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/* Contenido de imagen por defecto */
+.hero-image-content {
+    background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
+    border-radius: 15px;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -413,7 +474,6 @@ img {
     font-style: italic;
     text-align: center;
     padding: 2rem;
-    box-shadow: var(--shadow-soft);
 }
 
 /* ============================================
@@ -581,6 +641,25 @@ img {
     font-size: 1rem;
 }
 
+/* MODIFICADOR: Botón compacto para tarjetas */
+.btn-compact {
+    padding: 0.6rem 2rem;
+}
+
+/* LINK DE ACCIÓN EN TARJETAS - Sin marco, solo texto en negritas */
+.card-link-action {
+    display: inline-block;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.card-link-action:hover {
+    color: var(--color-primary);
+    transform: translateX(3px);
+}
+
 /* ESTADO: Deshabilitado */
 .btn:disabled,
 .btn-primary:disabled,
@@ -663,6 +742,7 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: var(--spacing-lg);
+    justify-content: center;
 }
 
 .card {
@@ -1296,6 +1376,7 @@ img {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
     margin-top: var(--spacing-lg);
+    justify-content: center;
 }
 
 .blog-card {
@@ -1669,28 +1750,28 @@ img {
 .footer {
     background: var(--color-bg);
     border-top: 1px solid var(--color-sand);
-    padding: var(--spacing-xl) 2.5rem var(--spacing-md);
+    padding: 2.5rem 2.5rem 1.5rem;
     margin-top: var(--spacing-xl);
 }
 
 .footer-wrapper {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: var(--spacing-lg);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .footer-section h3 {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-style: italic;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
     color: var(--color-text);
-    margin-bottom: var(--spacing-md);
+    margin-bottom: 0.75rem;
 }
 
 .footer-section ul {
@@ -1698,41 +1779,45 @@ img {
 }
 
 .footer-section ul li {
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
 }
 
 .footer-section a {
     color: var(--color-text-light);
     transition: var(--transition);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    text-decoration: none;
+    line-height: 1.2;
 }
 
 .footer-section a:hover {
-    color: var(--color-sky);
+    color: var(--color-primary);
 }
 
 .footer-section p {
     color: var(--color-text-light);
-    font-size: 0.95rem;
-    line-height: 1.8;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
 }
 
 .social-links {
     display: flex;
-    gap: 1rem;
-    margin-top: var(--spacing-md);
+    gap: 0.75rem;
+    margin-top: 0.5rem;
 }
 
 .social-link {
-    width: 45px;
-    height: 45px;
+    width: 38px;
+    height: 38px;
     background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: var(--transition);
-    font-size: 1.25rem;
+    font-size: 1.1rem;
 }
 
 .social-link:hover {
@@ -1742,20 +1827,50 @@ img {
 }
 
 .footer-bottom {
-    padding-top: var(--spacing-md);
+    padding-top: 1rem;
     border-top: 1px solid var(--color-sand);
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-text-light);
+}
+
+/* Responsive Footer */
+@media (max-width: 968px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer {
+        padding: var(--spacing-md) 1.5rem;
+    }
+
+    .footer-wrapper {
+        max-width: 100%;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
 }
 
 /* ============================================
    EVENTOS SECTION
    ============================================ */
 
-.event-card {
+.card.event-card {
     position: relative;
     padding-top: 2rem;
+    height: 450px;
+    background: linear-gradient(135deg, rgba(212, 227, 237, 0.4), rgba(231, 221, 201, 0.4)) !important;
+    border: 2px solid var(--color-sky) !important;
 }
 
 .event-card .card-title {
@@ -2431,6 +2546,7 @@ img {
     border: 1px solid var(--color-border);
     position: relative;
     overflow: hidden;
+    height: 450px;
 }
 
 /* ===== ICONOS DE TARJETAS ===== */

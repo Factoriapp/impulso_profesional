@@ -377,9 +377,12 @@ document.getElementById('userName').textContent = usuario.nombre; // Nombre comp
 .mt-auto, .w-full, .text-center, .text-right
 .list-unstyled, .divider, .h-400
 .btn--with-arrow
+.btn-compact                   /* Botón con padding reducido para tarjetas */
 .hidden                        /* display: none para ocultar elementos */
 .breadcrumbs                   /* Migas de pan para navegación */
 .video-container               /* Contenedor responsive 16:9 para videos */
+.hero-image-content            /* Contenido de imagen en hero section */
+.card-link-action              /* Enlaces de texto en tarjetas (sin marco de botón) */
 
 /* POST (publicacion.html) - Artículo Individual */
 .post-layout, .post-header, .post-meta, .post-meta-divider
@@ -570,6 +573,168 @@ document.getElementById('userName').textContent = usuario.nombre; // Nombre comp
 5. Probar compartiendo link en WhatsApp
 
 **Documentación completa**: Ver `images/README-OG-IMAGES.md`
+
+---
+
+### Optimización #5: Hero Section Flexible + Footer Compacto ✅
+**Estado**: ✅ COMPLETADA
+**Fecha**: 2025-11-21
+**Objetivo**: Mejorar UX con contenedor hero multi-formato y reducir altura del footer
+
+**Implementación Hero Section**:
+
+**Archivos modificados**:
+- `index.html` (líneas 226-246): Estructura hero flexible
+- `css/styles.css` (líneas 438-477): Estilos para video e imagen
+
+**Estructura HTML**:
+```html
+<div class="hero-image">
+    <!-- Hijo A (Oculto): Contenedor de vídeo -->
+    <div id="heroVideo" class="hidden video-container">
+        <!-- iframe YouTube/Vimeo con proporción 16:9 -->
+    </div>
+
+    <!-- Hijo B (Visible): Imagen principal -->
+    <div id="heroImage" class="hero-image-content">
+        <!-- Contenido de imagen -->
+    </div>
+</div>
+```
+
+**CSS agregado**:
+```css
+.hero-image {
+    border-radius: 15px;
+    height: 450px;
+    position: relative;
+    box-shadow: var(--shadow-soft);
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+.hero-image-content {
+    background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
+    border-radius: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* ... más estilos ... */
+}
+```
+
+**Beneficios**:
+- ✅ Soporte nativo para video sin duplicar código
+- ✅ Proporción 16:9 garantizada para videos
+- ✅ Alternancia fácil entre imagen/video
+- ✅ Sin necesidad de CSS adicional por página
+
+---
+
+**Implementación Footer Compacto**:
+
+**Archivos modificados**:
+- `index.html` (líneas 867-925): Estructura reorganizada
+- `css/styles.css` (líneas 1750-1860): Estilos compactos
+
+**Cambios realizados**:
+- ✅ Eliminada sección "Acceso" (Login, Registro, Área de Miembros)
+- ✅ Eliminados títulos de secciones (Navegación, Legal, Conecta)
+- ✅ Reducido de 4 a 3 columnas
+- ✅ Padding reducido: 2.5rem arriba, 1.5rem abajo
+- ✅ Interlineado compacto: line-height 1.2 en enlaces
+- ✅ Margin entre items: 0.25rem (antes 0.5rem)
+- ✅ Iconos sociales: 38px (antes 45px)
+- ✅ Max-width footer: 900px
+
+**Estructura HTML**:
+```html
+<div class="footer-content">
+    <div class="footer-section">
+        <ul><!-- Enlaces navegación --></ul>
+    </div>
+    <div class="footer-section">
+        <ul><!-- Enlaces legales --></ul>
+    </div>
+    <div class="footer-section">
+        <p>Sígueme en redes sociales.</p>
+        <div class="social-links"><!-- Iconos --></div>
+    </div>
+</div>
+```
+
+**Beneficios**:
+- ✅ Altura reducida ~40%
+- ✅ Más limpio y profesional
+- ✅ Menos scroll innecesario
+- ✅ Responsive mejorado (2 cols en tablet, 1 en móvil)
+
+---
+
+**Componentes Nuevos Agregados**:
+
+**1. Enlaces de acción en tarjetas** (`.card-link-action`):
+```html
+<a href="#" class="card-link-action"><strong>[Ver detalles] →</strong></a>
+```
+```css
+.card-link-action {
+    display: inline-block;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.card-link-action:hover {
+    color: var(--color-primary);
+    transform: translateX(3px);
+}
+```
+**Uso**: Reemplaza botones `.btn` en tarjetas cuando se quiere menos peso visual
+
+---
+
+**2. Tarjetas de eventos con gradiente diferenciado**:
+```css
+.card.event-card {
+    background: linear-gradient(135deg, rgba(212, 227, 237, 0.4), rgba(231, 221, 201, 0.4)) !important;
+    border: 2px solid var(--color-sky) !important;
+    height: 450px;
+}
+```
+**Uso**: Diferencia visual entre tarjetas de Recursos y tarjetas de Eventos
+
+---
+
+**3. Sistema de centrado para grids con menos de 3 items**:
+```css
+.cards-grid {
+    justify-content: center;
+}
+
+.blog-grid {
+    justify-content: center;
+}
+```
+**Uso**: Cuando hay 1-2 tarjetas, se centran horizontalmente en lugar de estirarse
 
 ---
 
@@ -952,6 +1117,19 @@ svg { width: 24px; height: 24px; }
         <a href="#" class="btn btn-primary">Ver Detalles →</a>
     </div>
 </div>
+
+<!-- Tarjeta de evento con gradiente -->
+<div class="card event-card">
+    <div class="event-date">
+        <span class="event-day">15</span>
+        <span class="event-month">Enero</span>
+    </div>
+    <h3 class="card-title">Nombre del Evento</h3>
+    <p class="card-text">Descripción del evento</p>
+    <div class="mt-auto">
+        <a href="#" class="card-link-action"><strong>[Ver detalles] →</strong></a>
+    </div>
+</div>
 ```
 
 ### Botones (Sistema Simplificado - 3 Estilos)
@@ -975,8 +1153,12 @@ svg { width: 24px; height: 24px; }
 
 <!-- Modificadores disponibles -->
 <a href="#" class="btn btn-primary btn-large">Botón grande (hero CTAs)</a>
+<a href="#" class="btn btn-primary btn-compact">Botón compacto (tarjetas)</a>
 <a href="#" class="btn btn-primary w-full">Botón ancho completo (formularios)</a>
 <button class="btn btn-primary" disabled>Botón deshabilitado</button>
+
+<!-- Alternativa: Enlace de acción sin marco (más sutil) -->
+<a href="#" class="card-link-action"><strong>[Ver detalles] →</strong></a>
 ```
 
 **Matriz de Decisión:**

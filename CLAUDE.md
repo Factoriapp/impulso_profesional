@@ -293,3 +293,4 @@ Cuando el usuario dice... | Debo entender...
 ---
 
 **Fin de CLAUDE.md - Contexto de Devito para Claude Code**
+- cada vez que veas *** tiene que leer el archivo Instruccion.txt
