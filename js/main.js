@@ -635,6 +635,8 @@ function navegarAreaPersonal(event) {
         const usuario = obtenerUsuarioActual();
 
         if (usuario) {
+            // DEBUG: Store user object for inspection on next page
+            localStorage.setItem('debugUser', JSON.stringify(usuario));
             // Usuario autenticado → Navegar a área privada
             window.location.href = 'area-privada.html';
         } else {

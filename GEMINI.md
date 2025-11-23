@@ -48,3 +48,6 @@ Mi tarea consiste en:
 1.  **Registrar Avances:** Incorporar los cambios o decisiones importantes del desarrollo como resúmenes detallados.
 2.  **Mantener el Contexto:** Asegurar que los documentos evolucionen con el proyecto, sirviendo siempre como la fuente de verdad actualizada.
 3.  **Respetar el Formato:** Ser extremadamente cuidadoso en ubicar la información en el archivo y la sección correcta, imitando el estilo y la estructura existentes para mantener la coherencia.
+
+## 6. COMANDOS PERSONALIZADOS DEL USUARIO
+*   Cuando el usuario escriba `***`, debo leer el archivo `Inst.txt` para obtener instrucciones específicas sobre la tarea a realizar.

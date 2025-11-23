@@ -188,6 +188,25 @@ Estos 4 archivos constituyen la ÚNICA fuente de verdad del proyecto. Cualquier 
 
 ## 3. WORKFLOW DE DESARROLLO (PROCESO ESTÁNDAR)
 
+### ⚠️ PROTOCOLO DE PREGUNTAS Y CONFIRMACIONES
+
+**REGLA CRÍTICA: Cuando el Fundador hace una PREGUNTA (termina con símbolo "?"):**
+- ❌ **NO modificar archivos**
+- ❌ **NO ejecutar cambios**
+- ✅ **Solo RESPONDER la pregunta**
+- ✅ **Esperar APROBACIÓN EXPLÍCITA** antes de proceder con cualquier modificación
+
+**Excepciones:**
+- Preguntas retóricas claras en medio de una instrucción directa
+- "¿Entendido?" al final de una instrucción que ya contiene el cambio solicitado
+
+**Ejemplos correctos:**
+- "¿Qué relación de aspecto tiene ese recuadro?" → **SOLO responder, NO hacer cambios**
+- "¿Cómo se llama esta sección?" → **SOLO responder, NO modificar nada**
+- "Cambia la imagen por esta URL, ¿ok?" → Hacer el cambio (es instrucción directa con confirmación retórica)
+
+---
+
 ### Al recibir una nueva tarea:
 
 1. **PASO 1 - CONSULTAR DM1**:
@@ -273,11 +292,12 @@ Cuando el usuario dice... | Debo entender...
 
 ## 6. VERSIÓN Y ACTUALIZACIÓN
 
-**Versión actual**: 1.2
-**Fecha**: 20 de Noviembre de 2025
-**Última actualización**: Definición de BC, reglas de resolución de conflictos, ampliación completa de las 4 secciones de archivos maestros
+**Versión actual**: 1.3
+**Fecha**: 22 de Noviembre de 2025
+**Última actualización**: Protocolo de Preguntas y Confirmaciones
 
 **Historial de cambios**:
+- v1.3 (2025-11-22): Agregado "Protocolo de Preguntas y Confirmaciones" en Sección 3 - REGLA CRÍTICA: NO modificar nada cuando el Fundador hace una pregunta (símbolo "?") hasta recibir aprobación explícita
 - v1.2 (2025-11-20): Definición explícita de Base de Conocimiento (BC), reglas de resolución de conflictos (dentro/entre archivos), ampliación completa de secciones A/B/C/D con estructura "Qué es/Funciones/Cuándo consultar/Cuándo actualizar/Qué nunca va aquí"
 - v1.1 (2025-11-19): Agregado protocolo Git/GitHub (Sección 1, 4, 10, 12, 15)
 - v1.0 (2025-11-19): Creación inicial basada en mejores prácticas Anthropic. 4 archivos maestros: DM1, CHULETA, ARQUITECTURA, GTM (sin redundancia)
@@ -293,4 +313,4 @@ Cuando el usuario dice... | Debo entender...
 ---
 
 **Fin de CLAUDE.md - Contexto de Devito para Claude Code**
-- cada vez que veas *** tiene que leer el archivo Instruccion.txt
+- cada vez que veas *** tiene que leer el archivo Inst.txt

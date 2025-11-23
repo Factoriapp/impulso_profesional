@@ -449,6 +449,54 @@ El `config-loader.js` simplemente las **sobrescribe** con los valores del JSON.
 
 ---
 
+## 📚 NOMENCLATURA: DENOMINACIÓN GENÉRICA "RECURSO"
+
+**Actualización:** 22 de Noviembre de 2025
+**Decisión Firme del DM1:** Establecer terminología unificada para Base de Datos y Backend.
+
+### Definición:
+**RECURSO** = Cualquier oferta, servicio, producto o experiencia que el profesional vende o entrega a sus clientes.
+
+### Implementación en Base de Datos:
+
+**Tabla:** `resources`
+**Razón del nombre:** Alineación total con la nomenclatura oficial del proyecto. Evita confusión con términos como "products" u "offerings".
+
+**Estructura de tabla (relevante para multi-tenant):**
+```sql
+CREATE TABLE resources (
+  id SERIAL PRIMARY KEY,
+  tenant_id VARCHAR(50) NOT NULL,        -- Multi-tenant isolation
+  type VARCHAR(50) NOT NULL,             -- 'service', 'course', 'event', 'membership', 'digital_product'
+  name VARCHAR(255) NOT NULL,            -- Título del recurso
+  description TEXT,                      -- Descripción detallada
+  price DECIMAL(10,2),                   -- Precio en euros
+  stripe_price_id VARCHAR(255),          -- ID de precio en Stripe
+  is_active BOOLEAN DEFAULT true,        -- Estado de publicación
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
+);
+```
+
+**Campo clave:** `type` define el subtipo específico de recurso:
+- `'service'` → Servicios 1:1 (sesiones, consultas)
+- `'course'` → Cursos online
+- `'event'` → Eventos, talleres, webinars
+- `'membership'` → Membresías/Comunidades
+- `'digital_product'` → Ebooks, guías, plantillas
+
+### Relación con Frontend:
+- Los `type` del backend se mapean a **Badges visuales** en el frontend (📅 EVENTO, 🎓 CURSO, 👤 SERVICIO)
+- Todos se renderizan como **Tarjetas de Recursos** (`.card`, `.card--enhanced`)
+- Ubicación: `catalogo.html` (grid unificado)
+
+### Consistencia Multi-Tenant:
+Cada tenant puede tener diferentes tipos de recursos activos según sus `features` (ver Feature Flags en config JSON). Ejemplo:
+- `impulso_pro.json`: `carta_astral: false` (oculta recursos tipo "astrología")
+- `impulso_hol.json`: `carta_astral: true` (muestra recursos tipo "astrología")
+
+---
+
 ## 🚀 SIGUIENTE PASO INMEDIATO
 
 **ACCIÓN:** Crear la estructura `/config/tenants/` e implementar `config-loader.js`.
@@ -461,5 +509,9 @@ El `config-loader.js` simplemente las **sobrescribe** con los valores del JSON.
 
 **Documentado por:** Devito
 **Aprobado por:** Fundador (Decisión de Arquitectura Multi-Tenant)
-**Fecha:** 14 de Noviembre de 2025
-**Versión:** 1.0 - MVP Fase 1
+**Fecha:** 22 de Noviembre de 2025
+**Versión:** 1.1 - MVP Fase 1 + Nomenclatura "Recurso"
+
+**Historial de cambios:**
+- v1.1 (2025-11-22): Agregada sección "Nomenclatura: Denominación Genérica RECURSO" con estructura de tabla resources y campo type
+- v1.0 (2025-11-14): Creación inicial - Arquitectura Multi-Tenant Whitelabel

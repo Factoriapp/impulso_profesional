@@ -36,21 +36,21 @@ Propósito: Sirve a los Pilares 2 y 4 (Operaciones/Escalabilidad). Gestiona los 
 
 Regla: Con password_hash, stripe_customer_id, etc. Gestiona el login y el acceso.
 
-Nivel 2: Permisos (Productos y Miembros)
+Nivel 2: Permisos (Recursos y Miembros)
 
 Contexto: Un "Miembro" (Pilar 4) no es una identidad separada, sino un permiso que se le otorga a un user.
 
-Tabla products (o offerings):
+Tabla resources:
 
-Propósito: Define los productos que vende el profesional (ej. "Membresía Oro", "Curso Ansiedad", "Sesión 1-a-1").
+Propósito: Define los recursos que vende el profesional (ej. "Membresía Oro", "Curso Ansiedad", "Sesión 1-a-1").
 
-Contenido: professional_id, name, type ('membership', 'course', 'session'), stripe_price_id.
+Contenido: professional_id, name, type ('membership', 'course', 'service', 'event', 'digital_product'), stripe_price_id.
 
 Tabla user_enrollments (o subscriptions):
 
-Propósito: Tabla de unión que conecta users con products. Define qué ha comprado un cliente.
+Propósito: Tabla de unión que conecta users con resources. Define qué ha comprado/adquirido un cliente.
 
-Contenido: user_id, product_id, status ('active', 'cancelled').
+Contenido: user_id, resource_id, status ('active', 'cancelled').
 
 Decisión de Arquitectura de Producto: La Gran División (Cursos vs. Eventos) (07-Nov-2025)
 
@@ -576,9 +576,122 @@ Contexto: Se eliminó la dualidad de menús (Menú Principal vs. Menú Avatar) p
 Contexto: Se descartó la división rígida por secciones (#servicios, #formacion) en la página de oferta.
 -Decisión (Firme):
 1. Archivo: Se renombra `oferta-de-servicios.html` a `catalogo.html`.
-2. Estructura: Un solo contenedor (Grid Unificado). Todos los productos conviven juntos.
+2. Estructura: Un solo contenedor (Grid Unificado). Todos los recursos conviven juntos.
 3. Clasificación: Se confía 100% en las Etiquetas (Badges) visuales para diferenciar (Servicio, Formación, Recurso, Evento).
 4. Libertad de Acción: Pepe define qué hace el botón de la tarjeta (Agendar, Comprar, Descargar o Ver Detalle).
 5. Enlaces Cruzados: Los 3 destacados de la Home son "Curados" (manuales) y enlazan directamente al bloque de detalle en el Catálogo (Deep Linking).
+
+Entrada para Actualización del DM1 (22-Nov-2025)
+
+-Decisión de Nomenclatura: Denominación Genérica "RECURSO"
+
+Contexto: Se requiere un término unificado para referirse a TODAS las ofertas del profesional (servicios, cursos, eventos, productos digitales, membresías, etc.) de forma consistente en código, documentación y conversaciones técnicas.
+
+-Decisión (Firme): Se establece "RECURSO" como la denominación genérica oficial del proyecto.
+
+Definición Formal:
+**RECURSO** = Cualquier oferta, servicio, producto o experiencia que el profesional vende o entrega a sus clientes.
+
+Incluye (lista no exhaustiva):
+- Servicios 1:1 (sesiones, consultas, terapias)
+- Cursos online (pregrabados o por cohortes)
+- Talleres presenciales o virtuales
+- Eventos en vivo (webinars, retiros, círculos)
+- Productos digitales (ebooks, guías, plantillas, meditaciones)
+- Membresías/Comunidades (acceso recurrente)
+- Programas de formación
+- Cualquier otra oferta creada por el profesional
+
+Implementación Técnica:
+1. **Tarjetas de Recursos**: Nombre genérico para TODAS las tarjetas que representan recursos en la UI
+2. **Ubicación Principal**: `catalogo.html` (página que aloja todas las Tarjetas de Recursos)
+3. **Escaparate**: Sección "Recursos Destacados" en `index.html` (muestra máx. 3 recursos curados)
+4. **Badges**: Cada recurso tiene una etiqueta visual específica (📅 EVENTO, 🎓 CURSO, 👤 SERVICIO, 📚 RECURSO, etc.)
+
+Base de Datos:
+- Tabla: `resources`
+- Campo `type`: Define el subtipo específico ('service', 'course', 'event', 'membership', 'digital_product')
+
+Razón Estratégica:
+Esta nomenclatura unificada (1) simplifica la comunicación técnica, (2) evita confusión entre "productos" vs "servicios" vs "ofertas", (3) se alinea con el concepto de "Catálogo Flexible" (Grid Único), y (4) permite extensibilidad sin crear nuevas categorías cada vez que se agrega un tipo de oferta.
+
+Entrada para el DM1 (Copia y Pega al final)
+
+-Decisión de Diseño UI: La Tarjeta de Recurso "Camaleón" (Lógica de Urgencia Automática) (22-Nov-2025)
+
+Contexto: Se buscaba resolver la diferenciación visual entre productos "Evergreen" (Cursos pregrabados, Ebooks) y "Time-Sensitive" (Eventos, Cursos en Directo) dentro del Catálogo Unificado, sin romper la armonía del grid.
+
+Solución del Fundador: Utilizar una "Tarjeta Polimórfica" única cuya apariencia cambia automáticamente basada en la existencia de un solo dato: la Fecha.
+
+Regla de Renderizado (Frontend):
+
+SI el recurso tiene una fecha_inicio asignada:
+
+El sistema inyecta automáticamente el bloque visual de fecha (.event-date) destacado en la tarjeta.
+
+El botón de acción cambia a un lenguaje de compromiso (ej. "Inscribirme" o "Reservar").
+
+Resultado: Se percibe visualmente como un "Evento" urgente, aunque sea un Curso.
+
+SI el recurso NO tiene fecha (es null):
+
+La tarjeta se muestra limpia, sin bloque de fecha.
+
+El botón de acción es transaccional/informativo (ej. "Ver Detalles" o "Comprar").
+
+Resultado: Se percibe como un activo "Evergreen".
+
+Impacto Estratégico: Esta lógica resuelve automáticamente la ambigüedad de los "Cursos en Directo" (Cohortes). Pepe solo carga el curso y le pone fecha; el sistema se encarga de darle la urgencia visual necesaria sin necesidad de categorías especiales.
+
+-Decisión de Arquitectura Home: Unificación de Vitrina (22-Nov-2025)
+
+Contexto: Se evaluó la redundancia entre la sección "Recursos Destacados" y "Próximos Eventos" en el index.html.
+
+Decisión (Firme): Se elimina la sección dedicada a "Próximos Eventos".
+
+Nueva Estructura: Se mantiene una única sección de oferta llamada "Recursos Destacados" (o título equivalente personalizado).
+
+Lógica: Esta sección funcionará como un contenedor flexible de 3 espacios (slots). Pepe decide qué tipo de recurso ocupa cada espacio (Evento, Servicio o Producto). La diferenciación visual se logra automáticamente mediante la lógica de la "Tarjeta Camaleón" (si es Evento, muestra fecha; si no, no).
+
+-Decisión de Lógica de Negocio: Mecanismo de "Recursos Destacados" (Sync Catálogo-Home) (22-Nov-2025)
+
+
+Contexto: Se definió que la sección "Recursos Destacados" del index.html  actúa como escaparate, pero faltaba definir el mecanismo de alimentación desde el Dashboard.
+
+Decisión (Firme): El contenido del index.html es un reflejo (espejo) de la base de datos de Recursos. No se crea contenido directamente en la Home.
+
+Mecanismo en Dashboard:
+
+En la lista de "Mis Recursos" (Tienda), cada ítem tendrá un interruptor/checkbox: "Destacar en Inicio".
+
+Regla de Validación: El sistema permitirá un máximo de 3 recursos destacados simultáneamente. Si Pepe intenta marcar un cuarto, el sistema le pedirá desmarcar uno antes.
+
+Flujo de Datos:
+
+El catalogo.html  muestra SELECT * FROM resources.
+
+El index.html (Sección Destacados)  muestra SELECT * FROM resources WHERE is_featured = true LIMIT 3.
+
+Impacto: Esto garantiza consistencia total (si cambias el precio en el catálogo, cambia en la home) y simplifica la gestión para el profesional.
+
+Entrada para Actualización del DM1 (23-Nov-2025)
+
+-Decisión de Arquitectura y UX: Definición del Módulo Final Home ("Red Antifuga")
+
+Contexto: Se detectó el riesgo de que la sección final del index.html se convirtiera en un "bloque de relleno" inútil o en un tablón de anuncios desordenado por parte del usuario final ("Pepe").
+
+Decisión (Firme): Se define este módulo con una función táctica única: "Conversión de Escépticos".
+
+Nomenclatura Oficial: En el Dashboard, este módulo se etiquetará como: 🕸️ "Red Antifuga: Última oportunidad de retención".
+
+Estrategia de Guardrails (Restricciones Duras): Para garantizar la eficacia del embudo, se retira el control creativo a "Pepe" en elementos críticos:
+
+Título Blindado: El usuario NO escribe el título. Selecciona de una lista desplegable (Dropdown) con 3 opciones de copywriting persuasivo orientadas a la "baja fricción" (ej. "Agenda tu sesión de valoración gratuita").
+
+Túnel Único (Enlace Fijo): El botón de acción apunta obligatoriamente a /contacto-agenda.html. El campo de URL no es editable ni visible en el Dashboard. Prohibido enlazar a pasarelas de pago o redes sociales externas.
+
+Micro-copy Educativo: El Dashboard incluirá una advertencia clara: "Usa esta sección SOLO para ofrecer una conversación de bajo riesgo. Si intentas vender aquí, la red se rompe y el cliente se va."
+
+Razón Estratégica: El objetivo no es "Contactar", es "Rescatar". Al limitar las opciones, forzamos al profesional a ofrecer una interacción de valor y bajo riesgo (llamada gratuita/auditoría) en lugar de una venta agresiva o un saludo genérico, maximizando la captura de leads cualificados que de otro modo abandonarían la página.
 
 

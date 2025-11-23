@@ -27,17 +27,23 @@ function guardarUsuarios(usuarios) {
 
 // Obtener usuario actual logueado
 function obtenerUsuarioActual() {
-    const usuario = localStorage.getItem('usuarioActual');
-    if (!usuario) return null;
+    try {
+        const usuario = localStorage.getItem('usuarioActual');
+        if (!usuario) return null;
 
-    const usuarioObj = JSON.parse(usuario);
+        const usuarioObj = JSON.parse(usuario);
 
-    // Asegurar que el usuario tiene el campo 'nivel' basado en tipoUsuario
-    if (!usuarioObj.nivel) {
-        usuarioObj.nivel = mapearTipoANivel(usuarioObj.tipoUsuario || 'gratuito');
+        // Asegurar que el usuario tiene el campo 'nivel' basado en tipoUsuario
+        if (!usuarioObj.nivel) {
+            usuarioObj.nivel = mapearTipoANivel(usuarioObj.tipoUsuario || 'gratuito');
+        }
+
+        return usuarioObj;
+    } catch(e) {
+        console.error('❌ JSON corrupto en localStorage:', e);
+        localStorage.removeItem('usuarioActual'); // Limpiar dato malo
+        return null;
     }
-
-    return usuarioObj;
 }
 
 // Mapear tipoUsuario a nivel numérico

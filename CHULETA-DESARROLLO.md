@@ -23,7 +23,7 @@
 Web_modelo/
 ├── index.html                    # Página principal (home)
 ├── presentacion-profesional.html # Página "Sobre Mí" (ACTIVA)
-├── oferta-de-servicios.html     # Catálogo de soluciones
+├── catalogo.html     # Catálogo de soluciones
 ├── contacto-agenda.html         # Landing híbrida: Reserva + Contacto (v1.5)
 ├── membresia.html               # Sales page para suscripción recurrente (v2.0)
 ├── area-privada.html            # Dashboard privado dinámico (detecta usuario)
@@ -48,7 +48,7 @@ Web_modelo/
 <ul class="nav-menu" id="navMenu">
     <li><a href="index.html">Inicio</a></li>
     <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
-    <li><a href="oferta-de-servicios.html">Soluciones</a></li>
+    <li><a href="catalogo.html">Soluciones</a></li>
     <li><a href="membresia.html">Membresía</a></li>
     <li><a href="contacto-agenda.html" class="nav-cta">Contacto</a></li>
 </ul>
@@ -94,6 +94,31 @@ Web_modelo/
 - **HTML semántico**: Usar clases reutilizables, evitar inline styles
 - **Progressive Enhancement**: Funciona sin JS, mejora con JS
 - **Mobile First**: Diseñar para móvil, escalar a desktop
+
+### Nomenclatura: Denominación Genérica "RECURSO" (22-Nov-2025)
+
+**Decisión Firme del DM1:** "RECURSO" es el término genérico oficial para TODAS las ofertas del profesional.
+
+**Definición:**
+**RECURSO** = Cualquier oferta, servicio, producto o experiencia que el profesional vende o entrega a sus clientes.
+
+**Incluye:**
+- Servicios 1:1 (sesiones, consultas, terapias)
+- Cursos online (pregrabados o por cohortes)
+- Talleres y eventos (presenciales o virtuales)
+- Productos digitales (ebooks, guías, plantillas)
+- Membresías y comunidades
+- Programas de formación
+- Cualquier otra oferta
+
+**En el código HTML/CSS:**
+- **Tarjetas de Recursos** = Nombre genérico para TODAS las tarjetas (`.card`, `.card--enhanced`)
+- **Ubicación principal:** `catalogo.html` (página que aloja todos los recursos)
+- **Escaparate:** Sección "Recursos Destacados" en `index.html` (máx. 3 recursos curados)
+- **Badges:** Cada recurso tiene etiqueta visual específica (`.badge--evento`, `.badge--curso`, `.badge--servicio`, etc.)
+
+**Regla de Oro:**
+Usar "Recurso" como término genérico en toda comunicación técnica. Solo usar términos específicos (curso, evento, servicio) cuando se refiera a un subtipo concreto.
 
 ---
 
@@ -306,7 +331,7 @@ Web_modelo/
 
 **Flujo de información**:
 1. **index.html** = Resumen truncado con "..." + botón "Ver Detalles →"
-2. **oferta-de-servicios.html** = Contenido completo sin límites
+2. **catalogo.html** = Contenido completo sin límites
 
 #### Patrón "Primer Nombre" en UI
 **Propósito**: Mostrar solo el primer nombre del usuario en header/área privada, nombre completo solo en cuenta.
@@ -338,13 +363,47 @@ document.getElementById('userNameDisplay').textContent = primerNombre;
 document.getElementById('userName').textContent = usuario.nombre; // Nombre completo
 ```
 
+#### Patrón "Red Antifuga" (Módulo Final index.html)
+**Propósito**: Retener al 90% de visitantes que abandonan sin comprar mediante oferta de bajo riesgo.
+
+**Decisión DM1** (23-Nov-2025): Conversión de escépticos con guardrails estrictos.
+
+**Restricciones Duras** (Dashboard):
+- **Título Blindado**: Dropdown con 3 opciones de copywriting (NO campo libre)
+- **Enlace Fijo**: Botón apunta obligatoriamente a `/contacto-agenda.html` (NO editable)
+- **Micro-copy Educativo**: Advertencia visible - "Usa SOLO para conversación de bajo riesgo, NO vender aquí"
+
+**Estructura HTML** (`index.html` líneas ~739-760):
+```html
+<!-- RED ANTIFUGA: ÚLTIMA OPORTUNIDAD DE RETENCIÓN -->
+<section class="section section-alt">
+    <div class="container">
+        <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <p class="section-subtitle">[Pregunta Pre-CTA (opcional)]</p>
+            <h2 class="section-title">[Red Antifuga: Última Oportunidad de Retención]</h2>
+            <p class="section-description">
+                ##El 90% de las visitas abandonan la web sin comprar.
+                Usa esta sección para detener esa fuga ofreciendo una
+                conversación de bajo riesgo (gratis y breve) para resolver dudas.
+                No intentes vender aquí.##
+            </p>
+            <a href="contacto-agenda.html" class="btn btn-primary btn-large">
+                [CTA de Retención]
+            </a>
+        </div>
+    </div>
+</section>
+```
+
+**Razón Estratégica**: Maximizar captura de leads cualificados que de otro modo abandonarían. El túnel único y título restringido fuerzan a "Pepe" a ofrecer valor (llamada/auditoría gratuita) vs. venta agresiva.
+
 ---
 
 ## ✅ OPTIMIZACIONES IMPLEMENTADAS {#optimizaciones}
 
 ### Optimización #1: Limpieza de Deuda Técnica (CSS Refactoring)
 **Fecha**: Implementada
-**Archivos**: `styles.css`, `index.html`, `oferta-de-servicios.html`
+**Archivos**: `styles.css`, `index.html`, `catalogo.html`
 
 **Clases creadas**:
 ```css
@@ -416,7 +475,7 @@ document.getElementById('userName').textContent = usuario.nombre; // Nombre comp
 
 ### Optimización #2: Lazy Loading de Imágenes
 **Fecha**: Implementada
-**Archivos**: `index.html`, `oferta-de-servicios.html`, `sobre-mi.html`
+**Archivos**: `index.html`, `catalogo.html`, `sobre-mi.html`
 
 **Implementación**:
 ```html
@@ -457,7 +516,7 @@ document.getElementById('userName').textContent = usuario.nombre; // Nombre comp
 **Archivos modificados**:
 - `css/styles.css` (líneas 2283-2315): 18 nuevas variables CSS
 - `index.html`: 4 reemplazos (gradientes, textos apagados, mensajes error/éxito)
-- `oferta-de-servicios.html`: 2 reemplazos
+- `catalogo.html`: 2 reemplazos
 - `sobre-mi.html`: 10+ reemplazos (incluye ajuste de --color-sage)
 
 **Variables creadas**:
@@ -510,7 +569,7 @@ document.getElementById('userName').textContent = usuario.nombre; // Nombre comp
 **Archivos modificados**:
 - `index.html` (líneas 1-104): Meta tags OG completos + instrucciones detalladas
 - `sobre-mi.html` (líneas 1-45): Meta tags OG específicos para perfil
-- `oferta-de-servicios.html` (líneas 1-42): Meta tags OG para servicios
+- `catalogo.html` (líneas 1-42): Meta tags OG para servicios
 - `images/README-OG-IMAGES.md`: Guía completa de 400+ líneas
 
 **Meta tags agregados**:
@@ -1512,7 +1571,7 @@ Este MVP se construyó intencionalmente sin sistema de componentes para mantener
 **Problema**: Los modales de Login y Registro están duplicados en 5 archivos HTML:
 - `index.html` (líneas 909-1070)
 - `presentacion-profesional.html` (líneas 435-596)
-- `oferta-de-servicios.html` (líneas 404-565)
+- `catalogo.html` (líneas 404-565)
 - `contacto-agenda.html` (líneas 352-513)
 - `area-privada.html` (líneas modales)
 
@@ -1624,7 +1683,7 @@ Los comentarios HTML `<!-- INSTRUCCIÓN: ... -->` son tus guías. No necesitas s
 **Comando útil**:
 ```bash
 # Buscar colores HEX en archivos específicos
-grep -r "#[0-9a-fA-F]\{3,6\}" index.html oferta-de-servicios.html sobre-mi.html
+grep -r "#[0-9a-fA-F]\{3,6\}" index.html catalogo.html sobre-mi.html
 
 # Contar ocurrencias
 grep -r "#[0-9a-fA-F]\{3,6\}" *.html | wc -l
@@ -1810,8 +1869,8 @@ git commit -m "Opt #3: Agregar variables CSS semánticas para whitelabel"
 git add index.html
 git commit -m "Opt #3: Reemplazar colores HEX por variables en index.html"
 
-# Commit 3: Limpiar oferta-de-servicios.html
-git add oferta-de-servicios.html
+# Commit 3: Limpiar catalogo.html
+git add catalogo.html
 git commit -m "Opt #3: Reemplazar colores HEX por variables en oferta-servicios"
 
 # Commit 4: Limpiar sobre-mi.html
@@ -1824,6 +1883,85 @@ git commit -m "Opt #3: Actualizar documentación whitelabel en Chuleta"
 ```
 
 **Ventaja**: Si algo falla, puedes revertir commits específicos sin perder todo el trabajo.
+
+---
+
+### 🔒 Patrón: Validación de localStorage (Bug del 23-Nov-2025)
+**Contexto**: Usuarios autenticados (Ana nivel 3, Regina nivel 2) eran redirigidos incorrectamente a `index.html` al intentar acceder a `area-privada.html`.
+
+**Problema raíz (RESUELTO):**
+- **`crear-usuarios-prueba.html` se abría con doble clic** → Protocolo `file:///C:/Users/.../`
+- **`index.html` se abría con Live Server** → Protocolo `http://127.0.0.1:5500/`
+- **Navegadores separan localStorage por protocolo** → Dos bases de datos diferentes
+- Ana y Regina se creaban correctamente (nivel 3 y 2) pero en el localStorage de `file://`
+- La web en `http://` tenía usuarios viejos con nivel 1 (gratuito)
+
+**Síntomas:**
+- Usuarios "desaparecen" después de crearlos
+- Ana/Regina redirigen a index.html (area-privada.html detecta nivel 1 y los echa)
+- Actualizar manualmente en consola funciona (porque se hace en el localStorage correcto)
+
+**Solución DEFINITIVA:**
+```markdown
+⚠️ CRÍTICO: SIEMPRE usar Live Server para abrir archivos HTML del proyecto
+
+✅ CORRECTO:
+1. Clic derecho en crear-usuarios-prueba.html → "Open with Live Server"
+2. URL: http://127.0.0.1:5500/crear-usuarios-prueba.html
+3. Clic en "✅ Crear Usuarios de Prueba"
+4. Ir a http://127.0.0.1:5500/index.html
+
+❌ INCORRECTO:
+- Doble clic en crear-usuarios-prueba.html (abre como file://)
+- Los usuarios creados NO estarán disponibles en la web
+```
+
+**Fix secundario aplicado en `js/area-privada.js`:**
+Las funciones `simularMejoraPremium()`, `simularComprador()` y `volverGratuito()` tenían un bug:
+- Solo actualizaban `usuarioActual` en localStorage
+- NO actualizaban la lista de usuarios
+- Al cerrar sesión y volver a entrar, cargaba datos viejos
+
+```javascript
+// ✅ CORRECTO: Actualizar AMBOS lugares
+window.simularMejoraPremium = function() {
+    const usuario = obtenerUsuarioActual();
+    usuario.tipoUsuario = 'miembro';
+    usuario.nivel = 3;
+    guardarUsuarioActual(usuario);
+
+    // CRÍTICO: Actualizar también en la lista
+    const usuarios = obtenerUsuarios();
+    const index = usuarios.findIndex(u => u.id === usuario.id);
+    if (index !== -1) {
+        usuarios[index].tipoUsuario = 'miembro';
+        usuarios[index].nivel = 3;
+        guardarUsuarios(usuarios);
+    }
+};
+```
+
+**Lecciones aprendidas**:
+1. **localStorage es específico por PROTOCOLO** (`file://` ≠ `http://`)
+2. **SIEMPRE usar Live Server** en desarrollo local
+3. **Funciones que modifican usuarios deben actualizar AMBOS lugares**: `usuarioActual` + lista `usuarios`
+4. **NUNCA asumir que crear-usuarios-prueba.html generaba datos corruptos** - verificar primero si el problema es de aislamiento de datos
+
+**Comando de debug**:
+```javascript
+// En consola del navegador, verificar usuarios
+console.log('Usuario actual:', JSON.parse(localStorage.getItem('usuarioActual')));
+console.log('Lista usuarios:', JSON.parse(localStorage.getItem('usuarios')));
+
+// Verificar que Ana/Regina tienen los niveles correctos
+const usuarios = JSON.parse(localStorage.getItem('usuarios'));
+console.log('Ana:', usuarios.find(u => u.email === 'ana@test.com'));
+console.log('Regina:', usuarios.find(u => u.email === 'regina@test.com'));
+```
+
+**Aplicado en**:
+- `js/area-privada.js` (funciones de simulación corregidas)
+- **Procedimiento de trabajo**: Documentado uso obligatorio de Live Server
 
 ---
 

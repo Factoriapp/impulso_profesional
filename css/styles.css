@@ -571,6 +571,36 @@ img {
 }
 
 /* ============================================
+   MISSION BOX
+   ============================================ */
+.mission-box {
+    margin-top: 3rem;
+    background: linear-gradient(135deg, var(--color-sky), var(--color-powder));
+    padding: 2rem 2.5rem;
+    border-radius: 15px;
+    text-align: left;
+    box-shadow: var(--shadow-medium);
+}
+
+.mission-box h3 {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.mission-box p {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0;
+}
+
+/* ============================================
    BOTONES - SISTEMA SIMPLIFICADO (3 ESTILOS)
    ============================================ */
 
@@ -2869,57 +2899,30 @@ img {
     gap: 1.5rem;
 }
 
-.credential-item {
-    background: var(--color-white);
-    padding: 1.5rem;
-    border-radius: 12px;
-    display: flex;
-    gap: 1.5rem;
-    align-items: start;
-    border: 1px solid var(--color-border);
-}
-
-.credential-content {
-    flex: 1;
-}
-
-.credential-content h4 {
-    color: var(--color-text);
-    margin-bottom: 0.5rem;
-}
-
-.credential-content p {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
-}
-
-.cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.section-header-center {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-.section-header-center h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.section-header-center p {
-    font-size: 1.1rem;
-    color: var(--color-text-light);
-    line-height: 1.8;
-}
-
 .credentials-grid {
-    display: grid;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    margin-top: var(--spacing-lg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(229, 239, 245, 0.25), rgba(232, 213, 196, 0.15));
+    border: 1px solid rgba(197, 217, 232, 0.6);
+}
+
+.credentials-grid div {
+    margin-bottom: var(--spacing-sm);
+}
+
+.credentials-grid p {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(197, 217, 232, 0.5); /* Subtle separator */
+}
+
+.credentials-grid p:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
 }
 
 /* ============================================

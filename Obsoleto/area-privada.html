@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portal del cliente - Área privada">
+    <title>Mi Área - [Tu Nombre Profesional]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* HEADER ULTRA-SIMPLIFICADO */
+        .app-header {
+            background: var(--color-white);
+            border-bottom: 1px solid var(--color-border);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .app-header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .app-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .user-menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--color-bg-secondary);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .user-menu-btn:hover {
+            background: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .user-badge-inline {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .user-badge-inline--free {
+            background: var(--color-bg-secondary);
+            color: var(--color-text-light);
+        }
+
+        .user-badge-inline--customer {
+            background: var(--color-sage-light);
+            color: var(--color-sage);
+        }
+
+        .user-badge-inline--premium {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        /* BLOQUES DE CONTENIDO */
+        .content-block {
+            margin-bottom: 4rem;
+        }
+
+        .block-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        .block-title {
+            font-size: 1.75rem;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .block-subtitle {
+            color: var(--color-text-light);
+            font-size: 1rem;
+        }
+
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .content-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .content-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: var(--color-primary);
+        }
+
+        .content-card--featured {
+            border: 2px solid var(--color-primary);
+            background: linear-gradient(to bottom, var(--color-white), var(--color-bg-primary-light));
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+        }
+
+        .card-progress {
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--color-primary);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+            margin-top: 0.5rem;
+        }
+
+        /* LOCKED CARDS */
+        .content-card--locked {
+            position: relative;
+            opacity: 0.7;
+        }
+
+        .content-card--locked::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
+            border-radius: 12px;
+            z-index: 1;
+        }
+
+        .lock-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* UPSELL BANNER */
+        .upsell-banner {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .upsell-banner h2 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .upsell-banner p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        /* LISTA DE BIBLIOTECA */
+        .library-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .library-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.25rem;
+            background: var(--color-bg-secondary);
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .library-item:hover {
+            background: var(--color-white);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .library-item-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .library-item-content {
+            flex: 1;
+        }
+
+        .library-item-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .library-item-meta {
+            font-size: 0.875rem;
+            color: var(--color-text-light);
+        }
+
+        /* ACCOUNT SECTION */
+        .account-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .account-card {
+            background: var(--color-bg-secondary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+
+        .account-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .account-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .account-info-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .account-info-label {
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+        }
+
+        .account-info-value {
+            font-weight: 600;
+        }
+
+        /* EMPTY STATE */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            border: 2px dashed var(--color-border);
+        }
+
+        .empty-state-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 2rem 1rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .block-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER ULTRA-SIMPLIFICADO -->
+    <header class="app-header">
+        <div class="app-header-container">
+            <div class="app-logo">Tu Logo Aquí</div>
+
+            <div class="user-menu-btn" onclick="toggleUserMenu()" id="userMenuBtn">
+                <div>
+                    <div style="font-weight: 600; font-size: 0.95rem;" id="userName">Usuario</div>
+                    <span class="user-badge-inline user-badge-inline--free" id="userBadge">Gratuito</span>
+                </div>
+                <span style="font-size: 0.875rem;">▼</span>
+            </div>
+
+            <!-- Dropdown menu (oculto por defecto) -->
+            <div id="userDropdown" style="display: none; position: absolute; top: 5rem; right: 2rem; background: white; border: 1px solid var(--color-border); border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); min-width: 200px; z-index: 1000;">
+                <a href="#gestion" style="display: flex; align-items: center; gap: 0.75rem; padding: 1rem 1.5rem; color: var(--color-text); text-decoration: none; border-bottom: 1px solid var(--color-border);" onclick="scrollToSection('gestion'); toggleUserMenu();"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path></svg> Mi Cuenta</a>
+                <button onclick="cerrarSesion()" style="display: flex; align-items: center; gap: 0.75rem; width: 100%; padding: 1rem 1.5rem; background: none; border: none; color: var(--color-error); cursor: pointer; text-align: left; font-size: 1rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg> Cerrar Sesión</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="app-container">
+
+        <!-- ============================================
+             BLOQUE 1: CONSUMO (El Escritorio)
+             ============================================ -->
+        <section class="content-block" id="consumo">
+
+            <!-- WIDGET: Continuar Viendo -->
+            <div id="continuarViendoWidget">
+                <!-- Se llena dinámicamente -->
+            </div>
+
+            <!-- SEPARADOR -->
+            <div class="block-header" style="margin-top: 3rem;">
+                <h2 class="block-title" style="display: flex; align-items: center; gap: 0.75rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> [Mis Recursos]</h2>
+                <p class="block-subtitle">[Todo el contenido al que tienes acceso]</p>
+            </div>
+
+            <!-- MIS RECURSOS -->
+            <div id="recursosContent">
+                <!-- Se llena dinámicamente -->
+            </div>
+
+            <!-- EXPLORAR CATÁLOGO -->
+            <div id="explorarContent" style="margin-top: 2rem;">
+                <!-- Se llena dinámicamente -->
+            </div>
+        </section>
+
+        <!-- ============================================
+             BLOQUE 2: UPSELL (El Vendedor Activo)
+             ============================================ -->
+        <section class="content-block" id="upsell">
+            <div class="block-header">
+                <h2 class="block-title" style="display: flex; align-items: center; gap: 0.75rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg> Privilegios Exclusivos</h2>
+                <p class="block-subtitle">Desbloquea acceso premium y acelera tus resultados</p>
+            </div>
+
+            <div id="upsellContent">
+                <!-- Se llena dinámicamente según nivel de usuario -->
+            </div>
+        </section>
+
+        <!-- ============================================
+             BLOQUE 3: GESTIÓN (El Contrato)
+             ============================================ -->
+        <section class="content-block" id="gestion">
+            <div class="block-header">
+                <h2 class="block-title" style="display: flex; align-items: center; gap: 0.75rem;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 32px; height: 32px;"><circle cx="12" cy="12" r="3"></circle><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"></path></svg> Gestión de Cuenta</h2>
+                <p class="block-subtitle">Administra tu suscripción y datos personales</p>
+            </div>
+
+            <div class="account-grid">
+                <!-- DATOS PERSONALES -->
+                <div class="account-card">
+                    <h3>Información Personal</h3>
+                    <div class="account-info">
+                        <div class="account-info-row">
+                            <span class="account-info-label">Nombre</span>
+                            <span class="account-info-value" id="accountName">Usuario</span>
+                        </div>
+                        <div class="account-info-row">
+                            <span class="account-info-label">Email</span>
+                            <span class="account-info-value" id="accountEmail">email@ejemplo.com</span>
+                        </div>
+                        <div class="account-info-row">
+                            <span class="account-info-label">Tipo de Cuenta</span>
+                            <span class="account-info-value" id="accountType">Gratuito</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary" style="width: 100%; margin-top: 1rem;" onclick="alert('Función en desarrollo')">Editar Perfil</button>
+                </div>
+
+                <!-- SUSCRIPCIÓN -->
+                <div class="account-card" id="subscriptionCard">
+                    <h3>Mi Suscripción</h3>
+                    <div id="subscriptionContent">
+                        <p style="color: var(--color-text-light);">No tienes una suscripción activa.</p>
+                        <a href="membresia.html" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Ver Planes Premium</a>
+                    </div>
+                </div>
+
+                <!-- SEGURIDAD -->
+                <div class="account-card">
+                    <h3>Seguridad</h3>
+                    <button class="btn btn-secondary" style="width: 100%; margin-bottom: 0.75rem;" onclick="alert('Función en desarrollo')">Cambiar Contraseña</button>
+                    <button class="btn btn-secondary" style="width: 100%;" onclick="cerrarSesion()">Cerrar Sesión</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/area-privada.js"></script>
+
+    <script>
+        // Toggle user menu
+        function toggleUserMenu() {
+            const dropdown = document.getElementById('userDropdown');
+            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Cerrar dropdown al hacer click fuera
+        document.addEventListener('click', function(e) {
+            const dropdown = document.getElementById('userDropdown');
+            const btn = document.getElementById('userMenuBtn');
+            if (dropdown && btn && !btn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Scroll suave a sección
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+</body>
+</html>

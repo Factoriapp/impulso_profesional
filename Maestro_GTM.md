@@ -1,4 +1,4 @@
-# Maestro_GTM (v1.1 – 13 de Noviembre de 2025)
+# Maestro_GTM (v1.2 – 22 de Noviembre de 2025)
 
 Documento Maestro de Go-to-Market, Monetización y Crecimiento  
 Proyecto: Web / Sistema Impulso Profesional
@@ -246,8 +246,49 @@ El marketing SÍ debe promover esta capacidad.
    - **Función:** Cierre de Venta Emocional.
    - **Mensaje GTM:** "Explica con tu propia voz el valor de tu comunidad. El vídeo vende más que el texto."
 
-4. **`oferta-de-servicios.html` (Catálogo):**
-   - **Función:** Tráiler del Producto.
+4. **`catalogo.html` (Catálogo):**
+   - **Función:** Tráiler del Producto/Recurso.
    - **Mensaje GTM:** "Añade un vídeo-tráiler a tus cursos y multiplica las ventas."
 
+---
+
+## Y. NOMENCLATURA: DENOMINACIÓN GENÉRICA "RECURSO"
+
+**Actualización:** 22 de Noviembre de 2025
+**Decisión Firme del DM1:** Establecer terminología comercial unificada.
+
+### Definición para GTM/Marketing:
+
+**RECURSO** = Término genérico que engloba TODAS las ofertas vendibles del profesional.
+
+**En mensajes comerciales:**
+- ✅ "Explora nuestros recursos" (genérico, inclusivo)
+- ✅ "Catálogo de recursos" (nombre de página)
+- ❌ "Productos y servicios" (fragmentación innecesaria)
+
+**Subtipos específicos (solo usar cuando se refiere a uno concreto):**
+- Servicios 1:1
+- Cursos online
+- Eventos y talleres
+- Productos digitales
+- Membresías
+
+### En el embudo comercial:
+
+**Teresa (Visitante):**
+- Ve sección "Recursos Destacados" en `index.html` (máx. 3 recursos curados)
+- Navega a `catalogo.html` para ver todos los recursos
+
+**Regina (Registrada):**
+- Ve widgets de recursos bloqueados 🔒 en `area-privada-regina.html` (upsell visual)
+
+**Ana (Miembro):**
+- Debe "adquirir" recursos desde `catalogo.html` para verlos en `area-privada-ana.html`
+
+### Regla de Oro GTM:
+Usar "recurso" como término genérico en copy, landing pages y mensajes. Solo especificar "curso", "evento", "servicio" cuando el contexto requiera precisión (ej: "Este curso incluye...").
+
+---
+
+**Fin de Maestro_GTM v1.2 – 22/11/2025**
 

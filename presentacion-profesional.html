@@ -120,7 +120,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=9">
 </head>
 <body>
 
@@ -131,45 +131,36 @@
         <nav class="nav-container">
             <div class="logo">Tu Logo Aquí</div>
 
-                            <ul class="nav-menu" id="navMenu">
-                                <li><a href="index.html">[index]</a></li>
-                                <li><a href="presentacion-profesional.html" class="active">[presentacion-profesional]</a></li>
-                                <li><a href="oferta-de-servicios.html">[oferta-de-servicios]</a></li>
-                                <li><a href="blog.html">[blog]</a></li>
-                                <li><a href="#" id="areaPersonalLink" onclick="navegarAreaPersonal(event)">[area-privada]</a></li>
-                                <li><a href="membresia.html">[membresía / comunidad]</a></li>
-                                <li><a href="contacto-agenda.html" class="nav-cta">[contacto-agenda]</a></li>
-                            </ul>
-            <!-- Botones de autenticación (mostrar si NO está logueado) -->
+            <!-- CENTRO: Área Personal (TODOS) - Con lógica de portero -->
+            <div class="header-center-action" id="headerCenterAction" onclick="navegarAreaPersonal(event)" style="cursor: pointer;">
+                <span>👤</span>
+                <span>Área Personal</span>
+            </div>
+
+            <!-- DERECHA: Avatar + Nombre (Usuarios) - Indicador visual sin link -->
+            <div class="header-center-profile" id="headerCenterProfile" style="display: none;">
+                <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%236B9080'/%3E%3Ctext x='18' y='23' font-size='14' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
+                     alt="Avatar"
+                     style="width: 36px; height: 36px; border-radius: 50%;">
+                <span id="userNameHeader">Usuario</span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">[index]</a></li>
+                <li><a href="presentacion-profesional.html" class="active">[presentacion-profesional]</a></li>
+                <li><a href="catalogo.html">[catalogo]</a></li>
+                <li><a href="blog.html">[blog]</a></li>
+                <li><a href="javascript:void(0);" id="areaPersonalLink" onclick="navegarAreaPersonal(event)">Área Personal</a></li>
+                <li id="cuentaMenuItem" class="hidden"><a href="cuenta.html" id="cuentaLink">Mi Cuenta</a></li>
+                <li><a href="membresia.html">[membresia]</a></li>
+                <li><a href="contacto-agenda.html" class="nav-cta">[contacto-agenda]</a></li>
+                <li id="salirMenuItem" class="hidden"><a href="javascript:void(0);" onclick="cerrarSesion()">Salir</a></li>
+            </ul>
+
+            <!-- DERECHA: Botones de autenticación -->
             <div class="auth-buttons" id="authButtons">
                 <button onclick="abrirModalLogin()" class="btn btn-secondary">Iniciar Sesión</button>
                 <button onclick="abrirModalRegistro()" class="btn btn-primary">Registro</button>
-            </div>
-
-            <!-- Perfil de usuario (mostrar si SÍ está logueado) -->
-            <div class="user-profile" id="userProfile" style="display: none; position: relative;">
-                <div id="userProfileButton" style="display: flex; align-items: center; gap: 0.85rem; cursor: pointer;">
-                    <img id="userAvatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'%3E%3Ccircle cx='18' cy='18' r='18' fill='%236B9080'/%3E%3Ctext x='18' y='23' font-size='14' fill='white' text-anchor='middle' font-family='Arial'%3EUS%3C/text%3E%3C/svg%3E"
-                         alt="Avatar"
-                         style="width: 36px; height: 36px; border-radius: 50%;">
-                    <div style="display: flex; flex-direction: column; gap: 0.15rem;">
-                        <span id="userNameHeader" style="font-weight: 600; font-size: 1rem; color: var(--color-text); line-height: 1.1;">Usuario</span>
-                        <span style="font-size: 0.85rem; color: var(--color-text); opacity: 0.7; line-height: 1;">Ver opciones ▼</span>
-                    </div>
-                </div>
-
-                <!-- Menú desplegable -->
-                <div class="user-menu" id="userMenu" style="display: none;">
-                    <a href="area-privada.html" class="user-menu-item">
-                        <span>👤</span> [area-privada]
-                    </a>
-                    <a href="cuenta.html" class="user-menu-item">
-                        <span>⚙️</span> [cuenta]
-                    </a>
-                    <button onclick="cerrarSesion()" class="user-menu-item" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
-                        <span>🚪</span> Cerrar Sesión
-                    </button>
-                </div>
             </div>
 
             <button class="nav-toggle" id="navToggle">
@@ -183,6 +174,7 @@
         </nav>
     </header>
 
+    <!-- Overlay para el menú -->
     <div class="nav-overlay" id="navOverlay"></div>
 
     <!-- ============================================
@@ -197,13 +189,6 @@
             </div>
 
             <div class="intro-grid">
-                <div class="intro-image">
-                    <p><strong>Foto Profesional</strong><br>
-                    Aquí va tu fotografía profesional que transmita autoridad y confianza.
-                    Debe proyectar competencia, experiencia y profesionalismo.
-                    Considera una foto en tu espacio de trabajo o consulta.</p>
-                </div>
-
                 <div class="intro-text">
                     <span class="model-tag">Presentación</span>
                     <h1>
@@ -216,6 +201,13 @@
                     <p style="margin-top: 1rem;">
                         <strong class="highlight">[Escribe una frase clave que resuma tu valor único.]</strong>
                     </p>
+                </div>
+
+                <div class="intro-image">
+                    <p><strong>Foto Profesional</strong><br>
+                    Aquí va tu fotografía profesional que transmita autoridad y confianza.
+                    Debe proyectar competencia, experiencia y profesionalismo.
+                    Considera una foto en tu espacio de trabajo o consulta.</p>
                 </div>
             </div>
         </div>
@@ -278,8 +270,8 @@
                 <p><strong>Propósito:</strong> Este recuadro es ideal para perfiles (coaches, terapeutas) que quieran destacar su "por qué". Si se deja en blanco, este módulo no aparecerá.</p>
             </div>
 
-            <div class="mission-box">
-                    <h3>[Mi Misión / Mi Propósito]</h3>
+            <div class="mission-box" style="background: linear-gradient(135deg, #e5eff5, #f5f1e8); padding: 2.5rem; border-radius: 15px; box-shadow: 0 4px 20px rgba(107, 107, 107, 0.08);">
+                    <h3 style="color: #4A6D7C;">[Mi Misión / Mi Propósito]</h3>
                     <p>
                         [Escribe aquí tu "por qué". ¿Qué te impulsa? ¿Qué problema te apasiona resolver?
                         Este es el espacio para la conexión humana y la misión que te mueve.]
@@ -305,30 +297,36 @@
 
                 <div class="approach-cards">
                     <div class="card">
-                        <div class="card-icon" aria-hidden="true">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="card-icon" aria-hidden="true" style="margin-bottom: 0; font-size: 2rem;">
                             ✓
                         </div>
-                        <h3 class="card-title">[Aspecto Clave #1]</h3>
+                        <h3 class="card-title" style="margin-bottom: 0;">[Aspecto Clave #1]</h3>
+                    </div>
                         <p class="card-text">
                             [Ej. "Enfoque Personalizado", "Metodología Probada", "Confidencialidad Absoluta", "Creatividad Estratégica".]
                         </p>
                     </div>
 
                     <div class="card">
-                        <div class="card-icon" aria-hidden="true">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="card-icon" aria-hidden="true" style="margin-bottom: 0; font-size: 2rem;">
                             ★
                         </div>
-                        <h3 class="card-title">[Aspecto Clave #2]</h3>
+                        <h3 class="card-title" style="margin-bottom: 0;">[Aspecto Clave #2]</h3>
+                    </div>
                         <p class="card-text">
                             [Tu segundo valor distintivo. Ej. "Resultados Medibles", "Proceso Transparente", "Visión Holística".]
                         </p>
                     </div>
 
                     <div class="card">
-                        <div class="card-icon" aria-hidden="true">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                        <div class="card-icon" aria-hidden="true" style="margin-bottom: 0; font-size: 2rem;">
                             ◆
                         </div>
-                        <h3 class="card-title">[Aspecto Clave #3]</h3>
+                        <h3 class="card-title" style="margin-bottom: 0;">[Aspecto Clave #3]</h3>
+                    </div>
                         <p class="card-text">
                             [Tercer diferenciador clave. Ej. "Compromiso a Largo Plazo", "Actualización Constante", "Red de Expertos".]
                         </p>
@@ -358,25 +356,16 @@
                 </div>
 
                 <div class="credentials-grid">
-                    <div class="credential-item">
-                        <div class="credential-content">
-                            <h4>[Título de Formación o Certificación Principal]</h4>
-                            <p>[Institución, Año | Detalles relevantes (ej. Colegiado N°, Master en...)]</p>
-                        </div>
+                    <div>
+                        <p>🎓 [Título de Formación o Certificación Principal] | [Institución, Año | Detalles relevantes (ej. Colegiado N°, Master en...)]</p>
                     </div>
 
-                    <div class="credential-item">
-                        <div class="credential-content">
-                            <h4>[Segunda Formación o Certificación Relevante]</h4>
-                            <p>[Institución, Año | Información adicional]</p>
-                        </div>
+                    <div>
+                        <p>🎓 [Segunda Formación o Certificación Relevante] | [Institución, Año | Información adicional]</p>
                     </div>
 
-                    <div class="credential-item">
-                       <div class="credential-content">
-                            <h4>[Título Académico o Experiencia Base]</h4>
-                            <p>[Universidad/Empresa, Año | Área de estudio/trabajo]</p>
-                        </div>
+                    <div>
+                        <p>🎓 [Título Académico o Experiencia Base] | [Universidad/Empresa, Año | Área de estudio/trabajo]</p>
                     </div>
                 </div>
             </div>
@@ -395,13 +384,13 @@
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <h2 class="section-title">¿Listo para Trabajar Juntos?</h2>
+                <h2 class="section-title">[Invitación al siguiente paso]</h2>
                 <p class="section-description" style="margin-bottom: 2rem;">
-                    Ahora que conoces mi enfoque profesional, te invito a dar el siguiente paso.
+                    ## Ahora que conoces mi enfoque profesional, te invito a dar el siguiente paso.##
                 </p>
                 <div class="cta-buttons">
-                    <a href="contacto-agenda.html" class="btn btn-primary btn-large">Agendar una Sesión</a>
-                    <a href="oferta-de-servicios.html" class="btn btn-secondary btn-large">Ver Servicios</a>
+                    <a href="contacto-agenda.html" class="btn btn-primary btn-large">[Agendar Cita]</a>
+                    <a href="catalogo.html" class="btn btn-secondary btn-large">[Ver recursos]</a>
                 </div>
             </div>
         </div>
@@ -409,7 +398,6 @@
 
     <!-- ============================================
          FOOTER
-         Información de contacto y enlaces
          ============================================ -->
     <footer class="footer">
         <div class="footer-wrapper">
@@ -420,40 +408,27 @@
             </div>
 
             <div class="footer-content">
-            <div class="footer-section">
-                <h3>Navegación</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="presentacion-profesional.html" class="footer-link">Sobre Mí</a></li>
-                        <li><a href="oferta-de-servicios.html" class="footer-link">Soluciones</a></li>
-                        <li><a href="blog.html" class="footer-link">Blog</a></li>
-                        <li><a href="membresia.html" class="footer-link">Membresía</a></li>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                        <li><a href="catalogo.html">Soluciones</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="membresia.html">Membresía</a></li>
+                        <li><a href="contacto-agenda.html">Contacto</a></li>
                     </ul>
-            </div>
+                </div>
 
-            <div class="footer-section">
-                <h3>Acceso Rápido</h3>
-                <ul>
-                    <li><a href="area-privada.html">Área de Miembros</a></li>
-                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
-                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
-                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
-                </ul>
-            </div>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Cookies</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Conecta</h3>
-                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="footer-section">
+                    <p>Sígueme en redes sociales.</p>
                 <div class="social-links">
                     <a href="#" class="social-link" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
@@ -481,6 +456,7 @@
                     </a>
                 </div>
             </div>
+            </div>
 
             <div class="footer-bottom">
                 <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
@@ -488,51 +464,112 @@
         </div>
     </footer>
 
-    <!-- ============================================
-         MODALES DE AUTENTICACIÓN
-         Login y Registro
-         ============================================ -->
+    <!-- Modal de Login -->
     <div id="loginModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="loginModalOverlay"></div>
         <div class="modal-content">
-            <span class="close" onclick="cerrarModalLogin()">&times;</span>
-            <h2>Iniciar Sesión</h2>
+            <button class="modal-close" id="loginModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Iniciar Sesión</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Accede a tu área de miembros
+                </p>
+            </div>
+
             <form id="loginForm">
                 <div class="form-group">
-                    <label for="loginEmail">Email:</label>
-                    <input type="email" id="loginEmail" name="email" required>
+                    <label class="form-label">Email</label>
+                    <input type="email" id="loginEmail" class="form-input" required placeholder="tu@email.com">
                 </div>
+
                 <div class="form-group">
-                    <label for="loginPassword">Contraseña:</label>
-                    <input type="password" id="loginPassword" name="password" required>
+                    <label class="form-label">Contraseña</label>
+                    <input type="password" id="loginPassword" class="form-input" required placeholder="Tu contraseña">
                 </div>
-                <button type="submit" class="btn btn-primary">Entrar</button>
+
+                <div style="margin-bottom: 1.5rem; text-align: right;">
+                    <a href="#" style="font-size: 0.9rem; color: var(--color-primary);">
+                        ¿Olvidaste tu contraseña?
+                    </a>
+                </div>
+
+                <div id="loginMensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Iniciar Sesión
+                </button>
+
+                <div style="text-align: center; padding-top: 1rem; border-top: 1px solid var(--color-border);">
+                    <p style="font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 0.5rem;">
+                        ¿No tienes cuenta?
+                    </p>
+                    <button type="button" onclick="cerrarModalLogin(); abrirModalRegistro();" class="btn btn-secondary" style="width: 100%;">
+                        Crear Cuenta Nueva
+                    </button>
+                </div>
             </form>
         </div>
     </div>
 
+    <!-- Modal de Registro -->
     <div id="registroModal" class="modal" style="display: none;">
+        <div class="modal-overlay" id="registroModalOverlay"></div>
         <div class="modal-content">
-            <span class="close" onclick="cerrarModalRegistro()">&times;</span>
-            <h2>Registro</h2>
+            <button class="modal-close" id="registroModalClose">&times;</button>
+
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 0.5rem;">Crear Cuenta</h2>
+                <p style="color: var(--color-text-light); font-size: 0.95rem;">
+                    Únete para acceder a contenido exclusivo
+                </p>
+            </div>
+
             <form id="registroForm">
                 <div class="form-group">
-                    <label for="registroNombre">Nombre:</label>
-                    <input type="text" id="registroNombre" name="nombre" required>
+                    <label class="form-label">Nombre Completo *</label>
+                    <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre completo">
                 </div>
+
                 <div class="form-group">
-                    <label for="registroEmail">Email:</label>
-                    <input type="email" id="registroEmail" name="email" required>
+                    <label class="form-label">Email *</label>
+                    <input type="email" id="email" class="form-input" required placeholder="tu@email.com">
                 </div>
+
                 <div class="form-group">
-                    <label for="registroPassword">Contraseña:</label>
-                    <input type="password" id="registroPassword" name="password" required>
+                    <label class="form-label">Contraseña *</label>
+                    <input type="password" id="password" class="form-input" required placeholder="Mínimo 6 caracteres" minlength="6">
                 </div>
-                <button type="submit" class="btn btn-primary">Registrarse</button>
+
+                <div class="form-group">
+                    <label class="form-label">Confirmar Contraseña *</label>
+                    <input type="password" id="confirmPassword" class="form-input" required placeholder="Repite tu contraseña" minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label style="display: flex; align-items: start; gap: 0.5rem; cursor: pointer;">
+                        <input type="checkbox" id="terminos" required style="margin-top: 0.25rem;">
+                        <span style="font-size: 0.9rem; color: var(--color-text-light);">
+                            Acepto los <a href="#" style="color: var(--color-primary); text-decoration: underline;">términos y condiciones</a>
+                        </span>
+                    </label>
+                </div>
+
+                <div id="mensajeError" style="display: none; padding: 1rem; background: var(--color-error-bg); border-left: 4px solid var(--color-error); color: var(--color-error); margin-bottom: 1rem; border-radius: 8px;"></div>
+                <div id="mensajeExito" style="display: none; padding: 1rem; background: var(--color-success-bg); border-left: 4px solid var(--color-success-dark); color: var(--color-success-dark); margin-bottom: 1rem; border-radius: 8px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
+                    Crear Mi Cuenta
+                </button>
+
+                <p style="text-align: center; font-size: 0.9rem; color: var(--color-text-light);">
+                    ¿Ya tienes cuenta? <a href="#" onclick="cerrarModalRegistro(); abrirModalLogin(); return false;" style="color: var(--color-primary); font-weight: 500;">Inicia sesión aquí</a>
+                </p>
             </form>
         </div>
     </div>
 
-    <script src="js/auth.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/auth.js?v=10"></script>
+    <script src="js/main.js?v=9"></script>
 </body>
 </html>

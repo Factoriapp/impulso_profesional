@@ -411,8 +411,20 @@ window.simularMejoraPremium = function() {
     const usuario = obtenerUsuarioActual();
     if (usuario) {
         usuario.tipoUsuario = 'miembro';
+        usuario.nivel = 3;
         usuario.ultimoCurso = { titulo: 'Curso Premium Demo', leccion: 3, progreso: 45 };
         guardarUsuarioActual(usuario);
+
+        // ✅ CRÍTICO: Actualizar también en la lista de usuarios
+        const usuarios = obtenerUsuarios();
+        const index = usuarios.findIndex(u => u.id === usuario.id);
+        if (index !== -1) {
+            usuarios[index].tipoUsuario = 'miembro';
+            usuarios[index].nivel = 3;
+            usuarios[index].ultimoCurso = usuario.ultimoCurso;
+            guardarUsuarios(usuarios);
+        }
+
         alert('✓ Actualizado a Miembro Premium!');
         location.reload();
     }
@@ -422,6 +434,7 @@ window.simularComprador = function() {
     const usuario = obtenerUsuarioActual();
     if (usuario) {
         usuario.tipoUsuario = 'comprador';
+        usuario.nivel = 2;
         usuario.cursosComprados = [
             { id: 1, tipo: 'curso', titulo: '[Curso Demo 1]', progreso: 35 },
             { id: 2, tipo: 'pdf', titulo: '[Guía Práctica Premium]', progreso: 0 },
@@ -429,6 +442,18 @@ window.simularComprador = function() {
         ];
         usuario.ultimoCurso = usuario.cursosComprados[0];
         guardarUsuarioActual(usuario);
+
+        // ✅ CRÍTICO: Actualizar también en la lista de usuarios
+        const usuarios = obtenerUsuarios();
+        const index = usuarios.findIndex(u => u.id === usuario.id);
+        if (index !== -1) {
+            usuarios[index].tipoUsuario = 'comprador';
+            usuarios[index].nivel = 2;
+            usuarios[index].cursosComprados = usuario.cursosComprados;
+            usuarios[index].ultimoCurso = usuario.ultimoCurso;
+            guardarUsuarios(usuarios);
+        }
+
         alert('✓ Actualizado a Comprador con 3 recursos!');
         location.reload();
     }
@@ -438,9 +463,22 @@ window.volverGratuito = function() {
     const usuario = obtenerUsuarioActual();
     if (usuario) {
         usuario.tipoUsuario = 'gratuito';
+        usuario.nivel = 1;
         delete usuario.cursosComprados;
         delete usuario.ultimoCurso;
         guardarUsuarioActual(usuario);
+
+        // ✅ CRÍTICO: Actualizar también en la lista de usuarios
+        const usuarios = obtenerUsuarios();
+        const index = usuarios.findIndex(u => u.id === usuario.id);
+        if (index !== -1) {
+            usuarios[index].tipoUsuario = 'gratuito';
+            usuarios[index].nivel = 1;
+            delete usuarios[index].cursosComprados;
+            delete usuarios[index].ultimoCurso;
+            guardarUsuarios(usuarios);
+        }
+
         alert('✓ Vuelto a Usuario Gratuito');
         location.reload();
     }

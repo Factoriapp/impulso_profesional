@@ -1,0 +1,98 @@
+Pregunto, El Nombre de Pepe no lo veo pro ninguna parte
+
+Stratego Impulso Profesional
+Gem personalizado
+¡Tienes toda la razón, socio! En nuestra cruzada por la "Propuesta de Valor" y la "Autoridad", hemos cometido un pecado capital de marca personal: Hemos escondido al protagonista.
+
+Si Pepe entra y ve "Tu Logo Aquí" y luego un título de "Experto en...", va a sentir que es una web anónima. "Ana" (la visitante) necesita saber con quién está hablando en el segundo 1.
+
+Aquí tienes el diagnóstico y la solución quirúrgica para arreglar esto sin romper el diseño.
+
+🕵️ EL DIAGNÓSTICO: ¿Dónde está Pepe?
+Actualmente, el nombre de Pepe está relegado a tres sitios "invisibles":
+
+El Logo: (Arriba a la izquierda, que suele ser su nombre, pero es pequeño).
+
+El Texto corrido: "Soy [Tu Nombre], y me dedico a..." (Muy pequeño, enterrado en el párrafo).
+
+El Footer: (Abajo del todo).
+
+Falta el "Apretón de Manos". Falta ese "Hola, soy Pepe" grande y claro junto a su foto.
+
+🛠️ LA SOLUCIÓN: El "Saludo Kicker"
+No vamos a tocar el H1 (el Título Principal), porque ese debe seguir siendo para la Propuesta de Valor (lo que Pepe hace por el cliente). Si ponemos "Pepe Pérez" en el H1, perdemos fuerza de venta.
+
+La maniobra táctica: Vamos a reemplazar la etiqueta genérica e inútil que dice "Presentación" (Línea 133) por un Saludo Personalizado.
+
+Cambio en presentacion-profesional.html:
+
+Antes (Frío):
+
+HTML
+<span class="model-tag">Presentación</span>
+<h1>[Escribe un Título que te Defina]</h1>
+Después (Cálido y con Nombre):
+
+HTML
+<span class="model-tag">Hola, soy [Tu Nombre] 👋</span>
+<h1>[Escribe un Título que te Defina]</h1>
+📝 Instrucción para Devito (Corrección Rápida)
+Para Devito: En presentacion-profesional.html, línea 133 (dentro de div.intro-text): Reemplazar: <span class="model-tag">Presentación</span> Por: <span class="model-tag" style="text-transform: none; letter-spacing: normal;">Hola, soy [Tu Nombre]</span>
+
+Objetivo: Que el nombre del profesional sea lo primero que se lea encima del título principal, humanizando la entrada de inmediato.
+
+💡 ¿Por qué esto funciona mejor?
+Jerarquía Visual Perfecta:
+
+1º: Quién eres (Hola, soy Pepe).
+
+2º: Qué eres (Experto en Calma Mental - H1).
+
+3º: Por qué tú (Párrafo de texto).
+
+Cercanía: Un "Hola, soy..." conecta mucho más que una etiqueta que diga "Perfil".
+
+Sin cambios de estructura: Usamos el hueco que ya existía, solo cambiamos el texto.
+
+¿Te encaja este parche rápido para que Pepe no se sienta invisible en su propia web?
+
+Quién define qué nombre colocar allí? Lo pregunto porque probablemente pepe quiera aparecer como José Pérez Gómez, pero Mística quiere aparecer como Mística
+
+Stratego Impulso Profesional
+Gem personalizado
+¡Exacto! Tienes toda la razón en esa distinción. No es lo mismo un Registro Civil que una Marca Personal.
+
+Para resolver esto, la respuesta corta es: El usuario (Pepe o Mística) lo define, pero nosotros le damos la etiqueta correcta en el sistema para que sepa qué poner.
+
+Aquí tienes la estrategia técnica para manejar esa flexibilidad:
+
+1. La Distinción: "Nombre Legal" vs. "Nombre Público"
+En la arquitectura de nuestra base de datos (y en la mente de Pepe), debemos separar dos campos:
+
+Nombre de Facturación (Legal): José Pérez Gómez (Para Stripe y facturas).
+
+Nombre Público (Display Name): Es el que va en la web.
+
+Para el Psicólogo (Impulso Pro): Puede ser "Dr. José Pérez" o "José Pérez Gómez".
+
+Para la Tarotista (Impulso Hol): Puede ser "Mística Solar" o "Luna".
+
+2. Cómo se lo presentamos a Pepe (Dashboard)
+En el Dashboard (o en el JSON de configuración del MVP), no le pediremos simplemente "Nombre". Seremos específicos para evitar confusiones:
+
+Campo: public_display_name (Nombre para mostrar).
+
+Ayuda visual (Placeholder): "¿Cómo quieres que te llamen tus clientes? (Ej: Ana, Dra. García, Mística...)".
+
+3. Ajuste en el HTML (La Plantilla)
+Para que la plantilla presentacion-profesional.html aguante ambos casos ("Hola, soy José Pérez" vs "Hola, soy Mística"), el placeholder debe ser neutro.
+
+Instrucción ajustada para Devito:
+
+Cambio: En lugar de usar un placeholder rígido, usaremos uno descriptivo.
+
+Código: <span class="model-tag">Hola, soy [Tu Nombre Público] 👋</span>
+
+Nota: Al usar la etiqueta [Tu Nombre Público], le damos permiso implícito a Mística para que ponga su nombre artístico, y a José para que ponga su título académico si quiere.
+
+Conclusión: Tú pones el campo (el contenedor), pero ellos definen la identidad. Nuestro sistema Multi-Tenant está diseñado precisamente para soportar tanto la rigurosidad clínica (impulso_pro) como la libertad creativa (impulso_hol) sin romper el código.
