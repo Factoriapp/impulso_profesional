@@ -12,7 +12,8 @@
 5. [Optimizaciones Implementadas](#optimizaciones)
 6. [Reglas de Negocio (DM1)](#reglas-dm1)
 7. [Decisiones Técnicas Clave](#decisiones)
-8. [Checklist de Nuevas Páginas](#checklist)
+8. **[🔄 Migraciones Pendientes](#migraciones)** (Tarjetas Legacy → Responsive)
+9. [Checklist de Nuevas Páginas](#checklist)
 
 ---
 
@@ -863,6 +864,168 @@ document.getElementById('userName').textContent = usuario.nombre; // Nombre comp
 #### 5. Loading="lazy" por defecto (below fold)
 **Decisión**: Todas las imágenes debajo del primer viewport llevan lazy loading
 **Excepción**: Hero, logo, imágenes críticas para LCP
+
+---
+
+## 🔄 MIGRACIONES PENDIENTES {#migraciones}
+
+### Tarjetas Legacy → Responsive (Fase 2/5)
+
+**Fecha Inicio:** 24 de Noviembre de 2025
+**Responsable:** Devito (con validación del Fundador)
+
+#### 📊 Estado Actual
+
+| Página | Clase Actual | Estado | Validado |
+|--------|-------------|--------|----------|
+| **catalogo.html** | `.card--fluid` + `.card-image-resource` | ✅ Migrado | ✅ 24-Nov-2025 |
+| **index.html** | `.card` legacy (300px fijo) | ⏳ Pendiente | - |
+| **presentacion-profesional.html** | Por auditar | ⏳ Pendiente | - |
+| **blog.html** | Por auditar | ⏳ Pendiente | - |
+| **membresia.html** | Por auditar | ⏳ Pendiente | - |
+| **area-privada-*.html** | Por auditar | ⏳ Pendiente | - |
+| **contacto-agenda.html** | Por auditar | ⏳ Pendiente | - |
+| **cuenta.html** | Por auditar | ⏳ Pendiente | - |
+
+#### 🎯 Objetivo de la Migración
+
+**Problema:** Tarjetas con ancho fijo de 300px rompen en móviles pequeños (iPhone SE 320px).
+
+**Solución:** Arquitectura responsive moderna con clases fluidas.
+
+#### 📚 Clases Disponibles
+
+**`.card` (Legacy - NO usar en código nuevo):**
+```css
+width: 300px;              /* Ancho fijo (problema en mobile) */
+height: 550px;             /* Altura fija */
+```
+→ Mantener temporalmente para páginas no migradas
+→ Deprecar cuando todas las páginas migren
+
+**`.card--fluid` (Nueva - Usar en todas las migraciones):**
+```css
+width: 100%;               /* Fluida, ocupa todo el grid */
+max-width: 400px;          /* Límite razonable en pantallas grandes */
+height: auto;              /* Altura flexible según contenido */
+min-height: 520px;         /* Altura mínima visual */
+```
+→ Responsive-first, mobile-safe
+→ Compatible con grid adaptativo (280px min)
+
+**`.card-image-header` (Legacy - NO usar en código nuevo):**
+```css
+padding-bottom: 56.25%;    /* Relación 16:9 responsive */
+```
+→ Mantener para páginas no migradas
+
+**`.card-image-resource` (Nueva - Usar en catálogos/productos):**
+```css
+height: 200px;                         /* Desktop: 200px fijo */
+width: calc(100% + 3rem);              /* Full bleed (sangra fuera del padding) */
+filter: drop-shadow(...);              /* Efecto levitación (técnica Apple) */
+
+@media (max-width: 480px) {
+    height: 180px;                     /* Mobile: más bajo */
+    width: calc(100% + 2rem);          /* Menor sangrado (evita overflow) */
+}
+```
+→ Efecto "levitación" con `drop-shadow()` (respeta transparencia PNG)
+→ Full bleed responsive (se adapta automáticamente en mobile)
+→ Sin overflow horizontal en iPhone SE (320px)
+
+#### 🔧 Pasos para Migrar una Página
+
+1. **Auditoría:**
+   - Abrir página HTML
+   - Buscar todas las instancias de `class="card"`
+   - Identificar si usa `.card-image-header`
+
+2. **Cambios en HTML:**
+   ```html
+   <!-- ANTES -->
+   <div class="card card--enhanced">
+       <div class="card-image-header">
+           <img src="..." alt="..." loading="lazy">
+       </div>
+   </div>
+
+   <!-- DESPUÉS -->
+   <div class="card--fluid card--enhanced">
+       <div class="card-image-resource">
+           <img src="..." alt="..." loading="lazy">
+       </div>
+   </div>
+   ```
+
+3. **Testing (CRÍTICO - NO SALTAR):**
+   - Desktop (1920px): Verificar tarjetas max 400px, centradas
+   - Tablet (768px): Verificar layout fluido
+   - Mobile L (425px): Verificar sin overflow
+   - Mobile S (320px): Verificar sin scroll horizontal
+   - Hover: Verificar zoom solo en tarjeta (NO doble zoom imagen)
+
+4. **Validación Visual:**
+   - ✅ Tarjetas fluidas ocupan 100% del grid
+   - ✅ Imágenes con efecto levitación (sombra visible)
+   - ✅ Sin overflow horizontal en ningún breakpoint
+   - ✅ Hover suave y elegante (solo tarjeta hace zoom)
+   - ✅ Textos y botones alineados correctamente
+
+5. **Documentar:**
+   - Actualizar tabla "Estado Actual" en esta sección
+   - Marcar página como ✅ Migrado + fecha de validación
+
+#### ⚠️ Criterios de Éxito (Definición de "Done")
+
+Una página está **migrada correctamente** cuando cumple:
+
+1. ✅ Cero uso de `.card` legacy
+2. ✅ Usa `.card--fluid` en todas las tarjetas
+3. ✅ Imágenes de productos usan `.card-image-resource` (si aplica)
+4. ✅ Sin overflow horizontal en iPhone SE (320px)
+5. ✅ Hover funciona correctamente (solo zoom tarjeta)
+6. ✅ Testeo visual completado en 4 breakpoints
+7. ✅ Documentado en tabla de estado con fecha
+
+#### 📝 Notas Técnicas
+
+**Grid Ajustado (css/styles.css:803):**
+```css
+.cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+```
+→ Cambio de 320px → 280px para soportar móviles pequeños con tarjetas fluidas
+
+**Hover Refinado (Decisión 24-Nov-2025):**
+- ❌ NO usar doble zoom (tarjeta + imagen)
+- ✅ Solo zoom en tarjeta completa (scale 1.03)
+- ✅ Imagen solo intensifica sombra en hover
+
+**Documentación CSS:**
+- Sección completa en `css/styles.css:2629-2728`
+- Comentarios explican cuándo usar cada clase
+- Media queries documentadas para mobile (@480px)
+
+#### 🚀 Próximas Acciones
+
+1. **Prioridad 1:** Migrar `index.html` (sección "Destacados" línea ~321)
+   - Actualmente usa `.card-image` con estilos inline
+   - Unificar con `.card--fluid` + `.card-image-resource`
+
+2. **Prioridad 2:** Auditar `presentacion-profesional.html`
+   - Verificar si usa tarjetas
+   - Migrar si es necesario
+
+3. **Prioridad 3:** Páginas restantes (una por una)
+   - Testing exhaustivo en cada migración
+   - No migrar múltiples páginas sin validación previa
+
+4. **Fase Final:** Deprecar `.card` legacy
+   - Cuando TODAS las páginas migren
+   - Eliminar código antiguo de `styles.css`
+   - Actualizar CHULETA eliminando referencias legacy
 
 ---
 

@@ -1,8 +1,11 @@
-1 El tamaño de la tarjetas es fijo de 300 x 550 px
+1 Elimina botón de descargar Gratis en la primera tarjeta, y coloca solamente texto Descargar, asegúrate que las tarjetas de Recursos gratis cumplan con esto
 
-2 La imagen debe esta centrada en la tarjeta  relación de aspecto 16:9, pero que no ocupe todo el ancho de la tarjeta
+2 reduce la fuente de Gratís en esa tarjeta
 
-3. el hover (Zoom) es a la tarjeta No a la imagen
+3 la imagen de la tarjeta debe tener bordes redondeados
 
-4 Agrega un borde tenue a las tarjetas pero que resalte
+4 Elimina los badges de las tarjetas
+
+5 Cambia Precio por [Normal] y Miembros por [Miembros]
+
 
