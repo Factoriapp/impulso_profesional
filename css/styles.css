@@ -777,18 +777,20 @@ img {
 
 .card {
     background: var(--color-white);
-    padding: 2.5rem;
+    padding: 1.5rem;
     border-radius: 15px;
-    transition: var(--transition);
-    border: 1px solid rgba(197, 217, 232, 0.3);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    border: 2px solid var(--color-primary); /* Borde fijo azul cielo siempre visible */
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    /* Dimensiones fijas según especificación */
+    width: 300px;
+    height: 550px;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.card--enhanced:hover {
+    transform: translateY(-5px) scale(1.03);
     box-shadow: var(--shadow-hover);
     background: linear-gradient(135deg, rgba(229, 239, 245, 0.3), rgba(255, 255, 255, 1));
 }
@@ -824,6 +826,34 @@ img {
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* === TARJETA DE RECURSO: CABECERA VISUAL === */
+/* Imagen centrada con relación de aspecto 16:9 (no full-width) */
+
+.card-image-header {
+    /* 1. Dimensiones con Relación de Aspecto 16:9 */
+    width: 100%; /* Ancho del contenedor (respeta padding de tarjeta) */
+    padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+
+    /* 2. Centrado */
+    margin: 0 auto 1rem auto; /* Centrado horizontalmente */
+
+    /* 3. Estética */
+    border-radius: 8px; /* Redondeado completo */
+    overflow: hidden;
+    background-color: var(--color-bg-neutral); /* Fondo de carga elegante */
+    position: relative; /* Necesario para posicionamiento absoluto de la imagen */
+}
+
+.card-image-header img {
+    position: absolute; /* Posicionamiento absoluto para llenar el contenedor */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Recorte inteligente */
+    object-position: center center; /* Foco en el centro */
 }
 
 /* ============================================
@@ -2573,10 +2603,15 @@ img {
 
 /* ===== TARJETAS MEJORADAS ===== */
 .card--enhanced {
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-primary); /* Borde azul cielo visible */
     position: relative;
-    overflow: hidden;
-    height: 450px;
+    /* overflow: hidden removido para permitir efecto zoom */
+    /* height heredado de .card (550px) */
+}
+
+.card--enhanced:hover {
+    transform: translateY(-5px) scale(1.03) !important; /* Zoom a la tarjeta completa */
+    box-shadow: var(--shadow-hover) !important;
 }
 
 /* ===== ICONOS DE TARJETAS ===== */

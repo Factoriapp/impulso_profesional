@@ -81,7 +81,13 @@
 
     <header class="header" id="header">
         <nav class="nav-container">
-            <div class="logo">Tu Logo Aquí</div>
+            <a href="index.html" class="logo-container" aria-label="Inicio" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <img id="headerLogo" class="logo-img hidden" src="" alt="Logotipo" style="height: 40px; width: auto;">
+                
+                <span id="headerBrandName" class="logo">
+                    [Identidad del Sitio]
+                </span>
+            </a>
 
             <!-- CENTRO: Área Personal (TODOS) - Con lógica de portero -->
             <div class="header-center-action" id="headerCenterAction" onclick="navegarAreaPersonal(event)" style="cursor: pointer;">
@@ -339,6 +345,9 @@
         </div>
     </section>
 
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <footer class="footer">
         <div class="footer-wrapper">
             <div class="model-description">
@@ -348,41 +357,27 @@
             </div>
 
             <div class="footer-content">
-            <div class="footer-section">
-                <h3>Navegación</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="presentacion-profesional.html" class="footer-link">Sobre Mí</a></li>
-                        <li><a href="catalogo.html" class="footer-link">Soluciones</a></li>
-                        <li><a href="blog.html" class="footer-link">Blog</a></li>
-                        <li><a href="membresia.html" class="footer-link">Membresía</a></li>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                        <li><a href="catalogo.html">Soluciones</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="membresia.html">Membresía</a></li>
+                        <li><a href="contacto-agenda.html">Contacto</a></li>
                     </ul>
-            </div>
+                </div>
 
-            <div class="footer-section">
-                <h3>Servicios</h3>
-                <ul>
-                    <li><a href="servicios-individual.html">Sesiones 1 a 1</a></li>
-                    <li><a href="cursos.html">Cursos Online</a></li>
-                    <li><a href="membresia.html">[Membresía / Comunidad]</a></li>
-                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
-                </ul>
-            </div>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
-                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Conecta</h3>
-                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="footer-section">
+                    <p>Sígueme en redes sociales.</p>
                 <div class="social-links">
                     <a href="#" class="social-link" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
@@ -410,9 +405,10 @@
                     </a>
                 </div>
             </div>
+            </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
+                <p>&copy; 2025 [LEGAL_NAME] - [Tu Profesión] | Todos los derechos reservados</p>
             </div>
         </div>
     </footer>

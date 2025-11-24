@@ -44,7 +44,13 @@
 
     <header class="header" id="header">
         <nav class="nav-container">
-            <div class="logo">Tu Logo Aquí</div>
+            <a href="index.html" class="logo-container" aria-label="Inicio" style="text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <img id="headerLogo" class="logo-img hidden" src="" alt="Logotipo" style="height: 40px; width: auto;">
+                
+                <span id="headerBrandName" class="logo">
+                    [Identidad del Sitio]
+                </span>
+            </a>
 
             <!-- CENTRO: Área Personal (TODOS) - Con lógica de portero -->
             <div class="header-center-action" id="headerCenterAction" onclick="navegarAreaPersonal(event)" style="cursor: pointer;">
@@ -102,8 +108,7 @@
             </div>
 
             <div class="section-header">
-                <span class="model-tag">Mis Propuestas</span>
-                <h1 class="section-title">[Cómo Puedo Ayudarte]</h1>
+                <h1 class="section-title">[Catálogo de Recursos]</h1>
                 <p class="section-description">
                     [Intro: Explora las diferentes formas en las que podemos trabajar juntos. Haz clic en "Ver Detalles" para conocer en profundidad qué incluye cada opción.]
                 </p>
@@ -116,162 +121,133 @@
 
             <div class="cards-grid">
 
-                <!-- ========================================
-                     LEAD MAGNET - GRATIS PARA TODOS
-                ========================================= -->
+                <!-- 1. LEAD MAGNET (GRATIS) -->
                 <div class="card card--enhanced">
-                    <div class="card-icon card-icon--secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                            <line x1="16" y1="13" x2="8" y2="13"></line>
-                            <line x1="16" y1="17" x2="8" y2="17"></line>
-                            <polyline points="10 9 9 9 8 9"></polyline>
-                        </svg>
+
+                    <div class="card-image-header">
+                        <img src="https://iili.io/f3yx86v.png" alt="Guía Gratuita" loading="lazy">
                     </div>
 
-                    <h3 class="card-title">[Guía Gratuita: Los 5 Errores que Sabotean tu Productividad]</h3>
-                    <p class="card-text">
-                        [Descripción: Descarga inmediata. PDF de 18 páginas con ejercicios prácticos para identificar y eliminar tus ladrones de tiempo.]
-                    </p>
+                    <div class="badge badge--ebook">EBOOK</div>
 
-                    <!-- PRECIO EN TARJETA - SIEMPRE GRATIS -->
-                    <div class="card-precio" data-recurso-id="lead-magnet-001" data-precio-normal="0" data-precio-premium="0" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-border);">
-                        <div class="precio-normal">
-                            <p style="margin: 0; font-size: 1.25rem; font-weight: 700; color: var(--color-accent-medium);">GRATIS</p>
+                    <h3 class="card-title">[Guía Gratuita: Los 5 Errores...]</h3>
+                    <p class="card-text">[PDF de 18 páginas con ejercicios prácticos para identificar y eliminar tus ladrones de tiempo.]</p>
+
+                    <div class="mt-auto">
+                        <div class="card-precio" data-recurso-id="lead-magnet-001">
+                            <p class="price price--large" style="color: var(--color-success);">GRATIS</p>
                         </div>
-                    </div>
-
-                    <div style="margin-top: 1rem;">
-                        <a href="#lead-magnet-001" class="btn btn-secondary">Descargar Gratis ↓</a>
+                        <a href="#lead-magnet-001" class="btn btn-secondary w-full">Descargar Gratis ↓</a>
                     </div>
                 </div>
 
-                <!-- ========================================
-                     RECURSO BAJO - €19 (€0 para Ana)
-                ========================================= -->
+                <!-- 2. MINI-CURSO -->
                 <div class="card card--enhanced">
-                    <div class="card-icon card-icon--secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="23 7 16 12 23 17 23 7"></polygon>
-                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
-                        </svg>
+
+                    <div class="card-image-header">
+                        <img src="https://iili.io/f3yx86v.png" alt="Mini-Curso" loading="lazy">
                     </div>
 
-                    <h3 class="card-title">[Mini-Curso: Desconexión Digital en 7 Días]</h3>
-                    <p class="card-text">
-                        [Descripción: 7 video-lecciones de 10 minutos. Recupera tu atención y reduce la ansiedad por notificaciones.]
-                    </p>
+                    <div class="badge badge--curso">CURSO</div>
 
-                    <!-- PRECIO EN TARJETA - DOBLE PRECIO VISIBLE SIEMPRE -->
-                    <div class="card-precio" data-recurso-id="curso-bajo-101" data-precio-normal="19" data-precio-premium="0" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-border);">
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio: <span style="font-weight: 800; color: var(--color-text); font-size: 1.15rem;">€19</span></p>
-                        <p style="margin: 0.25rem 0 0 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio para Miembros: <span style="font-weight: 900; font-size: 1.2rem; color: var(--color-accent-medium);">€0</span></p>
-                    </div>
+                    <h3 class="card-title">[Mini-Curso: Desconexión Digital]</h3>
+                    <p class="card-text">[7 video-lecciones de 10 minutos para recuperar tu atención y reducir la ansiedad.]</p>
 
-                    <div style="margin-top: 1rem;">
-                        <a href="#curso-bajo-101" class="btn btn-secondary">Ver Detalles →</a>
+                    <div class="mt-auto">
+                        <div class="card-precio" data-recurso-id="curso-bajo-101">
+                            <p class="price">Precio: <strong>€19</strong></p>
+                            <p class="price price--premium">Miembros: <strong>€0</strong></p>
+                        </div>
+                        <a href="#curso-bajo-101" class="btn btn-secondary w-full">Ver Detalles →</a>
                     </div>
                 </div>
 
-                <!-- ========================================
-                     EVENTO MEDIO - €47 (€0 para Ana)
-                ========================================= -->
+                <!-- 3. EVENTO EN VIVO -->
                 <div class="card card--enhanced">
-                    <div class="card-icon card-icon--primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                        </svg>
+
+                    <div class="card-image-header">
+                        <img src="https://iili.io/f3yx86v.png" alt="Taller en Vivo" loading="lazy">
                     </div>
+
+                    <div class="date-badge">
+                        <span class="event-day">25</span>
+                        <span class="event-month">NOV</span>
+                    </div>
+
+                    <div class="badge badge--evento">EVENTO</div>
 
                     <h3 class="card-title">[Taller en Vivo: Diseña tu Semana Ideal]</h3>
-                    <p class="card-text">
-                        [Descripción: Masterclass intensiva de 2h. Crea un sistema semanal sostenible que respete tu energía y prioridades.]
-                    </p>
+                    <p class="card-text">[Masterclass intensiva de 2h. Crea un sistema semanal sostenible que respete tu energía.]</p>
 
-                    <!-- PRECIO EN TARJETA - DOBLE PRECIO VISIBLE SIEMPRE -->
-                    <div class="card-precio" data-recurso-id="evento-205" data-precio-normal="47" data-precio-premium="0" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-border);">
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio: <span style="font-weight: 800; color: var(--color-text); font-size: 1.15rem;">€47</span></p>
-                        <p style="margin: 0.25rem 0 0 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio para Miembros: <span style="font-weight: 900; font-size: 1.2rem; color: var(--color-accent-medium);">€0</span></p>
-                    </div>
-
-                    <div style="margin-top: 1rem;">
-                        <a href="#evento-205" class="btn btn-primary">Ver Detalles →</a>
+                    <div class="mt-auto">
+                        <div class="card-precio" data-recurso-id="evento-205">
+                            <p class="price">Precio: <strong>€47</strong></p>
+                            <p class="price price--premium">Miembros: <strong>€0</strong></p>
+                        </div>
+                        <a href="#evento-205" class="btn btn-primary w-full">Ver Detalles →</a>
                     </div>
                 </div>
 
-                <!-- ========================================
-                     SERVICIO MEDIO - €97 (€0 para Ana)
-                ========================================= -->
+                <!-- 4. SERVICIO 1:1 -->
                 <div class="card card--enhanced">
-                    <div class="card-icon card-icon--primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+
+                    <div class="card-image-header">
+                        <img src="https://iili.io/f3yx86v.png" alt="Sesión de Diagnóstico" loading="lazy">
                     </div>
+
+                    <div class="badge badge--servicio">SERVICIO</div>
 
                     <h3 class="card-title">[Sesión de Diagnóstico Profesional]</h3>
-                    <p class="card-text">
-                        [Descripción: 60 minutos 1:1 conmigo. Analizamos tu situación actual y diseñamos un plan de acción personalizado.]
-                    </p>
+                    <p class="card-text">[60 minutos 1:1 conmigo. Analizamos tu situación actual y diseñamos un plan de acción personalizado.]</p>
 
-                    <!-- PRECIO EN TARJETA - DOBLE PRECIO VISIBLE SIEMPRE -->
-                    <div class="card-precio" data-recurso-id="servicio-301" data-precio-normal="97" data-precio-premium="47" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-border);">
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio: <span style="font-weight: 800; color: var(--color-text); font-size: 1.15rem;">€97</span></p>
-                        <p style="margin: 0.25rem 0 0 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio para Miembros: <span style="font-weight: 900; font-size: 1.2rem; color: var(--color-accent-medium);">€47</span></p>
-                    </div>
-
-                    <div style="margin-top: 1rem;">
-                        <a href="#servicio-301" class="btn btn-secondary">Ver Detalles →</a>
+                    <div class="mt-auto">
+                        <div class="card-precio" data-recurso-id="servicio-301">
+                            <p class="price">Precio: <strong>€97</strong></p>
+                            <p class="price price--premium">Miembros: <strong>€47</strong></p>
+                        </div>
+                        <a href="#servicio-301" class="btn btn-secondary w-full">Ver Detalles →</a>
                     </div>
                 </div>
 
-                <!-- ========================================
-                     CURSO COMPLETO - €129 (€0 para Ana)
-                ========================================= -->
+                <!-- 5. CURSO COMPLETO -->
                 <div class="card card--enhanced">
-                    <div class="card-icon card-icon--secondary">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+
+                    <div class="card-image-header">
+                        <img src="https://iili.io/f3yx86v.png" alt="Programa Productividad" loading="lazy">
                     </div>
 
-                    <h3 class="card-title">[Programa Completo: Productividad con Calma]</h3>
-                    <p class="card-text">
-                        [Descripción: 8 módulos en profundidad. Domina tu tiempo, energía y atención sin sacrificar tu bienestar.]
-                    </p>
+                    <div class="badge badge--curso">CURSO</div>
 
-                    <!-- PRECIO EN TARJETA - DOBLE PRECIO VISIBLE SIEMPRE -->
-                    <div class="card-precio" data-recurso-id="recurso-101" data-precio-normal="129" data-precio-premium="67" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-border);">
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio: <span style="font-weight: 800; color: var(--color-text); font-size: 1.15rem;">€129</span></p>
-                        <p style="margin: 0.25rem 0 0 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio para Miembros: <span style="font-weight: 900; font-size: 1.2rem; color: var(--color-accent-medium);">€67</span></p>
-                    </div>
+                    <h3 class="card-title">[Programa: Productividad con Calma]</h3>
+                    <p class="card-text">[8 módulos en profundidad. Domina tu tiempo, energía y atención sin sacrificar tu bienestar.]</p>
 
-                    <div style="margin-top: 1rem;">
-                        <a href="#recurso-101" class="btn btn-secondary">Ver Detalles →</a>
+                    <div class="mt-auto">
+                        <div class="card-precio" data-recurso-id="recurso-101">
+                            <p class="price">Precio: <strong>€129</strong></p>
+                            <p class="price price--premium">Miembros: <strong>€67</strong></p>
+                        </div>
+                        <a href="#recurso-101" class="btn btn-secondary w-full">Ver Detalles →</a>
                     </div>
                 </div>
 
-                <!-- ========================================
-                     PROGRAMA PREMIUM - €297 (€0 para Ana)
-                ========================================= -->
+                <!-- 6. PROGRAMA PREMIUM -->
                 <div class="card card--enhanced">
-                    <div class="card-icon card-icon--primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"></path></svg>
+
+                    <div class="card-image-header">
+                        <img src="https://iili.io/f3yx86v.png" alt="Mentoría Premium" loading="lazy">
                     </div>
 
-                    <h3 class="card-title">[Mentoría Premium: Transformación de 90 Días]</h3>
-                    <p class="card-text">
-                        [Descripción: Acompañamiento 1:1 completo. Transforma tu relación con el trabajo y alcanza tus objetivos sin burnout.]
-                    </p>
+                    <div class="badge badge--servicio">PROGRAMA</div>
 
-                    <!-- PRECIO EN TARJETA - DOBLE PRECIO VISIBLE SIEMPRE -->
-                    <div class="card-precio" data-recurso-id="programa-premium-501" data-precio-normal="297" data-precio-premium="147" style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--color-border);">
-                        <p style="margin: 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio: <span style="font-weight: 800; color: var(--color-text); font-size: 1.15rem;">€297</span></p>
-                        <p style="margin: 0.25rem 0 0 0; font-size: 0.95rem; color: var(--color-text); font-weight: 600;">Precio para Miembros: <span style="font-weight: 900; font-size: 1.2rem; color: var(--color-accent-medium);">€147</span></p>
-                    </div>
+                    <h3 class="card-title">[Mentoría Premium de 90 Días]</h3>
+                    <p class="card-text">[Acompañamiento 1:1 completo para transformar tu relación con el trabajo y alcanzar tus objetivos.]</p>
 
-                    <div style="margin-top: 1rem;">
-                        <a href="#programa-premium-501" class="btn btn-primary">Ver Detalles →</a>
+                    <div class="mt-auto">
+                        <div class="card-precio" data-recurso-id="programa-premium-501">
+                            <p class="price">Precio: <strong>€297</strong></p>
+                            <p class="price price--premium">Miembros: <strong>€147</strong></p>
+                        </div>
+                        <a href="#programa-premium-501" class="btn btn-primary w-full">Ver Detalles →</a>
                     </div>
                 </div>
 
@@ -648,6 +624,9 @@
         </script>
     </section>
 
+    <!-- ============================================
+         FOOTER
+         ============================================ -->
     <footer class="footer">
         <div class="footer-wrapper">
             <div class="model-description">
@@ -657,40 +636,27 @@
             </div>
 
             <div class="footer-content">
-            <div class="footer-section">
-                <h3>Navegación</h3>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="footer-link">Inicio</a></li>
-                        <li><a href="presentacion-profesional.html" class="footer-link">Sobre Mí</a></li>
-                        <li><a href="catalogo.html" class="footer-link">Soluciones</a></li>
-                        <li><a href="blog.html" class="footer-link">Blog</a></li>
-                        <li><a href="membresia.html" class="footer-link">Membresía</a></li>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="presentacion-profesional.html">Sobre Mí</a></li>
+                        <li><a href="catalogo.html">Soluciones</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="membresia.html">Membresía</a></li>
+                        <li><a href="contacto-agenda.html">Contacto</a></li>
                     </ul>
-            </div>
+                </div>
 
-            <div class="footer-section">
-                <h3>Acceso Rápido</h3>
-                <ul>
-                    <li><a href="area-privada.html">Área de Miembros</a></li>
-                    <li><a href="contacto-agenda.html">Agendar Sesión</a></li>
-                    <li><a href="#" onclick="abrirModalLogin(); return false;">Login Miembros</a></li>
-                    <li><a href="#" onclick="abrirModalRegistro(); return false;">Registro</a></li>
-                </ul>
-            </div>
+                <div class="footer-section">
+                    <ul>
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Aviso Legal</a></li>
+                    </ul>
+                </div>
 
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul>
-                    <li><a href="#">Política de Privacidad</a></li>
-                    <li><a href="#">Términos y Condiciones</a></li>
-                    <li><a href="#">Aviso Legal</a></li>
-                    <li><a href="#">Cookies</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h3>Conecta</h3>
-                <p>Sígueme en redes sociales para contenido de valor y actualizaciones profesionales.</p>
+                <div class="footer-section">
+                    <p>Sígueme en redes sociales.</p>
                 <div class="social-links">
                     <a href="#" class="social-link" aria-label="Instagram">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
@@ -718,9 +684,10 @@
                     </a>
                 </div>
             </div>
+            </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 [Tu Nombre] - [Tu Profesión] | Todos los derechos reservados</p>
+                <p>&copy; 2025 [LEGAL_NAME] - [Tu Profesión] | Todos los derechos reservados</p>
             </div>
         </div>
     </footer>
