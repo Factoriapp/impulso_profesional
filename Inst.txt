@@ -1,11 +1,58 @@
-1 Elimina botón de descargar Gratis en la primera tarjeta, y coloca solamente texto Descargar, asegúrate que las tarjetas de Recursos gratis cumplan con esto
+Copia y pega esto al final de tu archivo CHULETA-DESARROLLO.md (o en un nuevo archivo ESTANDARES-VISUALES.md si prefieres separarlo).
 
-2 reduce la fuente de Gratís en esa tarjeta
+📸 PROTOCOLO DE IMÁGENES (ESTRATEGIA VISUAL UNIFICADA)
+Fecha de Aprobación: 24-Nov-2025 Objetivo: Garantizar coherencia visual y proteger al usuario ("Pepe") de errores al subir imágenes de diferentes formatos.
 
-3 la imagen de la tarjeta debe tener bordes redondeados
+1. LA LEY GLOBAL: "Curva de 16px"
+Todas las imágenes, contenedores destacados y tarjetas del sitio deben respetar el radio de borde unificado. Se acabaron los bordes rectos.
 
-4 Elimina los badges de las tarjetas
+Variable CSS: var(--radius-container) (Definido en :root como 16px).
 
-5 Cambia Precio por [Normal] y Miembros por [Miembros]
+Aplicación:
 
+Tarjetas (.card, .card--enhanced)
 
+Contenedores de Imagen (.card-image-resource, .blog-entry-image)
+
+Modales (.modal-content)
+
+Imágenes Hero (.post-hero-image)
+
+2. ESTRATEGIA A: "ESCAPARATE" (Listados y Productos)
+Uso: Tarjetas del Catálogo, Listado del Blog (Zig-Zag) y Destacados de la Home. Objetivo: Mostrar el objeto entero (Libro, Icono, Foto) sin recortar nada. Efecto "Producto en estantería".
+
+Comportamiento:
+
+Ajuste: object-fit: contain (La imagen se encoge hasta caber entera).
+
+Fondo: var(--color-bg-neutral) (Gris suave que actúa como "mesa" o paspartú).
+
+Efecto: Levitación (drop-shadow). La imagen proyecta sombra sobre el fondo, no el contenedor.
+
+Razón: Si Pepe sube un Ebook vertical o un logo cuadrado, NUNCA se cortará. Se verá flotando elegantemente en el centro.
+
+Clases CSS: .card-image-resource, .blog-entry-image.
+
+3. ESTRATEGIA B: "INMERSIVA" (Ambientación)
+Uso: Cabeceras Hero, Foto de Perfil ("Sobre Mí"), Cabecera de Artículo Individual (publicacion.html). Objetivo: Impacto emocional y llenado de espacio.
+
+Comportamiento:
+
+Ajuste: object-fit: cover (La imagen se estira para llenar todo el hueco).
+
+Fondo: Ninguno (La imagen es el fondo).
+
+Efecto: Recorte inteligente (se pierde lo que sobra por los lados/arriba).
+
+Razón: Aquí buscamos atmósfera. Un borde gris alrededor de una foto de paisaje o de una cara queda "pobre". Queremos inmersión total.
+
+RESUMEN RÁPIDO PARA DESARROLLO
+
+Clases CSS: .hero-image, .about-image, .post-hero-image.
+
+Ubicación,Tipo de Imagen,Ajuste (object-fit),Fondo,Efecto
+Home (Grid),Producto/Post,contain,Gris Neutro,Levitación
+Catálogo,Producto,contain,Gris Neutro,Levitación
+Blog (Lista),Post,contain,Gris Neutro,Levitación
+Post (Detalle),Hero,cover,N/A,Full Fill
+Perfil,Retrato,cover,N/A,Full Fill

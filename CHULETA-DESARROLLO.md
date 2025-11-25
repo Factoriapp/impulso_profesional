@@ -2342,3 +2342,60 @@ git status --short
 **ðŸŽ“ Fin de la Chuleta - Â¡Ãšsala como referencia constante!**
 **ðŸ“… Ãšltima actualizaciÃ³n**: 2025-01-13 - VersiÃ³n 1.8
 **ðŸ’¾ Recuerda**: Actualizar esta Chuleta despuÃ©s de cada optimizaciÃ³n importante
+
+?? PROTOCOLO DE IMÁGENES (ESTRATEGIA VISUAL UNIFICADA)
+Fecha de Aprobación: 24-Nov-2025 Objetivo: Garantizar coherencia visual y proteger al usuario ("Pepe") de errores al subir imágenes de diferentes formatos.
+
+1. LA LEY GLOBAL: "Curva de 16px"
+Todas las imágenes, contenedores destacados y tarjetas del sitio deben respetar el radio de borde unificado. Se acabaron los bordes rectos.
+
+Variable CSS: var(--radius-container) (Definido en :root como 16px).
+
+Aplicación:
+
+Tarjetas (.card, .card--enhanced)
+
+Contenedores de Imagen (.card-image-resource, .blog-entry-image)
+
+Modales (.modal-content)
+
+Imágenes Hero (.post-hero-image)
+
+2. ESTRATEGIA A: "ESCAPARATE" (Listados y Productos)
+Uso: Tarjetas del Catálogo y Destacados de la Home. Objetivo: Mostrar el objeto entero (Libro, Icono, Foto) sin recortar nada. Efecto "Producto en estantería".
+
+Comportamiento:
+
+Ajuste: object-fit: contain (La imagen se encoge hasta caber entera).
+
+Fondo: var(--color-bg-neutral) (Gris suave que actúa como "mesa" o paspartú).
+
+Efecto: Levitación (drop-shadow). La imagen proyecta sombra sobre el fondo, no el contenedor.
+
+Razón: Si Pepe sube un Ebook vertical o un logo cuadrado, NUNCA se cortará. Se verá flotando elegantemente en el centro.
+
+Clases CSS: .card-image-resource.
+
+3. ESTRATEGIA B: "INMERSIVA" (Ambientación)
+Uso: Cabeceras Hero, Foto de Perfil ("Sobre Mí"), Cabecera de Artículo Individual (publicacion.html), Listado del Blog (Zig-Zag). Objetivo: Impacto emocional y llenado de espacio.
+
+Comportamiento:
+
+Ajuste: object-fit: cover (La imagen se estira para llenar todo el hueco).
+
+Fondo: Ninguno (La imagen es el fondo).
+
+Efecto: Recorte inteligente (se pierde lo que sobra por los lados/arriba).
+
+Razón: Aquí buscamos atmósfera. Un borde gris alrededor de una foto de paisaje o de una cara queda "pobre". Queremos inmersión total.
+
+Clases CSS: .hero-image, .about-image, .post-hero-image, .blog-entry-image.
+
+RESUMEN RÁPIDO PARA DESARROLLO
+
+Ubicación,Tipo de Imagen,Ajuste (object-fit),Fondo,Efecto
+Home (Grid),Producto/Post,contain,Gris Neutro,Levitación
+Catálogo,Producto,contain,Gris Neutro,Levitación
+Blog (Lista),Post,cover,N/A,Full Fill
+Post (Detalle),Hero,cover,N/A,Full Fill
+Perfil,Retrato,cover,N/A,Full Fill
