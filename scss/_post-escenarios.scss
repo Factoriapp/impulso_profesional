@@ -1,0 +1,79 @@
+
+/* ============================================
+   POST ESCENARIOS ADICIONALES
+   ============================================ */
+
+/* ESCENARIO B: Solo Imagen/Instagram */
+.post-image-fullbleed {
+    margin: 2rem 0 3rem 0;
+}
+
+.post-image-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-top: 1rem;
+    font-style: italic;
+}
+
+/* ESCENARIO C: Documento PDF */
+.post-document-card {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, rgba(197, 217, 232, 0.1), rgba(232, 213, 196, 0.1));
+    border: 2px solid rgba(197, 217, 232, 0.3);
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.post-document-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-medium);
+}
+
+.document-icon {
+    margin-bottom: 1.5rem;
+}
+
+.document-title {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.document-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+/* Audio Container (Hero) */
+.audio-container {
+    margin: 2rem 0;
+}
+
+.audio-container audio {
+    width: 100%;
+    border-radius: 10px;
+    outline: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-document-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .document-title {
+        font-size: 1.5rem;
+    }
+
+    .document-description {
+        font-size: 1rem;
+    }
+}
+

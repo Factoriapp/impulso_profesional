@@ -1,0 +1,97 @@
+
+/* ============================================
+   RESPONSIVE DESIGN - Mobile Adjustments
+   ============================================ */
+
+@media (max-width: 768px) {
+    .nav-menu {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-image {
+        height: 300px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        height: 350px;
+        position: relative;
+        top: 0;
+    }
+
+    .about-content h2 {
+        font-size: 1.75rem;
+    }
+
+    .about-intro {
+        font-size: 1.1rem;
+    }
+
+    .about-mission {
+        padding: 2rem 1.5rem;
+    }
+
+    .about-mission h3 {
+        font-size: 1.5rem;
+    }
+
+    .about-mission p {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Lead Magnet Responsive */
+    .lead-magnet-container {
+        padding: 1.5rem;
+        border-radius: 15px;
+    }
+
+    .lead-magnet-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-row .form-group {
+        min-width: 100%;
+    }
+
+    .form-row .form-group:last-child {
+        flex: 1;
+    }
+
+    .benefit-item {
+        font-size: 0.9rem;
+        padding: 1rem;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.35rem; }
+}

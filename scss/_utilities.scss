@@ -1,0 +1,57 @@
+/* ============================================
+   UTILIDADES
+   ============================================ */
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+/* Efecto de fade suave al hacer scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ocultar elementos (ej: fecha en posts) */
+.hidden {
+    display: none !important;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mt-auto .card-link-action {
+    display: block;
+    text-align: right;
+    margin-top: 0.25rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* ===== LAYOUT HELPERS ===== */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

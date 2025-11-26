@@ -1,0 +1,79 @@
+
+/* ============================================
+   OPTIMIZACIÓN: CLASES REUTILIZABLES
+   (Extracción de estilos inline a CSS)
+   ============================================ */
+
+/* ===== BADGES (Etiquetas de Categoría) ===== */
+.badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    font-weight: 600;
+    font-size: 0.75rem;
+    padding: 0.3rem 1rem;
+    border-bottom-left-radius: var(--radius-internal);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge--evento {
+    background: var(--color-primary);
+}
+
+.badge--servicio {
+    background: var(--color-text);
+}
+
+.badge--curso {
+    background: var(--color-secondary);
+}
+
+.badge--ebook {
+    background: var(--color-sage);
+}
+
+.badge--categoria {
+    background: rgba(197, 217, 232, 0.8); /* Azul primario suave */
+    color: var(--color-text);
+}
+
+.badge--bold {
+    font-weight: 700;
+}
+
+/* ===== TARJETAS MEJORADAS ===== */
+.card--enhanced {
+    border: 2px solid var(--color-primary); /* Borde azul cielo visible */
+    position: relative;
+    /* overflow: hidden removido para permitir efecto zoom */
+    /* height heredado de .card (550px) */
+}
+
+.card--enhanced:hover {
+    transform: translateY(-5px) scale(1.03) !important; /* Zoom a la tarjeta completa */
+    box-shadow: var(--shadow-hover) !important;
+}
+
+/* ===== ICONOS DE TARJETAS ===== */
+.card-icon--primary {
+    background: var(--color-bg-primary-light);
+    color: var(--color-primary);
+}
+
+.card-icon--secondary {
+    background: var(--color-bg-secondary-light);
+    color: var(--color-secondary);
+}
+
+.card-icon--text {
+    background: var(--color-bg-text-light);
+    color: var(--color-text);
+}
+
+.card-icon--sage {
+    background: var(--color-bg-sage-light);
+    color: var(--color-sage);
+}
+

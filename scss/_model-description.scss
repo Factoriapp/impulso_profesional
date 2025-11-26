@@ -1,0 +1,48 @@
+/* ============================================
+   DESCRIPCIONES DEL MODELO (Educativas)
+   ============================================ */
+
+.model-description {
+    background: linear-gradient(135deg, rgba(232, 213, 196, 0.3), rgba(197, 217, 232, 0.2));
+    border: 2px dashed #333;
+    padding: var(--spacing-md);
+    margin: 0 0 var(--spacing-md) 0;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.model-description h4 {
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.model-description p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+
+.model-description p:last-child {
+    margin-bottom: 0;
+}
+
+.model-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--color-sky), var(--color-sage-blue));
+    color: var(--color-white);
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-pill);
+    font-size: 0.8rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--spacing-sm);
+}

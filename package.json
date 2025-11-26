@@ -1,0 +1,26 @@
+{
+  "name": "plataforma_modelo",
+  "version": "1.0.0",
+  "description": "## 📋 Tabla de Contenidos",
+  "main": "index.js",
+  "scripts": {
+    "watch": "sass --watch scss/main.scss:css/styles.css",
+    "build": "sass scss/main.scss:css/styles.css --style=expanded",
+    "build:prod": "sass scss/main.scss:css/styles.min.css --style=compressed",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Factoriapp/impulso_profesional.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Factoriapp/impulso_profesional/issues"
+  },
+  "homepage": "https://github.com/Factoriapp/impulso_profesional#readme",
+  "devDependencies": {
+    "sass": "^1.94.2"
+  }
+}

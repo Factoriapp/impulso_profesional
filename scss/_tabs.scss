@@ -1,0 +1,62 @@
+
+/* ============================================
+   DROPDOWN SELECTOR (Menú Desplegable)
+   ============================================ */
+
+.dropdown-wrapper {
+    position: relative;
+}
+
+.section-dropdown {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.25rem;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    color: var(--color-text);
+    background: var(--color-white);
+    border: 2px solid var(--color-sky);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-shadow: var(--shadow-soft);
+}
+
+.section-dropdown:hover {
+    border-color: var(--color-sage-blue);
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-2px);
+}
+
+.section-dropdown:focus {
+    outline: none;
+    border-color: var(--color-text);
+    box-shadow: 0 0 0 3px rgba(107, 107, 107, 0.1);
+}
+
+/* Flecha personalizada del dropdown */
+.dropdown-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.dropdown-wrapper:hover::after {
+    color: var(--color-sage-blue);
+}
+
+/* Opciones del dropdown */
+.section-dropdown option {
+    padding: 1rem;
+    background: var(--color-white);
+    color: var(--color-text);
+    font-size: 1rem;
+}

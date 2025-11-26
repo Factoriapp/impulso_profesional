@@ -1,0 +1,250 @@
+
+/* ============================================
+   BLOG - TARJETAS HORIZONTALES
+   ============================================ */
+
+.blog-posts-list .card--horizontal {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch; /* Make items of same height */
+    gap: 2rem;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    overflow: hidden; /* Ensure badge doesn't overflow rounded corners */
+}
+
+.blog-posts-list .card--horizontal .card__image-container {
+    flex: 1 1 40%; /* Flex-grow, flex-shrink, flex-basis */
+    min-width: 300px;
+}
+
+.blog-posts-list .card--horizontal .card__content {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-posts-list .card--horizontal .image-placeholder {
+    height: 100%;
+    min-height: 280px;
+}
+
+/* Alternating layout for even cards */
+.blog-posts-list > article:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Reset for badge positioning */
+.blog-posts-list .card--horizontal .badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 1rem;
+    border-bottom-left-radius: 0;
+    border-radius: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .blog-posts-list .card--horizontal,
+    .blog-posts-list > article:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .blog-posts-list .card--horizontal .card__image-container {
+        min-width: 100%;
+    }
+
+    .blog-posts-list .card--horizontal .image-placeholder {
+        min-height: 200px;
+    }
+}
+
+/* ============================================
+   POST (publicacion.html) - ARTÍCULO INDIVIDUAL
+   ============================================ */
+
+.post-layout {
+    padding: 3rem 0;
+}
+
+.post-header {
+    margin-bottom: 2rem;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.post-meta-divider {
+    color: var(--color-text-light);
+}
+
+.post-title {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.post-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.post-author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-author-name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.post-author-role {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0.25rem 0 0 0;
+}
+
+.post-content {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 3rem;
+}
+
+.post-content h2 {
+    font-size: 1.8rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.post-content h3 {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.post-content p {
+    margin-bottom: 1.5rem;
+}
+
+.post-content ul,
+.post-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.post-content li {
+    margin-bottom: 0.75rem;
+}
+
+.post-content blockquote {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    border-left: 4px solid var(--color-primary);
+    background: rgba(197, 217, 232, 0.1);
+    font-style: italic;
+}
+
+.post-content blockquote footer {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: normal;
+}
+
+.post-footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid rgba(197, 217, 232, 0.3);
+}
+
+.post-share {
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    padding: 2rem;
+    border: 2px solid rgba(197, 217, 232, 0.8);
+    border-radius: 15px;
+    background: rgba(197, 217, 232, 0.15);
+    width: fit-content;
+}
+
+.post-share .social-links {
+    justify-content: center;
+}
+
+.post-share-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+    text-align: center;
+}
+
+.post-author-box {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.post-author-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.post-author-name-large {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.post-author-bio {
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .post-title {
+        font-size: 2rem;
+    }
+
+    .post-subtitle {
+        font-size: 1rem;
+    }
+
+    .post-content {
+        font-size: 1rem;
+    }
+
+    .post-author-box {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}

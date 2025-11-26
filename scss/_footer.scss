@@ -1,0 +1,53 @@
+
+/* ============================================
+   EVENTOS SECTION
+   ============================================ */
+
+.card.event-card {
+    position: relative;
+    padding-top: 2rem;
+    height: 450px;
+    background: linear-gradient(135deg, rgba(212, 227, 237, 0.4), rgba(231, 221, 201, 0.4)) !important;
+    border: 2px solid var(--color-sky) !important;
+}
+
+.event-card .card-title {
+    padding-right: 100px;
+}
+
+.event-date {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, var(--color-sky), var(--color-powder));
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    min-width: 60px;
+}
+
+.event-day {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    line-height: 1;
+}
+
+.event-month {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--color-text);
+    font-weight: 500;
+    margin-top: 0.2rem;
+}
+
+.event-time,
+.event-location {
+    font-size: 0.95rem;
+    color: var(--color-text);
+    margin: 0.5rem 0;
+    font-weight: 500;
+}

@@ -1,0 +1,58 @@
+/* ============================================
+   BLOG - LISTADO DE PUBLICACIONES
+   ============================================ */
+
+.blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.blog-entry {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    background: var(--color-white); /* White card background */
+    border-radius: var(--radius-container); /* Matches other containers */
+    box-shadow: var(--shadow-soft); /* Subtle lift effect */
+}
+
+.blog-entry-image {
+    flex: 2; /* 40% */
+    border: 5px solid red !important; /* DEBUG: Make border unmissable */
+    border-radius: var(--radius-container); /* Standardized radius */
+    overflow: hidden; /* Ensure image respects the radius */
+}
+
+.blog-entry-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover; /* Back to cover for Full Fill */
+    border-radius: var(--radius-container);
+}
+
+.blog-entry-content {
+    flex: 3; /* 60% */
+}
+
+.blog-entry--reversed {
+    flex-direction: row-reverse;
+}
+
+.blog-entry-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.blog-entry-excerpt {
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .blog-entry,
+    .blog-entry--reversed {
+        flex-direction: column;
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+}

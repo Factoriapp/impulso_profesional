@@ -1,0 +1,299 @@
+
+/* ============================================
+   TARJETAS RESPONSIVE (Nueva Arquitectura)
+   Implementación Híbrida - Migración Gradual
+   ============================================ */
+
+/*
+ * GUÍA DE USO:
+ *
+ * .card (Legacy) - Tarjeta con ancho fijo 300px
+ *   → Páginas antiguas que aún no se han migrado
+ *   → Se mantendrá hasta completar migración
+ *
+ * .card--fluid (Nueva) - Tarjeta responsive moderna
+ *   → Usar en páginas nuevas o al refactorizar
+ *   → Ancho fluido 100%, max 400px
+ *   → Altura automática con mínimo 520px
+ *
+ * .card-image-resource (Nueva) - Cabecera de imagen con efecto levitación
+ *   → Reemplaza a .card-image-header en catálogos
+ *   → Full bleed responsive (se adapta a mobile)
+ *   → Usa filter: drop-shadow() para separación visual
+ */
+
+/* ===== TARJETA FLUIDA (Variante Responsive de .card) ===== */
+.card--fluid {
+    background: var(--color-white);
+    padding: 1.5rem;
+    border-radius: var(--radius-container);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    border: 2px solid var(--color-primary);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+
+    /* Dimensiones fluidas responsive */
+    width: 100%;            /* Ocupa todo el espacio del grid */
+    max-width: 350px;       /* Límite para pantallas grandes */
+    height: auto;           /* Altura flexible según contenido */
+    min-height: 600px;      /* Altura mínima visual (más espacio para contenido) */
+    margin: 0 auto;         /* Centrado si sobra espacio */
+}
+
+/* Hover para tarjeta fluida */
+.card--fluid:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: var(--shadow-hover);
+}
+
+/* ===== IMAGEN CABECERA PARA RECURSOS (Full Bleed + Levitación) ===== */
+.card-image-resource {
+    /* Desktop (Default) */
+    height: 200px;
+    width: 100%; /* Ocupa el ancho disponible */
+    margin-bottom: 1.5rem; /* Standard margin for spacing */
+
+    /* Estética: Recuadro gris flotante */
+    background-color: var(--color-bg-neutral);
+    border-radius: var(--radius-container); /* 16px radius on all corners */
+    overflow: hidden; /* Crucial for clipping image to curves */
+    mask-image: radial-gradient(white, black); /* Pro-trick for cross-browser clipping */
+
+    /* Centrado Flex */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-image-resource img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;                /* Muestra todo el objeto sin recortar */
+    /* Padding, border-radius and filter removed as parent handles styling */
+    filter: drop-shadow(0 8px 12px rgba(0,0,0,0.1)); /* Re-added drop-shadow */
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+/* Hover: Solo intensificación de sombra (tarjeta completa ya hace zoom) */
+.card--fluid:hover .card-image-resource img {
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.2));
+}
+
+/* Responsive Mobile: Ajustar dimensiones para evitar overflow */
+@media (max-width: 480px) {
+    .card--fluid {
+        padding: 1rem;          /* Menos padding en móviles para ganar espacio */
+    }
+
+    .card-image-resource {
+        height: 180px;                      /* Altura menor en mobile */
+        width: calc(100% + 2rem);           /* Recalcular para padding 1rem */
+        margin: -1rem -1rem 1rem -1rem;
+    }
+
+    .card-image-resource img {
+        padding: 0.8rem;        /* Menos aire para que producto se vea más grande */
+    }
+}
+
+/* ===== LAYOUTS DE GRID ===== */
+.detail-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.detail-grid-asymmetric {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr; /* Balanceado: Calendario 58% / Formulario 42% */
+    gap: 3rem;
+}
+
+/* ===== SECCIONES DE DETALLE ===== */
+.detail-section {
+    padding: 4rem 0;
+}
+
+.detail-box {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--color-border);
+}
+
+.detail-box__content {
+    padding: 3rem;
+}
+
+/* ===== PLACEHOLDER DE IMÁGENES ===== */
+.image-placeholder {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.image-placeholder__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    padding: 2rem;
+    text-align: center;
+}
+
+/* ===== VIDEO CONTAINER (16:9 Responsive) ===== */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* ===== PRICING ===== */
+.card-precio {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;              /* Muy pegados: 4px entre líneas */
+    margin-bottom: 0;          /* Sin margen inferior (flex layout maneja espaciado) */
+}
+
+.price {
+    font-weight: 700;
+    font-size: 0.95rem;        /* Reducido de 1.1rem para precios de 3 cifras */
+    margin-bottom: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.price--large {
+    font-size: 1.5rem;      /* Reducido de 2rem para "GRATIS" */
+}
+
+.price--xlarge {
+    font-size: 2.5rem;
+}
+
+.price--primary {
+    color: var(--color-primary);
+}
+
+.price--secondary {
+    color: var(--color-secondary);
+}
+
+.price--text {
+    color: var(--color-text);
+}
+
+.price--sage {
+    color: var(--color-sage);
+}
+
+/* ===== UTILIDADES ===== */
+.mt-auto {
+    margin-top: auto;
+}
+
+.mt-auto .card-link-action {
+    display: block;
+    text-align: right;
+    margin-top: 0.25rem;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+/* ===== LAYOUT HELPERS ===== */
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.flex-center-gap {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.text-right {
+    text-align: right;
+}
+
+/* ===== CAJAS DE CONTENIDO ===== */
+.info-box {
+    background: var(--color-bg-neutral);
+    padding: 2rem;
+    border-radius: var(--radius-container);
+}
+
+.info-box--small {
+    padding: 1.5rem;
+}
+
+.pricing-box {
+    text-align: center;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    height: fit-content;
+}
+
+/* ===== DIVISORES ===== */
+.divider {
+    border: 0;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+}
+
+/* ===== LISTAS SIN ESTILO ===== */
+.list-unstyled {
+    list-style: none;
+    padding: 0;
+    line-height: 2;
+}
+
+/* ===== TAMAÑOS DE ALTURA ===== */
+.h-400 {
+    height: 400px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .detail-grid-2col,
+    .detail-grid-asymmetric {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}

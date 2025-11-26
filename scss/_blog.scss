@@ -1,0 +1,36 @@
+
+/* ============================================
+   MÓDULOS DE SESIONES (Estilo Interactive)
+   ============================================ */
+
+.session-module {
+    background: linear-gradient(135deg, var(--color-mist), var(--color-sand));
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    margin-bottom: 1rem;
+}
+
+.session-module:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    background: linear-gradient(135deg, rgba(197, 217, 232, 0.5), rgba(231, 221, 201, 0.5));
+    border-color: var(--color-sky);
+}
+
+.session-module h3 {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+}
+
+.session-module p {
+    color: var(--color-text-light);
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}

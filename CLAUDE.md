@@ -240,7 +240,137 @@ Estos 4 archivos constituyen la ÚNICA fuente de verdad del proyecto. Cualquier 
 
 ---
 
-## 4. FRASES CLAVE QUE DEBO RECONOCER
+## 4. SISTEMA SCSS - WORKFLOW DE ESTILOS (Implementado: 26-Nov-2025)
+
+### ⚠️ REGLA CRÍTICA DE ESTILOS
+
+**NUNCA editar `css/styles.css` directamente** - Es un archivo AUTO-GENERADO por SASS.
+
+**Cualquier cambio en `css/styles.css` se PIERDE al recompilar.**
+
+### 🔄 Workflow de Estilos:
+
+**✅ SÍ EDITAR (Código Fuente):**
+- Archivos en `scss/*.scss` (38 módulos pequeños)
+- Después de editar → Ejecutar `npm run build` (o tener `npm run watch` activo)
+
+**❌ NO EDITAR NUNCA (Compilado):**
+- `css/styles.css` (se regenera automáticamente desde SCSS)
+
+### 📂 Arquitectura:
+
+```
+scss/                       ← CÓDIGO FUENTE (editable)
+├── main.scss               ← Orquestador (imports)
+├── _variables.scss         ← 87 líneas - CSS Custom Properties
+├── _header.scss            ← 243 líneas - Header y navegación
+├── _cards.scss             ← 234 líneas - Tarjetas
+├── _buttons.scss           ← 55 líneas - Botones
+├── _forms.scss             ← 68 líneas - Formularios
+└── ... (33 módulos más)
+
+        ↓ npm run build (compilación SASS)
+
+css/
+└── styles.css              ← COMPILADO AUTO-GENERADO (no tocar)
+```
+
+### 🛠️ Comandos npm Disponibles:
+
+```bash
+npm run watch      # Auto-compila cada vez que guardas un .scss (DESARROLLO)
+npm run build      # Compila una sola vez (MANUAL)
+npm run build:prod # Minifica para producción
+```
+
+### 📝 Proceso al Editar Estilos:
+
+1. **Consultar CHULETA**: ¿Qué archivo SCSS editar?
+   - Ejemplo: Cambiar header → `_header.scss` (243 líneas)
+   - Ejemplo: Cambiar tarjetas → `_cards.scss` (234 líneas)
+
+2. **Editar el archivo SCSS correspondiente**
+   - Archivos pequeños (36-299 líneas cada uno)
+   - 90% menos tokens que CSS monolítico anterior
+
+3. **Compilar** (si watch no está activo):
+   ```bash
+   npm run build
+   ```
+
+4. **Verificar en navegador**
+   - Recargar página HTML
+   - Ver cambios aplicados
+
+### 💡 Modo Desarrollo Recomendado:
+
+**Terminal (dejar corriendo):**
+```bash
+npm run watch
+```
+
+**Workflow:**
+- Editas `scss/_header.scss` → Guardas (Ctrl+S)
+- SASS detecta cambio → Auto-compila `css/styles.css`
+- Recarga navegador → Ves cambios
+- (Ciclo infinito: editar → guardar → ver)
+
+### 📚 Referencia Completa:
+
+**Para detalles completos del sistema SCSS:**
+- Ver `CHULETA-DESARROLLO.md` → Sección "Arquitectura SCSS Modular" (líneas 117-273)
+- Mapa de 38 módulos con descripción y líneas
+- Tabla "¿Qué archivo editar?"
+- Reglas críticas (CSS variables, responsive)
+- Testing post-edición
+
+### ⚡ Beneficios del Sistema SCSS:
+
+- ✅ Archivos pequeños (36-299 líneas vs 3,844 monolítico)
+- ✅ 90% menos consumo tokens Devito al editar
+- ✅ Código modular y mantenible
+- ✅ CSS Variables preservadas para runtime theming
+- ✅ Preparado para multi-tenant
+
+---
+
+## 5. PROTOCOLO INST.TXT - ARCHIVO DE MENSAJERÍA PROVISIONAL
+
+### ⚠️ REGLA CRÍTICA: NO LEER INST.TXT AUTOMÁTICAMENTE
+
+**Inst.txt** es un archivo de "Mensajería" temporal usado SOLO para transmitir instrucciones puntuales.
+
+**CARACTERÍSTICAS:**
+- ✅ Es PROVISIONAL - Las instrucciones pueden estar OBSOLETAS
+- ✅ Es de MENSAJERÍA - No es documentación permanente
+- ❌ NO es parte de la Base de Conocimiento oficial
+- ❌ NO debe leerse al inicio de sesiones
+
+### 📋 CUÁNDO LEER INST.TXT:
+
+**SOLO cuando el usuario lo indique EXPLÍCITAMENTE:**
+- Usuario escribe: `***` (triple asterisco)
+- Usuario dice: "Lee Inst.txt"
+- Usuario dice: "Revisa las instrucciones en Inst.txt"
+
+### ❌ NUNCA LEER INST.TXT:
+
+- Al inicio de una sesión nueva
+- Al leer CLAUDE.md, GEMINI.md, o archivos maestros
+- Por "contexto adicional" o "exploración"
+- Porque aparece mencionado en algún archivo
+
+### ⚡ WORKFLOW CORRECTO:
+
+1. Usuario escribe `***` → Leo Inst.txt → Ejecuto instrucciones
+2. Usuario NO menciona Inst.txt → NO lo leo NUNCA
+3. Si tengo dudas → Consulto archivos maestros (DM1, CHULETA, ARQUITECTURA)
+
+**Inst.txt NO es fuente de verdad. Es mensajería temporal.**
+
+---
+
+## 6. FRASES CLAVE QUE DEBO RECONOCER
 
 Cuando el usuario dice... | Debo entender...
 ---|---
@@ -259,7 +389,7 @@ Cuando el usuario dice... | Debo entender...
 
 ---
 
-## 5. ANTI-PATRONES (NUNCA HACER)
+## 7. ANTI-PATRONES (NUNCA HACER)
 
 ### ❌ Código
 - Usar colores HEX directos en HTML/CSS
@@ -290,13 +420,14 @@ Cuando el usuario dice... | Debo entender...
 
 ---
 
-## 6. VERSIÓN Y ACTUALIZACIÓN
+## 8. VERSIÓN Y ACTUALIZACIÓN
 
-**Versión actual**: 1.3
-**Fecha**: 22 de Noviembre de 2025
-**Última actualización**: Protocolo de Preguntas y Confirmaciones
+**Versión actual**: 1.4
+**Fecha**: 26 de Noviembre de 2025
+**Última actualización**: Sistema SCSS + Protocolo Inst.txt
 
 **Historial de cambios**:
+- v1.4 (2025-11-26): Agregado Sección 4 "Sistema SCSS - Workflow de Estilos" + Sección 5 "Protocolo Inst.txt" - REGLA CRÍTICA: NO leer Inst.txt automáticamente, solo cuando usuario indique con `***`
 - v1.3 (2025-11-22): Agregado "Protocolo de Preguntas y Confirmaciones" en Sección 3 - REGLA CRÍTICA: NO modificar nada cuando el Fundador hace una pregunta (símbolo "?") hasta recibir aprobación explícita
 - v1.2 (2025-11-20): Definición explícita de Base de Conocimiento (BC), reglas de resolución de conflictos (dentro/entre archivos), ampliación completa de secciones A/B/C/D con estructura "Qué es/Funciones/Cuándo consultar/Cuándo actualizar/Qué nunca va aquí"
 - v1.1 (2025-11-19): Agregado protocolo Git/GitHub (Sección 1, 4, 10, 12, 15)
@@ -313,4 +444,3 @@ Cuando el usuario dice... | Debo entender...
 ---
 
 **Fin de CLAUDE.md - Contexto de Devito para Claude Code**
-- cada vez que veas *** tiene que leer el archivo Inst.txt

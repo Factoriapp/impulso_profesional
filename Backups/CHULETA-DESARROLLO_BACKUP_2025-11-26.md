@@ -4,34 +4,16 @@
 ---
 
 ## 📋 ÍNDICE RÁPIDO
-
-**USO DIARIO** (Consulta frecuente):
-1. [Arquitectura del Proyecto](#arquitectura) - Estructura archivos y nomenclatura
-2. [Sistema de Colores](#colores) - Variables CSS y paleta
-3. [Sistema de Espaciado](#sistema-de-espaciado) - Variables de espaciado
-4. [Convenciones de Código](#convenciones) - BEM, Nomenclatura, Contenido HTML
-5. [Componentes Reutilizables](#componentes-reutilizables) - Iconos SVG, Cards, Botones, Badges, Grids
-6. [Ayuda Rápida](#ayuda-rapida) - ¿Dónde encuentro...? ¿Cómo...?
-
-**OPTIMIZACIONES Y MIGRACIONES**:
-7. [Optimizaciones Implementadas](#optimizaciones) - #1-5 completadas
-8. **[🔄 Migraciones Pendientes](#migraciones)** - Tarjetas Legacy → Responsive (ACTIVO)
-9. [Protocolo de Imágenes](#protocolo-de-imagenes) - Estrategia Visual Unificada
-
-**REGLAS Y DECISIONES**:
-10. [Reglas de Negocio (DM1)](#reglas-dm1) - Restricciones arquitectónicas
-11. [Decisiones Técnicas Clave](#decisiones) - CSS Variables, Mobile First, etc.
-12. [Deuda Técnica Conocida](#deuda-tecnica) - Modales duplicados, MVP estático
-
-**HERRAMIENTAS**:
-13. [Checklist Nueva Página](#checklist) - Template y validación
-14. [Herramientas y Testing](#herramientas-y-testing) - Lighthouse, Validadores
-15. [Métricas de Éxito](#metricas-de-exito) - Core Web Vitals, Performance
-
-**REFERENCIA** (Consulta ocasional):
-16. [Historial de Cambios](#historial-de-cambios) - Últimas 5 versiones
-17. [Lecciones Aprendidas](#lecciones-aprendidas) - Patrones de trabajo
-18. [Recursos y Referencias](#recursos-y-referencias) - Documentación oficial
+1. [Arquitectura del Proyecto](#arquitectura)
+2. [Sistema de Colores](#colores)
+3. [Convenciones de Código](#convenciones)
+   - [Convenciones de Contenido HTML](#convenciones-contenido) (Sistema `## ##`, Truncamiento, Primer Nombre)
+4. [Componentes Reutilizables](#componentes-reutilizables) (Iconos SVG, Cards, Botones, Badges, Grids)
+5. [Optimizaciones Implementadas](#optimizaciones)
+6. [Reglas de Negocio (DM1)](#reglas-dm1)
+7. [Decisiones Técnicas Clave](#decisiones)
+8. **[🔄 Migraciones Pendientes](#migraciones)** (Tarjetas Legacy → Responsive)
+9. [Checklist de Nuevas Páginas](#checklist)
 
 ---
 
@@ -108,170 +90,11 @@ Web_modelo/
   - Posicionamiento preciso: `right: -320px` (antes `-100%`)
 
 ### Filosofía Arquitectónica
-- **SCSS Modular** (desde 26-Nov-2025): Código fuente en módulos SCSS, compilado a `styles.css`
-- **Variables CSS primero**: Todo color/espaciado debe ser variable CSS (requisito crítico para runtime theming)
+- **Monolito CSS**: Un solo archivo `styles.css` (no usar múltiples hojas)
+- **Variables CSS primero**: Todo color/espaciado debe ser variable CSS
 - **HTML semántico**: Usar clases reutilizables, evitar inline styles
 - **Progressive Enhancement**: Funciona sin JS, mejora con JS
 - **Mobile First**: Diseñar para móvil, escalar a desktop
-
-### 📂 Arquitectura SCSS Modular (Implementada: 26-Nov-2025)
-
-**Sistema:** 38 módulos SCSS compilados a un único `css/styles.css`
-**Beneficio:** Archivos pequeños (36-299 líneas) para edición rápida y bajo consumo de tokens
-**Estado:** ✅ Funcional, Testing Visual Aprobado
-
-**Workflow de Desarrollo:**
-1. **Editar SCSS:** Modificar archivos en `scss/` (ej: `_header.scss`, `_cards.scss`)
-2. **Auto-compilación:** Watch mode genera `css/styles.css` automáticamente
-3. **Recargar browser:** Ver cambios en tiempo real
-4. **Verificar:** No errores en consola, diseño intacto
-
-**Comandos npm:**
-```bash
-npm run watch      # Modo desarrollo (auto-recompila al guardar)
-npm run build      # Compilar una vez (expanded, readable)
-npm run build:prod # Minificar para producción (.min.css)
-```
-
-### 📂 Estructura SCSS (38 Módulos Organizados)
-
-```
-scss/
-├── main.scss                        # 63 líneas - Orquestador (imports todos los módulos)
-├── _variables.scss                  # 87 líneas - CSS Custom Properties (:root)
-├── _reset.scss                      # 64 líneas - Reset CSS + estilos base
-├── _model-description.scss          # 47 líneas - Descripciones educativas
-│
-├── 🏗️ LAYOUT PRINCIPAL (6 archivos)
-│   ├── _header.scss                 # 243 líneas - Header sticky + navegación
-│   ├── _hero.scss                   # 80 líneas - Hero section homepage
-│   ├── _quien-soy.scss              # 124 líneas - Sección "Quién Soy"
-│   ├── _mission-box.scss            # 108 líneas - Caja de misión destacada
-│   ├── _sections.scss               # 88 líneas - Secciones genéricas
-│   └── _footer.scss                 # 53 líneas - Footer global
-│
-├── 🧩 COMPONENTES BASE (6 archivos)
-│   ├── _buttons.scss                # 55 líneas - Sistema de botones (3 estilos)
-│   ├── _cards.scss                  # 234 líneas - Tarjetas legacy (300px fijo)
-│   ├── _cards-responsive.scss       # 137 líneas - Nueva arquitectura fluid
-│   ├── _forms.scss                  # 68 líneas - Formularios e inputs
-│   ├── _modals.scss                 # 118 líneas - Sistema de modales
-│   └── _modal-secondary.scss        # 33 líneas - Modales secundarios
-│
-├── 🎯 FEATURES Y SECCIONES (8 archivos)
-│   ├── _recursos-digitales.scss     # 240 líneas - Catálogo de recursos
-│   ├── _comunidad.scss              # 125 líneas - Sección comunidad/membresía
-│   ├── _blog.scss                   # 36 líneas - Blog artículos recientes
-│   ├── _blog-advanced.scss          # 78 líneas - Tarjetas horizontales blog
-│   ├── _blog-listado.scss           # 58 líneas - Listado publicaciones
-│   ├── _testimonios.scss            # 106 líneas - Sistema de testimonios
-│   ├── _eventos.scss                # 115 líneas - Sección eventos
-│   └── _lead-magnet.scss            # 68 líneas - Lead magnet section
-│
-├── 📄 PÁGINAS ESPECÍFICAS (5 archivos)
-│   ├── _presentacion-profesional.scss  # 189 líneas - Página perfil profesional
-│   ├── _contacto-agenda.scss        # 118 líneas - Landing híbrida contacto
-│   ├── _carousel-privilegios.scss   # 249 líneas - Carrusel membresía
-│   ├── _post-escenarios.scss        # 79 líneas - Post escenarios adicionales
-│   └── _theme-premium.scss          # 74 líneas - Theme premium Ana (Nivel 3)
-│
-└── 🛠️ UTILITIES Y RESPONSIVE (9 archivos)
-    ├── _layout-asimetrico.scss      # 95 líneas - Héroe de producto asimétrico
-    ├── _navigation-hamburger.scss   # 97 líneas - Menú hamburguesa mobile
-    ├── _breadcrumbs.scss            # 40 líneas - Migas de pan
-    ├── _tabs.scss                   # 62 líneas - Sistema de pestañas
-    ├── _dropdown.scss               # 79 líneas - Menús desplegables
-    ├── _modulos-sesiones.scss       # 41 líneas - Módulos estilo interactive
-    ├── _optimizations.scss          # 299 líneas - Clases reutilizables
-    ├── _utilities.scss              # 24 líneas - Helpers (.mt-auto, .w-full)
-    └── _responsive.scss             # 104 líneas - Media queries (SIEMPRE AL FINAL)
-```
-
-### 🎯 Mapa Rápido: ¿Qué Archivo Editar?
-
-| Necesito cambiar... | Archivo SCSS | Líneas |
-|---------------------|--------------|--------|
-| **Colores del sitio** | `_variables.scss` | 87 |
-| **Header/Menú** | `_header.scss` | 243 |
-| **Hero homepage** | `_hero.scss` | 80 |
-| **Botones** | `_buttons.scss` | 55 |
-| **Tarjetas (legacy)** | `_cards.scss` | 234 |
-| **Tarjetas (nueva)** | `_cards-responsive.scss` | 137 |
-| **Formularios** | `_forms.scss` | 68 |
-| **Footer** | `_footer.scss` | 53 |
-| **Modales** | `_modals.scss` | 118 |
-| **Catálogo recursos** | `_recursos-digitales.scss` | 240 |
-| **Blog** | `_blog.scss`, `_blog-advanced.scss` | 36, 78 |
-| **Eventos** | `_eventos.scss` | 115 |
-| **Testimonios** | `_testimonios.scss` | 106 |
-| **Mobile responsive** | `_responsive.scss` | 104 |
-| **Menú hamburguesa** | `_navigation-hamburger.scss` | 97 |
-| **Helpers/utilidades** | `_utilities.scss` | 24 |
-
-### ⚠️ REGLAS CRÍTICAS
-
-**1. NUNCA reemplazar `var(--color-*)` con hexadecimales**
-```scss
-/* ❌ PROHIBIDO */
-.header {
-  background: #c5d9e8;  /* NO HARDCODEAR COLORES */
-}
-
-/* ✅ CORRECTO */
-.header {
-  background: var(--color-primary);  /* Usa variable CSS */
-}
-```
-**Razón:** Dashboard futuro necesita cambiar colores en runtime sin recompilar.
-
-**2. Variables SCSS solo para breakpoints y cálculos**
-```scss
-/* ✅ Uso correcto de variables SCSS */
-$breakpoint-tablet: 768px;
-$breakpoint-mobile: 480px;
-
-@media (max-width: $breakpoint-tablet) {
-  .header { padding: 1rem; }
-}
-```
-
-**3. `_responsive.scss` SIEMPRE AL FINAL**
-El orden de imports en `main.scss` es crítico. Responsive debe ser el último import para que las media queries sobrescriban correctamente.
-
-### 🧪 Testing Post-Edición
-
-Después de editar cualquier archivo SCSS, ejecutar:
-
-```bash
-# 1. Verificar que compiló sin errores
-npm run build
-
-# 2. Verificar CSS variables preservadas
-grep "var(--color" css/styles.css | wc -l
-# Debe retornar ~285 (o más)
-
-# 3. Verificar que NO hay HEX hardcodeados en clases
-grep "#c5d9e8" css/styles.css
-# Solo debe aparecer en :root (línea ~15), NO en clases
-
-# 4. Testing visual
-# Abrir index.html, catalogo.html, membresia.html en navegador
-# Verificar: colores correctos, responsive funciona, 0 errores consola
-```
-
-### 📊 Métricas del Sistema SCSS
-
-| Métrica | Valor |
-|---------|-------|
-| **Archivos SCSS** | 38 módulos |
-| **Líneas/archivo (promedio)** | ~95 líneas |
-| **Archivo más grande** | `_optimizations.scss` (299 líneas) |
-| **Archivo más pequeño** | `_utilities.scss` (24 líneas) |
-| **CSS compilado** | 3,804 líneas (79KB) |
-| **Variables CSS** | 288 usos de `var(--*)` |
-| **Reducción tokens** | ~90% vs CSS monolítico |
-
----
 
 ### Nomenclatura: Denominación Genérica "RECURSO" (22-Nov-2025)
 
@@ -1056,7 +879,7 @@ document.getElementById('userName').textContent = usuario.nombre; // Nombre comp
 | Página | Clase Actual | Estado | Validado |
 |--------|-------------|--------|----------|
 | **catalogo.html** | `.card--fluid` + `.card-image-resource` | ✅ Migrado | ✅ 24-Nov-2025 |
-| **index.html** | `.card--fluid` + `.card-image-resource` | ✅ Migrado | ✅ 26-Nov-2025 |
+| **index.html** | `.card` legacy (300px fijo) | ⏳ Pendiente | - |
 | **presentacion-profesional.html** | Por auditar | ⏳ Pendiente | - |
 | **blog.html** | Por auditar | ⏳ Pendiente | - |
 | **membresia.html** | Por auditar | ⏳ Pendiente | - |
@@ -1775,65 +1598,6 @@ svg { width: 24px; height: 24px; }
 
 ## 🔄 HISTORIAL DE CAMBIOS
 
-**Nota**: Solo se mantienen las últimas versiones significativas. Cambios incrementales y optimizaciones están documentados en sus secciones específicas.
-
-### 2025-11-26 (Versión 2.2 - Migración SCSS Modular COMPLETA)
-- ✅ **ARQUITECTURA SCSS MODULAR IMPLEMENTADA**: CSS monolítico (3,844 líneas) → 38 módulos SCSS
-  - Setup npm + sass (v1.94.2) completado
-  - **38 módulos SCSS** organizados por categorías (36-299 líneas cada uno)
-  - Compilación exitosa: CSS compilado 3,804 líneas (79KB)
-  - Reducción 10% peso CSS + 90% reducción tokens Devito
-  - Backup de seguridad: `Backups/styles_BACKUP_2025-11-26.css`
-- ✅ **ESTRUCTURA MODULAR (6 Categorías)**:
-  - **Layout Principal**: 6 archivos (header, hero, footer, etc.)
-  - **Componentes Base**: 6 archivos (buttons, cards, forms, modals)
-  - **Features**: 8 archivos (blog, eventos, testimonios, lead magnet)
-  - **Páginas Específicas**: 5 archivos (presentación, contacto, carousel, theme premium)
-  - **Utilities**: 9 archivos (responsive, breadcrumbs, tabs, dropdown, etc.)
-  - **Base**: 3 archivos (variables, reset, model-description)
-- ✅ **REQUISITO CRÍTICO CUMPLIDO**: CSS Variables 100% preservadas
-  - **288 usos** de `var(--color-*)` en CSS compilado (vs 285 original)
-  - Hexadecimales SOLO en `:root` (no en clases)
-  - Runtime theming preservado para Dashboard futuro multi-tenant
-- ✅ **LIMPIEZA Y OPTIMIZACIÓN**:
-  - Caracteres UTF-8 corregidos (鈫� → →, BOT�N → BOTÓN)
-  - Eliminados 11 líneas de comentarios obsoletos ("ELIMINADO", "DEPRECATED")
-  - Sección "CLASES DE BOTONES OBSOLETAS" removida
-- ✅ **TESTING VISUAL APROBADO**: Fundador validó funcionamiento completo
-  - index.html, catalogo.html, membresia.html verificados
-  - 0 errores visuales, 0 regresiones
-  - Responsive funcionando correctamente
-- ✅ **DOCUMENTACIÓN COMPLETA**: CHULETA actualizada con Arquitectura SCSS Modular
-  - Mapa detallado de 38 módulos con líneas y descripción
-  - Tabla "¿Qué archivo editar?" para referencia rápida
-  - Reglas críticas (no hardcodear colores, responsive al final)
-  - Comandos npm (`watch`, `build`, `build:prod`)
-  - Checklist de testing post-edición
-  - Métricas del sistema (archivos, líneas, reducción tokens)
-- 🎯 **Objetivo alcanzado**: Sistema SCSS profesional, ediciones rápidas (<10s), escalable para multi-tenant
-
-### 2025-11-26 (Versión 2.1 - Optimización CHULETA)
-- ✅ **REORGANIZACIÓN**: CHULETA optimizada para uso eficiente
-  - Corrección estado migración index.html (marcado como completado 26-Nov)
-  - Eliminada sección "Próximos Pasos" obsoleta
-  - Actualizada versión y fechas del documento
-  - Condensado historial (solo últimas 5 versiones relevantes)
-- ✅ **BACKUP**: Creado backup de seguridad antes de cambios
-- 🎯 Objetivo: Documento más conciso y actualizado para consulta diaria
-
-### 2025-11-15 (Versión 2.0 - Estandarización Navegación + UX Optimizations)
-- ✅ **NAVEGACIÓN UNIFICADA**: Estandarizada en todas las 6 páginas HTML
-  - Menú completo con 5 items: Inicio, Sobre Mí, Soluciones, Membresía, Contacto
-  - Nomenclatura profesional unificada (eliminadas variantes inconsistentes)
-  - Clase `active` agregada al link de la página actual
-- ✅ **MEMBRESIA.HTML - UX IMPROVEMENTS**:
-  - **Carrusel → Grid Flexbox 2x2**: Todos los privilegios visibles simultáneamente
-  - **FAQ → Acordeón nativo**: Sistema `<details>` con indicadores +/−
-  - **Eliminadas 80 líneas de JavaScript**: Código del carrusel removido
-- ✅ **MENÚ HAMBURGUESA - FIX CRÍTICO**:
-  - Corregido scroll horizontal: `right: -320px` (antes `-100%`)
-- 🎯 Objetivo: Consistencia total, mejor UX, eliminación de código innecesario
-
 ### 2025-01-13 (Versión 1.8 - Integración membresia.html al proyecto)
 - ✅ **PÁGINA NUEVA**: membresia.html auditada e integrada
   - Footer unificado agregado (82 líneas SVG + estructura 4 columnas)
@@ -1874,6 +1638,49 @@ svg { width: 24px; height: 24px; }
 - 📊 Archivos actualizados: 6 HTML + styles.css + CHULETA
 - 🎯 Objetivo: Consistencia total, mejor UX, eliminación de código innecesario
 
+### 2025-01-13 (Versión 1.7 - Rediseño contacto-agenda.html + Unificación Footer)
+- ✅ **REDISEÑO COMPLETO**: contacto-agenda.html transformada a layout 2 columnas
+  - Calendario a la izquierda (2fr, más ancho, borde destacado)
+  - CTA Modal + Caja de Reglas a la derecha (1fr)
+  - Recuadro CTA con gradiente, todo el bloque es botón clickeable
+  - Altura sincronizada: 700px (Calendario = CTA + Reglas)
+- ✅ **MODAL DE CONTACTO**: Formulario completo en popup
+  - Dimensiones optimizadas: 650px × 92vh
+  - Badge a la izquierda, X a la derecha (mejor aprovechamiento espacio)
+  - Textarea con scroll automático (max-height: 200px)
+  - Botón final FAQ ahora abre modal (antes hacía scroll)
+- ✅ **FOOTER UNIFICADO**: Mismo footer en las 5 páginas principales
+  - 4 columnas: Navegación, Servicios, Legal, Conecta
+  - Iconos SVG profesionales (Instagram, Facebook, YouTube, Email)
+  - Login/Registro en sección Legal
+  - Documentación .model-description incluida
+- ✅ **DOCUMENTACIÓN GENÉRICA**: Eliminadas categorías específicas
+  - Ejemplos Caja de Reglas: 8 puntos genéricos (no Terapeuta/Coach/Consultor)
+  - Ejemplos FAQ: 10 sugerencias genéricas aplicables a cualquier profesional
+- 📊 Archivos actualizados: 5 HTML + styles.css
+- 🎯 Objetivo: Diseño más limpio, modal strategy, consistencia total
+
+### 2025-01-13 (Versión 1.6 - Auditoría y Corrección Estratégica)
+- ✅ **CRÍTICO**: Unificada promesa de tiempo de respuesta a "24-48h laborables"
+- ✅ **CRÍTICO**: Eliminado enlace "Blog" del menú (Fase 2, evita 404s)
+- ✅ **UX**: Reemplazado placeholder técnico por CTA estratégico
+- ✅ Documentada deuda técnica conocida (modales/headers duplicados)
+- ✅ Decisión: Mantener arquitectura estática para MVP (velocidad > perfección)
+- 📊 Archivos actualizados: 5 HTML principales + CHULETA
+- 🎯 Impacto: Eliminadas 3 incoherencias críticas detectadas en auditoría
+
+### 2025-01-13 (Versión 1.5 - Página contacto-agenda.html Híbrida)
+- ✅ Creada nueva página `contacto-agenda.html` (Landing híbrida)
+- ✅ Estrategia UX: "Red de Seguridad" (Si no reserva → Contacta)
+- ✅ Layout asimétrico 2fr/1fr: Calendario + Formulario fallback
+- ✅ CSS sticky solo en desktop (Mobile First: estático en móvil)
+- ✅ Añadidos 145 líneas de CSS (styles.css:2720-2878)
+- ✅ Actualizadas 5 páginas HTML con nueva navegación
+- ✅ REEMPLAZA `agenda.html` y `contacto.html` (marcadas obsoletas)
+- 📍 Ubicación CSS: Sección "PÁGINA CONTACTO-AGENDA" línea 2720
+- 🎯 Objetivo: Maximizar conversión con doble vía de contacto
+- 📊 Impacto: +40% conversión vs páginas separadas (estimado)
+
 ### 2025-11-12 (Versión 1.4 - presentacion-profesional.html Optimizada)
 - ✅ Optimizadas 4/4 optimizaciones en presentacion-profesional.html
 - ✅ Open Graph Protocol completo agregado (líneas 9-117)
@@ -1893,7 +1700,26 @@ svg { width: 24px; height: 24px; }
 - ✅ Roadmap Fases 2-4 definido
 - ✅ Documento preparado para due diligence inversores
 
-**Versiones anteriores (1.0-1.2):** Optimizaciones #1-4 documentadas en sección [Optimizaciones Implementadas](#optimizaciones).
+### 2025-01-12 (Versión 1.2 - Optimización #4 Completada)
+- ✅ Implementada Optimización #4 (Open Graph Protocol)
+- ✅ Agregados meta tags OG en 3 páginas HTML
+- ✅ Agregados Twitter Cards y SEO adicional
+- ✅ Creado README-OG-IMAGES.md (guía completa 400+ líneas)
+- ✅ Sistema preparado para marketing viral en redes
+- ✅ Documentación actualizada en CHULETA
+
+### 2025-01-12 (Versión 1.1 - Optimización #3 Completada)
+- ✅ Implementada Optimización #3 - Fase 1 (Abstracción de Colores)
+- ✅ Creadas 18 variables CSS semánticas para tintes y colores funcionales
+- ✅ Eliminados TODOS los colores HEX hardcoded de HTML
+- ✅ Sistema 100% whitelabel-ready
+- ✅ Actualizada documentación en CHULETA
+
+### 2025-01-12 (Versión 1.0 - Inicial)
+- ✅ Creado archivo CHULETA-DESARROLLO.md
+- ✅ Documentadas Optimizaciones #1 y #2
+- ✅ Definido sistema de colores
+- ✅ Establecidas convenciones de código
 
 ---
 
@@ -1955,6 +1781,27 @@ Este MVP se construyó intencionalmente sin sistema de componentes para mantener
 
 ---
 
+## 🎯 PRÓXIMOS PASOS
+
+### Inmediatos (Esta Sesión)
+- [ ] Implementar Optimización #3 (Abstracción de Colores)
+- [ ] Crear variables para tintes claros
+- [ ] Reemplazar colores hardcoded en CSS
+- [ ] Reemplazar colores hardcoded en HTML
+
+### Corto Plazo (Próximas Sesiones)
+- [ ] Optimización #4 (si existe)
+- [ ] Testing completo en múltiples navegadores
+- [ ] Validación Lighthouse > 90 en todas las métricas
+- [ ] Optimización de imágenes reales (cuando se agreguen)
+
+### Medio Plazo (Futuro Dashboard)
+- [ ] JavaScript para generación dinámica de colores
+- [ ] Sistema de tintes automáticos (lighten/darken)
+- [ ] Panel de configuración de marca (whitelabel)
+- [ ] Preview en tiempo real de cambios de color
+
+---
 
 ## 💡 NOTAS FINALES
 
@@ -1973,9 +1820,9 @@ Los comentarios HTML `<!-- INSTRUCCIÓN: ... -->` son tus guías. No necesitas s
 
 ---
 
-**📅 Última actualización**: 2025-11-26
-**👤 Autor**: Devito (Claude Code)
-**📄 Versión**: 2.1
+**📅 Última actualización**: 2025-01-13
+**👤 Autor**: Claude (Asistente IA)
+**📄 Versión**: 1.8
 **🔒 Estado**: Documento vivo (actualizar con cada optimización)
 **📊 Documentos Relacionados**:
 - INVENTARIO-ACTIVOS-ESPECIFICACIONES.md (valoración y due diligence)
@@ -1986,15 +1833,41 @@ Los comentarios HTML `<!-- INSTRUCCIÓN: ... -->` son tus guías. No necesitas s
 
 ## 🧠 LECCIONES APRENDIDAS Y PATRONES DE TRABAJO
 
-**Nota**: Solo se mantienen los patrones reutilizables y generales. Casos específicos archivados.
-
 ### 📝 Patrón: Búsqueda y Reemplazo Masivo
-**Flujo recomendado**:
-1. **Inventariar primero**: Usar `Grep` con regex para encontrar TODAS las ocurrencias
-2. **Agrupar por contexto**: Clasificar antes de cambiar
-3. **Crear variables semánticas**: Nombres descriptivos
-4. **Reemplazar incremental**: Archivo por archivo (facilita debugging)
-5. **Verificar al final**: Comandos para confirmar (ej: `grep | wc -l` = 0)
+**Contexto**: Optimización #3 - Necesitábamos reemplazar colores HEX en múltiples archivos
+
+**Flujo exitoso**:
+1. **Inventariar primero**: Usar `Grep` con regex `#[0-9a-fA-F]{3,6}` para encontrar TODOS los colores
+2. **Agrupar por contexto**: No todos los HEX son iguales (algunos son decorativos, otros funcionales)
+3. **Crear variables semánticas**: Nombres descriptivos (`--color-muted-text` mejor que `--color-gray-light`)
+4. **Reemplazar archivo por archivo**: No hacer todo de golpe (facilita debugging)
+5. **Verificar al final**: `grep | wc -l` para confirmar resultado = 0
+
+**Comando útil**:
+```bash
+# Buscar colores HEX en archivos específicos
+grep -r "#[0-9a-fA-F]\{3,6\}" index.html catalogo.html sobre-mi.html
+
+# Contar ocurrencias
+grep -r "#[0-9a-fA-F]\{3,6\}" *.html | wc -l
+```
+
+---
+
+### 🔧 Patrón: Actualización de Variable CSS Global
+**Contexto**: Descubrimos que `--color-sage` tenía valor inconsistente entre archivos
+
+**Solución aplicada**:
+```css
+/* ANTES: Un solo valor para sage */
+--color-sage: #8d998e;
+
+/* DESPUÉS: Dos variantes para flexibilidad */
+--color-sage: #6B9080;       /* Principal (usado en sobre-mi) */
+--color-sage-alt: #8d998e;   /* Alternativo (preservado para compatibilidad) */
+```
+
+**Lección**: Cuando un color tiene múltiples usos, mejor crear variantes que forzar un solo valor.
 
 ---
 
@@ -2036,57 +1909,222 @@ Los comentarios HTML `<!-- INSTRUCCIÓN: ... -->` son tus guías. No necesitas s
 
 ---
 
-### 🎯 Patrón: Implementación de Optimizaciones
-**Flujo de trabajo exitoso**:
-1. **TodoWrite al inicio**: Crear lista de tareas clara
-2. **Dividir en fases pequeñas**: Incrementos verificables
-3. **Marcar completadas inmediatamente**: Actualizar en tiempo real
-4. **Verificar con comandos**: No confiar solo en inspección visual
-5. **Documentar mientras trabajas**: No al final
+### 🔍 Patrón: Debugging de Edit Fallidos
+**Problema frecuente**: `String to replace not found in file`
 
-**Anti-patrones a evitar**:
-- ❌ Intentar hacer todo en un solo Edit
-- ❌ No verificar resultados intermedios
-- ❌ Documentar al final (se olvidan detalles)
+**Soluciones**:
+1. **Leer contexto exacto**: Usar `Read` con offset para ver líneas exactas
+2. **Buscar con Grep**: Verificar que el string existe tal cual
+3. **Usar replace_all**: Cuando hay múltiples ocurrencias idénticas
+4. **Ajustar whitespace**: Tabs vs espacios pueden causar fallos
+
+**Ejemplo real** (Optimización #3):
+```bash
+# Problema: No encontraba el string con múltiples líneas
+# Solución: Usar replace_all con string corto único
+Edit(replace_all=true, old_string="background: #6B9080;", ...)
+# ✅ Reemplazó 4 ocurrencias en una sola operación
+```
 
 ---
 
-### 🔍 Patrón: Debugging y Verificación
-**Debugging de Edits fallidos**:
-1. **Leer contexto exacto**: Usar `Read` con offset
-2. **Buscar con Grep**: Verificar que el string existe
-3. **Usar replace_all**: Para múltiples ocurrencias idénticas
-4. **Ajustar whitespace**: Tabs vs espacios
+### 📊 Patrón: Verificación de Completitud
+**Checklist post-optimización**:
 
-**Comandos de verificación útiles**:
 ```bash
-# Verificar ausencia de hardcoded values
+# 1. Verificar que no quedan HEX hardcoded
 grep -r "#[0-9a-fA-F]\{3,6\}" *.html | wc -l  # Debe ser 0
 
-# Verificar que cambios se aplicaron
+# 2. Verificar que variables existen en CSS
 grep "var(--color-" *.html  # Deben encontrarse muchas
 
-# Ver archivos modificados
-git status
+# 3. Verificar que :root está completo
+grep "^:root" -A 50 css/styles.css  # Ver todas las variables
 
-# Contar variables CSS
-grep "^    --color-" css/styles.css | wc -l
+# 4. Revisar archivos modificados
+git status  # Ver qué cambió
+
+# 5. Contar variables creadas
+grep "^    --color-" css/styles.css | wc -l  # Contar nuevas
 ```
 
 ---
 
-### 🚀 Patrón: Commits Incrementales
-**Estrategia recomendada**: Un commit por cambio significativo
+### 💡 Patrón: Manejo de Colores Específicos de Página
+**Problema**: sobre-mi.html usaba `#6B9080` en muchos lugares, pero no era el `--color-sage` original
 
-```bash
-git add archivo1.html
-git commit -m "Descripción específica del cambio"
+**Opciones consideradas**:
+1. ❌ Forzar que todos usen el sage original (#8d998e)
+2. ❌ Crear variable específica `--color-sage-sobre-mi`
+3. ✅ **Actualizar el sage principal** y crear `--color-sage-alt` para casos especiales
 
-git add archivo2.css
-git commit -m "Otro cambio específico"
+**Decisión**: Opción 3
+- Más limpio semánticamente
+- El #6B9080 es más representativo del "sage" visual
+- Mantiene compatibilidad con `--color-sage-alt`
+
+**Regla derivada**: Si un color se usa 5+ veces, probablemente debería ser la variante principal.
+
+---
+
+### 🎨 Patrón: Tintes Claros para Fondos de Iconos
+**Problema**: Los iconos tenían fondos con tintes al 10% del color principal
+
+**Solución implementada**:
+```css
+/* Color principal */
+--color-primary: #c5d9e8;  /* Azul */
+
+/* Tinte claro (10% opacidad aproximada) */
+--color-bg-primary-light: #eef2ff;  /* Azul muy claro */
 ```
 
-**Ventaja**: Si algo falla, revertir commits específicos sin perder todo el trabajo.
+**Matemática detrás** (para Fase 2):
+```javascript
+// Función para calcular tinte claro automáticamente
+function lighten(color, percent) {
+    const rgb = hexToRgb(color);
+    return rgbToHex({
+        r: rgb.r + (255 - rgb.r) * percent / 100,
+        g: rgb.g + (255 - rgb.g) * percent / 100,
+        b: rgb.b + (255 - rgb.b) * percent / 100
+    });
+}
+
+// Uso:
+lighten('#c5d9e8', 40);  // → #eef2ff aproximadamente
+```
+
+---
+
+### 📦 Patrón: Organización de Variables en :root
+**Estructura aplicada** (líneas 2283-2315):
+
+```css
+:root {
+    /* === SECCIÓN 1: COLORES BASE === */
+    /* Configurables por el usuario en Dashboard */
+
+    /* === SECCIÓN 2: TINTES CLAROS === */
+    /* Derivados automáticamente (Fase 2) */
+
+    /* === SECCIÓN 3: COLORES FUNCIONALES === */
+    /* Estados del sistema (error, success) */
+
+    /* === SECCIÓN 4: GRADIENTES === */
+    /* Efectos visuales específicos */
+}
+```
+
+**Beneficio**: Fácil de mantener y expandir. Cada sección tiene propósito claro.
+
+---
+
+### 🚀 Patrón: Commit Strategy (Para futuras optimizaciones)
+**Recomendación basada en esta sesión**:
+
+```bash
+# Commit 1: Variables CSS
+git add css/styles.css
+git commit -m "Opt #3: Agregar variables CSS semánticas para whitelabel"
+
+# Commit 2: Limpiar index.html
+git add index.html
+git commit -m "Opt #3: Reemplazar colores HEX por variables en index.html"
+
+# Commit 3: Limpiar catalogo.html
+git add catalogo.html
+git commit -m "Opt #3: Reemplazar colores HEX por variables en oferta-servicios"
+
+# Commit 4: Limpiar sobre-mi.html
+git add sobre-mi.html
+git commit -m "Opt #3: Reemplazar colores HEX por variables en sobre-mi"
+
+# Commit 5: Documentación
+git add CHULETA-DESARROLLO.md
+git commit -m "Opt #3: Actualizar documentación whitelabel en Chuleta"
+```
+
+**Ventaja**: Si algo falla, puedes revertir commits específicos sin perder todo el trabajo.
+
+---
+
+### 🔒 Patrón: Validación de localStorage (Bug del 23-Nov-2025)
+**Contexto**: Usuarios autenticados (Ana nivel 3, Regina nivel 2) eran redirigidos incorrectamente a `index.html` al intentar acceder a `area-privada.html`.
+
+**Problema raíz (RESUELTO):**
+- **`crear-usuarios-prueba.html` se abría con doble clic** → Protocolo `file:///C:/Users/.../`
+- **`index.html` se abría con Live Server** → Protocolo `http://127.0.0.1:5500/`
+- **Navegadores separan localStorage por protocolo** → Dos bases de datos diferentes
+- Ana y Regina se creaban correctamente (nivel 3 y 2) pero en el localStorage de `file://`
+- La web en `http://` tenía usuarios viejos con nivel 1 (gratuito)
+
+**Síntomas:**
+- Usuarios "desaparecen" después de crearlos
+- Ana/Regina redirigen a index.html (area-privada.html detecta nivel 1 y los echa)
+- Actualizar manualmente en consola funciona (porque se hace en el localStorage correcto)
+
+**Solución DEFINITIVA:**
+```markdown
+⚠️ CRÍTICO: SIEMPRE usar Live Server para abrir archivos HTML del proyecto
+
+✅ CORRECTO:
+1. Clic derecho en crear-usuarios-prueba.html → "Open with Live Server"
+2. URL: http://127.0.0.1:5500/crear-usuarios-prueba.html
+3. Clic en "✅ Crear Usuarios de Prueba"
+4. Ir a http://127.0.0.1:5500/index.html
+
+❌ INCORRECTO:
+- Doble clic en crear-usuarios-prueba.html (abre como file://)
+- Los usuarios creados NO estarán disponibles en la web
+```
+
+**Fix secundario aplicado en `js/area-privada.js`:**
+Las funciones `simularMejoraPremium()`, `simularComprador()` y `volverGratuito()` tenían un bug:
+- Solo actualizaban `usuarioActual` en localStorage
+- NO actualizaban la lista de usuarios
+- Al cerrar sesión y volver a entrar, cargaba datos viejos
+
+```javascript
+// ✅ CORRECTO: Actualizar AMBOS lugares
+window.simularMejoraPremium = function() {
+    const usuario = obtenerUsuarioActual();
+    usuario.tipoUsuario = 'miembro';
+    usuario.nivel = 3;
+    guardarUsuarioActual(usuario);
+
+    // CRÍTICO: Actualizar también en la lista
+    const usuarios = obtenerUsuarios();
+    const index = usuarios.findIndex(u => u.id === usuario.id);
+    if (index !== -1) {
+        usuarios[index].tipoUsuario = 'miembro';
+        usuarios[index].nivel = 3;
+        guardarUsuarios(usuarios);
+    }
+};
+```
+
+**Lecciones aprendidas**:
+1. **localStorage es específico por PROTOCOLO** (`file://` ≠ `http://`)
+2. **SIEMPRE usar Live Server** en desarrollo local
+3. **Funciones que modifican usuarios deben actualizar AMBOS lugares**: `usuarioActual` + lista `usuarios`
+4. **NUNCA asumir que crear-usuarios-prueba.html generaba datos corruptos** - verificar primero si el problema es de aislamiento de datos
+
+**Comando de debug**:
+```javascript
+// En consola del navegador, verificar usuarios
+console.log('Usuario actual:', JSON.parse(localStorage.getItem('usuarioActual')));
+console.log('Lista usuarios:', JSON.parse(localStorage.getItem('usuarios')));
+
+// Verificar que Ana/Regina tienen los niveles correctos
+const usuarios = JSON.parse(localStorage.getItem('usuarios'));
+console.log('Ana:', usuarios.find(u => u.email === 'ana@test.com'));
+console.log('Regina:', usuarios.find(u => u.email === 'regina@test.com'));
+```
+
+**Aplicado en**:
+- `js/area-privada.js` (funciones de simulación corregidas)
+- **Procedimiento de trabajo**: Documentado uso obligatorio de Live Server
 
 ---
 

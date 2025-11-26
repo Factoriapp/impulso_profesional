@@ -1,0 +1,83 @@
+/* ============================================
+   CSS CUSTOM PROPERTIES (Variables Nativas)
+   CRÍTICO: Mantener var(--*) para theming runtime
+   ============================================ */
+
+:root {
+    /* Paleta de Colores: Azules Claros y Ocres Pastel */
+    --color-sky: #c5d9e8;            /* Azul cielo suave */
+    --color-powder: #d4e3ed;         /* Azul polvo muy claro */
+    --color-mist: #e5eff5;           /* Niebla azul casi blanca */
+    --color-ochre: #e8d5c4;          /* Ocre pastel cálido */
+    --color-sand: #e7ddc9;           /* Arena dorada suave */
+    --color-cream: #f5f1e8;          /* Crema cálida */
+    --color-sage-blue: #b8c9d4;      /* Azul-verde apagado */
+
+    /* Colores de Texto */
+    --color-text: #6b6b6b;           /* Gris medio cálido */
+    --color-text-light: #999;        /* Gris claro */
+    --color-white: #ffffff;
+    --color-bg: #faf8f5;             /* Fondo cálido muy claro */
+
+    /* Sombras Muy Suaves */
+    --shadow-soft: 0 4px 20px rgba(107, 107, 107, 0.08);
+    --shadow-medium: 0 6px 30px rgba(107, 107, 107, 0.12);
+    --shadow-hover: 0 8px 40px rgba(107, 107, 107, 0.15);
+
+    /* Tipografía */
+    --font-serif: 'Playfair Display', 'Lora', Georgia, serif;
+    --font-sans: 'Source Sans Pro', 'Poppins', -apple-system, sans-serif;
+
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    --spacing-xl: 5rem;
+
+    /* Transiciones Suaves */
+    --transition: all 0.4s ease;
+
+    /* === COLORES BASE (Configurables en Dashboard SaaS) === */
+    --color-primary: var(--color-sky);
+    --color-secondary: var(--color-ochre);
+    --color-sage: #6B9080;              /* Verde sage principal (usado en sobre-mi) */
+    --color-sage-alt: #8d998e;          /* Verde sage alternativo */
+    --color-lavender: #b6a2c0;
+    --color-border: rgba(197, 217, 232, 0.3);
+
+    /* === TINTES CLAROS (Derivados de colores base) === */
+    /* Optimización #3: Variables para fondos claros de iconos/tarjetas */
+    --color-bg-primary-light: #eef2ff;      /* Tinte 10% del azul primario - iconos eventos */
+    --color-bg-secondary-light: #fffbf0;    /* Tinte 10% del ocre - iconos cursos */
+    --color-bg-sage-light: #f0f5f1;         /* Tinte 10% del verde sage - iconos ebooks */
+    --color-bg-text-light: #f5f5f5;         /* Fondo claro neutral para iconos servicios */
+    --color-bg-neutral: #f9f9f9;            /* Fondo gris claro para cajas info */
+    --color-bg-alt: #fafafa;                /* Fondo alternativo secciones */
+
+    /* === COLORES FUNCIONALES (Sistema) === */
+    /* Estados de feedback al usuario */
+    --color-success: #4CAF50;               /* Verde para mensajes de éxito */
+    --color-success-bg: #efe;               /* Fondo verde claro para alertas éxito */
+    --color-success-dark: #3c3;             /* Verde oscuro para texto/bordes */
+
+    --color-error: #c33;                    /* Rojo para mensajes de error */
+    --color-error-bg: #fee;                 /* Fondo rojo claro para alertas error */
+
+    --color-muted-text: #999;               /* Texto apagado/secundario */
+    --color-light: #f5f5f5;                 /* Fondo claro genérico */
+
+    /* === GRADIENTES (Placeholders y decorativos) === */
+    --gradient-placeholder-start: #f5f5f5;  /* Inicio gradiente placeholder */
+    --gradient-placeholder-end: #e0e0e0;    /* Fin gradiente placeholder */
+
+    /* === SISTEMA DE BORDES (ESTÁNDAR GLOBAL) === */
+    --radius-container: 16px;  /* USO: Tarjetas, Imágenes, Modales, Secciones destacadas */
+    --radius-internal: 8px;    /* USO: Inputs, Checkboxes, Badges pequeños */
+    --radius-pill: 50px;       /* USO: Botones redondos, Avatares */
+}
+
+/* Variables SCSS para breakpoints y mixins (NO colores) */
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 968px;

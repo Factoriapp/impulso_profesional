@@ -1,0 +1,234 @@
+
+/* ============================================
+   LAYOUT ASIMÉTRICO: HÉROE DE PRODUCTO
+   ============================================ */
+
+.hero-product-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: var(--spacing-lg);
+}
+
+/* Tarjeta Héroe (Grande) */
+.product-hero {
+    background: var(--color-white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    border: 2px solid var(--color-sky);
+    position: relative;
+    transition: var(--transition);
+}
+
+.product-hero:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.product-hero-badge {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: linear-gradient(135deg, var(--color-ochre), var(--color-sand));
+    color: var(--color-text);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-soft);
+    z-index: 10;
+}
+
+.product-hero-image {
+    background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+}
+
+.product-hero-content {
+    padding: 2.5rem;
+}
+
+.product-hero-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+}
+
+.product-hero-subtitle {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-sky);
+}
+
+.product-hero-description {
+    color: var(--color-text);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+.product-hero-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, rgba(229, 239, 245, 0.3), rgba(232, 213, 196, 0.2));
+    border-radius: 12px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
+.feature-icon {
+    font-size: 1.5rem;
+}
+
+.product-hero-cta {
+    padding-top: 2rem;
+    border-top: 2px solid var(--color-sky);
+}
+
+.product-price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.price-label {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+.price-amount {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Grid de Productos Secundarios */
+.product-secondary-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 100%;
+}
+
+/* Tarjetas de Producto Secundarias */
+.product-card {
+    background: var(--color-white);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(197, 217, 232, 0.3);
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.product-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.product-card-image {
+    background: linear-gradient(135deg, var(--color-mist), var(--color-cream));
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-style: italic;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.product-card-title {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin: 1.5rem 1.5rem 1rem;
+}
+
+.product-card-description {
+    color: var(--color-text-light);
+    line-height: 1.7;
+    font-size: 0.9rem;
+    margin: 0 1.5rem;
+    flex-grow: 1;
+}
+
+.product-card-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(197, 217, 232, 0.3);
+    margin-top: 1.5rem;
+}
+
+.product-card-price {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+/* Responsive para Layout Héroe */
+@media (max-width: 968px) {
+    .hero-product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-secondary-grid {
+        flex-direction: row;
+    }
+
+    .product-hero-features {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-secondary-grid {
+        flex-direction: column;
+    }
+
+    .product-hero-title {
+        font-size: 1.5rem;
+    }
+
+    .product-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .product-hero-image {
+        height: 200px;
+    }
+
+    .product-card-image {
+        height: 150px;
+    }
+}

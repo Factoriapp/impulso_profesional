@@ -1,0 +1,108 @@
+
+/* ============================================
+   BOTONES - SISTEMA SIMPLIFICADO (3 ESTILOS)
+   ============================================ */
+
+/* BASE - Estilos compartidos */
+.btn {
+    display: inline-block;
+    padding: 0.9rem 2rem;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    line-height: 1.2;
+}
+
+/* PRIMARIO - Acción principal */
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-text);
+    border-color: var(--color-primary);
+}
+
+.btn-primary:hover {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* SECUNDARIO - Acción alternativa */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border-color: var(--color-text);
+}
+
+.btn-secondary:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* DANGER - Acciones destructivas */
+.btn-danger {
+    background: #dc3545;
+    color: var(--color-white);
+    border-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background: #c82333;
+    border-color: #c82333;
+    color: var(--color-white);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+/* MODIFICADOR: Tamaño grande */
+.btn-large {
+    padding: 1.1rem 2.5rem;
+    font-size: 1rem;
+}
+
+/* MODIFICADOR: Botón compacto para tarjetas */
+.btn-compact {
+    padding: 0.6rem 2rem;
+}
+
+/* LINK DE ACCIÓN EN TARJETAS - Sin marco, solo texto en negritas */
+.card-link-action {
+    display: inline-block;
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: var(--transition);
+}
+
+.card-link-action:hover {
+    color: var(--color-primary);
+    transform: translateX(3px);
+}
+
+/* ESTADO: Deshabilitado */
+.btn:disabled,
+.btn-primary:disabled,
+.btn-secondary:disabled,
+.btn-danger:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    /* Opacity eliminado - botón se ve claramente incluso deshabilitado */
+}
+
+.btn:disabled:hover,
+.btn-primary:disabled:hover,
+.btn-secondary:disabled:hover,
+.btn-danger:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}

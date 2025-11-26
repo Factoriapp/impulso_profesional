@@ -1,0 +1,63 @@
+/* ============================================
+   IMPULSO PROFESIONAL - Plataforma SaaS
+   SCSS Modular - Compilado a css/styles.css
+   ============================================ */
+
+/* 1. Variables CSS Nativas (Custom Properties) */
+@import 'variables';
+
+/* 2. Reset y Base */
+@import 'reset';
+@import 'model-description';
+
+/* 3. Layout Principal */
+@import 'header';
+@import 'hero';
+@import 'quien-soy';
+@import 'mission-box';
+@import 'sections';
+@import 'footer';
+
+/* 4. Componentes Base */
+@import 'buttons';
+@import 'cards';
+@import 'cards-responsive';
+@import 'forms';
+@import 'modals';
+@import 'modal-secondary';
+
+/* 5. Layouts Específicos */
+@import 'layout-asimetrico';
+
+/* 6. Features y Secciones */
+@import 'recursos-digitales';
+@import 'comunidad';
+@import 'blog';
+@import 'blog-advanced';
+@import 'blog-listado';
+@import 'modulos-sesiones';
+@import 'testimonios';
+@import 'eventos';
+@import 'lead-magnet';
+
+/* 7. Páginas Específicas */
+@import 'presentacion-profesional';
+@import 'contacto-agenda';
+@import 'carousel-privilegios';
+@import 'post-escenarios';
+@import 'theme-premium';
+
+/* 8. Navegación */
+@import 'navigation-hamburger';
+
+/* 9. Componentes UI */
+@import 'breadcrumbs';
+@import 'tabs';
+@import 'dropdown';
+
+/* 10. Optimizaciones y Utilidades */
+@import 'optimizations';
+@import 'utilities';
+
+/* 11. Responsive (SIEMPRE AL FINAL) */
+@import 'responsive';
