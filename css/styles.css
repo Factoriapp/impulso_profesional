@@ -147,9 +147,9 @@ img {
 }
 
 /* ============================================
-   DESCRIPCIONES DEL MODELO (Educativas)
+   GUÍAS PARA EL CLIENTE (Pepe)
    ============================================ */
-.model-description {
+.guia-cliente {
   background: linear-gradient(135deg, rgba(232, 213, 196, 0.3), rgba(197, 217, 232, 0.2));
   border: 2px dashed #333;
   padding: var(--spacing-md);
@@ -158,7 +158,7 @@ img {
   backdrop-filter: blur(10px);
 }
 
-.model-description h4 {
+.guia-cliente h4 {
   color: var(--color-text);
   font-family: var(--font-serif);
   font-size: 1rem;
@@ -169,14 +169,14 @@ img {
   margin-bottom: var(--spacing-xs);
 }
 
-.model-description p {
+.guia-cliente p {
   font-size: 0.95rem;
   color: var(--color-text-light);
   line-height: 1.7;
   margin-bottom: 0.5rem;
 }
 
-.model-description p:last-child {
+.guia-cliente p:last-child {
   margin-bottom: 0;
 }
 
@@ -515,9 +515,9 @@ img {
 }
 
 /* ============================================
-   QUIÉN SOY SECTION
+   PRESENTACIÓN PROFESIONAL SECTION
    ============================================ */
-.about-container {
+.presentacion-container {
   display: grid;
   grid-template-columns: 500px 1fr;
   gap: 3rem;
@@ -525,7 +525,7 @@ img {
   margin-top: 2rem;
 }
 
-.about-image {
+.presentacion-image {
   background: linear-gradient(135deg, var(--color-powder), var(--color-sand));
   border-radius: var(--radius-container);
   width: 500px;
@@ -541,7 +541,7 @@ img {
   box-shadow: var(--shadow-soft);
 }
 
-.about-content {
+.presentacion-content {
   display: flex;
   flex-direction: column;
 }
@@ -554,7 +554,7 @@ img {
   font-style: italic;
 }
 
-.about-intro {
+.presentacion-intro {
   font-family: var(--font-serif);
   font-size: 1.2rem;
   font-style: italic;
@@ -565,7 +565,7 @@ img {
   border-left: 3px solid var(--color-ochre);
 }
 
-.about-text p {
+.presentacion-text p {
   color: var(--color-text);
   line-height: 1.9;
   margin-bottom: var(--spacing-md);
@@ -579,7 +579,7 @@ img {
   margin-bottom: 0.5rem;
 }
 
-.about-mission {
+.presentacion-mission {
   margin-top: 3rem;
   background: linear-gradient(135deg, var(--color-sky), var(--color-powder));
   padding: 2rem 2.5rem;
@@ -588,7 +588,7 @@ img {
   box-shadow: var(--shadow-medium);
 }
 
-.about-mission h3 {
+.presentacion-mission h3 {
   font-family: var(--font-serif);
   font-size: 1.75rem;
   font-style: italic;
@@ -596,7 +596,7 @@ img {
   margin-bottom: 1rem;
 }
 
-.about-mission p {
+.presentacion-mission p {
   font-family: var(--font-serif);
   font-size: 1.05rem;
   font-style: italic;
@@ -3679,6 +3679,61 @@ img {
     gap: 2rem;
   }
 }
+/* ============================================
+   SISTEMA DE TIPOS DE IMAGEN
+   Definido: 27-Nov-2025
+   ============================================ */
+/* ============================================
+   TIPO 1: IMG-TARJETA (Levitación)
+   Uso: Tarjetas de productos/cursos (Catálogo, Home)
+   ============================================ */
+.img-tarjeta {
+  /* Shrink-to-fit: La imagen abraza su contenido real */
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  /* Levitación: Muestra el objeto completo */
+  object-fit: contain;
+  /* Bordes redondeados aplicados a la imagen */
+  border-radius: 16px;
+  /* Centrado en el contenedor */
+  display: block;
+  margin: 0 auto;
+}
+
+/* ============================================
+   TIPO 2: IMG-AMPLIA (Inmersiva)
+   Uso: Blog, detalles de catálogo, Hero, Comunidad
+   ============================================ */
+.img-amplia {
+  /* Fill completo: Llena todo el marco */
+  width: 100%;
+  height: 100%;
+  /* Cover: La imagen cubre todo el espacio */
+  object-fit: cover;
+  object-position: center center;
+  /* Display block para eliminar espacio inferior */
+  display: block;
+}
+
+/* Contenedor para img-amplia (debe tener esta estructura) */
+.img-amplia-container {
+  /* Overflow hidden para recortar esquinas */
+  overflow: hidden;
+  border-radius: 16px;
+  /* El contenedor define el tamaño */
+  position: relative;
+}
+
+/* ============================================
+   VARIANTE: IMG-AMPLIA con alineación superior
+   Para retratos de personas (evita decapitación)
+   ============================================ */
+.img-amplia--retrato {
+  object-position: center top;
+}
+
 /* ============================================
    UTILIDADES
    ============================================ */

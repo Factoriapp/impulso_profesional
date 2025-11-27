@@ -1,0 +1,61 @@
+/* ============================================
+   SISTEMA DE TIPOS DE IMAGEN
+   Definido: 27-Nov-2025
+   ============================================ */
+
+/* ============================================
+   TIPO 1: IMG-TARJETA (Levitación)
+   Uso: Tarjetas de productos/cursos (Catálogo, Home)
+   ============================================ */
+.img-tarjeta {
+    /* Shrink-to-fit: La imagen abraza su contenido real */
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+
+    /* Levitación: Muestra el objeto completo */
+    object-fit: contain;
+
+    /* Bordes redondeados aplicados a la imagen */
+    border-radius: 16px;
+
+    /* Centrado en el contenedor */
+    display: block;
+    margin: 0 auto;
+}
+
+/* ============================================
+   TIPO 2: IMG-AMPLIA (Inmersiva)
+   Uso: Blog, detalles de catálogo, Hero, Comunidad
+   ============================================ */
+.img-amplia {
+    /* Fill completo: Llena todo el marco */
+    width: 100%;
+    height: 100%;
+
+    /* Cover: La imagen cubre todo el espacio */
+    object-fit: cover;
+    object-position: center center;
+
+    /* Display block para eliminar espacio inferior */
+    display: block;
+}
+
+/* Contenedor para img-amplia (debe tener esta estructura) */
+.img-amplia-container {
+    /* Overflow hidden para recortar esquinas */
+    overflow: hidden;
+    border-radius: 16px;
+
+    /* El contenedor define el tamaño */
+    position: relative;
+}
+
+/* ============================================
+   VARIANTE: IMG-AMPLIA con alineación superior
+   Para retratos de personas (evita decapitación)
+   ============================================ */
+.img-amplia--retrato {
+    object-position: center top;
+}

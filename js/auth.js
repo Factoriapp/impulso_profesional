@@ -303,9 +303,8 @@ if (document.getElementById('loginForm')) {
 
 if (document.getElementById('cerrarSesion')) {
     document.getElementById('cerrarSesion').addEventListener('click', function() {
-        if (confirm('¿Estás segura de que quieres cerrar sesión?')) {
-            cerrarSesion();
-        }
+        // Cerrar sesión directamente sin diálogo molesto
+        cerrarSesion();
     });
 }
 

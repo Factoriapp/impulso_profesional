@@ -129,7 +129,7 @@ function renderRecursos(usuario, tipoUsuario) {
                 </p>
             </div>
             <div class="library-list">
-                <div class="library-item" onclick="alert('[Acceder al recurso]')">
+                <div class="library-item" onclick="console.log('🔧 Acceso a recurso - En desarrollo')" style="cursor: pointer;">
                     <div class="library-item-icon">🎓</div>
                     <div class="library-item-content">
                         <div class="library-item-title">[Cursos y Formaciones]</div>
@@ -137,7 +137,7 @@ function renderRecursos(usuario, tipoUsuario) {
                     </div>
                     <span style="color: var(--color-primary);">→</span>
                 </div>
-                <div class="library-item" onclick="alert('[Acceder al recurso]')">
+                <div class="library-item" onclick="console.log('🔧 Acceso a recurso - En desarrollo')" style="cursor: pointer;">
                     <div class="library-item-icon">📄</div>
                     <div class="library-item-content">
                         <div class="library-item-title">[Guías y PDFs Premium]</div>
@@ -145,7 +145,7 @@ function renderRecursos(usuario, tipoUsuario) {
                     </div>
                     <span style="color: var(--color-primary);">→</span>
                 </div>
-                <div class="library-item" onclick="alert('[Acceder al recurso]')">
+                <div class="library-item" onclick="console.log('🔧 Acceso a recurso - En desarrollo')" style="cursor: pointer;">
                     <div class="library-item-icon">🎬</div>
                     <div class="library-item-content">
                         <div class="library-item-title">[Videos y Masterclasses]</div>
@@ -153,7 +153,7 @@ function renderRecursos(usuario, tipoUsuario) {
                     </div>
                     <span style="color: var(--color-primary);">→</span>
                 </div>
-                <div class="library-item" onclick="alert('[Acceder al recurso]')">
+                <div class="library-item" onclick="console.log('🔧 Acceso a recurso - En desarrollo')" style="cursor: pointer;">
                     <div class="library-item-icon">🛠️</div>
                     <div class="library-item-content">
                         <div class="library-item-title">[Plantillas y Herramientas]</div>
@@ -177,7 +177,7 @@ function renderRecursos(usuario, tipoUsuario) {
             const icono = iconos[recurso.tipo] || '📦';
 
             html += `
-                <div class="library-item" onclick="alert('[Acceder a: ${recurso.titulo}]')">
+                <div class="library-item" onclick="console.log('🔧 Acceso a recurso:', '${recurso.titulo}')" style="cursor: pointer;">
                     <div class="library-item-icon">${icono}</div>
                     <div class="library-item-content">
                         <div class="library-item-title">${recurso.titulo}</div>
@@ -264,7 +264,7 @@ function renderUpsell(usuario, tipoUsuario) {
                     <p style="color: var(--color-text-light); margin-bottom: 1rem;">
                         [Descripción del privilegio exclusivo para miembros premium]
                     </p>
-                    <button class="btn btn-secondary" style="width: 100%;" onclick="alert('[Función en desarrollo]')">
+                    <button class="btn btn-secondary" style="width: 100%;" onclick="console.log('🔧 Función en desarrollo')">
                         [Acceder/Ver Más]
                     </button>
                 </div>
@@ -398,9 +398,12 @@ function renderGestion(usuario, tipoUsuario) {
 // ============================================
 
 function gestionarSuscripcion() {
-    if (confirm('¿Deseas gestionar tu suscripción?\n\nOpciones:\n- Ver próxima factura\n- Actualizar método de pago\n- Cancelar suscripción')) {
-        alert('Funcionalidad en desarrollo.\n\nEn producción conectará con Stripe/PayPal.');
-    }
+    // Funcionalidad en desarrollo - En producción conectará con Stripe/PayPal
+    console.log('🔧 Gestionar suscripción - En desarrollo');
+    // TODO: Abrir modal de gestión de suscripción con opciones:
+    // - Ver próxima factura
+    // - Actualizar método de pago
+    // - Cancelar suscripción
 }
 
 // ============================================
@@ -425,7 +428,7 @@ window.simularMejoraPremium = function() {
             guardarUsuarios(usuarios);
         }
 
-        alert('✓ Actualizado a Miembro Premium!');
+        console.log('✓ Simulador: Actualizado a Miembro Premium');
         location.reload();
     }
 };
@@ -454,7 +457,7 @@ window.simularComprador = function() {
             guardarUsuarios(usuarios);
         }
 
-        alert('✓ Actualizado a Comprador con 3 recursos!');
+        console.log('✓ Simulador: Actualizado a Comprador con 3 recursos');
         location.reload();
     }
 };
@@ -479,7 +482,7 @@ window.volverGratuito = function() {
             guardarUsuarios(usuarios);
         }
 
-        alert('✓ Vuelto a Usuario Gratuito');
+        console.log('✓ Simulador: Vuelto a Usuario Gratuito');
         location.reload();
     }
 };

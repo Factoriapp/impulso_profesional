@@ -133,19 +133,19 @@ npm run build      # Compilar una vez (expanded, readable)
 npm run build:prod # Minificar para producción (.min.css)
 ```
 
-### 📂 Estructura SCSS (38 Módulos Organizados)
+### 📂 Estructura SCSS (39 Módulos Organizados)
 
 ```
 scss/
 ├── main.scss                        # 63 líneas - Orquestador (imports todos los módulos)
 ├── _variables.scss                  # 87 líneas - CSS Custom Properties (:root)
 ├── _reset.scss                      # 64 líneas - Reset CSS + estilos base
-├── _model-description.scss          # 47 líneas - Descripciones educativas
+├── _guia-cliente.scss               # 47 líneas - Guías para el cliente (Pepe)
 │
 ├── 🏗️ LAYOUT PRINCIPAL (6 archivos)
 │   ├── _header.scss                 # 243 líneas - Header sticky + navegación
 │   ├── _hero.scss                   # 80 líneas - Hero section homepage
-│   ├── _quien-soy.scss              # 124 líneas - Sección "Quién Soy"
+│   ├── _presentacion.scss                 # 124 líneas - Sección 'Presentación'
 │   ├── _mission-box.scss            # 108 líneas - Caja de misión destacada
 │   ├── _sections.scss               # 88 líneas - Secciones genéricas
 │   └── _footer.scss                 # 53 líneas - Footer global
@@ -175,7 +175,7 @@ scss/
 │   ├── _post-escenarios.scss        # 79 líneas - Post escenarios adicionales
 │   └── _theme-premium.scss          # 74 líneas - Theme premium Ana (Nivel 3)
 │
-└── 🛠️ UTILITIES Y RESPONSIVE (9 archivos)
+└── 🛠️ UTILITIES Y RESPONSIVE (10 archivos)
     ├── _layout-asimetrico.scss      # 95 líneas - Héroe de producto asimétrico
     ├── _navigation-hamburger.scss   # 97 líneas - Menú hamburguesa mobile
     ├── _breadcrumbs.scss            # 40 líneas - Migas de pan
@@ -183,6 +183,7 @@ scss/
     ├── _dropdown.scss               # 79 líneas - Menús desplegables
     ├── _modulos-sesiones.scss       # 41 líneas - Módulos estilo interactive
     ├── _optimizations.scss          # 299 líneas - Clases reutilizables
+    ├── _image-types.scss            # 61 líneas - Sistema de tipos de imagen ⭐ NUEVO
     ├── _utilities.scss              # 24 líneas - Helpers (.mt-auto, .w-full)
     └── _responsive.scss             # 104 líneas - Media queries (SIEMPRE AL FINAL)
 ```
@@ -194,6 +195,7 @@ scss/
 | **Colores del sitio** | `_variables.scss` | 87 |
 | **Header/Menú** | `_header.scss` | 243 |
 | **Hero homepage** | `_hero.scss` | 80 |
+| **Presentación** | `_presentacion.scss` | 124 |
 | **Botones** | `_buttons.scss` | 55 |
 | **Tarjetas (legacy)** | `_cards.scss` | 234 |
 | **Tarjetas (nueva)** | `_cards-responsive.scss` | 137 |
@@ -1270,6 +1272,271 @@ Una página está **migrada correctamente** cuando cumple:
 
 ## 🎨 COMPONENTES REUTILIZABLES {#componentes-reutilizables}
 
+### 🖼️ Sistema de Tipos de Imagen (Definido: 27-Nov-2025)
+
+**Objetivo:** Simplificar la comunicación. En lugar de explicar configuraciones CSS complejas, usamos nomenclatura estándar: "usa img-tarjeta" o "usa img-amplia".
+
+#### **Tipo 1: `.img-tarjeta` (Levitación)**
+
+**Dónde usar:**
+- Tarjetas de productos/cursos en Catálogo
+- Tarjetas "Recursos Destacados" en Home
+
+**Técnica CSS:**
+```css
+.img-tarjeta {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto;
+}
+```
+
+**Resultado visual:** Producto flotando centrado en su contenedor, mostrando el objeto completo (ej: libro, caja).
+
+**Truco "Shrink-to-Fit":** La imagen abraza su contenido real (`width: auto`), por lo que el `border-radius` se aplica correctamente a las esquinas de la imagen, no al contenedor.
+
+**Ejemplo HTML:**
+```html
+<div class="card-image" style="background: #f5f5f5; padding: 1.5rem;">
+  <img src="producto.jpg" alt="Producto" class="img-tarjeta">
+</div>
+```
+
+---
+
+#### **Tipo 2: `.img-amplia` (Inmersiva)**
+
+**Dónde usar:**
+- Tarjetas de blog (artículos)
+- Secciones de detalle en Catálogo (descripción completa)
+- Hero imagen principal
+- Comunidad visual
+- Cualquier imagen que deba llenar todo el marco
+
+**Técnica CSS:**
+```css
+.img-amplia {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+/* Contenedor requerido */
+.img-amplia-container {
+  overflow: hidden;
+  border-radius: 16px;
+  position: relative;
+}
+```
+
+**Resultado visual:** Imagen llenando todo el marco, estilo editorial/revista. Sin espacios vacíos.
+
+**Cómo funciona:** La imagen llena el contenedor (`object-fit: cover`), y el `overflow: hidden` del contenedor recorta las esquinas automáticamente.
+
+**Ejemplo HTML:**
+```html
+<div class="img-amplia-container" style="height: 300px;">
+  <img src="imagen.jpg" alt="Descripción" class="img-amplia">
+</div>
+```
+
+**Variante para retratos:**
+```html
+<img src="persona.jpg" alt="Foto" class="img-amplia img-amplia--retrato">
+```
+_(Alinea desde arriba para evitar decapitación)_
+
+---
+
+#### **📋 Mapeo Rápido: Qué Tipo Usar**
+
+| Ubicación | Tipo | Razón |
+|-----------|------|-------|
+| Tarjetas catálogo (grid superior) | `.img-tarjeta` | Mostrar producto completo |
+| Tarjetas Home "Recursos Destacados" | `.img-tarjeta` | Mostrar producto completo |
+| Detalle catálogo (descripción abajo) | `.img-amplia` | Impacto visual, estilo revista |
+| Tarjetas blog (artículos) | `.img-amplia` | Inmersión editorial |
+| Hero imagen principal | `.img-amplia` | Pantalla completa |
+| Comunidad visual | `.img-amplia` | Experiencia envolvente |
+
+---
+
+#### **🎯 Ley Global**
+
+- **`border-radius: 16px`** en TODOS los casos
+- Ninguna esquina recta en ninguna imagen del proyecto
+
+---
+
+#### **💬 Comunicación Simplificada**
+
+**Antes:**
+> "Usa object-fit contain con width auto height auto y border-radius 16px en la imagen"
+
+**Después:**
+> "Usa `.img-tarjeta`"
+
+---
+
+### 🃏 Tarjetas Verticales - Estructura Estándar (Definido: 27-Nov-2025)
+
+**Objetivo:** Mantener consistencia visual y alineación perfecta de elementos en tarjetas verticales en toda la web.
+
+---
+
+#### **📐 Estructura Completa**
+
+```html
+<div class="card card--enhanced">
+    <!-- 1. IMAGEN CON ALTURA FIJA (200px) -->
+    <div class="card-image-container">
+        <img src="ruta/imagen.jpg" alt="Descripción" loading="lazy" class="img-tarjeta">
+    </div>
+
+    <!-- 2. TÍTULO -->
+    <h3 class="card-title">Título del Recurso</h3>
+
+    <!-- 3. DESCRIPCIÓN (altura variable) -->
+    <p class="card-text">
+        Descripción breve del recurso. Puede tener 1-3 líneas de texto.
+    </p>
+
+    <!-- 4. ACCIÓN AL FONDO (mt-auto empuja al final) -->
+    <div class="mt-auto">
+        <a href="destino.html" class="card-link-action"><strong>Ver detalles →</strong></a>
+    </div>
+</div>
+```
+
+---
+
+#### **🎯 CSS Requerido (`.card-image-container`)**
+
+```scss
+.card-image-container {
+  background: #f5f5f5;           // Fondo gris claro
+  padding: 1.5rem;                // Espacio alrededor de la imagen
+  height: 200px;                  // ⚠️ ALTURA FIJA (garantiza alineación)
+  border-radius: 12px 12px 0 0;  // Esquinas superiores redondeadas
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;  // Full-bleed (sangrado)
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+**Nota:** Esta clase debe crearse si no existe. Actualmente se usa inline en `index.html`.
+
+---
+
+#### **✅ Garantías de esta estructura:**
+
+| Elemento | Comportamiento | Beneficio |
+|----------|---------------|-----------|
+| `.card-image-container` (200px fijo) | Misma altura siempre | ✅ **Títulos alineados horizontalmente** |
+| `.card-title` | Empieza después de 200px | ✅ Todos al mismo nivel visual |
+| `.card-text` | Altura variable (flexbox) | 🔄 Flexibilidad en contenido |
+| `.mt-auto` | Empuja elemento al fondo | ✅ **Botones siempre abajo** (sin importar cantidad de texto) |
+
+---
+
+#### **🎨 Variaciones de Borde (Casos específicos)**
+
+La tarjeta `.card--enhanced` puede tener diferentes estilos de borde según el contexto:
+
+**Variante 1: Sin borde** (por defecto)
+```css
+.card--enhanced {
+  border: none;
+}
+```
+
+**Variante 2: Con borde sutil**
+```css
+.card--enhanced-bordered {
+  border: 1px solid var(--color-border);
+}
+```
+
+**Variante 3: Borde de color personalizado**
+```css
+.card--enhanced-accent {
+  border: 2px solid var(--color-ochre);
+}
+```
+
+**Variante 4: Borde grueso destacado**
+```css
+.card--enhanced-featured {
+  border: 3px solid var(--color-sky);
+}
+```
+
+**Uso en HTML:**
+```html
+<div class="card card--enhanced card--enhanced-bordered">
+  <!-- Contenido de tarjeta -->
+</div>
+```
+
+---
+
+#### **📊 Diagrama de Alineación**
+
+```
+Grid de 3 tarjetas:
+
+┌─────────────┐  ┌─────────────┐  ┌─────────────┐
+│   Imagen    │  │   Imagen    │  │   Imagen    │
+│   (200px)   │  │   (200px)   │  │   (200px)   │  ← Altura fija
+├─────────────┤  ├─────────────┤  ├─────────────┤
+│ Título      │  │ Título      │  │ Título      │  ← Siempre alineados
+├─────────────┤  ├─────────────┤  ├─────────────┤
+│ Texto corto │  │ Texto       │  │ Texto largo │
+│             │  │ mediano     │  │ que ocupa   │  ← Altura flexible
+│             │  │ 2 líneas    │  │ 3 líneas    │
+├─────────────┤  ├─────────────┤  ├─────────────┤
+│ [Botón]     │  │ [Botón]     │  │ [Botón]     │  ← mt-auto (siempre abajo)
+└─────────────┘  └─────────────┘  └─────────────┘
+```
+
+---
+
+#### **📍 Dónde aplicar este estándar:**
+
+| Página | Sección | Estado |
+|--------|---------|--------|
+| `index.html` | Recursos Destacados | ✅ Implementado |
+| `catalogo.html` | Grid de productos/cursos | ⏳ Pendiente |
+| `blog.html` | Tarjetas de artículos | ⏳ Pendiente |
+| `membresia.html` | Privilegios (si verticales) | ⏳ Pendiente |
+
+---
+
+#### **⚠️ Reglas críticas:**
+
+1. **NUNCA cambiar** la altura de `.card-image-container` (200px) sin actualizar TODAS las tarjetas
+2. **SIEMPRE usar** `.img-tarjeta` para imágenes en este contenedor
+3. **SIEMPRE incluir** `loading="lazy"` en imágenes below-fold
+4. **SIEMPRE usar** `.mt-auto` en el último elemento de la tarjeta
+
+---
+
+#### **💡 Cuándo NO usar este estándar:**
+
+- ❌ Tarjetas horizontales (usar otro patrón)
+- ❌ Tarjetas de blog con imagen "amplia" (usar `.img-amplia` en contenedor diferente)
+- ❌ Testimonios o avatares (tienen su propia estructura)
+
+---
+
 ### Sistema de Iconografía SVG
 
 **ESTÁNDAR OBLIGATORIO** (Feather Icons style):
@@ -1790,7 +2057,7 @@ svg { width: 24px; height: 24px; }
   - **Features**: 8 archivos (blog, eventos, testimonios, lead magnet)
   - **Páginas Específicas**: 5 archivos (presentación, contacto, carousel, theme premium)
   - **Utilities**: 9 archivos (responsive, breadcrumbs, tabs, dropdown, etc.)
-  - **Base**: 3 archivos (variables, reset, model-description)
+  - **Base**: 3 archivos (variables, reset, guia-cliente)
 - ✅ **REQUISITO CRÍTICO CUMPLIDO**: CSS Variables 100% preservadas
   - **288 usos** de `var(--color-*)` en CSS compilado (vs 285 original)
   - Hexadecimales SOLO en `:root` (no en clases)
@@ -1973,9 +2240,9 @@ Los comentarios HTML `<!-- INSTRUCCIÓN: ... -->` son tus guías. No necesitas s
 
 ---
 
-**📅 Última actualización**: 2025-11-26
+📅 Última actualización: 2025-11-27
 **👤 Autor**: Devito (Claude Code)
-**📄 Versión**: 2.1
+📄 Versión: 2.2
 **🔒 Estado**: Documento vivo (actualizar con cada optimización)
 **📊 Documentos Relacionados**:
 - INVENTARIO-ACTIVOS-ESPECIFICACIONES.md (valoración y due diligence)

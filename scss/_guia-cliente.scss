@@ -1,8 +1,8 @@
 /* ============================================
-   DESCRIPCIONES DEL MODELO (Educativas)
+   GUÍAS PARA EL CLIENTE (Pepe)
    ============================================ */
 
-.model-description {
+.guia-cliente {
     background: linear-gradient(135deg, rgba(232, 213, 196, 0.3), rgba(197, 217, 232, 0.2));
     border: 2px dashed #333;
     padding: var(--spacing-md);
@@ -11,7 +11,7 @@
     backdrop-filter: blur(10px);
 }
 
-.model-description h4 {
+.guia-cliente h4 {
     color: var(--color-text);
     font-family: var(--font-serif);
     font-size: 1rem;
@@ -22,14 +22,14 @@
     margin-bottom: var(--spacing-xs);
 }
 
-.model-description p {
+.guia-cliente p {
     font-size: 0.95rem;
     color: var(--color-text-light);
     line-height: 1.7;
     margin-bottom: 0.5rem;
 }
 
-.model-description p:last-child {
+.guia-cliente p:last-child {
     margin-bottom: 0;
 }
 

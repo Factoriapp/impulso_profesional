@@ -8,12 +8,12 @@
 
 /* 2. Reset y Base */
 @import 'reset';
-@import 'model-description';
+@import 'guia-cliente';
 
 /* 3. Layout Principal */
 @import 'header';
 @import 'hero';
-@import 'quien-soy';
+@import 'presentacion';
 @import 'mission-box';
 @import 'sections';
 @import 'footer';
@@ -57,6 +57,7 @@
 
 /* 10. Optimizaciones y Utilidades */
 @import 'optimizations';
+@import 'image-types';
 @import 'utilities';
 
 /* 11. Responsive (SIEMPRE AL FINAL) */

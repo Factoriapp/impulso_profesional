@@ -8,19 +8,27 @@
 * **La Medida:** En el formulario de "Editar Home", poner una ALERTA visual junto al campo de URL:
     * *"OJO: Avísale a Pepe que DEBE poner la misma Foto Profesional como miniatura en YouTube, o la web se verá rota."*
 
-### 2. 🔒 SOBRE LA NAVEGACIÓN (MENÚ)
+### 2. 🏠 SOBRE EL HERO DE PORTADA (REEMPLAZO DINÁMICO)
+* **El Riesgo:** Que el backend simplemente inyecte la URL de la imagen dentro del div actual sin borrar el texto de instrucciones ("Aquí va una foto..."), o que olvide aplicar la clase correcta.
+* **La Medida:** Lógica estricta de renderizado en index.html:
+    * El contenedor `#heroImage` actualmente tiene un `<p>` con texto.
+    * **Si Pepe sube foto:** El sistema debe **BORRAR** ese `<p>` y **REEMPLAZARLO** por una etiqueta `<img>` completa.
+    * **Clase Obligatoria:** La nueva imagen debe llevar la clase `.hero-image` (que aplica `object-fit: cover` / Estrategia B) para que llene el espacio correctamente.
+    * Con esto, Devito sabe que no basta con "poner la foto", tiene que **limpiar el HTML placeholder**.
+
+### 3. 🔒 SOBRE LA NAVEGACIÓN (MENÚ)
 * **El Riesgo:** Pepe podría borrar "Área Personal" o "Mi Cuenta" del menú pensando que sobran.
 * **La Medida:** Esos enlaces son **INTOCABLES**.
     * Deben aparecer en el gestor de menú como "Bloqueados" o "De Sistema".
     * No permitir que se eliminen, porque rompen el acceso al negocio.
 
-### 3. 📝 SOBRE EL BLOG (FORMATOS INTELIGENTES)
+### 4. 📝 SOBRE EL BLOG (FORMATOS INTELIGENTES)
 * **El Riesgo:** Fotos verticales rompiendo el layout de texto.
 * **La Medida:** Lógica condicional en el editor:
     * Si es **"Solo Imagen"** → Aplicar clase CSS `full-bleed` (ancho completo).
     * Si es **"PDF"** → Generar la "Tarjeta de Documento" (Link externo), NUNCA un iframe.
 
-### 4. 📅 SOBRE LOS PRODUCTOS (LA GRAN DIVISIÓN)
+### 5. 📅 SOBRE LOS PRODUCTOS (LA GRAN DIVISIÓN)
 * **El Riesgo:** Confusión entre Cursos (Evergreen) y Eventos (Agenda).
 * **La Medida:** El formulario de creación debe tener un **Filtro Obligatorio**:
     * *"¿Tiene fecha de inicio fija?"*
@@ -28,19 +36,19 @@
     * Si **NO** → Mándalo a la sección "Formación/Tienda".
     * *Nota:* No dejes que Pepe elija la categoría a mano si se equivoca en la fecha.
 
-### 5. 🖼️ SOBRE LAS IMÁGENES (LEGALIDAD)
+### 6. 🖼️ SOBRE LAS IMÁGENES (LEGALIDAD)
 * **El Riesgo:** Pepe sube fotos de Google Images y nos demandan.
 * **La Medida:** Fricción obligatoria en el Upload:
     * Checkbox: `[ ] Tengo los derechos de esta imagen`.
     * Backend: Borrar metadatos EXIF automáticamente al subir.
 
-### 6. 🏠 SOBRE LOS DESTACADOS (HOME)
+### 7. 🏠 SOBRE LOS DESTACADOS (HOME)
 * **El Riesgo:** Que la Home muestre productos viejos o irrelevantes automáticamente.
 * **La Medida:** En el editor de Productos/Servicios, debe haber un **Checkbox**:
     * `[⭐] Destacar en la Portada`
     * **Lógica:** El sistema solo muestra en `index.html` los **3 primeros** ítems que tengan esta marca activa.
 
-### 7. 🔘 SOBRE LOS BOTONES DE COMPRA (FLEXIBILIDAD)
+### 8. 🔘 SOBRE LOS BOTONES DE COMPRA (FLEXIBILIDAD)
 * **El Riesgo:** Que el sistema obligue a un "Taller" a tener botón de "Comprar" cuando Pepe quiere que sea "Agendar Entrevista".
 * **La Medida:** Pepe debe elegir la **ACCIÓN** del botón independientemente de la categoría:
     * Selector: **"¿Qué hace el botón?"**
@@ -50,23 +58,15 @@
         3. `Descargar Archivo` (Directo)
         4. `Ver Detalle` (Desplegar)
 
-🎨 SOBRE LOS DEFAULTS (TEMAS)
+### 9. 🎨 SOBRE LOS DEFAULTS (TEMAS)
+* **El Riesgo:** Usar fotos de oficina para clientes de nicho (Yoga, Tarot, Fitness).
+* **La Medida:** El sistema debe soportar "Theme Packs".
+    * Al configurar el sitio, se elige: `Theme: 'Corp' | 'Mystic' | 'Minimal'`.
+    * El backend carga las imágenes por defecto de la carpeta correspondiente.
 
-El Riesgo: Usar fotos de oficina para clientes de nicho (Yoga, Tarot, Fitness).
-
-La Medida: El sistema debe soportar "Theme Packs".
-
-Al configurar el sitio, se elige: Theme: 'Corp' | 'Mystic' | 'Minimal'.
-
-El backend carga las imágenes por defecto de la carpeta correspondiente.
-
-
-🖼️ SOBRE LAS IMÁGENES DE PRODUCTO
-
-Campo: "Imagen Destacada (Opcional)".
-
-Lógica: Si este campo está vacío, el frontend usará el bg-default de la categoría. Si tiene contenido, la imagen propia tapa al default.
-
-Caso de Uso: Ideal para portadas de Ebooks o fotos de eventos específicos.
+### 10. 🖼️ SOBRE LAS IMÁGENES DE PRODUCTO
+* **Campo:** "Imagen Destacada (Opcional)".
+* **Lógica:** Si este campo está vacío, el frontend usará el `bg-default` de la categoría. Si tiene contenido, la imagen propia tapa al default.
+* **Caso de Uso:** Ideal para portadas de Ebooks o fotos de eventos específicos.
 ---
 **⚠️ LEER ESTO ANTES DE ESCRIBIR LA PRIMERA LÍNEA DE LA FASE 2.**
